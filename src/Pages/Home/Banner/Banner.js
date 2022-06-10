@@ -45,7 +45,7 @@ const Banner = () => {
                                     Grow Your Business
                                 </p>
 
-                                <button className='text-[#BD8472] text-base border-2 border-[#BD8472] px-6 py-3 text-center rounded w-full mt-10'>Watch Videos</button>
+                                <button className='text-[#BD8472] text-base border-2 border-[#BD8472] px-6 py-3 text-center rounded w-full mt-10'>Watch Video</button>
 
 
                             </div>
