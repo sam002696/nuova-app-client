@@ -8,9 +8,9 @@ const MisionVision = () => {
             <section className='backdrop-filter bg-gradient-to-r from-rose-50 via-white to-sky-50'>
                 <div className="container mx-auto sm:px-6 lg:px-8 pt-10 pb-5">
 
-                    <div className='flex items-center my-20 justify-center'>
+                    <div className='flex items-center justify-evenly my-20'>
                         <div>
-                            <img className=' w-1/2 mx-auto' src={bannerImage} alt="" />
+                            <img className=' w-3/2' src={bannerImage} alt="" />
                         </div>
                         <div className='space-y-6'>
                             <p className=' font-sans font-medium text-3xl text-[#162A43]'>
@@ -23,7 +23,7 @@ const MisionVision = () => {
                         </div>
 
                     </div>
-                    <div className='flex items-center my-20 justify-center'>
+                    <div className='flex items-center justify-evenly my-20'>
 
                         <div className='space-y-6'>
                             <p className=' font-sans font-medium text-3xl text-[#162A43]'>
@@ -36,7 +36,7 @@ const MisionVision = () => {
                             </p>
                         </div>
                         <div>
-                            <img className=' w-1/2 mx-auto' src={bannerImage} alt="" />
+                            <img className=' w-3/2' src={bannerImage} alt="" />
                         </div>
                     </div>
 

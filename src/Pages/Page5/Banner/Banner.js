@@ -10,7 +10,7 @@ const Banner = () => {
                         <p className='text-[#162A43] text-xl font-sans font-medium'>Making renting better for everyone</p>
                     </div>
 
-                    <div className='flex items-center my-20 justify-center lg:ml-32'>
+                    <div className='flex items-center justify-evenly my-20'>
                         <div className='space-y-6'>
                             <p className=' font-sans font-medium text-3xl text-[#162A43]'>
                                 Nuova Property
@@ -21,7 +21,7 @@ const Banner = () => {
                             </p>
                         </div>
                         <div>
-                            <img className=' w-1/2 mx-auto' src={bannerImage} alt="" />
+                            <img className=' w-3/2 ' src={bannerImage} alt="" />
                         </div>
                     </div>
                 </div>

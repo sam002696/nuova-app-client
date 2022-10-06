@@ -327,7 +327,7 @@ const Different = () => {
                 </div>
             </section>
 
-            <footer class="py-28 bg-white relative">
+            <footer class="py-16 bg-white relative">
                 <img className='absolute right-0' src={elipse22} alt="" />
                 <section className='container px-36'>
                     <div className='grid grid-cols-4 gap-x-14'>

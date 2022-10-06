@@ -12,7 +12,7 @@ import elipse24 from '../../../Images/Footer/Ellipse 24.png'
 const Footer = () => {
     return (
 
-        <footer class="py-28 bg-[#F9F7FF] relative">
+        <footer class="py-16 bg-[#F9F7FF] relative">
             <img className='absolute right-0' src={elipse22} alt="" />
             <section className='container px-36'>
                 <div className='grid grid-cols-4 gap-x-14'>
