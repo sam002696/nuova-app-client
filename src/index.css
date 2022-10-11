@@ -28,6 +28,42 @@
     padding-left: 12.5rem;
     padding-right: 1.5rem;
   }
+  .height-custom {
+    height: calc(100vh - 130px);
+  }
+  .height-custom-picture {
+    height: calc(100vh - 0px);
+  }
+
+  .custom-border-radius {
+    border-radius: 0px 10px 10px 10px;
+  }
+  .owner-border-radius {
+    border-radius: 10px 0px 10px 10px;
+  }
+  .truncate-custom {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .custom-scrollbar {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  .custom-focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border: none !important;
+  }
 }
 
 body {

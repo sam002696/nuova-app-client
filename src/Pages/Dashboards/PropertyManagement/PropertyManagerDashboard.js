@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
@@ -7,12 +7,15 @@ import { SearchIcon } from "@heroicons/react/solid";
 import PropertyManagerHome from "./PropertyManagerHome";
 import ManagerMaintenance from "./ManagerMaintenance";
 import ManagerTasks from "./ManagerTasks";
-import ManagerInbox from "./ManagerInbox";
 import ManagerPeople from "./ManagerPeople";
 import ManagerProfile from "./ManagerProfile";
 import ManagerProperties from "./ManagerProperties";
 import logo from "../../../Images/Footer/logo.png";
 import Calender from "./Calender";
+import ManagerInbox from "./ManagerInbox/ManagerInbox";
+import { AuthContext } from "../../Chat/ChatContext/AuthContext";
+import ChatLogin from "../../Chat/ChatLogin/ChatLogin";
+import ChatRegister from "../../Chat/ChatRegister/ChatRegister";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -30,8 +33,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const PropertyManagerDashboard = () => {
+  const { currentUser } = useContext(AuthContext);
+
   let { path, url } = useRouteMatch();
-  //   const pathName = window.location.pathname.split("/")[2];
   const navigation = [
     { name: "Home", to: `${url}`, href: "#", current: false },
     { name: "Properties", to: `${url}/properties`, href: "#", current: false },
@@ -46,6 +50,13 @@ const PropertyManagerDashboard = () => {
     { name: "People", href: "#", to: `${url}/people`, current: false },
     { name: "Profile", href: "#", to: `${url}/profile`, current: false },
     { name: "Calender", href: "#", to: `${url}/calender`, current: false },
+
+    {
+      name: currentUser ? "" : "Register",
+      href: "#",
+      to: `${url}/register`,
+      current: false,
+    },
   ];
   return (
     <>
@@ -306,9 +317,11 @@ const PropertyManagerDashboard = () => {
             <Route path={`${path}/tasks`}>
               <ManagerTasks />
             </Route>
+
             <Route path={`${path}/inbox`}>
-              <ManagerInbox />
+              {currentUser ? <ManagerInbox /> : <ChatLogin />}
             </Route>
+
             <Route path={`${path}/people`}>
               <ManagerPeople />
             </Route>
@@ -317,6 +330,9 @@ const PropertyManagerDashboard = () => {
             </Route>
             <Route path={`${path}/calender`}>
               <Calender />
+            </Route>
+            <Route path={`${path}/register`}>
+              <ChatRegister />
             </Route>
           </Switch>
         </main>
