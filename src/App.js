@@ -3,6 +3,7 @@ import { Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import PropertyManagerDashboard from "./Pages/Dashboards/PropertyManagement/PropertyManagerDashboard";
 import SingleProperty from "./Pages/Dashboards/PropertyManagement/SingleProperty/SingleProperty";
+import TenantPortalDashboard from "./Pages/Dashboards/TenantPortal/TenantPortalDashboard";
 import Home from "./Pages/Home/Home/Home";
 import PageTwo from "./Pages/Page2/PageTwo/PageTwo";
 import PageFive from "./Pages/Page5/Page5/PageFive";
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/property-manager-dashboard">
             <PropertyManagerDashboard />
+          </Route>
+          <Route path="/tenant-portal-dashboard">
+            <TenantPortalDashboard />
           </Route>
           <Route path="/property-fact-find">
             <PropertyFactFind />
