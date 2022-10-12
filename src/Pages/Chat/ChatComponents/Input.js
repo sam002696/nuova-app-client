@@ -95,11 +95,6 @@ const Input = () => {
     setText("");
     setImg(null);
   };
-  // const handleImageRemove = () => {
-  //   setObjectURL(null);
-  // };
-
-  // console.log(img.name);
   return (
     <>
       <div className="grid grid-cols-3">
