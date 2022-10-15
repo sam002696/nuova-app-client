@@ -10,13 +10,20 @@ import {
     LockClosedIcon,
     ServerIcon,
     ShieldCheckIcon,
+    FastForwardIcon,
+    CheckCircleIcon,
+    UserAddIcon,
+    CurrencyPoundIcon,
+    CalendarIcon,
+    LocationMarkerIcon
+
 } from '@heroicons/react/outline'
 
 
 import {
-    BanknotesIcon,
+
     BookmarkIcon,
-    CheckCircleIcon,
+    // CheckCircleIcon,
     ChevronDownIcon,
     ChevronRightIcon,
     MagnifyingGlassIcon,
@@ -26,41 +33,47 @@ import { ScaleIcon } from '@heroicons/react/solid'
 
 
 const cards = [
-    { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
-    { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
-    { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
+    { name: 'Tenant Rent Amount', href: '#', icon: CurrencyPoundIcon, amount: '$3659.00' },
+    { name: 'Tenancy Due Date', href: '#', icon: CalendarIcon, amount: '01-12-2022' },
+    { name: 'Property / Unit', href: '#', icon: LocationMarkerIcon, amount: '16182 RIO BAILEY / A2' },
     // More items...
 ]
 
 const features = [
     {
         name: 'Rent Per Month',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-        icon: CreditCardIcon,
+        value: '$3500.00',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
+        icon: CurrencyPoundIcon,
     },
     {
         name: 'Up To Date',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-        icon: LockClosedIcon,
+        value: 'Yes',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
+        icon: CheckCircleIcon,
     },
     {
         name: 'Tenancy Remaining',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+        value: '12 Months',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
         icon: ArrowCircleUpIcon,
     },
     {
         name: 'Total Occupants',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-        icon: ShieldCheckIcon,
+        value: '5 Person',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
+        icon: UserAddIcon,
     },
     {
         name: 'Next Payment',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-        icon: CogIcon,
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
+        value: '01-Jan-2023',
+        icon: FastForwardIcon,
     },
     {
         name: 'Database Backups',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+        value: 'Updated',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus..',
         icon: ServerIcon,
     },
 ]
@@ -77,10 +90,9 @@ const TenantPortalHomeTwo = () => {
 
             <div className="">
 
-
-                <div className="bg-white">
+                {/* <div className="bg-white">
                     <main>
-                        {/* Hero card */}
+
                         <div className="relative mb-2">
                             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
                             <div className="mx-auto max-w-9xl sm:px-6 lg:px-8">
@@ -123,11 +135,13 @@ const TenantPortalHomeTwo = () => {
                         </div>
 
 
-                        {/* More main page content here... */}
-                    </main>
-                </div>
 
-                <main className="flex-1 pb-8">
+                    </main>
+                </div> */}
+
+
+
+                <main className="flex-1 pb-8 mt-4">
                     {/* Page header */}
                     <div className="bg-white shadow">
                         <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
@@ -173,27 +187,27 @@ const TenantPortalHomeTwo = () => {
                                     </div>
                                 </div>
                                 <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-                                    <button
+                                    {/* <button
                                         type="button"
                                         className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                                     >
                                         Add money
-                                    </button>
+                                    </button> */}
                                     <button
                                         type="button"
                                         className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                                     >
-                                        Send money
+                                        View Profile
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mt-8">
+                    <div className="mt-8 ">
                         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                             <h2 className="text-lg font-medium leading-6 text-gray-900">Overview</h2>
-                            <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                            <div className="mt-2 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                                 {/* Card */}
                                 {cards.map((card) => (
                                     <div key={card.name} className="overflow-hidden rounded-lg bg-white shadow">
@@ -212,10 +226,10 @@ const TenantPortalHomeTwo = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="bg-gray-50 px-5 py-3">
+                                        <div className="bg-cyan-50 px-5 py-3">
                                             <div className="text-sm">
                                                 <a href={card.href} className="font-medium text-cyan-700 hover:text-cyan-900">
-                                                    View all
+
                                                 </a>
                                             </div>
                                         </div>
@@ -227,14 +241,14 @@ const TenantPortalHomeTwo = () => {
 
                 </main>
 
-                <div className="relative bg-white py-8 sm:py-24 lg:py-8">
+                <div className="relative bg-white py-8 sm:py-24 lg:py-12 ">
                     <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-lg font-semibold text-indigo-600">Tenant Info</h2>
+                        <h2 className="text-lg font-semibold text-cyan-600">Tenant Info</h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                             Everything you need to maintain your Nuova Tenancy
                         </p>
                         <p className="mx-auto mt-5 max-w-prose text-xl text-gray-500">
-                            A tenant management software allows you to keep track of all your prospective, active, and old tenants. If it's a new prospective tenant, you can send an online rental application and run background checks.
+                            A tenant management software allows you to keep track of all your prospective, active, and old tenants.
                         </p>
                         <div className="mt-12">
                             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -248,7 +262,8 @@ const TenantPortalHomeTwo = () => {
                                                     </span>
                                                 </div>
                                                 <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900">{feature.name}</h3>
-                                                <p className="mt-5 text-base text-gray-500">{feature.description}</p>
+                                                <h3 className="mt-2 text-md font-medium tracking-tight text-cyan-500">{feature.value}</h3>
+                                                <p className="mt-4 text-base text-gray-500">{feature.description}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -267,3 +282,4 @@ const TenantPortalHomeTwo = () => {
 };
 
 export default TenantPortalHomeTwo;
+

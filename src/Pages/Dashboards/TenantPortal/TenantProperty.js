@@ -1,6 +1,45 @@
 import React from 'react';
 import { PaperClipIcon } from '@heroicons/react/solid'
 
+import img_1 from "../../../Images/TenantPortalImages/Tenant-property/undraw_for_sale.png"
+import img_2 from "../../../Images/TenantPortalImages/Tenant-property/Undraw_selection.png"
+import img_3 from "../../../Images/TenantPortalImages/Tenant-property/undraw_security.png"
+
+const posts = [
+    {
+        title: 'Create Listings',
+        href: '#',
+        category: { name: 'Article', href: '#' },
+        description:
+            'Allow tenants to easily inquire and submit online rental applications so you can efficiently collect all the information',
+        date: 'Mar 16, 2020',
+        datetime: '2020-03-16',
+        imageUrl: img_1,
+
+    },
+    {
+        title: 'Manage Applications',
+        href: '#',
+        category: { name: 'Video', href: '#' },
+        description:
+            'Quickly collect all the information you need to select the very best tenant with online rental applications.',
+        date: 'Mar 10, 2020',
+        datetime: '2020-03-10',
+        imageUrl: img_2,
+
+    },
+    {
+        title: 'Screen Applicants',
+        href: '#',
+        category: { name: 'Case Study', href: '#' },
+        description: 'Screen Applicants Protect your investment with comprehensive tenant screening to ensure you select the best tenant',
+        datetime: '2020-02-12',
+        imageUrl: img_3,
+
+    },
+]
+
+
 const TenantProperty = () => {
     return (
         <>
@@ -18,24 +57,7 @@ const TenantProperty = () => {
                                     Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
                                     fugiat veniam occaecat fugiat aliqua.
                                 </p>
-                                <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-                                    <div className="rounded-md shadow">
-                                        <a
-                                            href="#"
-                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-8 py-3 text-base font-medium text-white hover:bg-cyan-700 md:py-4 md:px-10 md:text-lg"
-                                        >
-                                            Get started
-                                        </a>
-                                    </div>
-                                    <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                                        <a
-                                            href="#"
-                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-cyan-600 hover:bg-cyan-50 md:py-4 md:px-10 md:text-lg"
-                                        >
-                                            Live demo
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
@@ -45,10 +67,51 @@ const TenantProperty = () => {
                                 alt=""
                             />
                         </div>
+                        <div className="absolute inset-0 bg-cyan-100 bg-opacity-20" />
+
                     </main>
 
+                    <div className="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
+                        {/* <div className="absolute inset-0">
+                            <div className="h-1/3 bg-white sm:h-2/3" />
+                        </div> */}
+                        <div className="relative mx-auto max-w-7xl">
+                            <div className="text-center">
+                                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Fill vacancies faster with streamlined
+                                    tenant applications</h2>
 
-                    <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+                            </div>
+                            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+                                {posts.map((post) => (
+                                    <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg shadow-teal-100">
+                                        <div className=" bg-white p-6">
+                                            <div className="flex-1">
+                                                <p className="text-2xl font-semibold text-gray-900">{post.title}</p>
+
+                                            </div>
+
+                                        </div>
+                                        <div className="flex-shrink-0">
+                                            <img className="h-64 w-full object-cover" src={post.imageUrl} alt="" />
+                                        </div>
+                                        <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                                            <div className="flex-1">
+
+                                                <a href={post.href} className="mt-2 block">
+
+                                                    <p className="mt-3 text-base text-gray-500">{post.description}</p>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="overflow-hidden bg-white shadow sm:rounded-lg my-12">
                         <div className="px-4 py-5 sm:px-6">
                             <h3 className="text-lg font-medium leading-6 text-gray-900">Tenant's Property Information</h3>
                             <p className="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>

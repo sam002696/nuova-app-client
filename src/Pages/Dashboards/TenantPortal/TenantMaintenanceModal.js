@@ -44,9 +44,9 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                             >
                                 <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-5xl sm:w-full sm:p-6 lg:p-24">
                                     <div>
-                                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-cyan-600">
                                             < ShieldCheckIcon
-                                                className="h-6 w-6 text-green-600"
+                                                className="h-8 w-8 text-white"
                                                 aria-hidden="true"
                                             />
                                         </div>
@@ -63,7 +63,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                         <div className="pb-5 sm:mt-5">
                                             <Dialog.Title
                                                 as="h3"
-                                                className="text-xl leading-6 font-semibold font-mono italic text-indigo-700 mb-2 underline underline-offset-4"
+                                                className="text-xl leading-6 font-semibold font-mono tracking-wider text-gray-700 mb-2"
                                             >
                                                 Tenant's Required Information
                                             </Dialog.Title>
@@ -146,7 +146,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                         <div className="pb-5 sm:mt-5">
                                             <Dialog.Title
                                                 as="h3"
-                                                className="text-xl leading-6 font-semibold font-mono italic text-indigo-700 mb-2 underline underline-offset-4"
+                                                className="text-xl leading-6 font-semibold font-mono tracking-wider text-gray-700 mb-2"
                                             >
                                                 Property details
                                             </Dialog.Title>
@@ -225,7 +225,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                         <div className="pb-5 sm:mt-5">
                                             <Dialog.Title
                                                 as="h3"
-                                                className="text-xl leading-6 font-semibold font-mono italic text-indigo-700 mb-2 underline underline-offset-4"
+                                                className="text-xl leading-6 font-semibold font-mono tracking-wider text-gray-700 mb-6"
                                             >
                                                 Maintenance Issue
                                             </Dialog.Title>
@@ -252,7 +252,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                                             id="description"
                                                             name="description"
                                                             rows={3}
-                                                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
                                                             placeholder="Boiler is not working for two days"
                                                             defaultValue={''}
                                                         />
@@ -266,7 +266,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                                     <input
                                                         type="file"
                                                         id="tenancyProof"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
+                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full file:p-1.5 file:border-none"
                                                         placeholder="document"
                                                         {...register("tenancyProof", { required: true })}
                                                     />
@@ -278,7 +278,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                                                     <input
                                                         type="file"
                                                         id="issueImage"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
+                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
                                                         {...register("issueImage", { required: true })}
                                                     />
                                                 </div>
@@ -286,13 +286,13 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
 
 
                                         </div>
-                                        <div className='w-1/3 mx-auto'>
+                                        <div className='w-1/4 mx-auto mt-4'>
                                             <button
                                                 onClick={() => setOpen(false)}
                                                 type="submit"
-                                                className="text-white bg-gradient-to-r from-sky-800 to-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-bold rounded-md text-sm  px-5 py-4 text-center w-full"
+                                                className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
                                             >
-                                                Submit Maintenance Request
+                                                SUBMIT REQUEST
                                             </button>
                                         </div>
 
