@@ -1,18 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import TenantPortalHome from "./TenantPortalHome";
-
-// import PropertyManagerHome from "./PropertyManagerHome";
-// import ManagerMaintenance from "./ManagerMaintenance";
-// import ManagerTasks from "./ManagerTasks";
-// import ManagerInbox from "./ManagerInbox";
-// import ManagerPeople from "./ManagerPeople";
-// import ManagerProfile from "./ManagerProfile";
-// import ManagerProperties from "./ManagerProperties";
 import logo from "../../../Images/Footer/logo.png";
 import TenantProperty from "./TenantProperty";
 import TenantPortalFinance from "./TenantPortalFinance";
@@ -21,7 +12,9 @@ import TenantPortalInbox from "./TenantPortalInbox";
 import TenantProfile from "./TenantProfile";
 import TenantPortalMaintenance from "./TenantPortalMaintenance";
 import TenantPortalHomeTwo from "./TenantPortalHomeTwo";
-// import Calender from "./Calender";
+import { AuthContext } from "../../Chat/ChatContext/AuthContext";
+import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
+import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -40,11 +33,16 @@ function classNames(...classes) {
 }
 
 const TenantPortalDashboard = () => {
+  const { currentUser } = useContext(AuthContext);
   let { path, url } = useRouteMatch();
-  //   const pathName = window.location.pathname.split("/")[2];
   const navigation = [
     { name: "Tenant Dashboard", to: `${url}`, href: "#", current: false },
-    { name: "Property", to: `${url}/tenant-property`, href: "#", current: false },
+    {
+      name: "Property",
+      to: `${url}/tenant-property`,
+      href: "#",
+      current: false,
+    },
     {
       name: "Maintenance",
       to: `${url}/tenant-portal-maintenance`,
@@ -53,8 +51,24 @@ const TenantPortalDashboard = () => {
     },
     { name: "Finance", href: "#", to: `${url}/tenant-finance`, current: false },
     { name: "Tasks", href: "#", to: `${url}/tenant-tasks`, current: false },
-    { name: "Inbox", href: "#", to: `${url}/tenant-portal-inbox`, current: false },
-    { name: "Profile", href: "#", to: `${url}/tenant-my-profile`, current: false },
+    {
+      name: "Inbox",
+      href: "#",
+      to: `${url}/tenant-portal-inbox`,
+      current: false,
+    },
+    {
+      name: "Profile",
+      href: "#",
+      to: `${url}/tenant-my-profile`,
+      current: false,
+    },
+    {
+      name: currentUser ? "" : "Register",
+      href: "#",
+      to: `${url}/register`,
+      current: false,
+    },
     // { name: "Maintenance", href: "#", to: `${url}/maintenance`, current: false },
   ];
   return (
@@ -317,13 +331,16 @@ const TenantPortalDashboard = () => {
               <TenantPortalTasks />
             </Route>
             <Route path={`${path}/tenant-portal-inbox`}>
-              <TenantPortalInbox />
+              {currentUser ? <TenantPortalInbox /> : <ChatLogin />}
             </Route>
             <Route path={`${path}/tenant-my-profile`}>
               <TenantProfile />
             </Route>
             <Route path={`${path}/tenant-portal-maintenance`}>
               <TenantPortalMaintenance />
+            </Route>
+            <Route path={`${path}/register`}>
+              <ChatRegister />
             </Route>
             {/* 
             

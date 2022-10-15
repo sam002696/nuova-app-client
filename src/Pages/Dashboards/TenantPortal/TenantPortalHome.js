@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   AcademicCapIcon,
@@ -186,7 +186,6 @@ const TenantPortalHome = () => {
                         <span className="text-gray-600">{stat.label}</span>
                         <span> : </span>
                         <span className="text-gray-900">{stat.value}</span>{" "}
-
                       </div>
                     ))}
                   </div>
