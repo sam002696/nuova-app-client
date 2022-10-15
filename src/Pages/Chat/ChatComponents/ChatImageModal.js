@@ -40,14 +40,6 @@ const ChatImageModal = ({ openImg, setOpenImg, image }) => {
                   <div>
                     <img className=" rounded-md mx-auto" src={image} alt="" />
                   </div>
-                  <a
-                    href=""
-                    download={image}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download
-                  </a>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

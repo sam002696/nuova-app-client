@@ -283,19 +283,17 @@ const SetThree = ({ formData, setFormData }) => {
                 >
                   Bathrooms
                 </label>
-                <select
+                <input
+                  type="number"
                   id="bathrooms"
                   name="bathrooms"
-                  autoComplete="adverseCard"
                   className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                  required=""
                   onChange={(e) => {
                     handleAddressChange(e);
                   }}
-                >
-                  <option>Select</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
+                  placeholder="3"
+                />
               </div>
               <div>
                 <label

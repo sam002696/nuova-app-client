@@ -66,7 +66,7 @@ const TenantPortalDashboard = () => {
     {
       name: currentUser ? "" : "Register",
       href: "#",
-      to: `${url}/register`,
+      to: currentUser ? "#" : `${url}/register`,
       current: false,
     },
     // { name: "Maintenance", href: "#", to: `${url}/maintenance`, current: false },
