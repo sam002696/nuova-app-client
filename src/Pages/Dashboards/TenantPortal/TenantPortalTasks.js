@@ -4,43 +4,72 @@ import {
     CheckCircleIcon,
     ChevronRightIcon,
     EyeIcon,
+    ChatAlt2Icon
 } from "@heroicons/react/solid";
+
+import imgSVG_1 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png"
+// import imgSVG_2 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png"
+import imgSVG_3 from "../../../Images/TenantPortalImages/SVGimages/payment-method-svgrepo-com.svg"
 
 const applications = [
     {
         applicant: {
-            name: "Door Lock Repair",
-            email: "ricardo.cooper@example.com",
+            name: "Upload your Tenancy Certificate",
+            email: "propertymanager1@nuova.com",
             imageUrl:
                 "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
         },
         date: "2020-01-07",
-        dateFull: "January 7, 2020",
-        stage: "Completed Door Lock Repair",
+        dateFull: "January 27, 2020",
+        stage: "Task Completed ",
         href: "#",
     },
     {
         applicant: {
-            name: "Basin Water Leak",
-            email: "kristen.ramos@example.com",
+            name: "Pay for Maintenance #2",
+            email: "propertymanager1@nuova.com",
             imageUrl:
                 "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
         },
         date: "2020-01-07",
         dateFull: "January 17, 2020",
-        stage: "Completed Basin Water Leak",
+        stage: "Task Completed",
         href: "#",
     },
     {
         applicant: {
-            name: "Windows Glass Broken",
-            email: "ted.fox@example.com",
+            name: "Lease Update Request",
+            email: "propertymanager2@nuova.com",
             imageUrl:
                 "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
         },
         date: "2020-01-07",
-        dateFull: "January 27, 2020",
-        stage: "Completed Windows Glass Broken",
+        dateFull: "January 7, 2020",
+        stage: "Task Completed ",
+        href: "#",
+    },
+    {
+        applicant: {
+            name: "New Occupant Information",
+            email: "propertymanager2@nuova.com",
+            imageUrl:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        },
+        date: "2020-01-07",
+        dateFull: "December 10, 2020",
+        stage: "Task Completed ",
+        href: "#",
+    },
+    {
+        applicant: {
+            name: "Room Cleaning Schedule shifting",
+            email: "propertymanager2@nuova.com",
+            imageUrl:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        },
+        date: "2020-01-07",
+        dateFull: "December 4, 2020",
+        stage: "Task Completed ",
         href: "#",
     },
 ];
@@ -49,6 +78,7 @@ const incentives = [
     {
         name: '24*7 Contractors Ready',
         imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-shipping-simple.svg',
+        // imageSrc: '../../../Images/TenantPortalImages/SVGimages/driller-svgrepo-com.png',
         description: "It's not actually free we just price it into the products. Someone's paying for it, and it's not us.",
     },
     {
@@ -86,7 +116,7 @@ const TenantPortalTasks = () => {
                                     </div>
                                     <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg bg-gray-100">
                                         <img
-                                            src="https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg"
+                                            src="https://landlordstudiousregioncdn.azureedge.net/wp-content/uploads/2022/07/maintenance1.png"
                                             alt=""
                                             className="object-cover object-center"
                                         />
@@ -115,7 +145,7 @@ const TenantPortalTasks = () => {
 
                 </div>
                 <div className="mx-auto max-w-5xl">
-                    <div className="my-12">
+                    {/* <div className="my-12">
                         <div className=" mb-5">
                             <p className=" font-medium text-2xl text-center underline underline-offset-4 mb-3 text-gray-700">
                                 Tasks for Property Managers
@@ -146,11 +176,11 @@ const TenantPortalTasks = () => {
                                 Create a new task
                             </span>
                         </button>
-                    </div>
+                    </div> */}
 
-                    <div className="pb-20">
-                        <p className=" font-medium text-lg text-center text-gray-500 mb-5 underline underline-offset-4">
-                            List of the assigned tasks for Property Manager
+                    <div className="my-12 pb-20">
+                        <p className=" font-semibold text-2xl font-mono text-center text-gray-500 mb-8">
+                            Tasks Assigned by the Property Manager
                         </p>
                         <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
                             <ul className="divide-y divide-gray-200">
@@ -175,7 +205,7 @@ const TenantPortalTasks = () => {
                                                                 {application.applicant.name}
                                                             </p>
                                                             <p className="mt-2 flex items-center text-sm text-gray-500">
-                                                                <EyeIcon
+                                                                <ChatAlt2Icon
                                                                     className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                                                     aria-hidden="true"
                                                                 />
@@ -187,7 +217,7 @@ const TenantPortalTasks = () => {
                                                         <div className="hidden md:block">
                                                             <div>
                                                                 <p className="text-sm text-gray-900">
-                                                                    Applied on{" "}
+                                                                    Assigned on{" "}
                                                                     <time dateTime={application.date}>
                                                                         {application.dateFull}
                                                                     </time>
