@@ -1,140 +1,436 @@
-import React from 'react';
+import React from "react";
 
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/solid'
-import { UsersIcon, CurrencyPoundIcon, CreditCardIcon } from '@heroicons/react/outline'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import TenantModal from "../PropertyManagement/ManagerPeople/TenantModal";
+import { useForm } from "react-hook-form";
 
-const stats = [
-    { id: 1, name: 'Total Occupant', stat: '04', icon: UsersIcon, change: '1', changeType: 'increase' },
-    { id: 2, name: 'Monthly Rent', stat: '2500', icon: CurrencyPoundIcon, change: '2.5%', changeType: 'increase' },
-    { id: 3, name: 'Holding Deposits', stat: '1500', icon: CreditCardIcon, change: '3.2%', changeType: 'decrease' },
-]
+const people = [
+  {
+    name: "Lindsay Walton",
+    month: "January",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-01-2022",
+    status: "Paid",
+    status_color: "green",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "February",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-02-2022",
+    status: "Paid",
+    status_color: "green",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "March",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-03-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "April",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-04-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "May",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-05-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "June",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-06-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "July",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-07-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "August",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-08-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "September",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-09-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "October",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-10-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "November",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-11-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+  {
+    name: "Lindsay Walton",
+    month: "December",
+    email: "lindsay@example.com",
+    role: "Tenant",
+    payment_date: "05-12-2022",
+    status: "Pending",
+    status_color: "yellow",
+  },
+];
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
-const offers = [
-    { name: 'Download Payment app', description: 'Get an exclusive $5 off code', href: '#' },
-    { name: "Always Updated with Rental", description: 'Easy Method for Payment', href: '#' },
-    { name: 'Sign up for our newsletter', description: '15% off your first Pay', href: '#' },
-]
-
-const TenantPortalFinance = () => {
-    return (
-        <>
-            <div className="relative px-4 sm:px-6 lg:px-8 mt-20">
-                <div className="mx-auto max-w-7xl">
-                    <div className='my-16'>
-                        <h3 className="text-2xl font-medium leading-6 text-gray-900">Tenant's Finance Stats</h3>
-
-                        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                            {stats.map((item) => (
-                                <div
-                                    key={item.id}
-                                    className="relative overflow-hidden rounded-lg bg-white px-4 pt-5 pb-12 shadow sm:px-6 sm:pt-6"
-                                >
-                                    <dt>
-                                        <div className="absolute rounded-md bg-cyan-600 p-3">
-                                            <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 truncate text-sm font-medium text-gray-500">{item.name}</p>
-                                    </dt>
-                                    <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
-                                        <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
-                                        <p
-                                            className={classNames(
-                                                item.changeType === 'increase' ? 'text-green-600' : 'text-red-600',
-                                                'ml-2 flex items-baseline text-sm font-semibold'
-                                            )}
-                                        >
-                                            {item.changeType === 'increase' ? (
-                                                <ArrowUpIcon className="h-5 w-5 flex-shrink-0 self-center text-green-500" aria-hidden="true" />
-                                            ) : (
-                                                <ArrowDownIcon className="h-5 w-5 flex-shrink-0 self-center text-red-500" aria-hidden="true" />
-                                            )}
-
-                                            <span className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
-                                            {item.change}
-                                        </p>
-                                        <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
-                                            <div className="text-sm">
-                                                <a href="#" className="font-medium text-cyan-600 hover:text-cyan-500">
-                                                    {' '}
-                                                    View all<span className="sr-only"> {item.name} stats</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </div>
-                </div>
-
-
-
-                <div className="bg-cyan-500">
-                    <div className="flex flex-col border-b border-gray-200 lg:border-2">
-                        <nav aria-label="Offers" className="order-last lg:order-first">
-                            <div className="mx-auto max-w-7xl lg:px-8">
-                                <ul
-                                    role="list"
-                                    className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-3 lg:divide-y-0 lg:divide-x"
-                                >
-                                    {offers.map((offer) => (
-                                        <li key={offer.name} className="flex flex-col">
-                                            <a
-                                                href={offer.href}
-                                                className="relative flex flex-1 flex-col justify-center bg-white py-10 px-4 text-center focus:z-10"
-                                            >
-                                                <p className="text-md text-gray-500">{offer.name}</p>
-                                                <p className="font-semibold text-gray-900">{offer.description}</p>
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </nav>
-
-                        <div className="relative">
-                            <div aria-hidden="true" className="absolute hidden h-full w-1/2 bg-gray-100 lg:block" />
-                            <div className="relative bg-gray-100 lg:bg-transparent">
-                                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
-                                    <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
-                                        <div className="lg:pr-16">
-                                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
-                                                Payment made Easy with Nuova App
-                                            </h1>
-                                            <p className="mt-4 text-xl text-gray-600">
-                                                Pay rent via the app and view statements to show what you have paid. Tenants will be able to have a complete overview of their
-                                                finance.
-                                            </p>
-                                            <div className="mt-6">
-                                                <a
-                                                    href="#"
-                                                    className="inline-block rounded-md border border-transparent bg-cyan-600 py-3 px-8 font-medium text-white hover:bg-cyan-700"
-                                                >
-                                                    One Tap Pay
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/3">
-                                <img
-                                    src="https://global-uploads.webflow.com/5f073e32d304276cc8b4ff30/5ffce2e37ef58233d3f4bc09_eCheck-ach-rent-payment-2x.png"
-                                    alt=""
-                                    className="h-full w-full object-cover object-center"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* </div> */}
+const TenantPortalFinanceTwo = () => {
+  const [open, setOpen] = useState(false);
+  const { register } = useForm();
+  // const onSubmit = (data) => {
+  //     console.log(data);
+  return (
+    <>
+      <div className="bg-gray-50">
+        <div className="pt-8 sm:pt-16 lg:pt-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-4xl">
+                Simple Nuova Finance System
+              </h2>
+              <p className="mt-4 text-xl text-gray-600">
+                If you're not satisfied, contact us within the first 14 days and
+                we'll send you a full refund.
+              </p>
             </div>
-        </>
-    );
+          </div>
+        </div>
+        <div className="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
+          <div className="relative">
+            <div className="absolute inset-0 h-1/2 bg-gray-50" />
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <form className="">
+                <div className="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none">
+                  <div className="flex-1 bg-white px-6 py-8 lg:p-12">
+                    <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
+                      Payment Verification Request
+                    </h3>
+                    <p className="mt-6 text-base text-gray-500">
+                      Lorem ipsum dolor sit amet consect etur adipisicing elit.
+                      Itaque amet indis perferendis blanditiis repellendus etur
+                      quidem assumenda.
+                    </p>
+
+                    <div className="mt-8 grid gap-5 mb-6 lg:grid-cols-3">
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          id="full_name"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  placeholder:text-cyan-700"
+                          placeholder="Full Name"
+                          {...register("fullName", { required: true })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          id="email_address"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  placeholder:text-cyan-700"
+                          placeholder="example@gmail.com"
+                          {...register("email", { required: true })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone_no"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  placeholder:text-cyan-700"
+                          placeholder="(+1) 9826-2344"
+                          {...register("phoneNumber", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Rent Month
+                        </label>
+                        <select
+                          id="rent-month"
+                          name="rent-month"
+                          autoComplete="rent-month"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          {...register("rent-month", { required: true })}
+                        >
+                          <option>Select</option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Payment Date
+                        </label>
+                        <input
+                          type="date"
+                          id="payment-date"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  placeholder:text-cyan-700"
+                          placeholder="payment-date"
+                          {...register("payment-date", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Transaction Id
+                        </label>
+                        <input
+                          type="text"
+                          id="transaction-id"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  placeholder:text-cyan-700"
+                          placeholder="Transaction Id"
+                          {...register("transaction-id", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Transaction Mode
+                        </label>
+                        <select
+                          id="transaction-mode"
+                          name="transaction-mode"
+                          autoComplete="transaction-mode"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          {...register("transaction-mode", { required: true })}
+                        >
+                          <option>Select</option>
+                          <option>Online</option>
+                          <option>Offline</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Upload Payment Receipt
+                        </label>
+                        <input
+                          type="file"
+                          id="UploadPaymentDoc"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg file:bg-cyan-50   file:text-cyan-800 focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
+                          {...register("UploadPaymentDoc", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Any Additional Information
+                        </label>
+                        <input
+                          type="text"
+                          id="additonalInfo"
+                          className="bg-cyan-50 border border-cyan-300 text-cyan-700 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full placeholder:text-cyan-700"
+                          {...register("additionalInfo", {
+                            required: true,
+                          })}
+                          placeholder="Type here.."
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
+                    <p className="text-lg font-medium leading-6 text-gray-900">
+                      Pay Rent, At your Convenience
+                    </p>
+                    <div className="mt-4 flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900">
+                      <span>$349</span>
+                      <span className="ml-3 text-xl font-medium tracking-normal text-gray-500">
+                        GBP
+                      </span>
+                    </div>
+                    <p className="mt-4 text-sm">
+                      <Link
+                        to="#"
+                        className="font-medium text-gray-500 underline"
+                      >
+                        Learn about our membership policy
+                      </Link>
+                    </p>
+                    <div className="mt-6">
+                      <div className="rounded-md shadow">
+                        <button
+                          onClick={() => setOpen(false)}
+                          type="submit"
+                          className="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-5 py-3 text-base font-medium text-white hover:bg-gray-900 w-full"
+                        >
+                          Payment Check Request
+                        </button>
+                      </div>
+                    </div>
+                    <div className="mt-4 text-sm">
+                      <Link to="#" className="font-medium text-gray-900">
+                        Get Reviewed By Manager
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="lg:pb-20">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h1 className="text-xl font-semibold text-gray-900">
+                All Payments
+              </h1>
+              <p className="mt-2 text-sm text-gray-700">
+                A list of all the payments in your account including your name,
+                title, email and role.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 flex flex-col">
+            <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                  <table className="min-w-full divide-y divide-gray-300">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                        >
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                        >
+                          Rent Month
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                        >
+                          Payment Date
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                        >
+                          Role
+                        </th>
+                        <th
+                          scope="col"
+                          className="pl-3 pr-8 py-3.5 text-right text-sm font-semibold text-gray-900"
+                        >
+                          Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white">
+                      {people.map((person, personIdx) => (
+                        <tr
+                          key={person.email}
+                          className={
+                            personIdx % 2 === 0 ? undefined : "bg-gray-50"
+                          }
+                        >
+                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                            {person.name}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {person.month}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {person.payment_date}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {person.email}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {person.role}
+                          </td>
+                          <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <Link
+                              to="#"
+                              className={`${
+                                person.status_color === "green"
+                                  ? "text-teal-600 bg-teal-100 px-2 py-1 rounded-full text-sm "
+                                  : "text-sky-600  bg-sky-100 px-2 py-1 rounded-full text-sm"
+                              }`}
+                            >
+                              {person.status}
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <TenantModal setOpen={setOpen} open={open} />
+      </div>
+    </>
+  );
 };
 
-export default TenantPortalFinance;
+export default TenantPortalFinanceTwo;
