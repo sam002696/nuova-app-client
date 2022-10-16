@@ -29,14 +29,15 @@ const Chats = () => {
   };
   return (
     <>
-      <div className="custom-scrollbar mt-4">
+      <div className="custom-scrollbar mt-4 transition-all duration-700 ease-in-out">
         {Object.entries(chats)
           ?.sort((a, b) => b[1].date - a[1].date)
           .map((chat) => (
             <div
               className={`hover:bg-gray-200 cursor-pointer ${
-                data.user.displayName === chat[1].userInfo.displayName &&
-                "bg-gray-100"
+                data.user?.displayName === chat[1].userInfo?.displayName
+                  ? "bg-gray-100"
+                  : "border-b"
               }`}
             >
               <div
@@ -46,7 +47,7 @@ const Chats = () => {
               >
                 <div className="">
                   <img
-                    src={chat[1].userInfo.photoURL}
+                    src={chat[1].userInfo?.photoURL}
                     className="rounded-full w-12 h-12 border"
                     alt=""
                   />
@@ -54,7 +55,7 @@ const Chats = () => {
 
                 <div className="userChatInfo ml-5">
                   <p className=" text-lg font-semibold">
-                    {chat[1].userInfo.displayName}
+                    {chat[1].userInfo?.displayName}
                   </p>
                   <p className=" text-base font-medium text-gray-500 truncate-custom">
                     {chat[1].lastMessage?.text
@@ -64,7 +65,7 @@ const Chats = () => {
                       : ""}
                   </p>
                 </div>
-                {chat[1].userInfo.uid === chat[1].lastMessage.id && (
+                {chat[1].userInfo?.uid === chat[1].lastMessage?.id && (
                   <div className=" ml-auto">
                     <span className="block h-2 w-2 rounded-full bg-cyan-600" />
                   </div>

@@ -54,7 +54,7 @@ const PropertyManagerDashboard = () => {
     {
       name: currentUser ? "" : "Register",
       href: "#",
-      to: `${url}/register`,
+      to: currentUser ? "#" : `${url}/register`,
       current: false,
     },
   ];
