@@ -342,17 +342,7 @@ const TenantPortalDashboard = () => {
             <Route path={`${path}/register`}>
               <ChatRegister />
             </Route>
-            {/* 
-            
-            
-            
-            <Route path={`${path}/people`}>
-              <ManagerPeople />
-            </Route>
-            
-            <Route path={`${path}/calender`}>
-              <Calender />
-            </Route> */}
+
           </Switch>
         </main>
       </div>
