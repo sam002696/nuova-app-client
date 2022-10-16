@@ -2,7 +2,7 @@ import React from 'react';
 import { Fragment, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
-import { UserAddIcon, ShieldCheckIcon } from "@heroicons/react/outline";
+import { ShieldCheckIcon } from "@heroicons/react/outline";
 
 const TenantMaintenanceModal = ({ open, setOpen }) => {
     const cancelButtonRef = useRef(null);
