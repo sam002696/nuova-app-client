@@ -157,6 +157,7 @@ const Input = () => {
                 style={{ display: "none" }}
                 onChange={(e) => handleImg(e)}
                 type="file"
+                accept="image/*"
               />
             </div>
           </label>

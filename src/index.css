@@ -64,6 +64,18 @@
     -webkit-box-shadow: none !important;
     border: none !important;
   }
+  .spoiler button {
+    visibility: hidden;
+  }
+
+  .spoiler:hover button {
+    visibility: visible;
+  }
+  .customdate input[type="date"]::-webkit-inner-spin-button,
+  .customdate input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
 }
 
 body {

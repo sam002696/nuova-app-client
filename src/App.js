@@ -8,6 +8,7 @@ import TenantPortalDashboard from "./Pages/Dashboards/TenantPortal/TenantPortalD
 import Home from "./Pages/Home/Home/Home";
 import PageTwo from "./Pages/Page2/PageTwo/PageTwo";
 import PageFive from "./Pages/Page5/Page5/PageFive";
+import PricingHome from "./Pages/Pricing Structure/Pricing Home/PricingHome";
 import PropertyFactFind from "./Pages/Property Fact Find/PropertyFactFind/PropertyFactFind";
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/property-fact-find">
             <PropertyFactFind />
+          </Route>
+          <Route path="/pricing-structure">
+            <PricingHome />
           </Route>
         </Switch>
       </Router>
