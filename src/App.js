@@ -7,7 +7,11 @@ import SingleProperty from "./Pages/Dashboards/PropertyManagement/SingleProperty
 import TenantPortalDashboard from "./Pages/Dashboards/TenantPortal/TenantPortalDashboard";
 import Home from "./Pages/Home/Home/Home";
 import PageTwo from "./Pages/Page2/PageTwo/PageTwo";
+import PageThree from "./Pages/Page3/PageThree/PageThree";
+import PageFour from "./Pages/Page4/PageFour/PageFour";
 import PageFive from "./Pages/Page5/Page5/PageFive";
+
+import PageSix from "./Pages/Page6/PageSix/PageSix";
 import PricingHome from "./Pages/Pricing Structure/Pricing Home/PricingHome";
 import PropertyFactFind from "./Pages/Property Fact Find/PropertyFactFind/PropertyFactFind";
 
@@ -25,8 +29,18 @@ function App() {
           <Route path="/page2">
             <PageTwo />
           </Route>
-          <Route path="/page5">
+
+          <Route path="/page3" >
+            <PageThree />
+          </Route>
+          <Route path="/page4" >
+            <PageFour />
+          </Route>
+          <Route path="/page5" >
             <PageFive />
+          </Route>
+          <Route path="/page6" >
+            <PageSix />
           </Route>
           <Route path="/single-property/:id">
             <SingleProperty />

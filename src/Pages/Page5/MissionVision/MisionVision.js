@@ -1,47 +1,79 @@
 import React from 'react';
 import bannerImage from '../../../Images/Page5/banner_house.png'
 
+import p5_b3_img1 from '../../../Images/Page5/Banner3/Page5 banner3 img1.png'
+import p5_b4_img1 from '../../../Images/Page5/Banner4/Page5 banner4 img1.png'
+
 
 const MisionVision = () => {
     return (
         <>
-            <section className='backdrop-filter bg-gradient-to-r from-rose-50 via-white to-sky-50'>
-                <div className="container mx-auto sm:px-6 lg:px-8 pt-10 pb-5">
+            <div className="backdrop-filter bg-gradient-to-r from-rose-50 via-white to-sky-50 pb-32 ">
+                {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
+                <div className="max-w-5xl mx-auto">
+                    {/* Content goes here */}
+                    <div className='grid grid-cols-2 gap-x-12' >
 
-                    <div className='flex items-center justify-evenly my-20'>
-                        <div>
-                            <img className=' w-3/2' src={bannerImage} alt="" />
+                        <div className='col-span-1 relative left-12'>
+                            <div className='absolute'>
+                                <img className='mt-12 w-5/6' src={p5_b3_img1} alt="" />
+                            </div>
                         </div>
-                        <div className='space-y-6'>
-                            <p className=' font-sans font-medium text-3xl text-[#162A43]'>
+
+                        <div className='space-y-8 py-10 col-span-1 mt-28 relative -right-12 w-5/6 mx-auto'>
+                            <div className='text-[#162A43] text-4xl font-medium font-sans '>
                                 Our Mission
+                            </div>
+                            <p className='text-[#565151] font-normal text-lg'>
+                                Our mission is simple we want to open up transparency in the sector along with generate higher
+                                returns for our clients. We do not see enough focus of returns.
                             </p>
-                            <p className='text-[#565151] font-normal'>
-                                Our mission is simple we want to open up <br /> transparency in the sector along with <br /> generate higher
-                                returns for our clients. We <br /> do not see enough focus of returns.
-                            </p>
+
                         </div>
+
+
+
+
 
                     </div>
-                    <div className='flex items-center justify-evenly my-20'>
+                </div>
 
-                        <div className='space-y-6'>
-                            <p className=' font-sans font-medium text-3xl text-[#162A43]'>
+
+            </div>
+
+            <div className="backdrop-filter bg-gradient-to-r from-rose-50 via-white to-sky-50 pb-32 ">
+                {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
+                <div className="max-w-5xl mx-auto">
+                    {/* Content goes here */}
+                    <div className='grid grid-cols-2 gap-x-12' >
+
+                        <div className='space-y-8 py-10 col-span-1 mt-28 relative left-12'>
+                            <div className='text-[#162A43] text-4xl font-medium font-sans '>
                                 Our Vision
-                            </p>
-                            <p className='text-[#565151] font-normal'>
-                                Property ownership and management should be <br /> seamless, easy, safe and secure and provide best <br />
-                                experience for all parties involved. We are building <br /> a better future for the most valuable and most <br />
+                            </div>
+                            <p className='text-[#565151] font-normal text-lg'>
+                                Property ownership and management should be seamless, easy, safe and secure and provide best
+                                experience for all parties involved. We are building a better future for the most valuable and most
                                 important asset in the world, our home!
                             </p>
-                        </div>
-                        <div>
-                            <img className=' w-3/2' src={bannerImage} alt="" />
-                        </div>
-                    </div>
 
+
+
+                        </div>
+
+                        <div className='col-span-1 relative -right-20'>
+                            <div className='absolute'>
+                                <img className='mt-12 w-5/6' src={p5_b4_img1} alt="" />
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
-            </section>
+
+
+            </div>
         </>
     );
 };

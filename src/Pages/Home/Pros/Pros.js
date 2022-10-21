@@ -16,7 +16,7 @@ const Pros = () => {
                         </div>
                         <img className='absolute left-1/4 w-1/4' src={invoice} alt="" />
                         <img className='absolute bottom-0 left-3.5 w-1/2' src={rectangle} alt="" />
-                        <div className=' space-y-10 w-2/6'>
+                        <div className=' space-y-10 w-2/6 relative left-20'>
                             <h1 className=' font-semibold text-4xl font-sans text-[#162A43]'>Get more from your portfolio</h1>
                             <p className='  font-normal text-lg text-[#565151]'>
                                 Monitor every aspect of your residential portfolio while we look after property management and lettings.
@@ -38,7 +38,7 @@ const Pros = () => {
                 <div className='container mb-14'>
                     <div className='flex items-center justify-evenly'>
 
-                        <div className=' space-y-10 w-2/6'>
+                        <div className=' space-y-10 w-2/6 relative left-20'>
                             <h1 className=' font-semibold text-4xl font-sans text-[#162A43]'>Increase profitability of your portfolio</h1>
                             <p className='  font-normal text-lg text-[#565151]'>
                                 Herddle’s platform tracks maintenance, compliance, financials and performance to get full visibility of your portfolio
@@ -67,8 +67,8 @@ const Pros = () => {
                         </div>
                         <img className='absolute left-custom w-1/4' src={maintenance} alt="" />
                         <img className='absolute bottom-0 left-0' src={rectangle} alt="" />
-                        <div className=' space-y-10 w-2/6'>
-                            <h1 className=' font-semibold text-4xl font-sans text-[#162A43]'>Get more from your portfolio</h1>
+                        <div className=' space-y-10 w-2/6 relative left-24'>
+                            <h1 className=' font-semibold text-4xl font-sans text-[#162A43]'>Any time, any place, anywhere</h1>
                             <p className='  font-normal text-lg text-[#565151]'>
                                 Monitor every aspect of your residential portfolio while we look after property management and lettings.
                             </p>

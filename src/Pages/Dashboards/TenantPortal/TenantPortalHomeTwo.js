@@ -1,15 +1,14 @@
 import React from "react";
 
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+
 
 import {
   ArrowCircleUpIcon,
-  CreditCardIcon,
-  CogIcon,
-  LockClosedIcon,
+
+
   ServerIcon,
-  ShieldCheckIcon,
+
   FastForwardIcon,
   CheckCircleIcon,
   UserAddIcon,
@@ -20,13 +19,10 @@ import {
 
 import {
   BookmarkIcon,
-  // CheckCircleIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  MagnifyingGlassIcon,
+
 } from "@heroicons/react/solid";
 
-import { ScaleIcon } from "@heroicons/react/solid";
+
 
 const cards = [
   {
@@ -95,9 +91,7 @@ const features = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+
 
 const TenantPortalHomeTwo = () => {
   return (
@@ -251,10 +245,7 @@ const TenantPortalHomeTwo = () => {
                     </div>
                     <div className="bg-teal-50 px-5 py-3">
                       <div className="text-sm">
-                        <a
-                          href={card.href}
-                          className="font-medium text-cyan-700 hover:text-cyan-900"
-                        ></a>
+
                       </div>
                     </div>
                   </div>

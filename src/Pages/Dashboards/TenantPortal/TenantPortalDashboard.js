@@ -5,16 +5,18 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
 import logo from "../../../Images/Footer/logo.png";
-import TenantProperty from "./TenantProperty";
+// import TenantProperty from "./TenantProperty";
 import TenantPortalFinance from "./TenantPortalFinance";
 import TenantPortalTasks from "./TenantPortalTasks";
 import TenantPortalInbox from "./TenantPortalInbox";
 import TenantProfile from "./TenantProfile";
 import TenantPortalMaintenance from "./TenantPortalMaintenance";
-import TenantPortalHomeTwo from "./TenantPortalHomeTwo";
+// import TenantPortalHomeTwo from "./TenantPortalHomeTwo";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
 import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
+import TenantPortalHomeThree from "./TenantPortalHomeThree";
+import TenantPropertyTwo from "./TenantPropertyTwo";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -319,10 +321,10 @@ const TenantPortalDashboard = () => {
         <main>
           <Switch>
             <Route exact path={`${path}`}>
-              <TenantPortalHomeTwo />
+              <TenantPortalHomeThree />
             </Route>
             <Route path={`${path}/tenant-property`}>
-              <TenantProperty />
+              <TenantPropertyTwo />
             </Route>
             <Route path={`${path}/tenant-finance`}>
               <TenantPortalFinance />
