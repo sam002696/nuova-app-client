@@ -409,11 +409,10 @@ const TenantPortalFinanceTwo = () => {
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <Link
                               to="#"
-                              className={`${
-                                person.status_color === "green"
-                                  ? "text-teal-600 bg-teal-100 px-2 py-1 rounded-full text-sm "
-                                  : "text-sky-600  bg-sky-100 px-2 py-1 rounded-full text-sm"
-                              }`}
+                              className={`${person.status_color === "green"
+                                ? "text-teal-600 bg-teal-100 px-2 py-1 rounded-full text-sm "
+                                : "text-sky-600  bg-sky-100 px-2 py-1 rounded-full text-sm"
+                                }`}
                             >
                               {person.status}
                             </Link>
