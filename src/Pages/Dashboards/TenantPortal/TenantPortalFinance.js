@@ -142,7 +142,7 @@ const TenantPortalFinanceTwo = () => {
             <div className="absolute inset-0 h-1/2 bg-gray-50" />
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <form className="">
-                <div className="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none">
+                <div className="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg shadow-gray-500/40 lg:flex lg:max-w-none">
                   <div className="flex-1 bg-white px-6 py-8 lg:p-12">
                     <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
                       Payment Verification Request

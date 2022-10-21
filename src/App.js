@@ -10,7 +10,9 @@ import PageTwo from "./Pages/Page2/PageTwo/PageTwo";
 import PageThree from "./Pages/Page3/PageThree/PageThree";
 import PageFour from "./Pages/Page4/PageFour/PageFour";
 import PageFive from "./Pages/Page5/Page5/PageFive";
+
 import PageSix from "./Pages/Page6/PageSix/PageSix";
+import PricingHome from "./Pages/Pricing Structure/Pricing Home/PricingHome";
 import PropertyFactFind from "./Pages/Property Fact Find/PropertyFactFind/PropertyFactFind";
 
 function App() {
@@ -54,6 +56,9 @@ function App() {
           </Route>
           <Route path="/property-fact-find">
             <PropertyFactFind />
+          </Route>
+          <Route path="/pricing-structure">
+            <PricingHome />
           </Route>
         </Switch>
       </Router>
