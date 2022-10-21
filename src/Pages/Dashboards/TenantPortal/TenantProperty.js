@@ -40,8 +40,8 @@ const posts = [
 const TenantProperty = () => {
   return (
     <>
-      <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <div className="relative px-4 sm:px-6 lg:px-8 sm:py-4 lg:py-4">
+        <div className="mx-auto max-w-7xl ">
           <main className="lg:relative">
             <div className="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:py-48 lg:text-left">
               <div className="px-4 sm:px-8 lg:w-1/2 xl:pr-16">
