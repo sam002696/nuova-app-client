@@ -318,7 +318,7 @@ const ContractorPortalFindJobs = () => {
               The walnut wood card tray is precision milled to perfectly fit a
               stack of Focus cards. The powder coated steel divider separates
               active cards from new ones, or can be used to archive important
-              task lists.
+              tasks lists.
             </p>
 
             <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
