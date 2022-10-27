@@ -15,25 +15,19 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
-  // const [objectURL, setObjectURL] = useState();
+  const [document, setDocument] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
-  // useEffect(() => {
-  //   setObjectURL(URL.createObjectURL(img));
-  // }, [img]);
   const handleImg = (e) => {
     setImg(e.target.files[0]);
-    // setObjectURL(URL.createObjectURL(e.target.files[0]));
   };
-  const handleXCircleMark = (e) => {
-    setImg(null);
-    // setObjectURL(URL.createObjectURL(e.target.files[0]));
+  const handleDocument = (e) => {
+    setDocument(e.target.files[0]);
   };
   const handleSend = async () => {
+    const storageRef = ref(storage, uuid());
     if (img) {
-      const storageRef = ref(storage, uuid());
-
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
@@ -41,31 +35,73 @@ const Input = () => {
           //TODO:Handle Error
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateDoc(doc(db, "chats", data.chatId), {
-              messages: arrayUnion({
-                id: uuid(),
-                text,
-                senderId: currentUser.uid,
-                date: Timestamp.now(),
-                img: downloadURL,
-              }),
-            });
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then(async (downloadURL) => {
+              await updateDoc(doc(db, "chats", data.chatId), {
+                messages: arrayUnion({
+                  id: uuid(),
+                  text,
+                  senderId: currentUser.uid,
+                  date: Timestamp.now(),
+                  img: downloadURL,
+                }),
+              });
 
-            await updateDoc(doc(db, "userChats", currentUser.uid), {
-              [data.chatId + ".lastPicture"]: {
-                img: downloadURL,
-              },
-              [data.chatId + ".date"]: serverTimestamp(),
-            });
+              await updateDoc(doc(db, "userChats", currentUser.uid), {
+                [data.chatId + ".lastPicture"]: {
+                  img: downloadURL,
+                },
+                [data.chatId + ".date"]: serverTimestamp(),
+              });
 
-            await updateDoc(doc(db, "userChats", data.user.uid), {
-              [data.chatId + ".lastPicture"]: {
-                img: downloadURL,
-              },
-              [data.chatId + ".date"]: serverTimestamp(),
-            });
-          });
+              await updateDoc(doc(db, "userChats", data.user.uid), {
+                [data.chatId + ".lastPicture"]: {
+                  img: downloadURL,
+                },
+                [data.chatId + ".date"]: serverTimestamp(),
+              });
+            })
+            .finally(setImg(null));
+        }
+      );
+    } else if (document) {
+      const documentUploadTask = uploadBytesResumable(storageRef, document);
+
+      documentUploadTask.on(
+        (error) => {
+          //TODO:Handle Error
+        },
+        () => {
+          getDownloadURL(documentUploadTask.snapshot.ref)
+            .then(async (downloadURL) => {
+              await updateDoc(doc(db, "chats", data.chatId), {
+                messages: arrayUnion({
+                  id: uuid(),
+                  text,
+                  senderId: currentUser.uid,
+                  date: Timestamp.now(),
+                  document: downloadURL,
+                  documentName: document?.name,
+                }),
+              });
+
+              await updateDoc(doc(db, "userChats", currentUser.uid), {
+                [data.chatId + ".lastDocument"]: {
+                  document: downloadURL,
+                  documentName: document?.name,
+                },
+                [data.chatId + ".date"]: serverTimestamp(),
+              });
+
+              await updateDoc(doc(db, "userChats", data.user.uid), {
+                [data.chatId + ".lastDocument"]: {
+                  document: downloadURL,
+                  documentName: document?.name,
+                },
+                [data.chatId + ".date"]: serverTimestamp(),
+              });
+            })
+            .finally(setDocument(null));
         }
       );
     } else {
@@ -93,7 +129,6 @@ const Input = () => {
       [data.chatId + ".date"]: serverTimestamp(),
     });
     setText("");
-    setImg(null);
   };
   return (
     <>
@@ -124,7 +159,7 @@ const Input = () => {
                   stroke-width="1.5"
                   stroke="currentColor"
                   className="w-5 h-5 absolute -top-2 right-2 text-gray-500 cursor-pointer"
-                  onClick={handleXCircleMark}
+                  onClick={() => setImg(null)}
                 >
                   <path
                     stroke-linecap="round"
@@ -135,8 +170,59 @@ const Input = () => {
               </p>
             </div>
           )}
-          <label for="dropzone-file-data-one">
-            <div>
+
+          {document && (
+            <div className="relative">
+              <p className=" mr-3 text-base text-gray-400 bg-gray-200 px-3 py-1 rounded-md truncate-custom ">
+                {document?.name ? document?.name : ""}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-5 absolute -top-2 right-2 text-gray-500 cursor-pointer"
+                  onClick={() => setDocument(null)}
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </p>
+            </div>
+          )}
+
+          <div className=" mr-2">
+            <label for="dropzone-file-data-two">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-6 h-6 cursor-pointer hover:text-cyan-400 text-gray-500"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
+                />
+              </svg>
+
+              <input
+                id="dropzone-file-data-two"
+                style={{ display: "none" }}
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => handleDocument(e)}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="dropzone-file-data-one">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -159,11 +245,12 @@ const Input = () => {
                 type="file"
                 accept="image/*"
               />
-            </div>
-          </label>
+            </label>
+          </div>
 
           <label htmlFor="file"></label>
           <button
+            disabled={text === "" && img === null && document === null}
             onClick={handleSend}
             className=" px-3 disabled:cursor-not-allowed "
           >
