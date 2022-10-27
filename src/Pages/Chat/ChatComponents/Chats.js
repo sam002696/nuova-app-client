@@ -27,6 +27,7 @@ const Chats = () => {
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
+  console.log(chats);
   return (
     <>
       <div className="custom-scrollbar mt-4 transition-all duration-700 ease-in-out">
@@ -61,8 +62,8 @@ const Chats = () => {
                     {chat[1].lastMessage?.text
                       ? chat[1].lastMessage?.text
                       : chat[1].lastPicture?.img
-                      ? "picture"
-                      : ""}
+                      ? "Attachment"
+                      : chat[1].lastDocument?.document && "document"}
                   </p>
                 </div>
                 {chat[1].userInfo?.uid === chat[1].lastMessage?.id && (
