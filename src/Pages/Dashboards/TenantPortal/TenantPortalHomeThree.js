@@ -60,7 +60,7 @@ const propertymanager = [
 
 const cards = [
   {
-    name: "Tenant Rent Amount",
+    name: "Tenant Rental Amount",
     href: "#",
     icon: CurrencyPoundIcon,
     amount: "$3659.00",

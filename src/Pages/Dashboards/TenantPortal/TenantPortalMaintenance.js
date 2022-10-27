@@ -1,196 +1,203 @@
-import React, { useState } from 'react';
-import { CheckIcon, UserIcon, HandIcon, TicketIcon, LockOpenIcon, FlagIcon, ThumbUpIcon, HeartIcon, DesktopComputerIcon } from '@heroicons/react/solid'
-import TenantMaintenanceModal from './TenantMaintenanceModal';
+import React, { useState } from "react";
+import {
+  CheckIcon,
+  UserIcon,
+  HandIcon,
+  TicketIcon,
+  LockOpenIcon,
+  FlagIcon,
+  ThumbUpIcon,
+  HeartIcon,
+  DesktopComputerIcon,
+} from "@heroicons/react/solid";
+import TenantMaintenanceModal from "./TenantMaintenanceModal";
 
 const reports = [
-    {
-        name: "Boiler Not Working",
-        imageUrl:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-        title: "Flat No-13B, Holger Street, London",
-        role: "Admin",
-        telephone: "+1-202-555-0170",
-        date: "12-12-2022",
-        tenant_name: "Ricardo Cooper",
-        email: "ricardo.cooper@example.com",
-
-    },
-    {
-        name: "Sink Replacement",
-        imageUrl:
-            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80",
-        title: "Flat No-13B, Holger Street, London",
-        role: "Admin",
-        telephone: "+1-202-555-0170",
-        date: "12-12-2022",
-        tenant_name: "Ricardo Cooper",
-        email: "ricardo.cooper@example.com",
-
-    },
-    {
-        name: "New Window Installation",
-        imageUrl:
-            "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        title: "Flat No-13B, Holger Street, London",
-        role: "Admin",
-        telephone: "+1-202-555-0170",
-        date: "12-12-2022",
-        tenant_name: "Ricardo Cooper",
-        email: "ricardo.cooper@example.com",
-
-    },
-    {
-        name: "Blocked Pipe",
-        imageUrl:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        title: "Flat No-13B, Holger Street, London",
-        role: "Admin",
-        telephone: "+1-202-555-0170",
-        date: "12-12-2022",
-        tenant_name: "Ricardo Cooper",
-        email: "ricardo.cooper@example.com",
-
-    },
-    {
-        name: "Bathroom Repair",
-        imageUrl:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        title: "Flat No-13B, Holger Street, London",
-        role: "Admin",
-        telephone: "+1-202-555-0170",
-        date: "12-12-2022",
-        tenant_name: "Ricardo Cooper",
-        email: "ricardo.cooper@example.com",
-    }
+  {
+    name: "Boiler Not Working",
+    imageUrl:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+    title: "Flat No-13B, Holger Street, London",
+    role: "Admin",
+    telephone: "+1-202-555-0170",
+    date: "12-12-2022",
+    tenant_name: "Ricardo Cooper",
+    email: "ricardo.cooper@example.com",
+  },
+  {
+    name: "Sink Replacement",
+    imageUrl:
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80",
+    title: "Flat No-13B, Holger Street, London",
+    role: "Admin",
+    telephone: "+1-202-555-0170",
+    date: "12-12-2022",
+    tenant_name: "Ricardo Cooper",
+    email: "ricardo.cooper@example.com",
+  },
+  {
+    name: "New Window Installation",
+    imageUrl:
+      "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    title: "Flat No-13B, Holger Street, London",
+    role: "Admin",
+    telephone: "+1-202-555-0170",
+    date: "12-12-2022",
+    tenant_name: "Ricardo Cooper",
+    email: "ricardo.cooper@example.com",
+  },
+  {
+    name: "Blocked Pipe",
+    imageUrl:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    title: "Flat No-13B, Holger Street, London",
+    role: "Admin",
+    telephone: "+1-202-555-0170",
+    date: "12-12-2022",
+    tenant_name: "Ricardo Cooper",
+    email: "ricardo.cooper@example.com",
+  },
+  {
+    name: "Bathroom Repair",
+    imageUrl:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    title: "Flat No-13B, Holger Street, London",
+    role: "Admin",
+    telephone: "+1-202-555-0170",
+    date: "12-12-2022",
+    tenant_name: "Ricardo Cooper",
+    email: "ricardo.cooper@example.com",
+  },
 ];
 
-
 const testimonials = [
-    {
-        id: 1,
-        quote:
-            'My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!',
-        attribution: 'Sarah Peters, New Orleans',
-    },
-    {
-        id: 2,
-        quote:
-            'I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!',
-        attribution: 'Kelly McPherson, Chicago',
-    },
-    {
-        id: 3,
-        quote:
-            'Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient.',
-        attribution: 'Chris Paul, Phoenix',
-    },
-]
-
-
+  {
+    id: 1,
+    quote:
+      "My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!",
+    attribution: "Sarah Peters, New Orleans",
+  },
+  {
+    id: 2,
+    quote:
+      "I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!",
+    attribution: "Kelly McPherson, Chicago",
+  },
+  {
+    id: 3,
+    quote:
+      "Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient.",
+    attribution: "Chris Paul, Phoenix",
+  },
+];
 
 const timeline = [
-    {
-        id: 1,
-        content: 'Maintenance Request send to',
-        target: 'Property Manager',
-        href: '#',
-        date: 'Sep 20',
-        datetime: '2020-09-20',
-        icon: TicketIcon,
-        iconBackground: 'bg-cyan-300',
-    },
-    {
-        id: 2,
-        content: 'Request Accepted and proceed by',
-        target: 'Property Manager ',
-        href: '#',
-        date: 'Sep 20',
-        datetime: '2020-09-20',
-        icon: LockOpenIcon,
-        iconBackground: 'bg-sky-400',
-    },
-    {
-        id: 3,
-        content: 'Completed Maintenance Work by',
-        target: 'Contractor',
-        href: '#',
-        date: 'Sep 22',
-        datetime: '2020-09-22',
-        icon: FlagIcon,
-        iconBackground: 'bg-green-500',
-    },
-    {
-        id: 4,
-        content: 'Advanced to check completion by',
-        target: 'Property Manager',
-        href: '#',
-        date: 'Sep 24',
-        datetime: '2020-09-24',
-        icon: DesktopComputerIcon,
-        iconBackground: 'bg-blue-500',
-    },
-    {
-        id: 5,
-        content: 'Completed maintenance comfirmed by',
-        target: 'Tenant',
-        href: '#',
-        date: 'Sep 26',
-        datetime: '2020-09-26',
-        icon: HeartIcon,
-        iconBackground: 'bg-cyan-500',
-    },
-]
+  {
+    id: 1,
+    content: "Maintenance Request send to",
+    target: "Property Manager",
+    href: "#",
+    date: "Sep 20",
+    datetime: "2020-09-20",
+    icon: TicketIcon,
+    iconBackground: "bg-cyan-300",
+  },
+  {
+    id: 2,
+    content: "Request Accepted and proceed by",
+    target: "Property Manager ",
+    href: "#",
+    date: "Sep 20",
+    datetime: "2020-09-20",
+    icon: LockOpenIcon,
+    iconBackground: "bg-sky-400",
+  },
+  {
+    id: 3,
+    content: "Completed Maintenance Work by",
+    target: "Contractor",
+    href: "#",
+    date: "Sep 22",
+    datetime: "2020-09-22",
+    icon: FlagIcon,
+    iconBackground: "bg-green-500",
+  },
+  {
+    id: 4,
+    content: "Advanced to check completion by",
+    target: "Property Manager",
+    href: "#",
+    date: "Sep 24",
+    datetime: "2020-09-24",
+    icon: DesktopComputerIcon,
+    iconBackground: "bg-blue-500",
+  },
+  {
+    id: 5,
+    content: "Completed maintenance comfirmed by",
+    target: "Tenant",
+    href: "#",
+    date: "Sep 26",
+    datetime: "2020-09-26",
+    icon: HeartIcon,
+    iconBackground: "bg-cyan-500",
+  },
+];
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const TenantPortalMaintenance = () => {
-    const [open, setOpen] = useState(false);
-    return (
-        <>
-            <div className="">
-                <div className="mx-auto max-w-7xl">
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <div className="">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative overflow-hidden bg-white mb-12">
+            {/* Decorative background image and gradient */}
+            <div aria-hidden="true" className="absolute inset-0">
+              <div className="absolute inset-0 mx-auto max-w-7xl overflow-hidden xl:px-8">
+                <img
+                  src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80"
+                  alt=""
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div className="absolute inset-0 bg-white bg-opacity-75" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
+            </div>
 
-                    <div className="relative overflow-hidden bg-white mb-12">
-                        {/* Decorative background image and gradient */}
-                        <div aria-hidden="true" className="absolute inset-0">
-                            <div className="absolute inset-0 mx-auto max-w-7xl overflow-hidden xl:px-8">
-                                <img
-                                    src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80"
-                                    alt=""
-                                    className="h-full w-full object-cover object-center"
-                                />
-                            </div>
-                            <div className="absolute inset-0 bg-white bg-opacity-75" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
-                        </div>
+            {/* Callout */}
+            <section
+              aria-labelledby="sale-heading"
+              className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-32 text-center sm:px-6 lg:px-8"
+            >
+              <div className="mx-auto max-w-2xl lg:max-w-none">
+                <h2
+                  id="sale-heading"
+                  className="text-4xl font-bold tracking-tight text-cyan-700 sm:text-5xl lg:text-6xl"
+                >
+                  Maintenance becomes easy with Nuova.
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
+                  Most of our products are limited releases that won't come
+                  back. Get your favorite items while they're in stock.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  className="mt-12
 
-                        {/* Callout */}
-                        <section
-                            aria-labelledby="sale-heading"
-                            className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-32 text-center sm:px-6 lg:px-8"
-                        >
-                            <div className="mx-auto max-w-2xl lg:max-w-none">
-                                <h2 id="sale-heading" className="text-4xl font-bold tracking-tight text-cyan-700 sm:text-5xl lg:text-6xl">
-                                    Maintenance becomes easy with Nuova.
-                                </h2>
-                                <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
-                                    Most of our products are limited releases that won't come back. Get your favorite items while they're in
-                                    stock.
-                                </p>
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(true)}
-                                    className="mt-6 inline-block w-full rounded-md border border-transparent bg-cyan-700 py-3 px-8 font-medium text-white hover:bg-cyan-600 sm:w-auto"
-                                >
-                                    Send A Maintenance Request
-                                </button>
-                            </div>
-                        </section>
+                  text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br  focus:outline-none  shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-8 py-4 text-center mr-2 mb-2"
+                >
+                  Send A Maintenance Request
+                </button>
+              </div>
+            </section>
 
-                        {/* Testimonials */}
-                        <section
+            {/* Testimonials */}
+            {/* <section
                             aria-labelledby="testimonial-heading"
                             className="relative mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:py-24 lg:px-8"
                         >
@@ -223,10 +230,10 @@ const TenantPortalMaintenance = () => {
                                     ))}
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </section> */}
+          </div>
 
-                    {/* <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
+          {/* <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
                         <h2 id="testimonial-heading" className="text-3xl text-center font-bold tracking-tight text-gray-900">
                             Send Maintenance Request </h2>
                     </div>
@@ -571,121 +578,137 @@ const TenantPortalMaintenance = () => {
                         </div>
                     </form> */}
 
-                    <div className="grid grid-cols-3 gap-10 py-10  xl:px-8">
-                        <div className="grid grid-cols-1 lg:col-span-2 ">
-
-                            <ul className="space-y-5">
-                                <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
-                                    <h2 id="testimonial-heading" className="text-4xl text-center font-semibold tracking-wider text-cyan-700">
-                                        Maintenance Issues </h2>
-                                </div>
-                                {reports.map((report) => (
-                                    <li
-                                        key={report.email}
-                                        className="col-span-2 bg-white rounded-lg shadow-md shadow-cyan-200 divide-y divide-gray-200"
-                                    >
-                                        <div className="w-full flex items-center justify-between px-6 py-6 space-x-6">
-                                            <img
-                                                className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                                                src={report.imageUrl}
-                                                alt=""
-                                            />
-                                            <div className="flex-1 truncate">
-                                                <div className="flex items-center space-x-3">
-                                                    <h3 className="text-gray-900 text-xl font-semibold truncate">
-                                                        {report.name}
-                                                    </h3>
-                                                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                                                        Maintenance Issue
-                                                    </span>
-                                                </div>
-                                                <p className="mt-1 text-gray-500 text-sm truncate">
-                                                    {report.title}
-                                                </p>
-                                                <p className="mt-1 text-gray-500 text-sm truncate">
-                                                    Issue Created : {report.date}
-                                                </p>
-                                            </div>
-                                            <div className="flex-1 truncate">
-                                                <div className="flex items-center space-x-3">
-                                                    <h3 className="text-gray-900 text-md font-semibold truncate">
-                                                        {report.tenant_name}
-                                                    </h3>
-                                                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200">
-                                                        Tenant
-                                                    </span>
-                                                </div>
-                                                <p className="mt-1 text-gray-500 text-sm truncate">
-                                                    {report.email}
-                                                </p>
-                                                <p className="mt-1 text-gray-500 text-sm truncate">
-                                                    {report.telephone}
-                                                </p>
-
-                                            </div>
-                                            <div className=''>
-                                                <button className='mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg'>Tracking</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className='grid grid-cols-1 lg:col-span-1 '>
-                            <div className="mx-auto max-w-2xl pb-20">
-                                <div className="mx-auto max-w-2xl lg:max-w-none mb-12">
-                                    <h2 id="testimonial-heading" className="text-2xl text-center font-semibold tracking-wider text-cyan-700">
-                                        Progress of Maintenance Request </h2>
-                                </div>
-                                <div className="flow-root">
-                                    <ul role="list" className="-mb-8">
-                                        {timeline.map((event, eventIdx) => (
-                                            <li key={event.id}>
-                                                <div className="relative pb-8">
-                                                    {eventIdx !== timeline.length - 1 ? (
-                                                        <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
-                                                    ) : null}
-                                                    <div className="relative flex space-x-3">
-                                                        <div>
-                                                            <span
-                                                                className={classNames(
-                                                                    event.iconBackground,
-                                                                    'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
-                                                                )}
-                                                            >
-                                                                <event.icon className="h-5 w-5 text-white" aria-hidden="true" />
-                                                            </span>
-                                                        </div>
-                                                        <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                                                            <div>
-                                                                <p className="text-sm text-gray-500">
-                                                                    {event.content}{' '}
-                                                                    <a href={event.href} className="font-medium text-gray-900">
-                                                                        {event.target}
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-                                                            <div className="whitespace-nowrap text-right text-sm text-gray-500">
-                                                                <time dateTime={event.datetime}>{event.date}</time>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
+          <div className="grid grid-cols-3 gap-10 py-10  xl:px-8">
+            <div className="grid grid-cols-1 lg:col-span-2 ">
+              <ul className="space-y-5">
+                <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
+                  <h2
+                    id="testimonial-heading"
+                    className="text-4xl text-center font-semibold tracking-wider text-cyan-700"
+                  >
+                    Maintenance Issues{" "}
+                  </h2>
                 </div>
-                <TenantMaintenanceModal setOpen={setOpen} open={open} />
+                {reports.map((report) => (
+                  <li
+                    key={report.email}
+                    className="col-span-2 bg-white rounded-lg shadow-md shadow-cyan-200 divide-y divide-gray-200"
+                  >
+                    <div className="w-full flex items-center justify-between px-6 py-6 space-x-6">
+                      <img
+                        className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
+                        src={report.imageUrl}
+                        alt=""
+                      />
+                      <div className="flex-1 truncate">
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-gray-900 text-xl font-semibold truncate">
+                            {report.name}
+                          </h3>
+                          <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
+                            Maintenance Issue
+                          </span>
+                        </div>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          {report.title}
+                        </p>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          Issue Created : {report.date}
+                        </p>
+                      </div>
+                      <div className="flex-1 truncate">
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-gray-900 text-md font-semibold truncate">
+                            {report.tenant_name}
+                          </h3>
+                          <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200">
+                            Tenant
+                          </span>
+                        </div>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          {report.email}
+                        </p>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          {report.telephone}
+                        </p>
+                      </div>
+                      <div className="">
+                        <button className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg">
+                          Tracking
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-        </>
-    );
+            <div className="grid grid-cols-1 lg:col-span-1 ">
+              <div className="mx-auto max-w-2xl pb-20">
+                <div className="mx-auto max-w-2xl lg:max-w-none mb-12">
+                  <h2
+                    id="testimonial-heading"
+                    className="text-2xl text-center font-semibold tracking-wider text-cyan-700"
+                  >
+                    Progress of Maintenance Request{" "}
+                  </h2>
+                </div>
+                <div className="flow-root">
+                  <ul role="list" className="-mb-8">
+                    {timeline.map((event, eventIdx) => (
+                      <li key={event.id}>
+                        <div className="relative pb-8">
+                          {eventIdx !== timeline.length - 1 ? (
+                            <span
+                              className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"
+                            />
+                          ) : null}
+                          <div className="relative flex space-x-3">
+                            <div>
+                              <span
+                                className={classNames(
+                                  event.iconBackground,
+                                  "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+                                )}
+                              >
+                                <event.icon
+                                  className="h-5 w-5 text-white"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            </div>
+                            <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  {event.content}{" "}
+                                  <a
+                                    href={event.href}
+                                    className="font-medium text-gray-900"
+                                  >
+                                    {event.target}
+                                  </a>
+                                </p>
+                              </div>
+                              <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                                <time dateTime={event.datetime}>
+                                  {event.date}
+                                </time>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <TenantMaintenanceModal setOpen={setOpen} open={open} />
+      </div>
+    </>
+  );
 };
 
 export default TenantPortalMaintenance;

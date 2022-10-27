@@ -15,6 +15,7 @@ import ContractorPortalFinance from "./ContractorPortalFinance";
 import ContractorPortalInbox from "./ContractorPortalInbox";
 import ContractorProfile from "./ContractorProfile";
 import InvoiceMaker from "./InvoiceMaker/InvoiceMaker";
+import ContractorPortalHomeTwo from "./ContractorPortalHomeTwo";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -332,7 +333,7 @@ const ContractorPortalDashboard = () => {
         <main>
           <Switch>
             <Route exact path={`${path}`}>
-              <ContractorPortalHome />
+              <ContractorPortalHomeTwo />
             </Route>
             <Route path={`${path}/contractor-portal-find-jobs`}>
               <ContractorPortalFindJobs />

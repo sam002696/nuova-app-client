@@ -17,6 +17,7 @@ import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
 import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
 import TenantPortalHomeThree from "./TenantPortalHomeThree";
 import TenantPropertyTwo from "./TenantPropertyTwo";
+import TenantPropertyThree from "./TenantPropertyThree";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -324,7 +325,7 @@ const TenantPortalDashboard = () => {
               <TenantPortalHomeThree />
             </Route>
             <Route path={`${path}/tenant-property`}>
-              <TenantPropertyTwo />
+              <TenantPropertyThree />
             </Route>
             <Route path={`${path}/tenant-finance`}>
               <TenantPortalFinance />
@@ -344,7 +345,6 @@ const TenantPortalDashboard = () => {
             <Route path={`${path}/register`}>
               <ChatRegister />
             </Route>
-
           </Switch>
         </main>
       </div>
