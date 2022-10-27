@@ -1,104 +1,132 @@
-import React from 'react';
+import React from "react";
 
 import {
-    CheckCircleIcon,
-    ChevronRightIcon,
-    EyeIcon,
-    ChatAlt2Icon
+  CheckCircleIcon,
+  ChevronRightIcon,
+  ChatAlt2Icon,
 } from "@heroicons/react/solid";
 
-import imgSVG_1 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png"
+import imgSVG_1 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png";
 // import imgSVG_2 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png"
-import imgSVG_3 from "../../../Images/TenantPortalImages/SVGimages/payment-method-svgrepo-com.svg"
+import imgSVG_3 from "../../../Images/TenantPortalImages/SVGimages/payment-method-svgrepo-com.svg";
 
 const applications = [
-    {
-        applicant: {
-            name: "Upload your Tenancy Certificate",
-            email: "propertymanager1@nuova.com",
-            imageUrl:
-                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        },
-        date: "2020-01-07",
-        dateFull: "January 27, 2020",
-        stage: "Task Completed ",
-        href: "#",
+  {
+    applicant: {
+      name: "Upload your Tenancy Certificate",
+      email: "propertymanager1@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
-    {
-        applicant: {
-            name: "Pay for Maintenance #2",
-            email: "propertymanager1@nuova.com",
-            imageUrl:
-                "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        },
-        date: "2020-01-07",
-        dateFull: "January 17, 2020",
-        stage: "Task Completed",
-        href: "#",
+    date: "2020-01-07",
+    dateFull: "January 27, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "Pay for Maintenance #2",
+      email: "propertymanager1@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
-    {
-        applicant: {
-            name: "Lease Update Request",
-            email: "propertymanager2@nuova.com",
-            imageUrl:
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        },
-        date: "2020-01-07",
-        dateFull: "January 7, 2020",
-        stage: "Task Completed ",
-        href: "#",
+    date: "2020-01-07",
+    dateFull: "January 17, 2020",
+    stage: "Task Completed",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "Lease Update Request",
+      email: "propertymanager2@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
-    {
-        applicant: {
-            name: "New Occupant Information",
-            email: "propertymanager2@nuova.com",
-            imageUrl:
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        },
-        date: "2020-01-07",
-        dateFull: "December 10, 2020",
-        stage: "Task Completed ",
-        href: "#",
+    date: "2020-01-07",
+    dateFull: "January 7, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "New Occupant Information",
+      email: "propertymanager2@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
-    {
-        applicant: {
-            name: "Room Cleaning Schedule shifting",
-            email: "propertymanager2@nuova.com",
-            imageUrl:
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        },
-        date: "2020-01-07",
-        dateFull: "December 4, 2020",
-        stage: "Task Completed ",
-        href: "#",
+    date: "2020-01-07",
+    dateFull: "December 10, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "Room Cleaning Schedule shifting",
+      email: "propertymanager2@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
+    date: "2020-01-07",
+    dateFull: "December 4, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "Lease Update Request",
+      email: "propertymanager2@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    date: "2020-01-07",
+    dateFull: "January 7, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
+  {
+    applicant: {
+      name: "New Occupant Information",
+      email: "propertymanager2@nuova.com",
+      imageUrl:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    date: "2020-01-07",
+    dateFull: "December 10, 2020",
+    stage: "Task Completed ",
+    href: "#",
+  },
 ];
 
 const incentives = [
-    {
-        name: '24*7 Contractors Ready',
-        imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-shipping-simple.svg',
-        // imageSrc: '../../../Images/TenantPortalImages/SVGimages/driller-svgrepo-com.png',
-        description: "It's not actually free we just price it into the products. Someone's paying for it, and it's not us.",
-    },
-    {
-        name: 'Guaranteed 2 Days Recovery',
-        imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-warranty-simple.svg',
-        description: "If it breaks in the first 10 years we'll replace it. After that you're on your own though.",
-    },
-    {
-        name: 'Payment After Full Completion',
-        imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-exchange-simple.svg',
-        description:
-            "If you don't like it, trade it to one of your friends for something of theirs. Don't send it here though.",
-    },
-]
+  {
+    name: "24*7 Contractors Ready",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce/icons/icon-shipping-simple.svg",
+    // imageSrc: '../../../Images/TenantPortalImages/SVGimages/driller-svgrepo-com.png',
+    description:
+      "It's not actually free we just price it into the products. Someone's paying for it, and it's not us.",
+  },
+  {
+    name: "Guaranteed 2 Days Recovery",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce/icons/icon-warranty-simple.svg",
+    description:
+      "If it breaks in the first 10 years we'll replace it. After that you're on your own though.",
+  },
+  {
+    name: "Payment After Full Completion",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce/icons/icon-exchange-simple.svg",
+    description:
+      "If you don't like it, trade it to one of your friends for something of theirs. Don't send it here though.",
+  },
+];
 
 const TenantPortalTasks = () => {
-    return (
-        <>
-            <div className="">
-                <div className="mx-auto max-w-7xl">
+  return (
+    <>
+      <div className="">
+        {/* <div className="mx-auto max-w-7xl">
 
                     <div className="bg-gray-50">
                         <div className="mx-auto max-w-7xl py-8 sm:px-2 sm:py-8 lg:px-4">
@@ -143,9 +171,10 @@ const TenantPortalTasks = () => {
 
 
 
-                </div>
-                <div className="mx-auto max-w-5xl">
-                    {/* <div className="my-12">
+                </div> */}
+
+        <div className="mx-auto max-w-7xl">
+          {/* <div className="my-12">
                         <div className=" mb-5">
                             <p className=" font-medium text-2xl text-center underline underline-offset-4 mb-3 text-gray-700">
                                 Tasks for Property Managers
@@ -178,78 +207,78 @@ const TenantPortalTasks = () => {
                         </button>
                     </div> */}
 
-                    <div className="my-12 pb-20">
-                        <p className=" font-semibold text-2xl font-mono text-center text-gray-500 mb-8">
-                            Tasks Assigned by the Property Manager
-                        </p>
-                        <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
-                            <ul className="divide-y divide-gray-200">
-                                {applications.map((application) => (
-                                    <li key={application.applicant.email}>
-                                        <a
-                                            href={application.href}
-                                            className="block hover:bg-gray-50"
-                                        >
-                                            <div className="flex items-center px-4 py-4 sm:px-6">
-                                                <div className="min-w-0 flex-1 flex items-center">
-                                                    {/* <div className="flex-shrink-0">
+          <div className="my-20 pb-20">
+            <p className=" font-semibold text-2xl font-mono text-center text-gray-500 mb-8">
+              Tasks Assigned by the Property Manager
+            </p>
+            <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
+              <ul className="divide-y divide-gray-200">
+                {applications.map((application) => (
+                  <li key={application.applicant.email}>
+                    <a
+                      href={application.href}
+                      className="block hover:bg-gray-50"
+                    >
+                      <div className="flex items-center px-4 py-4 sm:px-6">
+                        <div className="min-w-0 flex-1 flex items-center">
+                          {/* <div className="flex-shrink-0">
                                                         <img
                                                             className="h-12 w-12 rounded-full"
                                                             src={application.applicant.imageUrl}
                                                             alt=""
                                                         />
                                                     </div> */}
-                                                    <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                                                        <div>
-                                                            <p className="text-sm font-medium text-cyan-600 truncate">
-                                                                {application.applicant.name}
-                                                            </p>
-                                                            <p className="mt-2 flex items-center text-sm text-gray-500">
-                                                                <ChatAlt2Icon
-                                                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                                                                    aria-hidden="true"
-                                                                />
-                                                                <span className="truncate">
-                                                                    {application.applicant.email}
-                                                                </span>
-                                                            </p>
-                                                        </div>
-                                                        <div className="hidden md:block">
-                                                            <div>
-                                                                <p className="text-sm text-gray-900">
-                                                                    Assigned on{" "}
-                                                                    <time dateTime={application.date}>
-                                                                        {application.dateFull}
-                                                                    </time>
-                                                                </p>
-                                                                <p className="mt-2 flex items-center text-sm text-gray-500">
-                                                                    <CheckCircleIcon
-                                                                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                                                                        aria-hidden="true"
-                                                                    />
-                                                                    {application.stage}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ChevronRightIcon
-                                                        className="h-5 w-5 text-gray-400"
-                                                        aria-hidden="true"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                          <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                            <div>
+                              <p className="text-sm font-medium text-cyan-600 truncate">
+                                {application.applicant.name}
+                              </p>
+                              <p className="mt-2 flex items-center text-sm text-gray-500">
+                                <ChatAlt2Icon
+                                  className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                                <span className="truncate">
+                                  {application.applicant.email}
+                                </span>
+                              </p>
+                            </div>
+                            <div className="hidden md:block">
+                              <div>
+                                <p className="text-sm text-gray-900">
+                                  Assigned on{" "}
+                                  <time dateTime={application.date}>
+                                    {application.dateFull}
+                                  </time>
+                                </p>
+                                <p className="mt-2 flex items-center text-sm text-gray-500">
+                                  <CheckCircleIcon
+                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                    aria-hidden="true"
+                                  />
+                                  {application.stage}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
+                        <div>
+                          <ChevronRightIcon
+                            className="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default TenantPortalTasks;

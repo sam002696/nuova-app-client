@@ -1,5 +1,13 @@
 import React from "react";
 
+import {
+  ArrowNarrowLeftIcon,
+  ArrowNarrowRightIcon,
+} from "@heroicons/react/solid";
+
+import { LightningBoltIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
+
 const reports = [
   {
     name: "Boiler Fixation",
@@ -59,19 +67,22 @@ const reports = [
 ];
 
 const features = [
-  { name: "Origin", description: "Designed by Good Goods, Inc." },
+  { name: "Issue ", description: "Electric Boiler Noisy" },
   {
-    name: "Material",
+    name: "Responsibilities",
     description:
-      "Solid walnut base with rare earth magnets and powder coated steel card cover",
+      "Develop/modify a boiler hardware for testing interactions between physical products and software",
   },
-  { name: "Dimensions", description: '6.25" x 3.55" x 1.15"' },
-  { name: "Finish", description: "Hand sanded and finished with natural oil" },
-  { name: "Includes", description: "Wood card tray and 3 refill packs" },
+  { name: "Location", description: "Flat No-13B, Holger Street, London" },
   {
-    name: "Considerations",
+    name: "Required Experience",
+    description: "Hand sanded and finished with natural oil",
+  },
+  { name: "Timeline", description: "Prefer Weekends" },
+  {
+    name: "About Nuova",
     description:
-      "Made from natural materials. Grain and color vary with each item.",
+      "Tech enabled, which enables our operating to be much more efficient and handle tasks almost instantly. Certified contractors, all of the contractors we use will have to be vetted prior to being able to work with us.",
   },
 ];
 
@@ -103,19 +114,33 @@ const ContractorPortalFindJobs = () => {
                         />
                     </div> */}
           <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
-            <ul className="space-y-5">
+            <ul className="space-y-7">
               <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
                 <h2
                   id="testimonial-heading"
-                  className="text-3xl font-semibold tracking-wider text-cyan-700"
+                  className="text-2xl font-semibold text-cyan-700 inline-flex items-center"
                 >
-                  Most Relevent Jobs{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                    />
+                  </svg>
+                  <span className="mx-3">Most Relevent Jobs </span>{" "}
                 </h2>
               </div>
               {reports.map((report) => (
                 <li
                   key={report.email}
-                  className="col-span-2 bg-white rounded-lg shadow-md shadow-cyan-200 divide-y divide-gray-200"
+                  className="col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200"
                 >
                   <div className="w-full flex justify-between px-6 py-6 space-x-6">
                     <img
@@ -165,19 +190,129 @@ const ContractorPortalFindJobs = () => {
                       <button className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg">
                         Details
                       </button>
-                      <p className="mt-1 text-gray-500 text-sm truncate">
-                        Easy Apply
-                      </p>
+                      <div className="flex items-center space-x-2">
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          Easy Apply
+                        </p>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          1d
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
+
+            <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+              <div className="-mt-px flex w-0 flex-1">
+                <a
+                  href="#"
+                  className="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  <ArrowNarrowLeftIcon
+                    className="mr-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  Previous
+                </a>
+              </div>
+              <div className="hidden md:-mt-px md:flex">
+                {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" */}
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600"
+                  aria-current="page"
+                >
+                  1
+                </Link>
+                <Link
+                  href="#"
+                  className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  2
+                </Link>
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  3
+                </Link>
+                <span className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500">
+                  ...
+                </span>
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  8
+                </Link>
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  9
+                </Link>
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  10
+                </Link>
+              </div>
+              <div className="-mt-px flex w-0 flex-1 justify-end">
+                <Link
+                  to="#"
+                  className="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  Next
+                  <ArrowNarrowRightIcon
+                    className="ml-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </div>
+            </nav>
           </div>
 
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Technical Specifications
+          <div className="p-8 pt-12 border-2 border-gray-200 rounded-md bg-white shadow-md shadow-gray-200">
+            <div className="flex justify-between">
+              <div className="flex-1 truncate">
+                <div className="flex items-center space-x-3">
+                  <h3 className="text-cyan-700 text-sm font-semibold truncate">
+                    Nuova System Jobs
+                  </h3>
+                  <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
+                    Maintenance Issue
+                  </span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <h3 className="text-gray-900 text-2xl font-semibold truncate">
+                    Boiler Fixation
+                  </h3>
+                </div>
+                <p className="mt-1 text-gray-500 text-sm truncate">
+                  Flat No-13B, Holger Street, London
+                </p>
+                <p className="mt-1 text-gray-500 text-sm truncate">
+                  $10.50 - $14.00 Per Hour(Employer est.)
+                </p>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                >
+                  <LightningBoltIcon
+                    className="-ml-1 mr-2 h-5 w-5"
+                    aria-hidden="true"
+                  />
+                  Bid for Job
+                </button>
+              </div>
+            </div>
+            <h2 className="text-xl font-semibold tracking-tight text-gray-900 sm:text-xl mt-8">
+              Task Summary :{" "}
             </h2>
             <p className="mt-4 text-gray-500">
               The walnut wood card tray is precision milled to perfectly fit a
