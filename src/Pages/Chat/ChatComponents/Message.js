@@ -63,7 +63,7 @@ const Message = ({ message }) => {
         </div>
         <div className="messageContent max-w-[50%] flex flex-col space-y-5 items-end">
           {message.text && (
-            <div>
+            <div className=" pb-5">
               <p
                 className={` p-3 shadow-lg ${
                   message.senderId === currentUser.uid
@@ -88,7 +88,7 @@ const Message = ({ message }) => {
             </div>
           )}
           {message.img && (
-            <div className=" py-2">
+            <div className=" py-2 pb-5">
               <img
                 onClick={handleImgModal}
                 className={`w-full h-full  cursor-pointer border-2  shadow-lg ${
@@ -102,6 +102,61 @@ const Message = ({ message }) => {
 
               <div
                 className={` ${
+                  message.senderId === currentUser.uid
+                    ? "text-end"
+                    : "text-start"
+                }`}
+              >
+                <span className=" text-gray-400 text-sm font-normal ">
+                  {format(new Date(secs * 1000))}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {message.document && (
+            <div className=" py-2 pb-5">
+              <div
+                className={`flex items-center ${
+                  message.senderId === currentUser.uid
+                    ? "flex-row "
+                    : "flex-row-reverse"
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-8 h-8 mr-3 text-gray-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                  />
+                </svg>
+                <a
+                  href={message.document}
+                  target="_blank"
+                  alt="pdf"
+                  className={`w-full h-full  cursor-pointer border-2  shadow-lg px-10 py-3 uppercase font-mono font-semibold bg-gradient-to-r from-red-400 to bg-red-700 text-white flex flex-col ${
+                    message.senderId === currentUser.uid
+                      ? "owner-border-radius border-gray-300 "
+                      : "custom-border-radius border-gray-300 mr-2"
+                  }`}
+                  rel="noreferrer"
+                >
+                  <span className="text-center"> pdf file</span>{" "}
+                  <div className=" pt-3 text-center text-gray-300 truncate-custom">
+                    {message.documentName}
+                  </div>
+                </a>
+              </div>
+
+              <div
+                className={`pt-1 ${
                   message.senderId === currentUser.uid
                     ? "text-end"
                     : "text-start"

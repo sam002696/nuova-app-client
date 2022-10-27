@@ -19,7 +19,7 @@ const AddProperty = () => {
   const [page, setPage] = useState(0);
   const [status, setStatus] = useState(page);
   const [middleStatus, setMiddleStatus] = useState(page);
-  const [finalStatus, setFinalStatus] = useState(page);
+  // const [finalStatus, setFinalStatus] = useState(page);
   const [detailStatus, setDetailStatus] = useState(page);
   const [picturesStatus, setPicturesStatus] = useState(page);
   const [briefStatus, setBriefStatus] = useState(page);
