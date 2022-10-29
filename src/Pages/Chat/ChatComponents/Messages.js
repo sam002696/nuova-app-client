@@ -21,9 +21,6 @@ const Messages = () => {
       unSub();
     };
   }, [data.chatId, currentUser.uid]);
-
-  console.log(messages);
-  // overflow-scroll overflow-x-hidden
   return (
     <>
       <div className="messages bg-gray-50 p-[10px] height-custom custom-scrollbar">

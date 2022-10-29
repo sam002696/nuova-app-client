@@ -12,7 +12,7 @@ const Message = ({ message }) => {
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
-  }, [message]);
+  }, [message.text, message.img, message.document]);
   let secs = message.date.seconds;
 
   const handleImgModal = () => {
