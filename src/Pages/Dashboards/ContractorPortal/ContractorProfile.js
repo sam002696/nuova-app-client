@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const ContractorProfile = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return (
+    <div>
+      <br />
+    </div>
+  );
 };
 
 export default ContractorProfile;

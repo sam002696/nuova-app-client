@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import ContractorPortalDashboard from "./Pages/Dashboards/ContractorPortal/ContractorPortalDashboard";
+import LandlordPortalDashboard from "./Pages/Dashboards/LandlordPortal/LandlordPortalDashboard";
 import PropertyManagerDashboard from "./Pages/Dashboards/PropertyManagement/PropertyManagerDashboard";
 import SingleProperty from "./Pages/Dashboards/PropertyManagement/SingleProperty/SingleProperty";
 import TenantPortalDashboard from "./Pages/Dashboards/TenantPortal/TenantPortalDashboard";
@@ -30,16 +31,16 @@ function App() {
             <PageTwo />
           </Route>
 
-          <Route path="/page3" >
+          <Route path="/page3">
             <PageThree />
           </Route>
-          <Route path="/page4" >
+          <Route path="/page4">
             <PageFour />
           </Route>
-          <Route path="/page5" >
+          <Route path="/page5">
             <PageFive />
           </Route>
-          <Route path="/page6" >
+          <Route path="/page6">
             <PageSix />
           </Route>
           <Route path="/single-property/:id">
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/contractor-portal-dashboard">
             <ContractorPortalDashboard />
+          </Route>
+          <Route path="/landlord-portal-dashboard">
+            <LandlordPortalDashboard />
           </Route>
           <Route path="/property-fact-find">
             <PropertyFactFind />

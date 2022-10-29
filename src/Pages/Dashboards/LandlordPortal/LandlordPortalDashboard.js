@@ -5,18 +5,16 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
 import logo from "../../../Images/Footer/logo.png";
-// import TenantProperty from "./TenantProperty";
-import TenantPortalFinance from "./TenantPortalFinance";
-import TenantPortalTasks from "./TenantPortalTasks";
-import TenantPortalInbox from "./TenantPortalInbox";
-import TenantProfile from "./TenantProfile";
-import TenantPortalMaintenance from "./TenantPortalMaintenance";
-// import TenantPortalHomeTwo from "./TenantPortalHomeTwo";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
-import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
-import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
-import TenantPortalHomeThree from "./TenantPortalHomeThree";
-import TenantPropertyThree from "./TenantPropertyThree";
+import ChatLogin from "./LandlordChat/ChatLogin/ChatLogin";
+import ChatRegister from "./LandlordChat/ChatRegister/ChatRegister";
+import LandlordPortalHome from "./LandlordPortalHome";
+import LandlordPortalMaintenance from "./LandlordPortalMaintenance";
+import LandlordProperty from "./LandlordProperty";
+import LandlordPortalFinance from "./LandlordPortalFinance";
+import LandlordPortalInbox from "./LandlordPortalInbox";
+import LandlordProfile from "./LandlordProfile";
+import LandlordPortalTasks from "./LandlordPortalTasks";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -34,35 +32,46 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const TenantPortalDashboard = () => {
+const LandlordPortalDashboard = () => {
   const { currentUser } = useContext(AuthContext);
   let { path, url } = useRouteMatch();
+
   const navigation = [
-    { name: "Tenant Dashboard", to: `${url}`, href: "#", current: false },
+    { name: "Landlord Dashboard", to: `${url}`, href: "#", current: false },
     {
       name: "Property",
-      to: `${url}/tenant-property`,
+      to: `${url}/landlord-property`,
       href: "#",
       current: false,
     },
     {
       name: "Maintenance",
-      to: `${url}/tenant-portal-maintenance`,
+      to: `${url}/landlord-portal-maintenance`,
       href: "#",
       current: false,
     },
-    { name: "Finance", href: "#", to: `${url}/tenant-finance`, current: false },
-    { name: "Tasks", href: "#", to: `${url}/tenant-tasks`, current: false },
+    {
+      name: "Finance",
+      href: "#",
+      to: `${url}/landlord-portal-finance`,
+      current: false,
+    },
+    {
+      name: "Tasks",
+      href: "#",
+      to: `${url}/landlord-portal-tasks`,
+      current: false,
+    },
     {
       name: "Inbox",
       href: "#",
-      to: `${url}/tenant-portal-inbox`,
+      to: `${url}/landlord-portal-inbox`,
       current: false,
     },
     {
       name: "Profile",
       href: "#",
-      to: `${url}/tenant-my-profile`,
+      to: `${url}/landlord-my-profile`,
       current: false,
     },
     {
@@ -71,11 +80,11 @@ const TenantPortalDashboard = () => {
       to: currentUser ? "#" : `${url}/register`,
       current: false,
     },
-    // { name: "Maintenance", href: "#", to: `${url}/maintenance`, current: false },
   ];
+
   return (
     <>
-      <div className="min-h-full">
+      <div className="min-h-full ">
         <Popover
           as="header"
           className="bg-gradient-to-r from-sky-800 to-cyan-600"
@@ -321,26 +330,27 @@ const TenantPortalDashboard = () => {
         <main>
           <Switch>
             <Route exact path={`${path}`}>
-              <TenantPortalHomeThree />
+              <LandlordPortalHome />
             </Route>
-            <Route path={`${path}/tenant-property`}>
-              <TenantPropertyThree />
+            <Route path={`${path}/landlord-property`}>
+              <LandlordProperty />
             </Route>
-            <Route path={`${path}/tenant-finance`}>
-              <TenantPortalFinance />
+            <Route path={`${path}/landlord-portal-maintenance`}>
+              <LandlordPortalMaintenance />
             </Route>
-            <Route path={`${path}/tenant-tasks`}>
-              <TenantPortalTasks />
+            <Route path={`${path}/landlord-portal-finance`}>
+              <LandlordPortalFinance />
             </Route>
-            <Route path={`${path}/tenant-portal-inbox`}>
-              {currentUser ? <TenantPortalInbox /> : <ChatLogin />}
+            <Route path={`${path}/landlord-portal-tasks`}>
+              <LandlordPortalTasks />
             </Route>
-            <Route path={`${path}/tenant-my-profile`}>
-              <TenantProfile />
+            <Route path={`${path}/landlord-portal-inbox`}>
+              {currentUser ? <LandlordPortalInbox /> : <ChatLogin />}
             </Route>
-            <Route path={`${path}/tenant-portal-maintenance`}>
-              <TenantPortalMaintenance />
+            <Route path={`${path}/landlord-my-profile`}>
+              <LandlordProfile />
             </Route>
+
             <Route path={`${path}/register`}>
               <ChatRegister />
             </Route>
@@ -351,4 +361,4 @@ const TenantPortalDashboard = () => {
   );
 };
 
-export default TenantPortalDashboard;
+export default LandlordPortalDashboard;
