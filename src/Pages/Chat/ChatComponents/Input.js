@@ -194,7 +194,7 @@ const Input = () => {
             </div>
           )}
 
-          <div className=" mr-2">
+          <button className=" mr-2 disabled:cursor-not-allowed">
             <label for="dropzone-file-data-two">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -219,9 +219,9 @@ const Input = () => {
                 onChange={(e) => handleDocument(e)}
               />
             </label>
-          </div>
+          </button>
 
-          <div>
+          <button className="disabled:cursor-not-allowed">
             <label for="dropzone-file-data-one">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +246,7 @@ const Input = () => {
                 accept="image/*"
               />
             </label>
-          </div>
+          </button>
 
           <label htmlFor="file"></label>
           <button
