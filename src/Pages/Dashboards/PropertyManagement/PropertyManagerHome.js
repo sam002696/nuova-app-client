@@ -4,7 +4,6 @@ import {
   EyeIcon,
   ClockIcon,
   ReceiptRefundIcon,
-  UsersIcon,
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
@@ -15,11 +14,6 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
-const stats = [
-  { label: "Vacation days left", value: 12 },
-  { label: "Sick days left", value: 4 },
-  { label: "Personal days left", value: 2 },
-];
 const actions = [
   {
     icon: ClockIcon,
@@ -27,6 +21,7 @@ const actions = [
     href: "#",
     iconForeground: "text-teal-700",
     iconBackground: "bg-teal-50",
+    backgroundColor: "bg-green-100",
   },
   {
     icon: EyeIcon,
@@ -34,27 +29,16 @@ const actions = [
     href: "#",
     iconForeground: "text-purple-700",
     iconBackground: "bg-purple-50",
+    backgroundColor: "bg-purple-100",
   },
-  {
-    icon: UsersIcon,
-    name: "Schedule a one-on-one",
-    href: "#",
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-  },
-  {
-    icon: EyeIcon,
-    name: "Payment",
-    href: "#",
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-  },
+
   {
     icon: ReceiptRefundIcon,
     name: "Calender Events",
     href: "#",
     iconForeground: "text-rose-700",
     iconBackground: "bg-rose-50",
+    backgroundColor: "bg-red-100",
   },
   {
     icon: AcademicCapIcon,
@@ -62,6 +46,7 @@ const actions = [
     href: "#",
     iconForeground: "text-indigo-700",
     iconBackground: "bg-indigo-50",
+    backgroundColor: "bg-blue-100",
   },
 ];
 const recentHires = [
@@ -124,8 +109,8 @@ function classNames(...classes) {
 const PropertyManagerHome = () => {
   return (
     <>
-      <main className="my-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:max-w-10xl lg:px-8">
+      <main className=" bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:max-w-10xl lg:px-8 py-10">
           <h1 className="sr-only">Profile</h1>
           {/* Main 3 column grid */}
           <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
@@ -137,7 +122,7 @@ const PropertyManagerHome = () => {
                   <h2 className="sr-only" id="profile-overview-title">
                     Profile Overview
                   </h2>
-                  <div className="bg-white p-6">
+                  <div className=" bg-gradient-to-tr from-gray-200 to bg-slate-200 p-6">
                     <div className="sm:flex sm:items-center sm:justify-between">
                       <div className="sm:flex sm:space-x-5">
                         <div className="flex-shrink-0">
@@ -169,23 +154,12 @@ const PropertyManagerHome = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-                    {stats.map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="px-6 py-5 text-sm font-medium text-center"
-                      >
-                        <span className="text-gray-900">{stat.value}</span>{" "}
-                        <span className="text-gray-600">{stat.label}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </section>
 
               {/* Actions panel */}
               <section aria-labelledby="quick-links-title">
-                <div className="rounded-lg bg-gray-200 overflow-hidden shadow-md divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+                <div className="rounded-lg   divide-y  sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
                   <h2 className="sr-only" id="quick-links-title">
                     Quick links
                   </h2>
@@ -203,7 +177,7 @@ const PropertyManagerHome = () => {
                         actionIdx === actions.length - 1
                           ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
                           : "",
-                        "relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500"
+                        `relative group ${action.backgroundColor}  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500 shadow-md shadow-gray-400/40`
                       )}
                     >
                       <div>
@@ -226,7 +200,7 @@ const PropertyManagerHome = () => {
                               aria-hidden="true"
                             />
                             {action.name}
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 ml-2">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 ml-2">
                               <svg
                                 className="-ml-0.5 mr-1.5 h-2 w-2 text-blue-400"
                                 fill="currentColor"
@@ -267,7 +241,7 @@ const PropertyManagerHome = () => {
             <div className="grid grid-cols-1 gap-4">
               {/* Announcements */}
               <section aria-labelledby="announcements-title">
-                <div className="rounded-lg bg-white overflow-hidden shadow-md">
+                <div className="rounded-lg bg-yellow-50 overflow-hidden shadow-md">
                   <div className="p-6">
                     <h2
                       className="text-base font-medium text-gray-900"
@@ -304,7 +278,7 @@ const PropertyManagerHome = () => {
                     <div className="mt-6">
                       <Link
                         to="#"
-                        className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                        className="w-full flex justify-center items-center px-4 py-2 border border-amber-300 shadow-sm text-sm font-medium rounded-md text-amber-700 bg-amber-200 hover:bg-gray-50"
                       >
                         View all
                       </Link>
@@ -315,7 +289,7 @@ const PropertyManagerHome = () => {
 
               {/* Recent Hires */}
               <section aria-labelledby="recent-hires-title">
-                <div className="rounded-lg bg-white overflow-hidden shadow-md shadow-cyan-200/50">
+                <div className="rounded-lg bg-white overflow-hidden shadow-md shadow-gray-400/50 my-4">
                   <div className="p-6">
                     <h2
                       className="text-base font-medium text-gray-900"

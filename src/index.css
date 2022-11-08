@@ -32,7 +32,7 @@
     height: calc(100vh - 130px);
   }
   .height-custom-picture {
-    height: calc(100vh - 0px);
+    height: calc(100vh - 1px);
   }
 
   .custom-border-radius {

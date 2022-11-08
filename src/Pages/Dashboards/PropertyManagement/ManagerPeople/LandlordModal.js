@@ -42,7 +42,7 @@ const LandlordModal = ({ open, setOpen }) => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-5xl sm:w-full sm:p-6">
+                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-2xl sm:w-full sm:p-6">
                   <div>
                     <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                       <UserAddIcon
@@ -65,34 +65,23 @@ const LandlordModal = ({ open, setOpen }) => {
                         as="h3"
                         className="text-md leading-6 font-medium text-gray-700 mb-2 underline underline-offset-4"
                       >
-                        Account Information
+                        User's Credentials
                       </Dialog.Title>
                     </div>
-                    <div className="grid gap-3 mb-6 lg:grid-cols-3">
+                    <div className="grid gap-3 mb-6 lg:grid-cols-2">
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          First Name
+                          Full Name
                         </label>
                         <input
                           type="text"
-                          id="first_name"
+                          id="full_name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Pete"
-                          {...register("firstName", { required: true })}
+                          placeholder="Pete Snow"
+                          {...register("fullName", { required: true })}
                         />
                       </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          id="last_name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Davidson"
-                          {...register("lastName", { required: true })}
-                        />
-                      </div>
+
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Password
@@ -119,178 +108,19 @@ const LandlordModal = ({ open, setOpen }) => {
                       </div>
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone_no"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="(+1) 9826-2344"
-                          {...register("phoneNumber", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Address
+                          Role
                         </label>
                         <input
                           type="text"
-                          id="address"
+                          id="role"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Glasgow 2nd Street.."
-                          {...register("address", { required: true })}
+                          value="Landlord"
+                          readOnly
+                          {...register("role", { required: true })}
                         />
                       </div>
                     </div>
 
-                    <div className="pb-5 sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-md leading-6 font-medium text-gray-700 mb-2 underline underline-offset-4"
-                      >
-                        Payment details
-                      </Dialog.Title>
-                    </div>
-
-                    <div className="grid gap-3 mb-6 lg:grid-cols-3">
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Name on account
-                        </label>
-                        <input
-                          type="text"
-                          id="account_name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Pete Davidson"
-                          {...register("accountName", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Account No
-                        </label>
-                        <input
-                          type="number"
-                          id="account_no"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="213456"
-                          {...register("accountNo", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Sort Code
-                        </label>
-                        <input
-                          type="number"
-                          id="sort_code"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="2345"
-                          {...register("sortCode", { required: true })}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-3 mb-6 lg:grid-cols-2">
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Bank Name
-                        </label>
-                        <input
-                          type="text"
-                          id="bank_name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Barclays"
-                          {...register("bankName", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Account Type
-                        </label>
-                        <select
-                          id="country"
-                          name="country"
-                          autoComplete="country-name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          {...register("accountType", { required: true })}
-                        >
-                          <option>Select</option>
-                          <option>Personal</option>
-                          <option>Business</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="pb-5 sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-md leading-6 font-medium text-gray-700 mb-5 underline underline-offset-4"
-                      >
-                        Documents
-                      </Dialog.Title>
-                      <div className="grid gap-3 mb-6 lg:grid-cols-3">
-                        <div>
-                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            Proof of address
-                          </label>
-                          <input
-                            type="file"
-                            id="address_file"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
-                            {...register("accountName", { required: true })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            EPC
-                          </label>
-                          <input
-                            type="file"
-                            id="epc"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
-                            placeholder="213456"
-                            {...register("epc", { required: true })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            EICR
-                          </label>
-                          <input
-                            type="file"
-                            id="eicr"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
-                            {...register("eicr", { required: true })}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid gap-3 mb-6 lg:grid-cols-2">
-                        <div>
-                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            PAT
-                          </label>
-                          <input
-                            type="file"
-                            id="pat"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
-                            {...register("pat", { required: true })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            Gas Safety
-                          </label>
-                          <input
-                            type="file"
-                            id="gas_safety"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:rounded-l-lg file:p-1.5 file:border-none"
-                            {...register("gas_safety", { required: true })}
-                          />
-                        </div>
-                      </div>
-                    </div>
                     <button
                       onClick={() => setOpen(false)}
                       type="submit"
