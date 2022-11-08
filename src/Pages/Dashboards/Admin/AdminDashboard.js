@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
-  ClockIcon,
   CogIcon,
   CreditCardIcon,
   HomeIcon,
@@ -10,11 +9,15 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
   EyeIcon,
+  UserAddIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/outline";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import AdminHome from "./AdminHome";
 import AdminManageUsers from "./AdminManageUsers";
 import logo from "../../../Images/Footer/logo.png";
+import AdminAddUsers from "./AdminAddUsers";
+import AdminViewings from "./AdminViewings";
 
 const secondaryNavigation = [
   { name: "Settings", href: "#", icon: CogIcon },
@@ -37,11 +40,11 @@ const AdminDashboard = () => {
       to: `${url}`,
     },
     {
-      name: "History",
+      name: "Add Users",
       href: "#",
-      icon: ClockIcon,
+      icon: UserAddIcon,
       current: false,
-      to: `${url}/history`,
+      to: `${url}/add-users`,
     },
     {
       name: "Balances",
@@ -65,11 +68,11 @@ const AdminDashboard = () => {
       to: `${url}/recipients`,
     },
     {
-      name: "Reports",
+      name: "Viewings",
       href: "#",
-      icon: EyeIcon,
+      icon: DocumentTextIcon,
       current: false,
-      to: `${url}/reports`,
+      to: `${url}/viewings`,
     },
   ];
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -248,7 +251,9 @@ const AdminDashboard = () => {
               <Route exact path={`${path}`}>
                 <AdminHome />
               </Route>
-              <Route path={`${path}/history`}></Route>
+              <Route path={`${path}/add-users`}>
+                <AdminAddUsers />
+              </Route>
               <Route path={`${path}/balances`}></Route>
               <Route path={`${path}/cards`}></Route>
 
@@ -256,7 +261,9 @@ const AdminDashboard = () => {
                 <AdminManageUsers />
               </Route>
 
-              <Route path={`${path}/reports`}></Route>
+              <Route path={`${path}/viewings`}>
+                <AdminViewings />
+              </Route>
             </Switch>
           </main>
         </div>

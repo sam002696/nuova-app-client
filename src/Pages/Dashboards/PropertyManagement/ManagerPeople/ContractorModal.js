@@ -3,7 +3,8 @@ import { Fragment, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
 import { UserAddIcon } from "@heroicons/react/outline";
-const TenantModal = ({ open, setOpen }) => {
+
+const ContractorModal = ({ open, setOpen }) => {
   const cancelButtonRef = useRef(null);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -54,7 +55,7 @@ const TenantModal = ({ open, setOpen }) => {
                         as="h3"
                         className="text-2xl leading-6 font-semibold text-gray-900 underline underline-offset-8 mb-4"
                       >
-                        Let's add a tenant
+                        Let's add a contractor
                       </Dialog.Title>
                     </div>
                   </div>
@@ -113,7 +114,7 @@ const TenantModal = ({ open, setOpen }) => {
                           type="text"
                           id="role"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          value="Tenant"
+                          value="Contractor"
                           readOnly
                           {...register("role", { required: true })}
                         />
@@ -125,7 +126,7 @@ const TenantModal = ({ open, setOpen }) => {
                       type="submit"
                       className="text-white bg-gradient-to-r from-sky-800 to-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-bold rounded-md text-sm w-full px-5 py-2.5 text-center"
                     >
-                      Add a tenant
+                      Add a contractor
                     </button>
                   </form>
                 </Dialog.Panel>
@@ -138,4 +139,4 @@ const TenantModal = ({ open, setOpen }) => {
   );
 };
 
-export default TenantModal;
+export default ContractorModal;
