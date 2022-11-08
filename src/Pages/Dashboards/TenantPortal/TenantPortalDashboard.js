@@ -17,6 +17,7 @@ import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
 import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
 import TenantPortalHomeThree from "./TenantPortalHomeThree";
 import TenantPropertyThree from "./TenantPropertyThree";
+import TenantPortalHome from "./TenantPortalHome";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
