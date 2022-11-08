@@ -18,6 +18,8 @@ import AddTenant from "./AddTenant/AddTenant";
 import AddTerms from "./AddTerms/AddTerms";
 import RequestDeposit from "./RequestDeposit/RequestDeposit";
 import AddCertificate from "./AddCertificate/AddCertificate";
+import Inventory from "./Inventory/Inventory";
+import InspectionReport from "./InspectionReport/InspectionReport";
 
 const user = {
   name: "Debbie Lewis",
@@ -425,8 +427,12 @@ const SingleProperty = () => {
                   <Route path={`${path}/add-certificates`}>
                     <AddCertificate />
                   </Route>
-                  <Route path={`${path}/property-inspection-report`}></Route>
-                  <Route path={`${path}/inventory`}></Route>
+                  <Route path={`${path}/property-inspection-report`}>
+                    <InspectionReport />
+                  </Route>
+                  <Route path={`${path}/inventory`}>
+                    <Inventory />
+                  </Route>
                 </Switch>
               </div>
             </div>

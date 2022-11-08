@@ -16,6 +16,8 @@ import PageFive from "./Pages/Page5/Page5/PageFive";
 import PageSix from "./Pages/Page6/PageSix/PageSix";
 import PricingHome from "./Pages/Pricing Structure/Pricing Home/PricingHome";
 import PropertyFactFind from "./Pages/Property Fact Find/PropertyFactFind/PropertyFactFind";
+import Prospects from "./Pages/Prospects/Prospects/Prospects";
+import SinglePropertyViewing from "./Pages/Prospects/SinglePropertyViewing/SinglePropertyViewing";
 
 function App() {
   return (
@@ -43,6 +45,12 @@ function App() {
           </Route>
           <Route path="/page6">
             <PageSix />
+          </Route>
+          <Route path="/propertyviewings">
+            <Prospects />
+          </Route>
+          <Route path="/single-property-viewing/:id">
+            <SinglePropertyViewing />
           </Route>
           <Route path="/single-property/:id">
             <SingleProperty />

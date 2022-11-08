@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../../../Images/Footer/logo.png";
-const HeaderNavbar = () => {
+import logo from "../../../Images/Footer/logo.png";
+const Navbar = () => {
   return (
     <>
-      <nav className="bg-[#F7F4FFB2] px-2 sm:px-4 py-6">
+      <nav className=" px-2 sm:px-4 py-6 ">
         <div className="container flex flex-wrap items-center mx-auto justify-around">
           <Link to="/home" className="flex items-center">
             <img src={logo} className="mr-2 h-6 w-6" alt="Nuova Logo" />
@@ -78,7 +78,7 @@ const HeaderNavbar = () => {
             <Link to="/property-manager-dashboard">
               <button
                 type="button"
-                className="text-white text-base bg-[#BD8472] px-2 py-1 text-center rounded"
+                className="text-white text-base bg-[#BD8472] px-3 py-2 text-center rounded"
               >
                 Property Manager
               </button>
@@ -86,7 +86,7 @@ const HeaderNavbar = () => {
             <Link to="/tenant-portal-dashboard">
               <button
                 type="button"
-                className="text-white text-base bg-[#BD8472] px-2 py-1 text-center rounded"
+                className="text-white text-base bg-[#BD8472] px-3 py-2 text-center rounded"
               >
                 Tenant Portal
               </button>
@@ -98,4 +98,4 @@ const HeaderNavbar = () => {
   );
 };
 
-export default HeaderNavbar;
+export default Navbar;
