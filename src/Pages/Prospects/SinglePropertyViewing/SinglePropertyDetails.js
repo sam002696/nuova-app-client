@@ -154,7 +154,7 @@ const SinglePropertyDetails = () => {
               </div>
               <div className="grid grid-cols-5 items-center hover:bg-slate-600">
                 <div className=" col-span-2">
-                  <Link to="/single-property/1234567">
+                  <Link to="/arrange-property-viewing/1234567">
                     <button
                       type="button"
                       className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium  shadow-sm text-white bg-purple-700 hover:bg-cyan-700 "

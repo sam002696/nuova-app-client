@@ -328,7 +328,7 @@ const LandlordPortalHome = () => {
           </div>
 
           <div className="col-span-2 relative pt-1 pb-20  lg:pt-1 lg:pb-28">
-            <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 lg:grid-cols-3">
                 <div className="space-y-2 col-span-1 ">
                   <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
@@ -392,7 +392,7 @@ const LandlordPortalHome = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <h2 className="text-2xl font-bold text-gray-700 leading-2 tracking-wide">
