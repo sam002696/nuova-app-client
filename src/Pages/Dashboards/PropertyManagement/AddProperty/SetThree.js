@@ -234,8 +234,8 @@ const SetThree = ({ formData, setFormData }) => {
               Add your property details
             </p>
           </div>
-          <div className=" mt-14">
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
+          <div className=" mt-8">
+            {/* <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
                   for="Street 1"
@@ -358,6 +358,1209 @@ const SetThree = ({ formData, setFormData }) => {
                   <option>No</option>
                 </select>
               </div>
+            </div> */}
+            <div className="space-y-6">
+              <div>
+                <p className=" text-2xl text-gray-700 font-semibold underline pl-1">
+                  Property
+                </p>
+              </div>
+
+              {/* Property Floor */}
+
+              <div className="grid grid-cols-2 gap-x-5">
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Property floor (e.g. ground floor)
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <fieldset className="space-y-5">
+                    <legend className="sr-only">Choose</legend>
+                    <div className="relative flex items-start">
+                      <div className="flex h-5 items-center">
+                        <input
+                          id="comments"
+                          aria-describedby="comments-description"
+                          name="comments"
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label
+                          htmlFor="comments"
+                          className="font-medium text-gray-700"
+                        >
+                          Furnished
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="relative flex items-start">
+                      <div className="flex h-5 items-center">
+                        <input
+                          id="offers"
+                          aria-describedby="offers-description"
+                          name="offers"
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label
+                          htmlFor="offers"
+                          className="font-medium text-gray-700"
+                        >
+                          Unfurnished
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+
+              {/* Property Address */}
+
+              <div className="grid grid-cols-2 gap-x-5 pt-3">
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Property address (as registered with local authority)
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows={5}
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                      defaultValue={""}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                    Council Tax band
+                  </label>
+                  <select
+                    id="adverseCard"
+                    name="adverseCard"
+                    autoComplete="adverseCard"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  >
+                    <option>Select</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                    <option>G</option>
+                    <option>H</option>
+                  </select>
+                  <div className=" mt-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                      Availability date
+                    </label>
+                    <input
+                      type="date"
+                      id="jobtitle"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Town/city & Post Code */}
+
+              <div className="grid grid-cols-2 gap-x-5 pt-3">
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Town / City
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Postcode
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="number"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Pets */}
+
+              <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                Pets
+              </h1>
+
+              <div className="grid grid-cols-2 gap-x-2">
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      I/We would consider allowing tenants to have pets
+                    </label>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      I/We would not permit any pets within this property
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              {/* Students */}
+
+              <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                Students
+              </h1>
+
+              <div className="grid grid-cols-3 gap-x-2">
+                <div className="font-medium text-gray-700 text-sm">
+                  Are students accepted?
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      Yes
+                    </label>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              {/* To Let */}
+
+              <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                To Let
+              </h1>
+              <div className="grid grid-cols-3 gap-x-2">
+                <div className="font-medium text-gray-700 text-sm">
+                  Can a ‘To Let’ board be used?
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      Yes
+                    </label>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="pt-20">
+                <p className="text-2xl text-gray-700 font-semibold underline pl-1">
+                  Property Details
+                </p>
+              </div>
+
+              {/* Rooms */}
+
+              <div>
+                <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                  Rooms
+                </h1>
+                <p className=" italic text-lg pt-3">Number as appropriate</p>
+              </div>
+
+              <div className="grid grid-cols-4 gap-x-2">
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      Double bedroom
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Living/Sitting room
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Bathroom (with shower)
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Shower room
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Single bedroom
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Open plan kitchen/Living
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Bathroom (with bath only)
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Separate WC
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Box room
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Separate kitchen
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      En-suite bathroom
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Utility room
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Study/Office
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Dining room
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      En-suite shower room
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <label
+                  htmlFor="project-name"
+                  className="block text-sm font-medium text-gray-700 pb-2 mr-5"
+                >
+                  Other (please specify)
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    name="project-name"
+                    id="project-name"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <hr className=" border-1 border-gray-400" />
+
+              {/* Features and Appliances */}
+
+              <div>
+                <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                  Features and Appliances
+                </h1>
+              </div>
+              <div className="grid grid-cols-4 gap-x-2">
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      Gas central heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      White meter heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Electric central heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Under floor heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Double glazing
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Tumble dryer
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Dishwasher
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      TV
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Balcony/Terrace
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Private garden
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Shared Garden
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Washing machine
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className=" grid grid-cols-2 gap-5 pt-5">
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Other (please specify)
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Other external areas/facilities included with the let
+                    property?
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Any shared areas/facilities included with the let property?
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Any excluded area/facilities?
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr className=" border-1 border-gray-400" />
+
+              {/* Parking */}
+
+              <div>
+                <h1 className="text-xl font-semibold leading-6 text-gray-900">
+                  Parking
+                </h1>
+              </div>
+
+              <div className="grid grid-cols-4 gap-x-2">
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="comments"
+                      className="font-medium text-gray-700"
+                    >
+                      Gas central heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      White meter heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Electric central heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Under floor heating
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Double glazing
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Tumble dryer
+                    </label>
+                  </div>
+                </div>
+                <div className="relative flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-700"
+                    >
+                      Dishwasher
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className=" grid grid-cols-3 gap-5 pt-5">
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Permit supplied by
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Space number
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="number"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    No. of permits per property
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="number"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Space location
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Entry Code
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-900 ">
+                    Remote/Fob required
+                  </label>
+                  <select
+                    id="smoker"
+                    name="smoker"
+                    autoComplete="smoker"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  >
+                    <option>Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <div className="col-span-1">
+                  <label
+                    htmlFor="project-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Supplied by
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr className=" border-1 border-gray-400" />
             </div>
           </div>
         </div>
