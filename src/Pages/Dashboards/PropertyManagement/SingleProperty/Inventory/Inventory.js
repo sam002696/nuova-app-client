@@ -7,7 +7,7 @@ import RoomOthers from "./RoomOthers";
 const Inventory = () => {
   return (
     <>
-      <div className=" w-5/6 mx-auto my-10">
+      <div className=" w-5/6 mx-auto mb-10 mt-2">
         <form className="space-y-8 divide-y-2 divide-gray-200">
           <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
             <ExplanationOfCondition />

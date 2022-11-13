@@ -103,7 +103,7 @@ const SingleProperty = () => {
       current: false,
     },
     {
-      name: "Add certificates",
+      name: "Certificates & Documents",
       href: "#",
       to: `${url}/add-certificates`,
       icon: ViewGridAddIcon,
