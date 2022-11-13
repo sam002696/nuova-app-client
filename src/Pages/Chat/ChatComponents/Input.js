@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../ChatContext/AuthContext";
 import { ChatContext } from "../ChatContext/ChatContext";
 import {
@@ -11,9 +12,16 @@ import {
 import { db, storage } from "../ChatFirebase/Firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import imageCompression from "browser-image-compression";
 
 const Input = () => {
+  const options = {
+    maxSizeMB: 0.25,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true,
+  };
   const [text, setText] = useState("");
+  const [documentHandler, setDocumentHandler] = useState(true);
   const [img, setImg] = useState(null);
   const [document, setDocument] = useState(null);
   const { currentUser } = useContext(AuthContext);
@@ -25,52 +33,80 @@ const Input = () => {
   const handleDocument = (e) => {
     setDocument(e.target.files[0]);
   };
+  useEffect(() => {
+    if (document?.size < 256000) {
+      setDocumentHandler(true);
+    } else {
+      setDocumentHandler(false);
+      if (document?.size > 256000) {
+        Swal.fire({
+          icon: "error",
+          title: "Document exceding the size",
+          text: "The document that you want to send is exceding the standard limit that is 250 KB. You need to compress the size and send it.",
+          footer:
+            '<a target="_blank" href="https://www.ilovepdf.com/compress_pdf">Compress the pdf</a>',
+        });
+      }
+    }
+  }, [document?.size]);
+
   const handleSend = async () => {
     const storageRef = ref(storage, uuid());
     if (img) {
-      const uploadTask = uploadBytesResumable(storageRef, img);
+      try {
+        const compressedFile = await imageCompression(img, options);
+        console.log(
+          "compressedFile instanceof Blob",
+          compressedFile instanceof Blob
+        );
+        console.log(
+          `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
+        );
 
-      uploadTask.on(
-        (error) => {
-          //TODO:Handle Error
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then(async (downloadURL) => {
-              await updateDoc(doc(db, "chats", data.chatId), {
-                messages: arrayUnion({
-                  id: uuid(),
-                  text,
-                  senderId: currentUser.uid,
-                  date: Timestamp.now(),
-                  img: downloadURL,
-                }),
-              });
+        const uploadTask = uploadBytesResumable(storageRef, compressedFile);
 
-              await updateDoc(doc(db, "userChats", currentUser.uid), {
-                [data.chatId + ".lastPicture"]: {
-                  img: downloadURL,
-                },
-                [data.chatId + ".date"]: serverTimestamp(),
-              });
+        uploadTask.on(
+          (error) => {
+            //TODO:Handle Error
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref)
+              .then(async (downloadURL) => {
+                await updateDoc(doc(db, "chats", data.chatId), {
+                  messages: arrayUnion({
+                    id: uuid(),
+                    text,
+                    senderId: currentUser.uid,
+                    date: Timestamp.now(),
+                    img: downloadURL,
+                  }),
+                });
 
-              await updateDoc(doc(db, "userChats", data.user.uid), {
-                [data.chatId + ".lastPicture"]: {
-                  img: downloadURL,
-                },
-                [data.chatId + ".date"]: serverTimestamp(),
-              });
-            })
-            .finally(setImg(null));
-        }
-      );
+                await updateDoc(doc(db, "userChats", currentUser.uid), {
+                  [data.chatId + ".lastPicture"]: {
+                    img: downloadURL,
+                  },
+                  [data.chatId + ".date"]: serverTimestamp(),
+                });
+
+                await updateDoc(doc(db, "userChats", data.user.uid), {
+                  [data.chatId + ".lastPicture"]: {
+                    img: downloadURL,
+                  },
+                  [data.chatId + ".date"]: serverTimestamp(),
+                });
+              })
+              .finally(setImg(null));
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
     } else if (document) {
       const documentUploadTask = uploadBytesResumable(storageRef, document);
 
       documentUploadTask.on(
-        (error) => {
-          //TODO:Handle Error
-        },
+        (error) => {},
         () => {
           getDownloadURL(documentUploadTask.snapshot.ref)
             .then(async (downloadURL) => {
@@ -171,7 +207,7 @@ const Input = () => {
             </div>
           )}
 
-          {document && (
+          {documentHandler && (
             <div className="relative">
               <p className=" mr-3 text-base text-gray-400 bg-gray-200 px-3 py-1 rounded-md truncate-custom ">
                 {document?.name ? document?.name : ""}
@@ -250,7 +286,11 @@ const Input = () => {
 
           <label htmlFor="file"></label>
           <button
-            disabled={text === "" && img === null && document === null}
+            disabled={
+              text === "" &&
+              img === null &&
+              (document === null || documentHandler === false)
+            }
             onClick={handleSend}
             className=" px-3 disabled:cursor-not-allowed "
           >

@@ -13,6 +13,12 @@ const PropertyViewingForm = () => {
   const [preferences, setPreferences] = useState(page);
   const [extrainfo, setExtraInfo] = useState(page);
   const [book, setBook] = useState(page);
+  const [formData, setFormData] = useState({
+    details: {},
+    preferences: {},
+    extraInfo: {},
+    book: {},
+  });
 
   useEffect(() => {
     if (page === 0) {
@@ -40,17 +46,18 @@ const PropertyViewingForm = () => {
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <DetailsForm />;
+      return <DetailsForm formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <PreferencesForm />;
+      return <PreferencesForm formData={formData} setFormData={setFormData} />;
     } else if (page === 2) {
-      return <ExtrainfoForm />;
+      return <ExtrainfoForm formData={formData} setFormData={setFormData} />;
     } else if (page === 3) {
-      return <BookForm />;
+      return <BookForm formData={formData} setFormData={setFormData} />;
     }
   };
 
   const handleSubmit = () => {
+    console.log(formData);
     alert("FORM SUBMITTED");
   };
   const steps = [

@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const DetailsForm = () => {
+const DetailsForm = ({ formData, setFormData }) => {
+  const [detailsList, setDetailsList] = useState({
+    moveindate: "",
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    mobile: "",
+    address: "",
+  });
+  const handleDetailsChange = (e) => {
+    const { name, value } = e.target;
+    setDetailsList({ ...detailsList, [name]: value });
+  };
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      details: detailsList,
+    });
+  }, [detailsList]);
   return (
     <>
       {/* Move in date */}
@@ -22,6 +40,10 @@ const DetailsForm = () => {
             type="date"
             name="moveindate"
             id="moveindate"
+            defaultValue={formData?.details.moveindate}
+            onChange={(e) => {
+              handleDetailsChange(e);
+            }}
             className="block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           />
         </div>
@@ -46,8 +68,11 @@ const DetailsForm = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="first-name"
-              id="first-name"
+              name="firstName"
+              id="firstName"
+              onChange={(e) => {
+                handleDetailsChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -62,8 +87,11 @@ const DetailsForm = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="last-name"
-              id="last-name"
+              name="lastName"
+              id="lastName"
+              onChange={(e) => {
+                handleDetailsChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -78,8 +106,11 @@ const DetailsForm = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="email"
-              id="email"
+              name="emailAddress"
+              id="emailAddress"
+              onChange={(e) => {
+                handleDetailsChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -94,8 +125,11 @@ const DetailsForm = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="tel"
-              id="tel"
+              name="mobile"
+              id="mobile"
+              onChange={(e) => {
+                handleDetailsChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -112,6 +146,9 @@ const DetailsForm = () => {
               type="text"
               name="address"
               id="address"
+              onChange={(e) => {
+                handleDetailsChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>

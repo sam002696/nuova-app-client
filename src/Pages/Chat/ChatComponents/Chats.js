@@ -6,7 +6,6 @@ import { db } from "../ChatFirebase/Firebase";
 
 const Chats = () => {
   const [chats, setChats] = useState([]);
-  // const [blueDot, setBlueDot] = useState(true);
   const { currentUser } = useContext(AuthContext);
   const { dispatch, data } = useContext(ChatContext);
 
@@ -27,7 +26,6 @@ const Chats = () => {
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
-  console.log(chats);
   return (
     <>
       <div className="custom-scrollbar mt-4 transition-all duration-700 ease-in-out">

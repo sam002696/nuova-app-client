@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const BookForm = () => {
+const BookForm = ({ formData, setFormData }) => {
+  const [bookList, setBookList] = useState({
+    preferredDay: "",
+    preferredTime: "",
+  });
+  const handleBookChange = (e) => {
+    const { name, value } = e.target;
+    setBookList({ ...bookList, [name]: value });
+  };
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      book: bookList,
+    });
+  }, [bookList]);
   return (
     <>
       <div>
@@ -19,8 +34,11 @@ const BookForm = () => {
             <div className="mt-1">
               <input
                 type="date"
-                name="date"
-                id="date"
+                name="preferredDay"
+                id="preferredDay"
+                onChange={(e) => {
+                  handleBookChange(e);
+                }}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               />
             </div>
@@ -35,8 +53,11 @@ const BookForm = () => {
             <div className="mt-1">
               <input
                 type="time"
-                name="time"
-                id="time"
+                name="preferredTime"
+                id="preferredTime"
+                onChange={(e) => {
+                  handleBookChange(e);
+                }}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               />
             </div>

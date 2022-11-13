@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ExtrainfoForm = () => {
+const ExtrainfoForm = ({ formData, setFormData }) => {
+  const [extraInfoList, setExtraInfoList] = useState({
+    ukBasedGurantor: "",
+    adults: "",
+    children: "",
+    lengthOfStay: "",
+    livingArrangement: "",
+    reasonForMoving: "",
+    currentOccupation: "",
+    jobTitle: "",
+    householdIncome: "",
+    pets: "",
+    smoker: "",
+    adverseCard: "",
+    relevantInfo: "",
+  });
+  const handleExtraInfoChange = (e) => {
+    const { name, value } = e.target;
+    setExtraInfoList({ ...extraInfoList, [name]: value });
+  };
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      extraInfo: extraInfoList,
+    });
+  }, [extraInfoList]);
   return (
     <>
       <div>
@@ -16,8 +42,11 @@ const ExtrainfoForm = () => {
             monthly rental, or can you provide a UK based guarantor?
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="ukBasedGurantor"
+            name="ukBasedGurantor"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -30,8 +59,11 @@ const ExtrainfoForm = () => {
             How many adults (16 or older) will be living in the property? *
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="adults"
+            name="adults"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -53,8 +85,11 @@ const ExtrainfoForm = () => {
             How many children (15 or younger) will be living in the property?
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="children"
+            name="children"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -75,8 +110,11 @@ const ExtrainfoForm = () => {
             Intended length of stay in the property?
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="lengthOfStay"
+            name="lengthOfStay"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -90,8 +128,11 @@ const ExtrainfoForm = () => {
             Current Living Arrangement
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="livingArrangement"
+            name="livingArrangement"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -112,8 +153,11 @@ const ExtrainfoForm = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="Max Rent"
-              id="Max Rent"
+              name="reasonForMoving"
+              id="reasonForMoving"
+              onChange={(e) => {
+                handleExtraInfoChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -123,8 +167,11 @@ const ExtrainfoForm = () => {
             Current Occupation
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="currentOccupation"
+            name="currentOccupation"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -151,8 +198,11 @@ const ExtrainfoForm = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="Max Rent"
-              id="Max Rent"
+              name="jobTitle"
+              id="jobTitle"
+              onChange={(e) => {
+                handleExtraInfoChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -170,8 +220,11 @@ const ExtrainfoForm = () => {
           <div className="mt-1">
             <input
               type="number"
-              name="Max Rent"
-              id="Max Rent"
+              name="householdIncome"
+              id="householdIncome"
+              onChange={(e) => {
+                handleExtraInfoChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
@@ -181,8 +234,11 @@ const ExtrainfoForm = () => {
             Pets
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="pets"
+            name="pets"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -195,8 +251,11 @@ const ExtrainfoForm = () => {
             Smoker
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="smoker"
+            name="smoker"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -209,8 +268,11 @@ const ExtrainfoForm = () => {
             Do you have any adverse credit?
           </label>
           <select
-            id="preference"
-            name="preference"
+            id="adverseCard"
+            name="adverseCard"
+            onChange={(e) => {
+              handleExtraInfoChange(e);
+            }}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
@@ -229,8 +291,11 @@ const ExtrainfoForm = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="Max Rent"
-              id="Max Rent"
+              name="relevantInfo"
+              id="relevantInfo"
+              onChange={(e) => {
+                handleExtraInfoChange(e);
+              }}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             />
           </div>
