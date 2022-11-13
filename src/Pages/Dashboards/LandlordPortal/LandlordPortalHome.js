@@ -8,6 +8,8 @@ import landlord_dash_img1 from "../../../Images/LandlordPortalImages/LandLordDas
 import landlord_dash_img2 from "../../../Images/LandlordPortalImages/LandLordDashboard/green_wave.png";
 import landlord_dash_img3 from "../../../Images/LandlordPortalImages/LandLordDashboard/blue_wave.png";
 import landlord_dash_img4 from "../../../Images/LandlordPortalImages/LandLordDashboard/orange_wave.png";
+import IncExpBarChart from "./LandlordRecharts/IncExpBarChart";
+import RatingRadialBarChart from "./LandlordRecharts/RatingRadialBarChart";
 
 const landlords = [
   {
@@ -28,15 +30,15 @@ const landlords = [
 const LandlordPortalHome = () => {
   return (
     <>
-      <div className=" bg-gradient-to-l from-stone-100 to-white">
-        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-7xl lg:grid-cols-1 lg:px-8">
-          <div className="bg-[#2272E2]">
+      <div className="bg-gradient-to-l from-stone-100 to-white">
+        <div className="mx-auto pt-12 grid max-w-lg gap-5 lg:max-w-7xl lg:grid-cols-1 lg:px-8">
+          <div className="bg-[#2f3e83]">
             <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
               <div className="flex flex-wrap items-center justify-between">
                 <div className="flex w-0 flex-1 items-center">
-                  <span className="flex rounded-lg bg-blue-800 p-2">
+                  <span className="flex rounded-lg bg-white p-2">
                     <MicrophoneIcon
-                      className="h-6 w-6 text-white"
+                      className="h-6 w-6 text-[#2f3e83]"
                       aria-hidden="true"
                     />
                   </span>
@@ -45,7 +47,7 @@ const LandlordPortalHome = () => {
                       We announced a new product!
                     </span>
                     <span className="hidden md:inline">
-                      Big news! We're excited to announce 20+ new jobs.
+                      Big news! We're excited to announce 10% Income Increase.
                     </span>
                   </p>
                 </div>
@@ -82,24 +84,42 @@ const LandlordPortalHome = () => {
                     alt="People working on laptops"
                   />
                 </div>
-                <img
-                  className="dashboard-box-images w-10 h-10 mt-4 ml-4"
-                  src="https://portal.landlordstudio.com/Content/images/dashboard/overdue_expenses.png"
-                  alt=""
-                />
+                <div className="flex flex-row items-center">
+                  <div className="border rounded-full p-1.5 mt-4 ml-4 bg-red-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-red-600 "
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" font-semibold text-2xl ml-3 mt-4 text-red-400">
+                    Income
+                  </p>
+                </div>
+
                 <div className=" p-3">
                   <div className="h-5">&nbsp;</div>
                   <span className=" font-bold text-xl ml-3 text-[#5A5F68]">
                     <span className="text-xl">GBP </span>
-                    0.00
+                    5000.00
                   </span>
                   <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
-                    <span className="font-semibold">0</span>
-                    <span> Overdue Expenses</span>
+                    <span className="font-semibold">1000</span>
+                    <span> Monthly Income</span>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="space-y-2 py-8 col-span-1 ">
               <div class="relative border-b-4 border-b-[#29CC9E] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
@@ -109,24 +129,41 @@ const LandlordPortalHome = () => {
                     alt="People working on laptops"
                   />
                 </div>
-                <img
-                  className="dashboard-box-images w-10 h-10 mt-4 ml-4"
-                  src="https://portal.landlordstudio.com/Content/images/dashboard/overdue_expenses.png"
-                  alt=""
-                />
+                <div className="flex flex-row items-center">
+                  <div className="border rounded-full p-1.5 mt-4 ml-4 bg-green-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-green-600"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M14.121 7.629A3 3 0 009.017 9.43c-.023.212-.002.425.028.636l.506 3.541a4.5 4.5 0 01-.43 2.65L9 16.5l1.539-.513a2.25 2.25 0 011.422 0l.655.218a2.25 2.25 0 001.718-.122L15 15.75M8.25 12H12m9 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" font-semibold text-2xl ml-3 mt-4 text-green-400">
+                    Expenses
+                  </p>
+                </div>
                 <div className=" p-3">
                   <div className="h-5">&nbsp;</div>
                   <span className=" font-bold text-xl ml-3 text-[#5A5F68]">
                     <span className="text-xl">GBP </span>
-                    0.00
+                    2000.00
                   </span>
                   <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
-                    <span className="font-semibold">0</span>
-                    <span> Overdue Expenses</span>
+                    <span className="font-semibold">350</span>
+                    <span> Monthly Expenses</span>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="space-y-2 py-8 col-span-1 ">
               <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
@@ -136,24 +173,41 @@ const LandlordPortalHome = () => {
                     alt="People working on laptops"
                   />
                 </div>
-                <img
-                  className="dashboard-box-images w-10 h-10 mt-4 ml-4"
-                  src="https://portal.landlordstudio.com/Content/images/dashboard/overdue_expenses.png"
-                  alt=""
-                />
+                <div className="flex flex-row items-center">
+                  <div className="border rounded-full p-1.5 mt-4 ml-4 bg-blue-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-blue-600"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" font-semibold text-2xl ml-3 mt-4 text-blue-400">
+                    Profit
+                  </p>
+                </div>
                 <div className=" p-3">
                   <div className="h-5">&nbsp;</div>
                   <span className=" font-bold text-xl ml-3 text-[#5A5F68]">
                     <span className="text-xl">GBP </span>
-                    0.00
+                    3000.00
                   </span>
                   <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
-                    <span className="font-semibold">0</span>
-                    <span> Overdue Expenses</span>
+                    <span className="font-semibold">750</span>
+                    <span> Monthly Profit</span>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="space-y-2 py-8 col-span-1 ">
               <div class="relative border-b-4 border-b-[#FF7776] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
@@ -163,20 +217,36 @@ const LandlordPortalHome = () => {
                     alt="People working on laptops"
                   />
                 </div>
-                <img
-                  className="dashboard-box-images w-10 h-10 mt-4 ml-4"
-                  src="https://portal.landlordstudio.com/Content/images/dashboard/overdue_expenses.png"
-                  alt=""
-                />
+                <div className="flex flex-row items-center">
+                  <div className="border rounded-full p-1.5 mt-4 ml-4 bg-orange-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-orange-600"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" font-semibold text-2xl ml-3 mt-4 text-orange-400">
+                    Rating
+                  </p>
+                </div>
                 <div className=" p-3">
                   <div className="h-5">&nbsp;</div>
                   <span className=" font-bold text-xl ml-3 text-[#5A5F68]">
-                    <span className="text-xl">GBP </span>
-                    0.00
+                    <span className="text-xl">4.5 </span>
+                    Out of 5
                   </span>
                   <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
-                    <span className="font-semibold">0</span>
-                    <span> Overdue Expenses</span>
+                    <span className="font-semibold">5.0</span>
+                    <span> Monthly Rating</span>
                   </div>
                 </div>
               </div>
@@ -187,10 +257,10 @@ const LandlordPortalHome = () => {
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8  px-4 sm:px-6  lg:max-w-7xl lg:grid-cols-3 lg:px-8">
           <div className="relative pt-1 pb-20 lg:pt-1 lg:pb-28">
             <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
-              <div className="flex flex-col overflow-hidden rounded-lg shadow-md shadow-blue-500">
-                <div className="flex flex-1 flex-col justify-between bg-white p-6">
+              <div className="flex flex-col overflow-hidden rounded-lg shadow-md bg-white">
+                <div className="flex flex-1 flex-col justify-between p-6">
                   <div className="flex-1">
-                    <p className="text-md font-medium text-blue-500 mt-4 mb-4">
+                    <p className="text-lg font-medium text-[#2f3e83] mt-4 mb-4">
                       Landlord Profile
                     </p>
 
@@ -317,7 +387,7 @@ const LandlordPortalHome = () => {
                     </div>
                     <button
                       type="button"
-                      className="inline-flex items-center rounded-md border border-transparent bg-blue-800 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                      className="inline-flex items-center rounded-md border border-transparent bg-[#2f3e83] px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-[#2f3e83] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
                     >
                       Get Started
                     </button>
@@ -404,9 +474,13 @@ const LandlordPortalHome = () => {
               </p>
             </div>
 
+            <div className="mx-auto mt-6 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
+              <IncExpBarChart />
+            </div>
+
             <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 lg:grid-cols-2">
-                <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                {/* <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
                     <div className="flex-1">
                       <p className="text-lg font-medium text-blue-800 mt-4">
@@ -459,6 +533,9 @@ const LandlordPortalHome = () => {
                       </div>
                     </div>
                   </div>
+                </div> */}
+                <div className="flex flex-col overflow-hidden bg-white rounded-lg shadow-lg">
+                  <RatingRadialBarChart />
                 </div>
                 <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                   <div className="flex-shrink-0">
@@ -482,7 +559,7 @@ const LandlordPortalHome = () => {
                       </div>
                       <button
                         type="button"
-                        className="inline-flex items-center rounded-md border border-transparent bg-blue-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                        className="inline-flex items-center rounded-md border border-transparent bg-[#2f3e83] px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-[#2f3e83] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
                       >
                         Start Chatting
                       </button>
@@ -495,7 +572,7 @@ const LandlordPortalHome = () => {
             <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 lg:grid-cols-3">
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div class="relative border-b-4 border-b-[#01cc74] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">
                       Maintenance Request
                     </div>
@@ -506,7 +583,7 @@ const LandlordPortalHome = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6 text-blue-500"
+                        className="w-6 h-6 text-[#01cc74]"
                       >
                         <path
                           strokeLinecap="round"
@@ -527,7 +604,7 @@ const LandlordPortalHome = () => {
                   </div>
                 </div>
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div class="relative border-b-4 border-b-[#ff4998] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">Task Lists</div>
                     <div className="flex flex-wrap justify-center items-center mt-4">
                       <svg
@@ -536,7 +613,7 @@ const LandlordPortalHome = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6 text-blue-500"
+                        className="w-6 h-6 text-[#ff4998]"
                       >
                         <path
                           strokeLinecap="round"
@@ -557,7 +634,7 @@ const LandlordPortalHome = () => {
                   </div>
                 </div>
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div class="relative border-b-4 border-b-[#f29a16] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">Total Occupancy</div>
                     <div className="flex flex-wrap justify-center items-center mt-4">
                       <svg
@@ -566,7 +643,7 @@ const LandlordPortalHome = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6 text-blue-500"
+                        className="w-6 h-6 text-[#f29a16]"
                       >
                         <path
                           strokeLinecap="round"
@@ -599,7 +676,7 @@ const LandlordPortalHome = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-8 h-8 text-indigo-600"
+                      className="w-8 h-8 text-[#2f3e83]"
                     >
                       <path
                         strokeLinecap="round"
@@ -641,7 +718,7 @@ const LandlordPortalHome = () => {
                     <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                       <button
                         type="submit"
-                        className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#2f3e83] px-5 py-2 text-base font-medium text-white hover:bg-[#2f3e83] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       >
                         Get Free Quote
                       </button>
