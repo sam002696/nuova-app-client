@@ -32,26 +32,26 @@ const SetThree = ({ formData, setFormData }) => {
     });
   }, [serviceList]);
 
-  const [propertyDetails, setPropertyDetails] = useState({
-    availibilityDate: "",
-    propertyFurnished: "",
-    bathrooms: "",
-    gas: "",
-    smokeAlarm: "",
-    solidBurning: "",
-  });
-  const handleAddressChange = (e) => {
-    const { name, value } = e.target;
-    setPropertyDetails({ ...propertyDetails, [name]: value });
-  };
+  // const [propertyDetails, setPropertyDetails] = useState({
+  //   availibilityDate: "",
+  //   propertyFurnished: "",
+  //   bathrooms: "",
+  //   gas: "",
+  //   smokeAlarm: "",
+  //   solidBurning: "",
+  // });
+  // const handleAddressChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setPropertyDetails({ ...propertyDetails, [name]: value });
+  // };
 
-  useEffect(() => {
-    setFormData({
-      ...formData,
-      propertyAddress: propertyDetails,
-    });
-  }, [propertyDetails]);
-  console.log(propertyDetails);
+  // useEffect(() => {
+  //   setFormData({
+  //     ...formData,
+  //     propertyAddress: propertyDetails,
+  //   });
+  // }, [propertyDetails]);
+  // console.log(propertyDetails);
   return (
     <>
       {formData?.propertyType === "HMO" ? (

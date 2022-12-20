@@ -20,7 +20,6 @@ const SetOne = ({ formData, setFormData }) => {
       propertyAddress: serviceList,
     });
   }, [serviceList]);
-  console.log(formData.propertyAddress?.street1);
   return (
     <>
       <div className="max-w-5xl mx-auto">
@@ -45,7 +44,6 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="Street 1"
                 name="street1"
-                defaultValue={formData.propertyAddress?.street1}
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="Street 1"
                 required=""
@@ -65,7 +63,6 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="street2"
                 name="street2"
-                defaultValue={formData.propertyAddress?.street2}
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="Street 2"
                 required=""
@@ -86,7 +83,6 @@ const SetOne = ({ formData, setFormData }) => {
                 id="city"
                 name="city"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                defaultValue={formData.propertyAddress?.city}
                 placeholder="London"
                 required=""
                 onChange={(e) => {
@@ -106,7 +102,6 @@ const SetOne = ({ formData, setFormData }) => {
                 id="state"
                 name="state"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                defaultValue={formData.propertyAddress?.state}
                 placeholder="Glasgow"
                 required=""
                 onChange={(e) => {
@@ -126,7 +121,6 @@ const SetOne = ({ formData, setFormData }) => {
                 id="country"
                 name="country"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                defaultValue={formData.propertyAddress?.country}
                 placeholder="United Kingdom"
                 required=""
                 onChange={(e) => {
@@ -147,7 +141,6 @@ const SetOne = ({ formData, setFormData }) => {
                 name="zipcode"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="10111"
-                defaultValue={formData.propertyAddress?.zipcode}
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);
