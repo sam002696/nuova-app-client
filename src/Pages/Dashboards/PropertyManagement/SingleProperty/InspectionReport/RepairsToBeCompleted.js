@@ -19,7 +19,7 @@ const RepairsToBeCompleted = () => {
                 htmlFor="project-name"
                 className="block text-sm font-medium text-gray-600 text-center"
               >
-                Tenant's Initials Acknowledging Repair Completed
+                Initials Acknowledging Repair Completed
               </label>
               <div className="mt-5">
                 <input
@@ -28,7 +28,7 @@ const RepairsToBeCompleted = () => {
                   id="t_i_a_r_c"
                   autoComplete="t_i_a_r_c"
                   className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
-                  placeholder="Tenant's Initials Acknowledging Repair Completed"
+                  placeholder=" Initials Acknowledging Repair Completed"
                 />
               </div>
             </div>
@@ -80,7 +80,7 @@ const RepairsToBeCompleted = () => {
                   id="t_i_a_r_c"
                   autoComplete="t_i_a_r_c"
                   className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
-                  placeholder="Tenant's Initials Acknowledging Repair Completed"
+                  placeholder=" Initials Acknowledging Repair Completed"
                 />
               </div>
             </div>
@@ -120,7 +120,7 @@ const RepairsToBeCompleted = () => {
                   id="t_i_a_r_c"
                   autoComplete="t_i_a_r_c"
                   className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
-                  placeholder="Tenant's Initials Acknowledging Repair Completed"
+                  placeholder=" Initials Acknowledging Repair Completed"
                 />
               </div>
             </div>
@@ -160,7 +160,7 @@ const RepairsToBeCompleted = () => {
                   id="t_i_a_r_c"
                   autoComplete="t_i_a_r_c"
                   className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
-                  placeholder="Tenant's Initials Acknowledging Repair Completed"
+                  placeholder=" Initials Acknowledging Repair Completed"
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ const RepairsToBeCompleted = () => {
                   id="t_i_a_r_c"
                   autoComplete="t_i_a_r_c"
                   className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
-                  placeholder="Tenant's Initials Acknowledging Repair Completed"
+                  placeholder=" Initials Acknowledging Repair Completed"
                 />
               </div>
             </div>

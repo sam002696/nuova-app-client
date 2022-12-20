@@ -25,7 +25,7 @@ const AuthorizationForDeduction = () => {
                 id="tenant_name"
                 autoComplete="tenant_name"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                placeholder="Tenant Name"
+                placeholder=""
               />
             </div>
             <label
