@@ -15,6 +15,7 @@ import LandlordPortalFinance from "./LandlordPortalFinance";
 import LandlordPortalInbox from "./LandlordPortalInbox";
 import LandlordProfile from "./LandlordProfile";
 import LandlordPortalTasks from "./LandlordPortalTasks";
+import LandlordPortalHomeTwo from "./LandlordPortalHomeTwo";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -87,7 +88,8 @@ const LandlordPortalDashboard = () => {
       <div className="min-h-full ">
         <Popover
           as="header"
-          className="bg-gradient-to-r from-sky-800 to-cyan-600"
+          className="bg-[#0f2e5a]"
+          // className="bg-gradient-to-r from-sky-800 to-cyan-600"
         >
           {({ open }) => (
             <>
@@ -330,7 +332,7 @@ const LandlordPortalDashboard = () => {
         <main>
           <Switch>
             <Route exact path={`${path}`}>
-              <LandlordPortalHome />
+              <LandlordPortalHomeTwo />
             </Route>
             <Route path={`${path}/landlord-property`}>
               <LandlordProperty />

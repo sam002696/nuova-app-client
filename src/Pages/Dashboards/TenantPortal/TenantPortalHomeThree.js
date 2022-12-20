@@ -364,14 +364,10 @@ const TenantPortalHomeThree = () => {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
               <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
                 <div className="p-8">
-                  {/* <p className="text-sm font-medium text-green-600 mt-4 mb-2">
-                                        <a href='#' className="hover:underline">
-                                            Agency
-                                        </a>
-                                    </p> */}
+                  
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <OfficeBuildingIcon
@@ -399,7 +395,7 @@ const TenantPortalHomeThree = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="relative pt-4 pb-20  lg:pt-4 lg:pb-28">

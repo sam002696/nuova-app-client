@@ -154,7 +154,7 @@ const BasicInspectionInfo = () => {
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
         <div>
           <h3 className="text-md leading-6 font-medium text-gray-700 underline">
-            Tenant Information
+            Tenant Information (If Any)
           </h3>
         </div>
         <div className=" sm:space-y-3 space-y-3">

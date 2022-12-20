@@ -6,14 +6,14 @@ const RentalPropertyCondition = () => {
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <div>
           <h3 className="text-lg leading-6 font-medium text-gray-900">
-            Rental Property condition
+            Rental Property Condition
           </h3>
-          <p className="mt-5 max-w-3xl text-sm text-gray-500">
+          {/* <p className="mt-5 max-w-3xl text-sm text-gray-500">
             With the tenant (or their agent) present, examine and record the
             condition of the property in the fields below. Make sure to test and
             demonstrate the testing procedure for all smoke alarms and carbon
             monoxide detectors and show where any fire extinguishers are stored
-          </p>
+          </p> */}
         </div>
         <div className=" sm:space-y-1 space-y-1">
           {/* Area - Entryway #1 */}

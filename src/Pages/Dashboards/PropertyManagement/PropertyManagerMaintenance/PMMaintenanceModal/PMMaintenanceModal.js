@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 
-const TenantMaintenanceModal = ({ open, setOpen }) => {
+const PMMaintenanceModal = ({ open, setOpen }) => {
   const cancelButtonRef = useRef(null);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -261,18 +261,18 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                             />
                           </div>
                         </div>
-                        {/* <div>
-                                                    <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                                                        Tenancy Proof
-                                                    </label>
-                                                    <input
-                                                        type="file"
-                                                        id="tenancyProof"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full file:p-1.5 file:border-none"
-                                                        placeholder="document"
-                                                        {...register("tenancyProof", { required: true })}
-                                                    />
-                                                </div> */}
+                        <div>
+                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                            Tenancy Proof
+                          </label>
+                          <input
+                            type="file"
+                            id="tenancyProof"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full file:p-1.5 file:border-none"
+                            placeholder="document"
+                            {...register("tenancyProof", { required: true })}
+                          />
+                        </div>
                         <div>
                           <label className="block mb-2 text-sm font-medium text-gray-900 ">
                             Issue Image
@@ -306,4 +306,4 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
   );
 };
 
-export default TenantMaintenanceModal;
+export default PMMaintenanceModal;

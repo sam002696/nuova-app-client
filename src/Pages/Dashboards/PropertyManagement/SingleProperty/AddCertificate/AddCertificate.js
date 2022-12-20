@@ -4,6 +4,8 @@ import {
   ChevronRightIcon,
   MailIcon,
 } from "@heroicons/react/solid";
+import AddCertificateModal from "./AddCertificateModal";
+import { useState } from "react";
 
 const applications = [
   {
@@ -68,6 +70,7 @@ const applications = [
   },
 ];
 const AddCertificate = () => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div className="sm:flex sm:items-center mx-10 mt-8">
@@ -83,6 +86,7 @@ const AddCertificate = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             type="button"
+            onClick={() => setOpen(true)}
             className="inline-flex items-center justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:w-auto"
           >
             Add a certificate
@@ -160,6 +164,7 @@ const AddCertificate = () => {
           ))}
         </ul>
       </div>
+      <AddCertificateModal setOpen={setOpen} open={open} />
     </>
   );
 };
