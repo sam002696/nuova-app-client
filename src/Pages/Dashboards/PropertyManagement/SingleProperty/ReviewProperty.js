@@ -2,100 +2,100 @@ import { Disclosure, Tab } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/solid";
 import { HeartIcon, MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 
-const product = {
-  name: "Property 1",
-  price: "£140000",
-  rating: 4,
-  images: [
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 2,
-      name: "Angled view",
-      src: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 3,
-      name: "Angled view",
-      src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 4,
-      name: "Angled view",
-      src: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    // More images...
-  ],
-  colors: [
-    {
-      name: "Washed Black",
-      bgColor: "bg-gray-700",
-      selectedColor: "ring-gray-700",
-    },
-    { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
-    {
-      name: "Washed Gray",
-      bgColor: "bg-gray-500",
-      selectedColor: "ring-gray-500",
-    },
-  ],
-  description: `
-    <p>This property is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. It has many features which includes top and durable canvas construction keeps your goods protected for all-day use.</p>
-  `,
-  details: [
-    {
-      name: "Features",
-      items: [
-        "Multiple strap configurations",
-        "Spacious interior with top zip",
-        "Leather handle and tabs",
-        "Interior dividers",
-        "Stainless strap loops",
-        "Double stitched construction",
-        "Water-resistant",
-      ],
-    },
-    {
-      name: "Models",
-      items: [
-        "Multiple strap configurations",
-        "Spacious interior with top zip",
-        "Leather handle and tabs",
-        "Interior dividers",
-        "Stainless strap loops",
-        "Double stitched construction",
-        "Water-resistant",
-      ],
-    },
-    {
-      name: "Units",
-      items: [
-        "Multiple strap configurations",
-        "Spacious interior with top zip",
-        "Leather handle and tabs",
-        "Interior dividers",
-        "Stainless strap loops",
-        "Double stitched construction",
-        "Water-resistant",
-      ],
-    },
-    // More sections...
-  ],
-};
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const ReviewProperty = () => {
+const ReviewProperty = ({ singleProperty }) => {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+
+  const product = {
+    name: "Property 1",
+    price: "£140000",
+    rating: 4,
+    images: [
+      {
+        id: 1,
+        name: "Angled view",
+        src: singleProperty?.images?.pictureFirst,
+        alt: "Angled front view with bag zipped and handles upright.",
+      },
+      {
+        id: 2,
+        name: "Angled view",
+        src: singleProperty?.images?.pictureSecond,
+        alt: "Angled front view with bag zipped and handles upright.",
+      },
+      {
+        id: 3,
+        name: "Angled view",
+        src: singleProperty?.images?.pictureThird,
+        alt: "Angled front view with bag zipped and handles upright.",
+      },
+      {
+        id: 4,
+        name: "Angled view",
+        src: singleProperty?.images?.pictureFourth,
+        alt: "Angled front view with bag zipped and handles upright.",
+      },
+      // More images...
+    ],
+    colors: [
+      {
+        name: "Washed Black",
+        bgColor: "bg-gray-700",
+        selectedColor: "ring-gray-700",
+      },
+      { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
+      {
+        name: "Washed Gray",
+        bgColor: "bg-gray-500",
+        selectedColor: "ring-gray-500",
+      },
+    ],
+    description: `
+      <p>This property is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. It has many features which includes top and durable canvas construction keeps your goods protected for all-day use.</p>
+    `,
+    details: [
+      {
+        name: "Features",
+        items: [
+          "Multiple strap configurations",
+          "Spacious interior with top zip",
+          "Leather handle and tabs",
+          "Interior dividers",
+          "Stainless strap loops",
+          "Double stitched construction",
+          "Water-resistant",
+        ],
+      },
+      {
+        name: "Models",
+        items: [
+          "Multiple strap configurations",
+          "Spacious interior with top zip",
+          "Leather handle and tabs",
+          "Interior dividers",
+          "Stainless strap loops",
+          "Double stitched construction",
+          "Water-resistant",
+        ],
+      },
+      {
+        name: "Units",
+        items: [
+          "Multiple strap configurations",
+          "Spacious interior with top zip",
+          "Leather handle and tabs",
+          "Interior dividers",
+          "Stainless strap loops",
+          "Double stitched construction",
+          "Water-resistant",
+        ],
+      },
+      // More sections...
+    ],
+  };
 
   return (
     <div>
@@ -151,13 +151,20 @@ const ReviewProperty = () => {
           {/* Product info */}
           <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {product.name}
+              {singleProperty?.propertyAddress?.propertyName}
+            </h1>
+            <h1 className="text-lg font-medium tracking-tight text-gray-600 mt-4">
+              {singleProperty?.propertyAddress?.addressline1},
+              {singleProperty?.propertyAddress?.city},
+              {singleProperty?.propertyAddress?.state},
+              {singleProperty?.propertyAddress?.country},
+              {singleProperty?.propertyAddress?.zipcode}
             </h1>
 
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="tracking-tight text-3xl text-gray-900">
-                {product.price}
+                {singleProperty?.propertyDetails?.propertyEstimatedValue}
               </p>
             </div>
 

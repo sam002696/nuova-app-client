@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import logo from "../../../../Images/Footer/logo.png";
@@ -12,7 +12,14 @@ import {
   ViewGridAddIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import {
+  NavLink,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 import ReviewProperty from "./ReviewProperty";
 import AddTenant from "./AddTenant/AddTenant";
 import AddTerms from "./AddTerms/AddTerms";
@@ -20,6 +27,7 @@ import RequestDeposit from "./RequestDeposit/RequestDeposit";
 import AddCertificate from "./AddCertificate/AddCertificate";
 import Inventory from "./Inventory/Inventory";
 import InspectionReport from "./InspectionReport/InspectionReport";
+import axios from "axios";
 
 const user = {
   name: "Debbie Lewis",
@@ -66,6 +74,26 @@ function classNames(...classes) {
 
 const SingleProperty = () => {
   let { path, url } = useRouteMatch();
+  const { id } = useParams();
+  console.log(id);
+
+  const [singleProperty, setSingleProperty] = useState({});
+
+  useEffect(() => {
+    const handleSingleProperty = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/properties/${id}`
+        );
+        console.log(res.data);
+        setSingleProperty(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleSingleProperty();
+  }, []);
+
   const subNavigation = [
     {
       name: "Review property",
@@ -367,7 +395,7 @@ const SingleProperty = () => {
             <header className="relative py-10">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-3xl tracking-tight font-bold text-white">
-                  Property 1
+                  {singleProperty?.propertyAddress?.propertyName}
                 </h1>
               </div>
             </header>
@@ -412,10 +440,10 @@ const SingleProperty = () => {
               <div className="divide-y divide-gray-200 lg:col-span-9 bg-gray-50">
                 <Switch>
                   <Route exact path={`${path}`}>
-                    <ReviewProperty />
+                    <ReviewProperty singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/add-tenants`}>
-                    <AddTenant />
+                    <AddTenant singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/add-terms`}>
                     <AddTerms />
@@ -425,7 +453,7 @@ const SingleProperty = () => {
                   </Route>
                   <Route path={`${path}/approve-references`}></Route>
                   <Route path={`${path}/add-certificates`}>
-                    <AddCertificate />
+                    <AddCertificate singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/property-inspection-report`}>
                     <InspectionReport />

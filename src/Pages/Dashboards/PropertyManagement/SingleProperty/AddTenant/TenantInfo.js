@@ -1,12 +1,38 @@
+import React, { useEffect, useState } from "react";
 import { MailIcon } from "@heroicons/react/solid";
-import React from "react";
 
-const ApplyingTo = () => {
+const TenantInfo = ({ singleProperty, formData, setFormData }) => {
+  const [tenantPersonalInfo, setTenantPersonalInfo] = useState({
+    fullName: "",
+    email: "",
+    phoneNo: "",
+    totalOccupants: "",
+    pets: "",
+    petDesc: "",
+    smokes: "",
+    lawsuit: "",
+    felony: "",
+    lawsuitDesc: "",
+    currentIncome: "",
+    incomeAssistance: "",
+    creditScore: "",
+  });
+  const handleTenantInfoChange = (e) => {
+    const { name, value } = e.target;
+    setTenantPersonalInfo({ ...tenantPersonalInfo, [name]: value });
+  };
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      tenantPersonalInfo: tenantPersonalInfo,
+    });
+  }, [tenantPersonalInfo]);
   return (
     <div>
       <div>
         <h3 className="text-lg leading-6 font-medium text-gray-900">
-          Applicant
+          Tenant Personal Info
         </h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">
           This information will be displayed publicly so be careful what you
@@ -17,36 +43,21 @@ const ApplyingTo = () => {
       <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor=" First Name"
+            htmlFor="Full Name"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            First Name
+            Full Name
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="text"
-              name=" First Name"
-              id="address"
+              name="fullName"
+              id="fullName"
               autoComplete="given-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            />
-          </div>
-        </div>
-
-        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label
-            htmlFor=" First Name"
-            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-          >
-            Last Name
-          </label>
-          <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <input
-              type="text"
-              name="Last Name"
-              id="Last Name"
-              autoComplete="given-name"
-              className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -68,6 +79,9 @@ const ApplyingTo = () => {
               id="email"
               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
               placeholder="you@example.com"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -82,11 +96,14 @@ const ApplyingTo = () => {
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="tel"
-              name="Phone No"
-              id="Phone No"
+              name="phoneNo"
+              id="phoneNo"
               placeholder="+1 (555) 987-6543"
               autoComplete="given-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -101,18 +118,21 @@ const ApplyingTo = () => {
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="number"
-              name=" Total Occupants"
-              id=" Total Occupants"
+              name="totalOccupants"
+              id=" totalOccupants"
               placeholder="10"
-              autoComplete="given-name"
+              autoComplete=""
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor=" Total Occupants"
+            htmlFor="Pets"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
             Pets
@@ -123,26 +143,32 @@ const ApplyingTo = () => {
               name="pets"
               id="pets"
               placeholder="2"
-              autoComplete="given-name"
+              autoComplete="pets"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor="about"
+            htmlFor="Pet Desc"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
             Pets Description
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <textarea
-              id="about"
-              name="about"
+              id="petDesc"
+              name="petDesc"
               rows={3}
               className="max-w-lg shadow-sm block w-full focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md"
               defaultValue={""}
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
             <p className="mt-2 text-sm text-gray-500">
               Write a few sentences about the pets.
@@ -150,37 +176,9 @@ const ApplyingTo = () => {
           </div>
         </div>
 
-        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
-          <label
-            htmlFor="photo"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Photo
-          </label>
-          <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <div className="flex items-center">
-              <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                <svg
-                  className="h-full w-full text-gray-300"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </span>
-              <button
-                type="button"
-                className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-              >
-                Change
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor=" Total Occupants"
+            htmlFor="Smokes"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
             Smokes
@@ -191,6 +189,9 @@ const ApplyingTo = () => {
               name="smokes"
               autoComplete="country-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -201,7 +202,7 @@ const ApplyingTo = () => {
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor=" Total Occupants"
+            htmlFor="Lawsuit"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
             Lawsuit
@@ -210,8 +211,11 @@ const ApplyingTo = () => {
             <select
               id="lawsuit"
               name="lawsuit"
-              autoComplete="country-name"
+              autoComplete="lawsuit"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -222,7 +226,7 @@ const ApplyingTo = () => {
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
-            htmlFor=" Total Occupants"
+            htmlFor="Felony"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
             Felony
@@ -231,8 +235,11 @@ const ApplyingTo = () => {
             <select
               id="felony"
               name="felony"
-              autoComplete="country-name"
+              autoComplete="felony"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -250,12 +257,15 @@ const ApplyingTo = () => {
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <textarea
-              id="lawsuit desc"
-              name="lawsuit desc"
+              id="lawsuitDesc"
+              name="lawsuitDesc"
               rows={3}
               className="max-w-lg shadow-sm block w-full focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md"
               defaultValue={""}
               placeholder="none"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -270,11 +280,14 @@ const ApplyingTo = () => {
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="number"
-              name="Current Income"
-              id="Current Income"
+              name="currentIncome"
+              id="currentIncome"
               placeholder="10,000"
               autoComplete="given-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -289,11 +302,14 @@ const ApplyingTo = () => {
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="number"
-              name="Income Asssistance"
-              id="Income Asssistance"
+              name="incomeAssistance"
+              id="incomeAssistance"
               placeholder="none"
               autoComplete="given-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -308,11 +324,14 @@ const ApplyingTo = () => {
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="number"
-              name="Credit Score"
-              id="Credit Score"
+              name="creditScore"
+              id="creditScore"
               placeholder="750 & above"
               autoComplete="given-name"
               className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              onChange={(e) => {
+                handleTenantInfoChange(e);
+              }}
             />
           </div>
         </div>
@@ -321,4 +340,4 @@ const ApplyingTo = () => {
   );
 };
 
-export default ApplyingTo;
+export default TenantInfo;
