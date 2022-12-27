@@ -1,14 +1,48 @@
 import React from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { Fragment, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 
 const TenantMaintenanceModal = ({ open, setOpen }) => {
+  const { currentUser } = useSelector((state) => state.user);
   const cancelButtonRef = useRef(null);
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async (reportData) => {
+    const data = new FormData();
+    const image = reportData.issueImage[0];
+
+    if (image) {
+      data.append("file", image);
+
+      data.append("upload_preset", "eez1w4gg");
+
+      const uploadRes2 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data
+      );
+
+      const { url: url1 } = uploadRes2.data;
+
+      reportData.issueImage = url1;
+    }
+
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/reports`,
+        reportData
+      );
+      if (res.data) {
+        alert("data has been sent");
+        setOpen(false);
+        console.log(reportData);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -71,26 +105,15 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                     <div className="grid gap-3 mb-6 lg:grid-cols-2">
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          First Name
+                          Full Name
                         </label>
                         <input
                           type="text"
                           id="first_name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Pete"
-                          {...register("firstName", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          id="last_name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Davidson"
-                          {...register("lastName", { required: true })}
+                          placeholder="Pete Davidson"
+                          value={currentUser.username}
+                          {...register("username", { required: true })}
                         />
                       </div>
                       <div>
@@ -102,7 +125,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="Chat_User_Name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="petedavidson"
-                          {...register("chatUse", { required: true })}
+                          {...register("chatusername", { required: true })}
                         />
                       </div>
                       <div>
@@ -114,6 +137,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="email_address"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="example@gmail.com"
+                          value={currentUser.email}
                           {...register("email", { required: true })}
                         />
                       </div>
@@ -126,7 +150,8 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="phone_no"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="(+1) 9826-2344"
-                          {...register("phoneNumber", { required: true })}
+                          value={currentUser.phoneNo}
+                          {...register("phoneNo", { required: true })}
                         />
                       </div>
                       <div>
@@ -138,7 +163,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="address"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Glasgow 2nd Street.."
-                          {...register("address", { required: true })}
+                          {...register("tenantAddress", { required: true })}
                         />
                       </div>
                     </div>
@@ -191,37 +216,6 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                       </div>
                     </div>
 
-                    {/* <div className="grid gap-3 mb-6 lg:grid-cols-2">
-                                            <div>
-                                                <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                                                    Bank Name
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    id="bank_name"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                                                    placeholder="Barclays"
-                                                    {...register("bankName", { required: true })}
-                                                />
-                                            </div>
-                                            <div>
-                                                <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                                                    Account Type
-                                                </label>
-                                                <select
-                                                    id="country"
-                                                    name="country"
-                                                    autoComplete="country-name"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                                                    {...register("accountType", { required: true })}
-                                                >
-                                                    <option>Select</option>
-                                                    <option>Personal</option>
-                                                    <option>Business</option>
-                                                </select>
-                                            </div>
-                                        </div> */}
-
                     <div className="pb-5 sm:mt-5">
                       <Dialog.Title
                         as="h3"
@@ -240,7 +234,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                             id="subject_name"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                             placeholder="Boiler Not Working"
-                            {...register("unitName", { required: true })}
+                            {...register("issueName", { required: true })}
                           />
                         </div>
                         <div>
@@ -257,22 +251,12 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                               rows={3}
                               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
                               placeholder="Boiler is not working for two days"
+                              {...register("issueDesc", { required: true })}
                               defaultValue={""}
                             />
                           </div>
                         </div>
-                        {/* <div>
-                                                    <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                                                        Tenancy Proof
-                                                    </label>
-                                                    <input
-                                                        type="file"
-                                                        id="tenancyProof"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full file:p-1.5 file:border-none"
-                                                        placeholder="document"
-                                                        {...register("tenancyProof", { required: true })}
-                                                    />
-                                                </div> */}
+
                         <div>
                           <label className="block mb-2 text-sm font-medium text-gray-900 ">
                             Issue Image
