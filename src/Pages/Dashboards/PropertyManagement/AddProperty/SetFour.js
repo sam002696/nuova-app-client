@@ -1,31 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const SetFour = () => {
+const SetFour = ({ formData, setFormData }) => {
   const [imgOne, setFirstImg] = useState();
+  const [pictureFirst, setPictureFirst] = useState();
   const [imgSecond, setSecondImg] = useState();
+  const [pictureSecond, setPictureSecond] = useState();
   const [imgThird, setThirdImg] = useState();
+  const [pictureThird, setPictureThird] = useState();
   const [imgFourth, setFourthImg] = useState();
-  // const [pictureOne, setPictureOne] = useState(null);
+  const [pictureFourth, setPictureFourth] = useState();
+
+  const [allPictures, setAllPictures] = useState({
+    pictureFirst: "",
+    pictureSecond: "",
+    pictureThird: "",
+    pictureFourth: "",
+  });
+
   const onFirstImageChange = (e) => {
     const [file1] = e.target.files;
     setFirstImg(URL.createObjectURL(file1));
-    // setPictureOne(file?.name);
+    setPictureFirst(file1);
   };
   const onSecondImageChange = (e) => {
     const [file2] = e.target.files;
     setSecondImg(URL.createObjectURL(file2));
+    setPictureSecond(file2);
   };
   const onThirdImageChange = (e) => {
     const [file3] = e.target.files;
     setThirdImg(URL.createObjectURL(file3));
+    setPictureThird(file3);
   };
   const onFourthImageChange = (e) => {
     const [file4] = e.target.files;
     setFourthImg(URL.createObjectURL(file4));
+    setPictureFourth(file4);
   };
+
+  useEffect(() => {
+    setAllPictures({
+      pictureFirst: pictureFirst,
+      pictureSecond: pictureSecond,
+      pictureThird: pictureThird,
+      pictureFourth: pictureFourth,
+    });
+  }, [pictureFirst, pictureSecond, pictureThird, pictureFourth]);
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      images: allPictures,
+    });
+  }, [allPictures]);
+
   const files = [
     {
       name: "IMG_4985o.HEIC",
@@ -52,6 +83,7 @@ const SetFour = () => {
       current: true,
     },
   ];
+  console.log(formData);
 
   return (
     <>

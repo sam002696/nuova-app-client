@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import AdminAddUsers from "./Pages/Dashboards/Admin/AdminAddUsers";
 import AdminDashboard from "./Pages/Dashboards/Admin/AdminDashboard";
 import ContractorPortalDashboard from "./Pages/Dashboards/ContractorPortal/ContractorPortalDashboard";
 import LandlordPortalDashboard from "./Pages/Dashboards/LandlordPortal/LandlordPortalDashboard";
@@ -19,8 +21,12 @@ import PropertyFactFind from "./Pages/Property Fact Find/PropertyFactFind/Proper
 import ArrangePropertyViewing from "./Pages/Prospects/ArrangePropertyViewing/ArrangePropertyViewing";
 import Prospects from "./Pages/Prospects/Prospects/Prospects";
 import SinglePropertyViewing from "./Pages/Prospects/SinglePropertyViewing/SinglePropertyViewing";
+import Login from "./Pages/Shared/Authentication/Login/Login";
+import Register from "./Pages/Shared/Authentication/Register/Register";
 
 function App() {
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   return (
     <>
       <Router>
@@ -50,6 +56,13 @@ function App() {
           <Route path="/propertyviewings">
             <Prospects />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+
           <Route path="/single-property-viewing/:id">
             <SinglePropertyViewing />
           </Route>
@@ -59,10 +72,34 @@ function App() {
           <Route path="/single-property/:id">
             <SingleProperty />
           </Route>
-          <Route path="/property-manager-dashboard">
+          {/* <Route path="/property-manager-dashboard">
             <PropertyManagerDashboard />
-          </Route>
-          <Route path="/tenant-portal-dashboard">
+          </Route> */}
+
+          {currentUser &&
+            ((currentUser.role === "Contractor" && (
+              <Route path="/contractor-portal-dashboard">
+                {" "}
+                <ContractorPortalDashboard />
+              </Route>
+            )) ||
+              (currentUser.role === "Tenant" && (
+                <Route path="/tenant-portal-dashboard">
+                  <TenantPortalDashboard />
+                </Route>
+              )) ||
+              (currentUser.role === "Landlord" && (
+                <Route path="/landlord-portal-dashboard">
+                  <LandlordPortalDashboard />
+                </Route>
+              )) ||
+              (currentUser.role === "Property Manager" && (
+                <Route path="/property-manager-dashboard">
+                  <PropertyManagerDashboard />
+                </Route>
+              )))}
+
+          {/* <Route path="/tenant-portal-dashboard">
             <TenantPortalDashboard />
           </Route>
           <Route path="/contractor-portal-dashboard">
@@ -70,7 +107,7 @@ function App() {
           </Route>
           <Route path="/landlord-portal-dashboard">
             <LandlordPortalDashboard />
-          </Route>
+          </Route> */}
           <Route path="/admindashboard">
             <AdminDashboard />
           </Route>

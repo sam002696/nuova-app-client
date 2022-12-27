@@ -1,7 +1,7 @@
 import { CheckIcon } from "@heroicons/react/solid";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import SetFive from "./SetFive";
 import SetFour from "./SetFour";
 import SetOne from "./SetOne";
@@ -14,7 +14,6 @@ function classNames(...classes) {
 }
 
 const AddProperty = () => {
-  const history = useHistory();
   const StatusData = ["current", "upcoming", "upcoming", "complete"];
   const [page, setPage] = useState(0);
   const [status, setStatus] = useState(page);
@@ -27,11 +26,13 @@ const AddProperty = () => {
   const [formData, setFormData] = useState({
     property: "",
     propertyType: "",
+    landlordInfo: {},
     propertyAddress: {},
     propertyDetails: {},
     units: [],
     keyFeatures: [],
-    briefDesc: "",
+    briefDesc: {},
+    images: [],
   });
 
   useEffect(() => {
@@ -84,12 +85,68 @@ const AddProperty = () => {
     }
   };
 
-  const handleSubmit = () => {
-    alert("FORM SUBMITTED");
-    setAlert(true);
-    console.log(formData);
+  const handleSubmit = async (data) => {
+    const data1 = new FormData();
+    const data2 = new FormData();
+    const data3 = new FormData();
+    const data4 = new FormData();
+    const pictureFirst = data.images.pictureFirst;
+    const pictureSecond = data.images.pictureSecond;
+    const pictureThird = data.images.pictureThird;
+    const pictureFourth = data.images.pictureFourth;
 
-    history.push("/property-manager-dashboard/properties");
+    data1.append("file", pictureFirst);
+    data2.append("file", pictureSecond);
+    data3.append("file", pictureThird);
+    data4.append("file", pictureFourth);
+    //upload presets
+    data1.append("upload_preset", "eez1w4gg");
+    data2.append("upload_preset", "eez1w4gg");
+    data3.append("upload_preset", "eez1w4gg");
+    data4.append("upload_preset", "eez1w4gg");
+
+    try {
+      const uploadRes1 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data1
+      );
+      const uploadRes2 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data2
+      );
+      const uploadRes3 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data3
+      );
+      const uploadRes4 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data4
+      );
+
+      const { url: url1 } = uploadRes1.data;
+      const { url: url2 } = uploadRes2.data;
+      const { url: url3 } = uploadRes3.data;
+      const { url: url4 } = uploadRes4.data;
+
+      data.images.pictureFirst = url1;
+      data.images.pictureSecond = url2;
+      data.images.pictureThird = url3;
+      data.images.pictureFourth = url4;
+
+      console.log(data);
+
+      const res = await axios.post(
+        `http://localhost:5500/api/properties`,
+        data
+      );
+      if (res.data) {
+        alert("FORM SUBMITTED");
+        setAlert(true);
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const steps = [
@@ -284,7 +341,7 @@ const AddProperty = () => {
           <button
             onClick={() => {
               if (page === steps.length - 1) {
-                handleSubmit();
+                handleSubmit(formData);
               } else {
                 setPage((currPage) => currPage + 1);
               }

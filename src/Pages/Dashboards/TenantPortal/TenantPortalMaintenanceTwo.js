@@ -148,7 +148,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const TenantPortalMaintenance = () => {
+const TenantPortalMaintenanceTwo = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -712,4 +712,4 @@ const TenantPortalMaintenance = () => {
   );
 };
 
-export default TenantPortalMaintenance;
+export default TenantPortalMaintenanceTwo;

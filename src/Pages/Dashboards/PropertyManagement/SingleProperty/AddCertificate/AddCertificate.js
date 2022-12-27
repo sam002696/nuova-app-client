@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CheckCircleIcon,
   ChevronRightIcon,
@@ -6,6 +6,8 @@ import {
 } from "@heroicons/react/solid";
 import AddCertificateModal from "./AddCertificateModal";
 import { useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const applications = [
   {
@@ -69,8 +71,29 @@ const applications = [
     href: "#",
   },
 ];
-const AddCertificate = () => {
+const AddCertificate = ({ singleProperty }) => {
+  const { id } = useParams();
+  console.log(id);
+  console.log(singleProperty);
+
   const [open, setOpen] = useState(false);
+
+  // const [allCertificates, setAllCertificates] = useState([]);
+
+  // useEffect(() => {
+  //   const handleAllCertificates = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `http://localhost:5500/api/properties/certificates/${id}`
+  //       );
+  //       console.log(res.data);
+  //       setAllCertificates(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   handleAllCertificates();
+  // }, []);
   return (
     <>
       <div className="sm:flex sm:items-center mx-10 mt-8">
@@ -95,9 +118,9 @@ const AddCertificate = () => {
       </div>
       <div className="bg-white shadow overflow-hidden sm:rounded-md w-5/6 mx-auto my-10">
         <ul className="divide-y divide-gray-200">
-          {applications.map((application) => (
-            <li key={application.applicant.email}>
-              <a href={application.href} className="block hover:bg-gray-50">
+          {singleProperty?.certificatesDocuments?.map((application) => (
+            <li>
+              <a href="" className="block hover:bg-gray-50">
                 <div className="flex items-center px-4 py-4 sm:px-6">
                   <div className="min-w-0 flex-1 flex items-center">
                     <div className="flex-shrink-0">
@@ -121,7 +144,7 @@ const AddCertificate = () => {
                     <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                       <div>
                         <p className="text-sm font-medium text-cyan-600 truncate">
-                          {application.applicant.name}
+                          {application.certificateName}
                         </p>
                         <p className="mt-2 flex items-center text-sm text-gray-500">
                           <MailIcon
@@ -129,7 +152,7 @@ const AddCertificate = () => {
                             aria-hidden="true"
                           />
                           <span className="truncate">
-                            {application.applicant.email}
+                            {application.certificateProviderEmail}
                           </span>
                         </p>
                       </div>
@@ -138,7 +161,7 @@ const AddCertificate = () => {
                           <p className="text-sm text-gray-900">
                             Added on{" "}
                             <time dateTime={application.date}>
-                              {application.dateFull}
+                              {application.createdAt}
                             </time>
                           </p>
                           <p className="mt-2 flex items-center text-sm text-gray-500">
@@ -146,7 +169,7 @@ const AddCertificate = () => {
                               className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
                               aria-hidden="true"
                             />
-                            {application.stage}
+                            {application.certificateProviderName}
                           </p>
                         </div>
                       </div>
@@ -164,7 +187,11 @@ const AddCertificate = () => {
           ))}
         </ul>
       </div>
-      <AddCertificateModal setOpen={setOpen} open={open} />
+      <AddCertificateModal
+        setOpen={setOpen}
+        open={open}
+        singleProperty={singleProperty}
+      />
     </>
   );
 };

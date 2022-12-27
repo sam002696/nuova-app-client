@@ -1,14 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment, useRef } from "react";
-import { useForm } from "react-hook-form";
+
 import { Dialog, Transition } from "@headlessui/react";
 import { FolderDownloadIcon } from "@heroicons/react/outline";
 
-const AddCertificateModal = ({ open, setOpen }) => {
+import axios from "axios";
+
+const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
+  const [uploadedCertificate, setUploadedCertificate] = useState();
+
+  const [formData, setFormData] = useState({
+    certificateName: "",
+    certificateProviderName: "",
+    certificateProviderEmail: "",
+    certificateProviderPhone: "",
+    uploadedCertificate: "",
+    certificateAddedBy: "",
+  });
   const cancelButtonRef = useRef(null);
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onUploadCertificateChange = (e) => {
+    const [file] = e.target.files;
+
+    setUploadedCertificate(file);
+  };
+
+  const handleCertificateUpload = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      uploadedCertificate: uploadedCertificate,
+    });
+  }, [uploadedCertificate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    const document = formData.uploadedCertificate;
+    data.append("file", document);
+    //upload presets
+    data.append("upload_preset", "eez1w4gg");
+
+    const uploadRes1 = await axios.post(
+      "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+      data
+    );
+    const { url: url1 } = uploadRes1.data;
+    formData.uploadedCertificate = url1;
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/certificatesDocuments/upload/${singleProperty?._id}`,
+        formData
+      );
+      if (res.data) {
+        setOpen(false);
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -59,7 +114,7 @@ const AddCertificateModal = ({ open, setOpen }) => {
                       </Dialog.Title>
                     </div>
                   </div>
-                  <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+                  <form className="mt-5">
                     <div className="grid gap-5 mb-6 lg:grid-cols-2">
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -67,22 +122,29 @@ const AddCertificateModal = ({ open, setOpen }) => {
                         </label>
                         <input
                           type="text"
-                          id="first_name"
+                          id="certificateName"
+                          name="certificateName"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Pete"
-                          {...register("firstName", { required: true })}
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
                         />
                       </div>
+
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Certificate Provider's Name
                         </label>
                         <input
                           type="text"
-                          id="last_name"
+                          id="certificateProviderName"
+                          name="certificateProviderName"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Davidson"
-                          {...register("lastName", { required: true })}
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
                         />
                       </div>
 
@@ -92,51 +154,66 @@ const AddCertificateModal = ({ open, setOpen }) => {
                         </label>
                         <input
                           type="email"
-                          id="email_address"
+                          id="certificateProviderEmail"
+                          name="certificateProviderEmail"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="example@gmail.com"
-                          {...register("email", { required: true })}
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
                         />
                       </div>
+
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Certificate Provider's Phone
                         </label>
                         <input
                           type="tel"
-                          id="phone_no"
+                          id="certificateProviderPhone"
+                          name="certificateProviderPhone"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="(+1) 9826-2344"
-                          {...register("phoneNumber", { required: true })}
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
                         />
                       </div>
+
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Upload Certificate
                         </label>
                         <input
                           type="file"
-                          id="certificatefile"
+                          id="uploadedCertificate"
+                          name="uploadedCertificate"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-cyan-500   file:text-white focus:outline-none focus:border-cyan-500 block w-full file:p-2 file:border-none  file:focus:border-cyan-500 "
                           placeholder="document"
+                          onChange={onUploadCertificateChange}
                         />
                       </div>
+
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Certificate Added By
                         </label>
                         <input
                           type="text"
-                          id="certificateadder"
+                          id="certificateAddedBy"
+                          name="certificateAddedBy"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Glasgow 2nd Street.."
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
                         />
                       </div>
                     </div>
 
                     <div className="w-1/3 mx-auto mt-10">
                       <button
-                        onClick={() => setOpen(false)}
+                        onClick={(e) => handleSubmit(e)}
                         type="submit"
                         className="text-white bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
                       >

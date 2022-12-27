@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 const SetOne = ({ formData, setFormData }) => {
   const [serviceList, setServiceList] = useState({
-    street1: "",
-    street2: "",
+    addressline1: "",
+    propertyName: "",
     city: "",
     state: "",
     country: "",
@@ -38,14 +38,14 @@ const SetOne = ({ formData, setFormData }) => {
                 for="Street 1"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Street 1
+                Street
               </label>
               <input
                 type="text"
                 id="Street 1"
-                name="street1"
+                name="addressline1"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                placeholder="Street 1"
+                placeholder=""
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);
@@ -54,17 +54,17 @@ const SetOne = ({ formData, setFormData }) => {
             </div>
             <div>
               <label
-                for="street2"
+                for="propertyName"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Street 2
+                Property Name
               </label>
               <input
                 type="text"
-                id="street2"
-                name="street2"
+                id="propertyName"
+                name="propertyName"
                 className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                placeholder="Street 2"
+                placeholder=""
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);

@@ -27,7 +27,7 @@ const Banner = () => {
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
           <div className="grid grid-cols-2 gap-x-4">
-            <div className="space-y-10 py-10 col-span-1 mt-28 relative z-40">
+            <div className="space-y-10 py-10 col-span-1 mt-28 relative z-30">
               <div className="text-[#162A43] font-bold text-5xl font-sans">
                 <h1 className="leading-snug tracking-normal">
                   Nuova Property Management & Letting
@@ -49,7 +49,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="col-span-1 relative z-50 lg:-right-24 ">
+            <div className="col-span-1 relative z-40 lg:-right-24 ">
               <div>
                 <img className="mt-16 " src={mockup} alt="" />
               </div>

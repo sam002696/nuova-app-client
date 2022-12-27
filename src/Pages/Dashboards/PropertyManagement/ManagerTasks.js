@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CheckCircleIcon,
   ChevronRightIcon,
   EyeIcon,
+  ArrowCircleRightIcon,
+  PlusCircleIcon,
 } from "@heroicons/react/solid";
+
 import { useState } from "react";
+import axios from "axios";
+import TasksToTenantsModal from "./ManagerTasksModal/TasksToTenantsModal";
 
 const applications = [
   {
@@ -48,12 +53,95 @@ const applications = [
 const ManagerTasks = () => {
   const [showTenantTask, setShowTenantTask] = useState(false);
   const [showLandlordTask, setShowLandlordTask] = useState(false);
+  const [tenantsTasks, setTenantsTasks] = useState([]);
+  const [landlordsTasks, setLandlordsTasks] = useState([]);
+  const [singletask, setSingleTask] = useState({});
+  const [openTaskModal, setOpenTaskModal] = useState(false);
+  const [formList, setFormList] = useState({
+    taskFor: "",
+    sendTask: "",
+    assignedUsername: "",
+    assignedUseremail: "",
+    taskTitle: "",
+    taskDesc: "",
+  });
 
   const handleTenantTaskForm = () => {
     setShowTenantTask(true);
   };
   const handleLandlordTaskForm = () => {
     setShowLandlordTask(true);
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormList({ ...formList, [name]: value });
+  };
+  const handleTaskSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`http://localhost:5500/api/tasks`, formList);
+      if (res.data) {
+        console.log("data has been sent");
+        console.log(formList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSendToEveryone = async (e) => {
+    e.preventDefault();
+
+    const { assignedUsername, assignedUseremail, ...others } = formList;
+
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/tasks/all`,
+        others
+      );
+      if (res.data) {
+        console.log("data has been sent to all");
+        console.log(others);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const handleFetchTenantTasks = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?taskFor=Tenants`
+        );
+        console.log(res.data);
+        setTenantsTasks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchTenantTasks();
+  }, []);
+
+  useEffect(() => {
+    const handleFetchLandlordTasks = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?taskFor=Landlords`
+        );
+        console.log(res.data);
+        setLandlordsTasks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchLandlordTasks();
+  }, []);
+
+  const handleTaskModal = (task) => {
+    setSingleTask(task);
+    setOpenTaskModal(true);
   };
 
   return (
@@ -176,6 +264,27 @@ const ManagerTasks = () => {
                     <form className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6">
                       <div className="sm:col-span-2">
                         <label
+                          htmlFor="taskFor"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Task Send for
+                        </label>
+                        <select
+                          id="taskFor"
+                          name="taskFor"
+                          className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                          onChange={(e) => {
+                            handleFormChange(e);
+                          }}
+                          required
+                        >
+                          <option hidden>Select</option>
+                          <option>Tenants</option>
+                        </select>
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <label
                           htmlFor="sendTask"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
@@ -185,49 +294,61 @@ const ManagerTasks = () => {
                           id="sendTask"
                           name="sendTask"
                           className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                          onChange={(e) => {
+                            handleFormChange(e);
+                          }}
+                          required
                         >
-                          <option>Select</option>
+                          <option hidden>Select</option>
                           <option>Everyone</option>
                           <option>Send to individual</option>
                         </select>
                       </div>
 
-                      <>
-                        <div className="sm:col-span-2">
-                          <label
-                            htmlFor="assignedUsername"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Full Name
-                          </label>
-                          <div className="mt-1">
-                            <input
-                              type="text"
-                              name="assignedUsername"
-                              id="assignedUsername"
-                              autoComplete="given-name"
-                              className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
-                            />
+                      {formList.sendTask === "Send to individual" && (
+                        <>
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="assignedUsername"
+                              className="block text-sm font-medium text-gray-700"
+                            >
+                              Full Name
+                            </label>
+                            <div className="mt-1">
+                              <input
+                                type="text"
+                                name="assignedUsername"
+                                id="assignedUsername"
+                                autoComplete="given-name"
+                                className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                                onChange={(e) => {
+                                  handleFormChange(e);
+                                }}
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div className="sm:col-span-2">
-                          <label
-                            htmlFor="assignedUseremail"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Email
-                          </label>
-                          <div className="mt-1">
-                            <input
-                              id="assignedUseremail"
-                              name="assignedUseremail"
-                              type="email"
-                              autoComplete="email"
-                              className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
-                            />
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="assignedUseremail"
+                              className="block text-sm font-medium text-gray-700"
+                            >
+                              Email
+                            </label>
+                            <div className="mt-1">
+                              <input
+                                id="assignedUseremail"
+                                name="assignedUseremail"
+                                type="email"
+                                autoComplete="email"
+                                className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                                onChange={(e) => {
+                                  handleFormChange(e);
+                                }}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </>
+                        </>
+                      )}
 
                       <div className="sm:col-span-2">
                         <label
@@ -243,6 +364,9 @@ const ManagerTasks = () => {
                             id="taskTitle"
                             autoComplete="organization"
                             className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                            onChange={(e) => {
+                              handleFormChange(e);
+                            }}
                           />
                         </div>
                       </div>
@@ -259,22 +383,29 @@ const ManagerTasks = () => {
                             name="taskDesc"
                             rows={4}
                             className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                            onChange={(e) => {
+                              handleFormChange(e);
+                            }}
                           />
                         </div>
                       </div>
 
                       <div className="sm:col-span-2">
-                        <input
-                          type="submit"
-                          value="Submit"
-                          className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-                        ></input>
-
-                        {/* <input
-                          type="submit"
-                          value="Submit"
-                          className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        ></input> */}
+                        {formList.sendTask === "Send to individual" ? (
+                          <input
+                            type="submit"
+                            value="Submit"
+                            onClick={(e) => handleTaskSubmit(e)}
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          ></input>
+                        ) : (
+                          <input
+                            type="submit"
+                            value="Submit"
+                            onClick={(e) => handleSendToEveryone(e)}
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          ></input>
+                        )}
                       </div>
                     </form>
                   </div>
@@ -402,6 +533,26 @@ const ManagerTasks = () => {
                     <form className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6">
                       <div className="sm:col-span-2">
                         <label
+                          htmlFor="taskFor"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Task Send for
+                        </label>
+                        <select
+                          id="taskFor"
+                          name="taskFor"
+                          className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                          onChange={(e) => {
+                            handleFormChange(e);
+                          }}
+                          required
+                        >
+                          <option hidden>Select</option>
+                          <option>Landlords</option>
+                        </select>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label
                           htmlFor="sendTask"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
@@ -411,49 +562,60 @@ const ManagerTasks = () => {
                           id="sendTask"
                           name="sendTask"
                           className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                          onChange={(e) => {
+                            handleFormChange(e);
+                          }}
                         >
-                          <option>Select</option>
+                          <option hidden>Select</option>
                           <option>Everyone</option>
                           <option>Send to individual</option>
                         </select>
                       </div>
 
-                      <>
-                        <div className="sm:col-span-2">
-                          <label
-                            htmlFor="assignedUsername"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Full Name
-                          </label>
-                          <div className="mt-1">
-                            <input
-                              type="text"
-                              name="assignedUsername"
-                              id="assignedUsername"
-                              autoComplete="given-name"
-                              className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
-                            />
+                      {formList.sendTask === "Send to individual" && (
+                        <>
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="assignedUsername"
+                              className="block text-sm font-medium text-gray-700"
+                            >
+                              Full Name
+                            </label>
+                            <div className="mt-1">
+                              <input
+                                type="text"
+                                name="assignedUsername"
+                                id="assignedUsername"
+                                autoComplete="given-name"
+                                className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                                onChange={(e) => {
+                                  handleFormChange(e);
+                                }}
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div className="sm:col-span-2">
-                          <label
-                            htmlFor="assignedUseremail"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Email
-                          </label>
-                          <div className="mt-1">
-                            <input
-                              id="assignedUseremail"
-                              name="assignedUseremail"
-                              type="email"
-                              autoComplete="email"
-                              className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
-                            />
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="assignedUseremail"
+                              className="block text-sm font-medium text-gray-700"
+                            >
+                              Email
+                            </label>
+                            <div className="mt-1">
+                              <input
+                                id="assignedUseremail"
+                                name="assignedUseremail"
+                                type="email"
+                                autoComplete="email"
+                                className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                                onChange={(e) => {
+                                  handleFormChange(e);
+                                }}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </>
+                        </>
+                      )}
 
                       <div className="sm:col-span-2">
                         <label
@@ -469,6 +631,9 @@ const ManagerTasks = () => {
                             id="taskTitle"
                             autoComplete="organization"
                             className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                            onChange={(e) => {
+                              handleFormChange(e);
+                            }}
                           />
                         </div>
                       </div>
@@ -485,22 +650,29 @@ const ManagerTasks = () => {
                             name="taskDesc"
                             rows={4}
                             className="block w-full rounded-md border-gray-300 py-1.5 px-4 shadow-sm focus:border-cyan-500 focus:ring-cyan-500"
+                            onChange={(e) => {
+                              handleFormChange(e);
+                            }}
                           />
                         </div>
                       </div>
 
                       <div className="sm:col-span-2">
-                        <input
-                          type="submit"
-                          value="Submit"
-                          className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-                        ></input>
-
-                        {/* <input
-                          type="submit"
-                          value="Submit"
-                          className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        ></input> */}
+                        {formList.sendTask === "Send to individual" ? (
+                          <input
+                            type="submit"
+                            value="Submit"
+                            onClick={(e) => handleTaskSubmit(e)}
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          ></input>
+                        ) : (
+                          <input
+                            type="submit"
+                            value="Submit"
+                            onClick={(e) => handleSendToEveryone(e)}
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          ></input>
+                        )}
                       </div>
                     </form>
                   </div>
@@ -512,136 +684,177 @@ const ManagerTasks = () => {
 
         <div className="grid grid-cols-6 gap-8 py-10">
           <div className=" col-span-3">
-            <p className=" font-medium text-lg text-center text-gray-500 mb-5 underline underline-offset-4">
-              List of the assigned tenant tasks
-            </p>
-            <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
-              <ul className="divide-y divide-gray-200">
-                {applications.map((application) => (
-                  <li key={application.applicant.email}>
-                    <a
-                      href={application.href}
-                      className="block hover:bg-gray-50"
-                    >
-                      <div className="flex items-center px-4 py-4 sm:px-6">
-                        <div className="min-w-0 flex-1 flex items-center">
-                          <div className="flex-shrink-0">
-                            <img
-                              className="h-12 w-12 rounded-full"
-                              src={application.applicant.imageUrl}
-                              alt=""
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                            <div>
-                              <p className="text-sm font-medium text-cyan-600 truncate">
-                                {application.applicant.name}
-                              </p>
-                              <p className="mt-2 flex items-center text-sm text-gray-500">
-                                <EyeIcon
-                                  className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                                  aria-hidden="true"
-                                />
-                                <span className="truncate">
-                                  {application.applicant.email}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="hidden md:block">
+            <div className=" py-5 max-w-3xl mx-auto">
+              <p className=" font-medium text-lg text-center text-gray-500 mb-5 underline underline-offset-4">
+                List of the assigned tenant tasks
+              </p>
+              <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
+                <ul className="divide-y divide-gray-200">
+                  {tenantsTasks.map((task) => (
+                    <li key={task._id}>
+                      <div className="block hover:bg-gray-50">
+                        <div className="flex items-center px-4 py-4 sm:px-6">
+                          <div className="min-w-0 flex-1 flex items-center">
+                            <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                               <div>
-                                <p className="text-sm text-gray-900">
-                                  Applied on{" "}
-                                  <time dateTime={application.date}>
-                                    {application.dateFull}
-                                  </time>
+                                <p className="text-sm font-medium text-cyan-600 truncate">
+                                  {task.taskTitle}
                                 </p>
+
                                 <p className="mt-2 flex items-center text-sm text-gray-500">
-                                  <CheckCircleIcon
-                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                  <PlusCircleIcon
+                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                     aria-hidden="true"
                                   />
-                                  {application.stage}
+                                  <span className="truncate">
+                                    {task.assignedUseremail
+                                      ? "Individual"
+                                      : "Everyone"}
+                                  </span>
                                 </p>
+                              </div>
+                              <div className="hidden md:block">
+                                <div>
+                                  <p className="text-sm text-gray-900">
+                                    Assigned on{" "}
+                                    <time>
+                                      {new Date(task.createdAt).getFullYear()}-
+                                      {new Date(task.createdAt).getMonth()}-
+                                      {new Date(task.createdAt).getDate()}
+                                    </time>
+                                  </p>
+                                  <p className="mt-2 flex items-center text-sm text-gray-500">
+                                    {(task.sendTask === "Send to individual" &&
+                                      task.uploadSingleTask?.taskComplete ===
+                                        true) ||
+                                    (task.sendTask === "Everyone" &&
+                                      task.uploadAllTasks?.every(
+                                        (task) => task.taskComplete === true
+                                      ) &&
+                                      task.uploadAllTasks?.length !== 0) ? (
+                                      <CheckCircleIcon
+                                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                        aria-hidden="true"
+                                      />
+                                    ) : (
+                                      <ArrowCircleRightIcon
+                                        className="flex-shrink-0 mr-1.5 h-5 w-5 text-blue-400"
+                                        aria-hidden="true"
+                                      />
+                                    )}
+
+                                    {(task.sendTask === "Send to individual" &&
+                                      task.uploadSingleTask?.taskComplete ===
+                                        true) ||
+                                    (task.sendTask === "Everyone" &&
+                                      task.uploadAllTasks?.every(
+                                        (task) => task.taskComplete === true
+                                      ) &&
+                                      task.uploadAllTasks?.length !== 0)
+                                      ? "completed"
+                                      : "Not yet completed"}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div>
-                          <ChevronRightIcon
-                            className="h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
+                          <button onClick={() => handleTaskModal(task)}>
+                            <ChevronRightIcon
+                              className="h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                          </button>
                         </div>
                       </div>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
+
           <div className=" col-span-3">
             <p className=" font-medium text-lg text-center text-gray-500 mb-5 underline underline-offset-4">
               List of the assigned landlord tasks
             </p>
             <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
               <ul className="divide-y divide-gray-200">
-                {applications.map((application) => (
-                  <li key={application.applicant.email}>
-                    <a
-                      href={application.href}
-                      className="block hover:bg-gray-50"
-                    >
+                {landlordsTasks.map((task) => (
+                  <li key={task._id}>
+                    <div className="block hover:bg-gray-50">
                       <div className="flex items-center px-4 py-4 sm:px-6">
                         <div className="min-w-0 flex-1 flex items-center">
-                          <div className="flex-shrink-0">
-                            <img
-                              className="h-12 w-12 rounded-full"
-                              src={application.applicant.imageUrl}
-                              alt=""
-                            />
-                          </div>
                           <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                             <div>
                               <p className="text-sm font-medium text-cyan-600 truncate">
-                                {application.applicant.name}
+                                {task.taskTitle}
                               </p>
+
                               <p className="mt-2 flex items-center text-sm text-gray-500">
-                                <EyeIcon
+                                <PlusCircleIcon
                                   className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                                 <span className="truncate">
-                                  {application.applicant.email}
+                                  {task.assignedUseremail
+                                    ? "Individual"
+                                    : "Everyone"}
                                 </span>
                               </p>
                             </div>
                             <div className="hidden md:block">
                               <div>
                                 <p className="text-sm text-gray-900">
-                                  Applied on{" "}
-                                  <time dateTime={application.date}>
-                                    {application.dateFull}
+                                  Assigned on{" "}
+                                  <time>
+                                    {new Date(task.createdAt).getFullYear()}-
+                                    {new Date(task.createdAt).getMonth()}-
+                                    {new Date(task.createdAt).getDate()}
                                   </time>
                                 </p>
                                 <p className="mt-2 flex items-center text-sm text-gray-500">
-                                  <CheckCircleIcon
-                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                                    aria-hidden="true"
-                                  />
-                                  {application.stage}
+                                  {(task.sendTask === "Send to individual" &&
+                                    task.uploadSingleTask?.taskComplete ===
+                                      true) ||
+                                  (task.sendTask === "Everyone" &&
+                                    task.uploadAllTasks?.every(
+                                      (task) => task.taskComplete === true
+                                    ) &&
+                                    task.uploadAllTasks?.length !== 0) ? (
+                                    <CheckCircleIcon
+                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <ArrowCircleRightIcon
+                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-blue-400"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+
+                                  {(task.sendTask === "Send to individual" &&
+                                    task.uploadSingleTask?.taskComplete ===
+                                      true) ||
+                                  (task.sendTask === "Everyone" &&
+                                    task.uploadAllTasks?.every(
+                                      (task) => task.taskComplete === true
+                                    ) &&
+                                    task.uploadAllTasks?.length !== 0)
+                                    ? "completed"
+                                    : "Not yet completed"}
                                 </p>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div>
+                        <button onClick={() => handleTaskModal(task)}>
                           <ChevronRightIcon
                             className="h-5 w-5 text-gray-400"
                             aria-hidden="true"
                           />
-                        </div>
+                        </button>
                       </div>
-                    </a>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -649,6 +862,11 @@ const ManagerTasks = () => {
           </div>
         </div>
       </div>
+      <TasksToTenantsModal
+        open={openTaskModal}
+        setOpen={setOpenTaskModal}
+        singletask={singletask}
+      />
     </>
   );
 };

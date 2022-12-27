@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   CheckCircleIcon,
   ChevronRightIcon,
-  ChatAlt2Icon,
+  PlusCircleIcon,
+  ArrowCircleUpIcon,
 } from "@heroicons/react/solid";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import TenantPortalTasksModal from "./TenantPortalTasksModal";
 
-import imgSVG_1 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png";
+// import imgSVG_1 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png";
 // import imgSVG_2 from "../../../Images/TenantPortalImages/SVGimages/payment-method-pay-svgrepo-com.png"
-import imgSVG_3 from "../../../Images/TenantPortalImages/SVGimages/payment-method-svgrepo-com.svg";
+// import imgSVG_3 from "../../../Images/TenantPortalImages/SVGimages/payment-method-svgrepo-com.svg";
 
 const applications = [
   {
@@ -123,6 +127,31 @@ const incentives = [
 ];
 
 const TenantPortalTasks = () => {
+  const [tasks, setTasks] = useState([]);
+  const [singletask, setSingleTask] = useState({});
+  const [openTaskModal, setOpenTaskModal] = useState(false);
+  const sendTask = "Everyone";
+  const { currentUser } = useSelector((state) => state.user);
+  useEffect(() => {
+    const handleTasksDetails = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?&taskFor=Tenants&useremail=${currentUser?.email}&sendTask=${sendTask}`
+        );
+        setTasks(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleTasksDetails();
+  }, [currentUser.email]);
+
+  const handleTaskModal = (task) => {
+    setSingleTask(task);
+    setOpenTaskModal(true);
+  };
+
   return (
     <>
       <div className="">
@@ -213,33 +242,26 @@ const TenantPortalTasks = () => {
             </p>
             <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
               <ul className="divide-y divide-gray-200">
-                {applications.map((application) => (
-                  <li key={application.applicant.email}>
-                    <a
-                      href={application.href}
-                      className="block hover:bg-gray-50"
-                    >
+                {tasks.map((task) => (
+                  <li key={task._id}>
+                    <div className="block hover:bg-gray-50">
                       <div className="flex items-center px-4 py-4 sm:px-6">
                         <div className="min-w-0 flex-1 flex items-center">
-                          {/* <div className="flex-shrink-0">
-                                                        <img
-                                                            className="h-12 w-12 rounded-full"
-                                                            src={application.applicant.imageUrl}
-                                                            alt=""
-                                                        />
-                                                    </div> */}
                           <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                             <div>
                               <p className="text-sm font-medium text-cyan-600 truncate">
-                                {application.applicant.name}
+                                {task.taskTitle}
                               </p>
+
                               <p className="mt-2 flex items-center text-sm text-gray-500">
-                                <ChatAlt2Icon
+                                <PlusCircleIcon
                                   className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                                 <span className="truncate">
-                                  {application.applicant.email}
+                                  {task.assignedUseremail
+                                    ? "Individual"
+                                    : "Everyone"}
                                 </span>
                               </p>
                             </div>
@@ -247,29 +269,75 @@ const TenantPortalTasks = () => {
                               <div>
                                 <p className="text-sm text-gray-900">
                                   Assigned on{" "}
-                                  <time dateTime={application.date}>
-                                    {application.dateFull}
+                                  <time>
+                                    {new Date(task.createdAt).getFullYear()}-
+                                    {new Date(task.createdAt).getMonth()}-
+                                    {new Date(task.createdAt).getDate()}
                                   </time>
                                 </p>
+
+                                {/* Circle icon / arrow path rounded square icon */}
+
                                 <p className="mt-2 flex items-center text-sm text-gray-500">
-                                  <CheckCircleIcon
-                                    className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                                    aria-hidden="true"
-                                  />
-                                  {application.stage}
+                                  {(task.sendTask === "Send to individual" &&
+                                    task.uploadSingleTask?.taskComplete ===
+                                      true) ||
+                                  (task.sendTask === "Everyone" &&
+                                    task.uploadAllTasks?.find(
+                                      (task) =>
+                                        task.taskComplete === true &&
+                                        task.useremail === currentUser.email
+                                    )) ? (
+                                    <CheckCircleIcon
+                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <ArrowCircleUpIcon
+                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-blue-400"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+
+                                  {/* Completed / incomplete */}
+
+                                  {(task.sendTask === "Send to individual" &&
+                                    task.uploadSingleTask?.taskComplete ===
+                                      true) ||
+                                  (task.sendTask === "Everyone" &&
+                                    task.uploadAllTasks?.find(
+                                      (task) =>
+                                        task.taskComplete === true &&
+                                        task.useremail === currentUser.email
+                                    ))
+                                    ? "completed"
+                                    : "Not yet completed"}
                                 </p>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div>
+                        <button
+                          disabled={
+                            (task.sendTask === "Send to individual" &&
+                              task.uploadSingleTask?.taskComplete === true) ||
+                            (task.sendTask === "Everyone" &&
+                              task.uploadAllTasks?.find(
+                                (task) =>
+                                  task.taskComplete === true &&
+                                  task.useremail === currentUser.email
+                              ))
+                          }
+                          onClick={() => handleTaskModal(task)}
+                          className="disabled:cursor-not-allowed"
+                        >
                           <ChevronRightIcon
-                            className="h-5 w-5 text-gray-400"
+                            className="h-5 w-5 text-gray-400 "
                             aria-hidden="true"
                           />
-                        </div>
+                        </button>
                       </div>
-                    </a>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -277,6 +345,11 @@ const TenantPortalTasks = () => {
           </div>
         </div>
       </div>
+      <TenantPortalTasksModal
+        open={openTaskModal}
+        setOpen={setOpenTaskModal}
+        singletask={singletask}
+      />
     </>
   );
 };
