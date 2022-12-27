@@ -73,8 +73,9 @@ const AdminAddUsers = () => {
           Add tenants, landlords , contractors
         </h3>
         <p className="mt-1 text-sm text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit quam corrupti
-          consectetur.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sunt
+          neque velit voluptas blanditiis iure consectetur, aut possimus
+          voluptatem repellat.
         </p>
       </div>
 
