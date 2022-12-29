@@ -211,12 +211,12 @@ const HeaderNavbarTwo = () => {
               >
                 Sign in
               </Link>
-              <Link
+              {/* <Link
                 to="/register"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-cyan-100 py-2 px-4 text-base font-medium text-cyan-600 hover:bg-cyan-200"
               >
                 Sign up
-              </Link>
+              </Link> */}
             </>
           )}
         </div>
@@ -323,12 +323,12 @@ const HeaderNavbarTwo = () => {
                 ))}
               </div>
               <div className="mt-6">
-                <Link
+                {/* <Link
                   to="/register"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#bd8472] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-yellow-700"
                 >
                   Sign up
-                </Link>
+                </Link> */}
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
                   <Link

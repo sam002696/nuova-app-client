@@ -3,6 +3,7 @@ import {
   CheckCircleIcon,
   ChevronRightIcon,
   MailIcon,
+  UserIcon,
 } from "@heroicons/react/solid";
 import AddCertificateModal from "./AddCertificateModal";
 import { useState } from "react";
@@ -147,6 +148,15 @@ const AddCertificate = ({ singleProperty }) => {
                           {application.certificateName}
                         </p>
                         <p className="mt-2 flex items-center text-sm text-gray-500">
+                          <UserIcon
+                            className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span className="truncate">
+                            {application.certificateProviderName}
+                          </span>
+                        </p>
+                        <p className="mt-2 flex items-center text-sm text-gray-500">
                           <MailIcon
                             className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                             aria-hidden="true"
@@ -161,7 +171,15 @@ const AddCertificate = ({ singleProperty }) => {
                           <p className="text-sm text-gray-900">
                             Added on{" "}
                             <time dateTime={application.date}>
-                              {application.createdAt}
+                              {application.createdAt && (
+                                <time>
+                                  {new Date(
+                                    application.createdAt
+                                  ).getFullYear()}
+                                  -{new Date(application.createdAt).getMonth()}-
+                                  {new Date(application.createdAt).getDate()}
+                                </time>
+                              )}
                             </time>
                           </p>
                           <p className="mt-2 flex items-center text-sm text-gray-500">
@@ -169,17 +187,22 @@ const AddCertificate = ({ singleProperty }) => {
                               className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
                               aria-hidden="true"
                             />
-                            {application.certificateProviderName}
+                            Added By {application.certificateProviderName}
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <ChevronRightIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
+                    <a
+                      href={application.uploadedCertificate}
+                      target="_blank"
+                      rel="noreferrer"
+                      alt=""
+                      className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:w-auto"
+                    >
+                      Download
+                    </a>
                   </div>
                 </div>
               </a>

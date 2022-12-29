@@ -16,6 +16,7 @@ import ManagerInbox from "./ManagerInbox/ManagerInbox";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import ChatLogin from "../../Chat/ChatLogin/ChatLogin";
 import ChatRegister from "../../Chat/ChatRegister/ChatRegister";
+import ManagerMaintenanceTwo from "./ManagerMaintenanceTwo";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
