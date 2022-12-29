@@ -1,4 +1,6 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import {
   ArrowNarrowLeftIcon,
@@ -7,86 +9,42 @@ import {
 
 import { LightningBoltIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
-
-const reports = [
-  {
-    name: "Boiler Fixation",
-    imageUrl:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Sink Replacement",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "New Window Installation",
-    imageUrl:
-      "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Blocked Pipe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Bathroom Repair",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-];
-
-const features = [
-  { name: "Issue ", description: "Electric Boiler Noisy" },
-  {
-    name: "Responsibilities",
-    description:
-      "Develop/modify a boiler hardware for testing interactions between physical products and software",
-  },
-  { name: "Location", description: "Flat No-13B, Holger Street, London" },
-  {
-    name: "Required Experience",
-    description: "Hand sanded and finished with natural oil",
-  },
-  { name: "Timeline", description: "Prefer Weekends" },
-  {
-    name: "About Nuova",
-    description:
-      "Tech enabled, which enables our operating to be much more efficient and handle tasks almost instantly. Certified contractors, all of the contractors we use will have to be vetted prior to being able to work with us.",
-  },
-];
+import ContractorPortalBiddingJobs from "./ContractorPortalBiddingJobs";
 
 const ContractorPortalFindJobs = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  const [bidforjob, setBidforjob] = useState(false);
+  const [singleJob, setSingleJob] = useState({});
+  const [findAllJobs, setFindAllJobs] = useState([]);
+  const [detailsButton, setDetailsButton] = useState(false);
+  const [seeSingleJobDetails, setSeeSingleJobDetails] = useState({});
+  const [actionButton, setActionButton] = useState({});
+
+  useEffect(() => {
+    const handleReportsDetails = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/contractorJobs`);
+        setFindAllJobs(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleReportsDetails();
+  }, []);
+  console.log(findAllJobs);
+
+  const seeJobDetails = (singleJob) => {
+    setDetailsButton(true);
+    setSeeSingleJobDetails(singleJob);
+    setActionButton({});
+  };
+
+  const handleBidForJob = (seeSingleJobDetails) => {
+    setBidforjob(true);
+    setSingleJob(seeSingleJobDetails);
+  };
+
+  console.log(currentUser.email);
   return (
     <>
       <div className="bg-white">
@@ -137,15 +95,15 @@ const ContractorPortalFindJobs = () => {
                   <span className="mx-3">Most Relevent Jobs </span>{" "}
                 </h2>
               </div>
-              {reports.map((report) => (
+              {findAllJobs.map((singleJob) => (
                 <li
-                  key={report.email}
+                  key={singleJob.email}
                   className="col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200"
                 >
                   <div className="w-full flex justify-between px-6 py-6 space-x-6">
                     <img
                       className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                      src={report.imageUrl}
+                      src={singleJob.issueImage}
                       alt=""
                     />
                     <div className="flex-1 truncate">
@@ -153,21 +111,31 @@ const ContractorPortalFindJobs = () => {
                         <h3 className="text-cyan-700 text-sm font-semibold truncate">
                           Nuova System Jobs
                         </h3>
-                        <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
+                        <span className="flex-shrink-0 inline-block px-2 py-0.5 text-white text-xs font-medium bg-indigo-400 rounded-full">
                           Maintenance Issue
                         </span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <h3 className="text-gray-900 text-xl font-semibold truncate">
-                          {report.name}
+                          {singleJob.issueName}
                         </h3>
                       </div>
                       <p className="mt-1 text-gray-500 text-sm truncate">
-                        {report.title}
+                        {singleJob.tenantAddress}
                       </p>
                       <p className="mt-1 text-gray-500 text-sm truncate">
-                        $10.50 - $14.00 Per Hour(Employer est.)
+                        {singleJob.perHourIncome}
                       </p>
+                      <div className="mt-3">
+                        {singleJob.postBidding === true &&
+                          singleJob.contractorBiddingEmail.find(
+                            (element) => element === currentUser.email
+                          ) && (
+                            <span className=" inline-block px-3 py-1 text-white text-xs font-medium bg-green-400 rounded-full">
+                              Job Applied
+                            </span>
+                          )}
+                      </div>
                     </div>
                     {/* <div className="flex-1 truncate">
                                             <div className="flex items-center space-x-3">
@@ -187,7 +155,10 @@ const ContractorPortalFindJobs = () => {
 
                                         </div> */}
                     <div className="flex flex-col justify-between">
-                      <button className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg">
+                      <button
+                        onClick={() => seeJobDetails(singleJob)}
+                        className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
+                      >
                         Details
                       </button>
                       <div className="flex items-center space-x-2">
@@ -195,7 +166,13 @@ const ContractorPortalFindJobs = () => {
                           Easy Apply
                         </p>
                         <p className="mt-1 text-gray-500 text-sm truncate">
-                          1d
+                          {singleJob.createdAt && (
+                            <time>
+                              {new Date(singleJob.createdAt).getFullYear()}-
+                              {new Date(singleJob.createdAt).getMonth()}-
+                              {new Date(singleJob.createdAt).getDate()} :{" "}
+                            </time>
+                          )}
                         </p>
                       </div>
                     </div>
@@ -275,7 +252,13 @@ const ContractorPortalFindJobs = () => {
             </nav>
           </div>
 
-          <div className="p-8 pt-12 border-2 border-gray-200 rounded-md bg-white shadow-md shadow-gray-200">
+          <div
+            className={`${
+              detailsButton
+                ? "p-8 pt-12 border-2 border-gray-200 rounded-md bg-white shadow-md shadow-gray-200"
+                : "hidden"
+            } `}
+          >
             <div className="flex justify-between">
               <div className="flex-1 truncate">
                 <div className="flex items-center space-x-3">
@@ -288,19 +271,33 @@ const ContractorPortalFindJobs = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <h3 className="text-gray-900 text-2xl font-semibold truncate">
-                    Boiler Fixation
+                    {seeSingleJobDetails?.issueName}
                   </h3>
                 </div>
                 <p className="mt-1 text-gray-500 text-sm truncate">
-                  Flat No-13B, Holger Street, London
+                  {seeSingleJobDetails?.tenantAddress}
                 </p>
                 <p className="mt-1 text-gray-500 text-sm truncate">
-                  $10.50 - $14.00 Per Hour(Employer est.)
+                  {seeSingleJobDetails?.perHourIncome}
                 </p>
+                <span className="mt-8 text-blue-700 font-semibold">
+                  {seeSingleJobDetails.postBidding === true &&
+                    seeSingleJobDetails.contractorBiddingEmail.find(
+                      (element) => element === currentUser.email
+                    ) &&
+                    "Applied for the job"}
+                </span>
               </div>
               <div>
                 <button
                   type="button"
+                  disabled={
+                    seeSingleJobDetails.postBidding === true &&
+                    seeSingleJobDetails.contractorBiddingEmail.find(
+                      (element) => element === currentUser.email
+                    )
+                  }
+                  onClick={() => handleBidForJob(seeSingleJobDetails)}
                   className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 >
                   <LightningBoltIcon
@@ -322,21 +319,57 @@ const ContractorPortalFindJobs = () => {
             </p>
 
             <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-              {features.map((feature) => (
-                <div
-                  key={feature.name}
-                  className="border-t border-gray-200 pt-4"
-                >
-                  <dt className="font-medium text-gray-900">{feature.name}</dt>
-                  <dd className="mt-2 text-sm text-gray-500">
-                    {feature.description}
-                  </dd>
-                </div>
-              ))}
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Issue</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  {seeSingleJobDetails?.issueName}
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Work Hour Rate</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  {seeSingleJobDetails?.perHourIncome}
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Location</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  {seeSingleJobDetails?.tenantAddress}
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Timeline</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  {seeSingleJobDetails?.timeline}
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">
+                  Required Experience
+                </dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  {seeSingleJobDetails?.requiredExperience}
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">About Nuova</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  Tech enabled, which enables our operating to be much more
+                  efficient and handle tasks almost instantly. Certified
+                  contractors, all of the contractors we use will have to be
+                  vetted prior to being able to work with us.
+                </dd>
+              </div>
             </dl>
           </div>
         </div>
       </div>
+
+      <ContractorPortalBiddingJobs
+        open={bidforjob}
+        setOpen={setBidforjob}
+        singleJob={singleJob}
+      />
     </>
   );
 };

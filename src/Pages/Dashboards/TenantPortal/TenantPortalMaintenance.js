@@ -1,130 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  TicketIcon,
-  LockOpenIcon,
-  FlagIcon,
-  HeartIcon,
-  DesktopComputerIcon,
+  ArrowRightIcon,
+  CheckCircleIcon,
+  UserCircleIcon,
+  ClipboardListIcon,
 } from "@heroicons/react/solid";
 import TenantMaintenanceModal from "./TenantMaintenanceModal";
-
-const reports = [
-  {
-    name: "Boiler Not Working",
-    imageUrl:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Sink Replacement",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "New Window Installation",
-    imageUrl:
-      "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Blocked Pipe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Bathroom Repair",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-];
-
-const timeline = [
-  {
-    id: 1,
-    content: "Maintenance Request send to",
-    target: "Property Manager",
-    href: "#",
-    date: "Sep 20",
-    datetime: "2020-09-20",
-    icon: TicketIcon,
-    iconBackground: "bg-cyan-300",
-  },
-  {
-    id: 2,
-    content: "Request Accepted and proceed by",
-    target: "Property Manager ",
-    href: "#",
-    date: "Sep 20",
-    datetime: "2020-09-20",
-    icon: LockOpenIcon,
-    iconBackground: "bg-sky-400",
-  },
-  {
-    id: 3,
-    content: "Completed Maintenance Work by",
-    target: "Contractor",
-    href: "#",
-    date: "Sep 22",
-    datetime: "2020-09-22",
-    icon: FlagIcon,
-    iconBackground: "bg-green-500",
-  },
-  {
-    id: 4,
-    content: "Advanced to check completion by",
-    target: "Property Manager",
-    href: "#",
-    date: "Sep 24",
-    datetime: "2020-09-24",
-    icon: DesktopComputerIcon,
-    iconBackground: "bg-blue-500",
-  },
-  {
-    id: 5,
-    content: "Completed maintenance comfirmed by",
-    target: "Tenant",
-    href: "#",
-    date: "Sep 26",
-    datetime: "2020-09-26",
-    icon: HeartIcon,
-    iconBackground: "bg-cyan-500",
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const TenantPortalMaintenance = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  const [tenantReports, setTenantReports] = useState([]);
   const [open, setOpen] = useState(false);
+  const [singleTracking, setSingleTracking] = useState({});
+  const timeline = [
+    singleTracking?.Timeline?.taskOne?.maintenanceReq === true && {
+      id: 1,
+      content: "Maintenance Request send to",
+      target: "Property Manager",
+      task: singleTracking?.Timeline?.taskOne?.maintenanceReq,
+      date: singleTracking?.Timeline?.taskOne?.createdAt,
+      datetime: "2020-09-20",
+      icon: ArrowRightIcon,
+      iconBackground: "bg-cyan-300",
+    },
+    singleTracking?.Timeline?.taskTwo?.postJob === true && {
+      id: 2,
+      content: "Request Accepted and proceed by",
+      target: "Property Manager ",
+      task: singleTracking?.Timeline?.taskTwo?.postJob,
+      date: singleTracking?.Timeline?.taskTwo?.createdAt,
+      datetime: "2020-09-20",
+      icon: CheckCircleIcon,
+      iconBackground: "bg-sky-400",
+    },
+    singleTracking?.Timeline?.taskThree?.assignJob === true && {
+      id: 3,
+      content: "Job assigned to contractor by",
+      target: "Property Manager",
+      task: singleTracking?.Timeline?.taskThree?.assignJob,
+      date: singleTracking?.Timeline?.taskThree?.createdAt,
+      datetime: "2020-09-22",
+      icon: UserCircleIcon,
+      iconBackground: "bg-green-500",
+    },
+    singleTracking?.Timeline?.taskFour?.completeJob === true && {
+      id: 4,
+      content: "Advanced to check completion by",
+      target: "Property Manager",
+      task: singleTracking?.Timeline?.taskFour?.completeJob,
+      date: singleTracking?.Timeline?.taskFour?.createdAt,
+      datetime: "2020-09-24",
+      icon: ClipboardListIcon,
+      iconBackground: "bg-blue-500",
+    },
+  ];
+
+  useEffect(() => {
+    const handleReportsDetails = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/reports?email=${currentUser.email}`
+        );
+        setTenantReports(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleReportsDetails();
+  }, [currentUser.email]);
+
+  const handleTracking = (report) => {
+    // setOpen(true);
+    setSingleTracking(report);
+  };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+  console.log(tenantReports);
+  // console.log(timeline);
+
   return (
     <>
       <div className="">
@@ -185,37 +142,37 @@ const TenantPortalMaintenance = () => {
                     Maintenance Issues{" "}
                   </h2>
                 </div>
-                {reports.map((report) => (
+                {tenantReports.map((report) => (
                   <li
-                    key={report.email}
+                    key={report._id}
                     className="col-span-2 bg-white rounded-lg shadow-md shadow-cyan-200 divide-y divide-gray-200"
                   >
                     <div className="w-full flex items-center justify-between px-6 py-6 space-x-6">
                       <img
                         className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                        src={report.imageUrl}
+                        src={report.issueImage}
                         alt=""
                       />
                       <div className="flex-1 truncate">
                         <div className="flex items-center space-x-3">
                           <h3 className="text-gray-900 text-xl font-semibold truncate">
-                            {report.name}
+                            {report.issueName}
                           </h3>
                           <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                            Maintenance Issue
+                            Maintenance
                           </span>
                         </div>
                         <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.title}
+                          {report.tenantAddress}
                         </p>
                         <p className="mt-1 text-gray-500 text-sm truncate">
-                          Issue Created : {report.date}
+                          Issue Created : {report.createdAt}
                         </p>
                       </div>
                       <div className="flex-1 truncate">
                         <div className="flex items-center space-x-3">
                           <h3 className="text-gray-900 text-md font-semibold truncate">
-                            {report.tenant_name}
+                            {report.username}
                           </h3>
                           <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200">
                             Tenant
@@ -225,11 +182,14 @@ const TenantPortalMaintenance = () => {
                           {report.email}
                         </p>
                         <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.telephone}
+                          {report.phoneNo}
                         </p>
                       </div>
                       <div className="">
-                        <button className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg">
+                        <button
+                          onClick={() => handleTracking(report)}
+                          className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
+                        >
                           Tracking
                         </button>
                       </div>
@@ -251,7 +211,7 @@ const TenantPortalMaintenance = () => {
                 </div>
                 <div className="flow-root">
                   <ul className="-mb-8">
-                    {timeline.map((event, eventIdx) => (
+                    {timeline.filter(Boolean).map((event, eventIdx) => (
                       <li key={event.id}>
                         <div className="relative pb-8">
                           {eventIdx !== timeline.length - 1 ? (
@@ -287,9 +247,14 @@ const TenantPortalMaintenance = () => {
                                 </p>
                               </div>
                               <div className="whitespace-nowrap text-right text-sm text-gray-500">
-                                <time dateTime={event.datetime}>
-                                  {event.date}
-                                </time>
+                                {event.date && (
+                                  <time>
+                                    {new Date(event.date).getFullYear()}-
+                                    {new Date(event.date).getMonth()}-
+                                    {new Date(event.date).getDate()} :{" "}
+                                    {new Date(event.date).toLocaleTimeString()}
+                                  </time>
+                                )}
                               </div>
                             </div>
                           </div>

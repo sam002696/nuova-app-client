@@ -16,6 +16,7 @@ import ContractorPortalInbox from "./ContractorPortalInbox";
 import ContractorProfile from "./ContractorProfile";
 import InvoiceMaker from "./InvoiceMaker/InvoiceMaker";
 import ContractorPortalHomeTwo from "./ContractorPortalHomeTwo";
+import ContractorPortalFindJobsTwo from "./ContractorPortalFindJobsTwo";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },

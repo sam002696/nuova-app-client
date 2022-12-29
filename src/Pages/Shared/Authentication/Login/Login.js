@@ -37,6 +37,7 @@ const Login = () => {
         history.push("/property-manager-dashboard");
       }
     } catch (err) {
+      console.log(err);
       dispatch(loginFailure());
       setError(err);
     }
@@ -138,7 +139,7 @@ const Login = () => {
 
               {error ? (
                 <div className="text-red-800 bg-red-200 font-medium px-2 py-1">
-                  {error.response?.data?.message}
+                  {error.response?.data}
                 </div>
               ) : (
                 ""
