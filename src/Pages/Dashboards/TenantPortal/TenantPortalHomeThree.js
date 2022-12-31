@@ -4,7 +4,6 @@ import {
   CurrencyPoundIcon,
   CalendarIcon,
   ArrowRightIcon,
-  OfficeBuildingIcon,
   CheckCircleIcon,
   ChatAltIcon,
   ShieldCheckIcon,
@@ -15,6 +14,10 @@ import { BookmarkIcon } from "@heroicons/react/solid";
 
 import { AtSymbolIcon, PhoneIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const people = [
   {
@@ -81,6 +84,24 @@ const cards = [
 ];
 
 const TenantPortalHomeThree = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  const [tenantProperty, setTenantProperty] = useState({});
+
+  useEffect(() => {
+    const handleTenantProperty = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/properties/tenantproperty/tenant?email=${currentUser.email}`
+        );
+        setTenantProperty(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleTenantProperty();
+  }, [currentUser.email]);
+  console.log(tenantProperty);
   return (
     <>
       <div className=" bg-gradient-to-l from-stone-100 to-white">
@@ -96,16 +117,18 @@ const TenantPortalHomeThree = () => {
                     alt=""
                   />
                   <div>
-                    <div className="flex items-center">
-                      <img
-                        className="h-16 w-16 rounded-full sm:hidden"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                        Good morning, Emilia Birch
-                      </h1>
-                    </div>
+                    {tenantProperty?.tenantDetails?.map((tenant) => (
+                      <div className="flex items-center">
+                        <img
+                          className="h-16 w-16 rounded-full sm:hidden"
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                          alt=""
+                        />
+                        <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
+                          Good morning, {tenant?.tenantPersonalInfo?.fullName}
+                        </h1>
+                      </div>
+                    ))}
                     <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
                       <dt className="sr-only">Company</dt>
                       <dd className="flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6">
@@ -152,25 +175,29 @@ const TenantPortalHomeThree = () => {
                 <div className="flex-shrink-0">
                   <img
                     className="h-64 w-full object-cover"
-                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                    src={tenantProperty?.images?.pictureFirst}
                     alt=""
                   />
                 </div>
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-indigo-600">
-                      Your Property Details
+                      {tenantProperty?.propertyAddress?.propertyName}
                     </p>
                     <div className="mt-2 block">
                       <p className="text-lg font-semibold tracking-wider text-gray-700">
-                        St. James Park 921b, <br /> London W1T tRJ, England
+                        {tenantProperty?.propertyAddress?.addressline1},{" "}
+                        {tenantProperty?.propertyAddress?.city},{" "}
+                        {tenantProperty?.propertyAddress?.state},{" "}
+                        {tenantProperty?.propertyAddress?.country},{" "}
+                        {tenantProperty?.propertyAddress?.zipcode}
                       </p>
                       <div className="flex flex-row justify-between mt-4">
                         <p className="text-md font-medium text-cyan-600">
                           Size
                         </p>
                         <p className="text-md font-medium text-gray-600">
-                          1038 sq. ft.
+                          {tenantProperty?.propertyDetails?.livingArea} sq. ft.
                         </p>
                       </div>
 
@@ -178,7 +205,9 @@ const TenantPortalHomeThree = () => {
                         <p className="text-md font-medium text-cyan-600">
                           Bedrooms
                         </p>
-                        <p className="text-md font-medium text-gray-600">5</p>
+                        <p className="text-md font-medium text-gray-600">
+                          {tenantProperty?.propertyDetails?.bedroom}
+                        </p>
                       </div>
 
                       <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
@@ -186,7 +215,7 @@ const TenantPortalHomeThree = () => {
                           Status
                         </p>
                         <p className="text-md font-medium text-gray-600">
-                          Furnished
+                          {tenantProperty?.propertyDetails?.propertyFurnished}
                         </p>
                       </div>
                     </div>
@@ -195,43 +224,95 @@ const TenantPortalHomeThree = () => {
               </div>
             </div>
             <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
-              {cards.map((card) => (
-                <div
-                  key={card.name}
-                  className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40"
-                >
-                  <div className="p-8">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <card.icon
-                          className="h-8 w-8 text-white bg-cyan-500 rounded-lg p-1"
-                          aria-hidden="true"
-                        />
+              {tenantProperty?.tenantDetails
+                ?.filter(
+                  (singletenant) =>
+                    singletenant.tenantPersonalInfo.email === currentUser.email
+                )
+                .map((filteredTenant) => (
+                  <>
+                    <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
+                      <div className="p-8">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0">
+                            <CurrencyPoundIcon
+                              className="h-8 w-8 text-white bg-cyan-500 rounded-lg p-1"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <div className="ml-5 w-0 flex-1">
+                            <dl>
+                              <dt className="truncate text-sm font-medium text-gray-500">
+                                Tenant rental Amount
+                              </dt>
+                              <dd>
+                                <div className="text-lg font-medium text-gray-900">
+                                  $
+                                  {filteredTenant?.tenantResidency?.monthlyRent}{" "}
+                                </div>
+                              </dd>
+                            </dl>
+                          </div>
+                        </div>
                       </div>
-                      <div className="ml-5 w-0 flex-1">
-                        <dl>
-                          <dt className="truncate text-sm font-medium text-gray-500">
-                            {card.name}
-                          </dt>
-                          <dd>
-                            <div className="text-lg font-medium text-gray-900">
-                              {card.amount}
-                            </div>
-                          </dd>
-                        </dl>
+                      <div className="bg-teal-50 px-5 py-3">
+                        <div className="text-sm">
+                          <Link
+                            to=""
+                            className="font-medium text-cyan-700 hover:text-cyan-900"
+                          ></Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="bg-teal-50 px-5 py-3">
-                    <div className="text-sm">
-                      <Link
-                        to={card.href}
-                        className="font-medium text-cyan-700 hover:text-cyan-900"
-                      ></Link>
+
+                    <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
+                      <div className="p-8">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0">
+                            <CalendarIcon
+                              className="h-8 w-8 text-white bg-cyan-500 rounded-lg p-1"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <div className="ml-5 w-0 flex-1">
+                            <dl>
+                              <dt className="truncate text-sm font-medium text-gray-500">
+                                Tenancy Due Date
+                              </dt>
+                              <dd>
+                                <div className="text-lg font-medium text-gray-900">
+                                  <span className="mx-2">
+                                    <time>
+                                      {new Date(
+                                        filteredTenant?.tenantResidency?.leaseStartDate
+                                      ).getFullYear()}
+                                      -
+                                      {new Date(
+                                        filteredTenant?.tenantResidency?.leaseStartDate
+                                      ).getMonth()}
+                                      -
+                                      {new Date(
+                                        filteredTenant?.tenantResidency?.leaseStartDate
+                                      ).getDate()}
+                                    </time>
+                                  </span>
+                                </div>
+                              </dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-teal-50 px-5 py-3">
+                        <div className="text-sm">
+                          <Link
+                            to=""
+                            className="font-medium text-cyan-700 hover:text-cyan-900"
+                          ></Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  </>
+                ))}
             </div>
           </div>
 
@@ -243,50 +324,103 @@ const TenantPortalHomeThree = () => {
                     <p className="text-sm font-medium text-green-600 mt-4">
                       Lease Terms
                     </p>
-                    <div className="mt-2 block">
-                      <p className="flex items-center text-2xl font-semibold font-mono text-green-600">
-                        {" "}
-                        <CurrencyPoundIcon
-                          className="h-6 w-6 text-green-600 rounded-lg"
-                          aria-hidden="true"
-                        />
-                        1,699{" "}
-                      </p>
-                      <p className="text-sm font-medium text-gray-400">
-                        Monthly Rent (payment is secured)
-                      </p>
-                      <div className="flex flex-row justify-between mt-8">
-                        <p className=" flex items-center text-md font-medium text-gray-600">
-                          <CalendarIcon
-                            className="h-6 w-6 text-green-400 rounded-lg"
-                            aria-hidden="true"
-                          />{" "}
-                          <span className="mx-2">01 June, 2022</span>
-                        </p>
-                        <p className=" flex items-center text-md font-medium text-cyan-600">
-                          <ArrowRightIcon
-                            className="h-4 w-6 text-gray-700 rounded-lg"
-                            aria-hidden="true"
-                          />{" "}
-                          <span></span>
-                        </p>
-                        <p className="flex text-md font-medium text-gray-600">
-                          <span>01 June, 2023</span>
-                        </p>
-                      </div>
-                      <p className="text-sm font-medium text-gray-400 mt-1">
-                        Tenancy Period (12 Months)
-                      </p>
 
-                      <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                        <p className="text-md font-medium text-green-600">
-                          Next Renewal
-                        </p>
-                        <p className="text-md font-medium text-gray-600">
-                          June, 2023
-                        </p>
-                      </div>
-                    </div>
+                    {tenantProperty?.tenantDetails
+                      ?.filter(
+                        (singletenant) =>
+                          singletenant.tenantPersonalInfo.email ===
+                          currentUser.email
+                      )
+                      .map((filteredTenant) => (
+                        <>
+                          <div className="mt-2 block">
+                            <p className="flex items-center text-2xl font-semibold font-mono text-green-600">
+                              {" "}
+                              <CurrencyPoundIcon
+                                className="h-6 w-6 text-green-600 rounded-lg"
+                                aria-hidden="true"
+                              />
+                              {filteredTenant?.tenantResidency?.monthlyRent}{" "}
+                            </p>
+                            <p className="text-sm font-medium text-gray-400">
+                              Monthly Rent (payment is secured)
+                            </p>
+                            <div className="flex flex-row justify-between mt-8">
+                              <p className=" flex items-center text-md font-medium text-gray-600">
+                                <CalendarIcon
+                                  className="h-6 w-6 text-green-400 rounded-lg"
+                                  aria-hidden="true"
+                                />{" "}
+                                <span className="mx-2">
+                                  <time>
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseStartDate
+                                    ).getFullYear()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseStartDate
+                                    ).getMonth()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseStartDate
+                                    ).getDate()}
+                                  </time>
+                                </span>
+                              </p>
+                              <p className=" flex items-center text-md font-medium text-cyan-600">
+                                <ArrowRightIcon
+                                  className="h-4 w-6 text-gray-700 rounded-lg"
+                                  aria-hidden="true"
+                                />{" "}
+                                <span></span>
+                              </p>
+                              <p className="flex text-md font-medium text-gray-600">
+                                <span>
+                                  <time>
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseEndDate
+                                    ).getFullYear()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseEndDate
+                                    ).getMonth()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.leaseEndDate
+                                    ).getDate()}
+                                  </time>
+                                </span>
+                              </p>
+                            </div>
+                            <p className="text-sm font-medium text-gray-400 mt-1">
+                              Tenancy Period (12 Months)
+                            </p>
+
+                            <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                              <p className="text-md font-medium text-green-600">
+                                Next Renewal
+                              </p>
+                              <p className="text-md font-medium text-gray-600">
+                                <span>
+                                  <time>
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.tenancyDueDate
+                                    ).getDate()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.tenancyDueDate
+                                    ).getMonth()}
+                                    -
+                                    {new Date(
+                                      filteredTenant?.tenantResidency?.tenancyDueDate
+                                    ).getFullYear()}
+                                  </time>
+                                </span>
+                              </p>
+                            </div>
+                          </div>
+                        </>
+                      ))}
                   </div>
                 </div>
               </div>
@@ -516,35 +650,56 @@ const TenantPortalHomeThree = () => {
                     <p className="text-sm font-medium text-sky-600 mt-4">
                       Deposit Details
                     </p>
-                    <div className="mt-2 block">
-                      <p className="flex items-center text-2xl font-semibold font-mono text-sky-600">
-                        {" "}
-                        <CurrencyPoundIcon
-                          className="h-6 w-6 text-sky-700 rounded-lg"
-                          aria-hidden="true"
-                        />
-                        1,200{" "}
-                      </p>
-                      <p className="text-sm font-medium text-gray-400">
-                        Available Deposit (Your Split 50%)
-                      </p>
-                      <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                        <p className="text-md font-medium text-sky-600">
-                          Start Date
-                        </p>
-                        <p className="text-md font-medium text-gray-600">
-                          June, 2022
-                        </p>
-                      </div>
-                      <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                        <p className="text-md font-medium text-sky-600">
-                          Estimated Approval Date
-                        </p>
-                        <p className="text-md font-medium text-gray-600">
-                          July, 2023
-                        </p>
-                      </div>
-                    </div>
+
+                    {tenantProperty?.tenantDetails
+                      ?.filter(
+                        (singletenant) =>
+                          singletenant.tenantPersonalInfo.email ===
+                          currentUser.email
+                      )
+                      .map((filteredTenant) => (
+                        <div className="mt-2 block">
+                          <p className="flex items-center text-2xl font-semibold font-mono text-sky-600">
+                            {" "}
+                            <CurrencyPoundIcon
+                              className="h-6 w-6 text-sky-700 rounded-lg"
+                              aria-hidden="true"
+                            />
+                            {filteredTenant?.tenantResidency?.depositAmount}{" "}
+                          </p>
+                          <p className="text-sm font-medium text-gray-400">
+                            Available Deposit (Your Split 50%)
+                          </p>
+                          <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                            <p className="text-md font-medium text-sky-600">
+                              Start Date
+                            </p>
+                            <p className="text-md font-medium text-gray-600">
+                              <time>
+                                {new Date(
+                                  filteredTenant?.tenantResidency?.leaseStartDate
+                                ).getFullYear()}
+                                -
+                                {new Date(
+                                  filteredTenant?.tenantResidency?.leaseStartDate
+                                ).getMonth()}
+                                -
+                                {new Date(
+                                  filteredTenant?.tenantResidency?.leaseStartDate
+                                ).getDate()}
+                              </time>
+                            </p>
+                          </div>
+                          <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                            <p className="text-md font-medium text-sky-600">
+                              Estimated Approval Date
+                            </p>
+                            <p className="text-md font-medium text-gray-600">
+                              July, 2023
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
