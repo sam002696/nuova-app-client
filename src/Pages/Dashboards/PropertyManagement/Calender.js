@@ -1,4 +1,5 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import axios from "axios";
 import { Dialog, Transition } from "@headlessui/react";
 import { CalendarIcon } from "@heroicons/react/outline";
 import { useForm } from "react-hook-form";
@@ -25,93 +26,48 @@ import {
 } from "date-fns";
 import { Menu } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import CalenderEventsModal from "./CalenderEventsModal";
 
-let events = [
-  {
-    id: 1,
-    name: "Design review",
-    time: "10AM",
-    datetime: "2022-08-03T10:00",
-    href: "#",
-  },
-  {
-    id: 2,
-    name: "Sales meeting",
-    time: "2PM",
-    datetime: "2022-08-03T14:00",
-    href: "#",
-  },
-  {
-    id: 3,
-    name: "Date night",
-    time: "6PM",
-    datetime: "2022-08-08T18:00",
-    href: "#",
-  },
-  {
-    id: 4,
-    name: "Maple syrup museum",
-    time: "3PM",
-    datetime: "2022-08-22T15:00",
-    href: "#",
-  },
-  {
-    id: 5,
-    name: "Hockey game",
-    time: "7PM",
-    datetime: "2022-08-22T19:00",
-    href: "#",
-  },
-  {
-    id: 6,
-    name: "Sam's birthday party",
-    time: "2PM",
-    datetime: "2022-08-12T14:00",
-    href: "#",
-  },
-  {
-    id: 7,
-    name: "Cinema with friends",
-    time: "9PM",
-    datetime: "2022-08-04T21:00",
-    href: "#",
-  },
-  {
-    id: 8,
-    name: "Hangout with friends",
-    time: "11PM",
-    datetime: "2022-08-04T21:00",
-    href: "#",
-  },
-  {
-    id: 9,
-    name: "Meeting with Sumon",
-    time: "10PM",
-    datetime: "2022-08-04T21:00",
-    href: "#",
-  },
-];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Calender() {
   const [open, setOpen] = useState(false);
-  const [addEvents, setAddEvents] = useState(events);
+  const [openCalenderModal, setOpenCalenderModal] = useState(false);
+  const [selectedEvents, setSelectedEvents] = useState([]);
+  const [day, setDay] = useState();
+  const [addEvents, setAddEvents] = useState();
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     reset();
-    setAddEvents((current) => [
-      ...current,
-      {
-        id: 10,
-        name: data.eventName,
-        time: data.eventTime,
-        datetime: data.eventDate,
-        href: "#",
-      },
-    ]);
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/calenderEvents`,
+        data
+      );
+      if (res.data) {
+        alert("FORM SUBMITTED");
+        window.location.reload(false);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    const handleFetchAllEvents = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/calenderEvents`);
+        console.log(res.data);
+        setAddEvents(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchAllEvents();
+  }, []);
+
   const cancelButtonRef = useRef(null);
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
@@ -130,6 +86,12 @@ export default function Calender() {
   const previousMonth = () => {
     let firstDayNextMonth = add(firstDayOfCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
+  };
+
+  const handleSelectedEvents = (selectedEvents, day) => {
+    setSelectedEvents(selectedEvents);
+    setDay(day);
+    setOpenCalenderModal(true);
   };
 
   return (
@@ -426,9 +388,15 @@ export default function Calender() {
                 >
                   {format(day, "d")}
                 </time>
-                {addEvents.some((meeting) =>
-                  isSameDay(parseISO(meeting.datetime), day)
-                ) && <Event day={day} addEvents={addEvents} />}
+                {addEvents?.some((meeting) =>
+                  isSameDay(parseISO(meeting.eventDate), day)
+                ) && (
+                  <Event
+                    day={day}
+                    addEvents={addEvents}
+                    handleSelectedEvents={handleSelectedEvents}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -634,29 +602,39 @@ export default function Calender() {
           </div>
         </Dialog>
       </Transition.Root>
+      <CalenderEventsModal
+        open={openCalenderModal}
+        setOpen={setOpenCalenderModal}
+        day={day}
+        selectedEvents={selectedEvents}
+      />
     </div>
   );
 }
-function Event({ day, addEvents }) {
+function Event({ day, addEvents, handleSelectedEvents }) {
   let selectedDayEvents = addEvents.filter((event) =>
-    isSameDay(parseISO(event.datetime), day)
+    isSameDay(parseISO(event.eventDate), day)
   );
   return (
     selectedDayEvents.length > 0 && (
       <ol className="mt-2">
         {selectedDayEvents.slice(0, 2).map((event) => (
-          <li key={event.id}>
-            <a href={event.href} className="group flex">
+          <li
+            key={event._id}
+            onClick={() => handleSelectedEvents(selectedDayEvents, day)}
+            className=" cursor-pointer"
+          >
+            <div className="group flex">
               <p className="flex-auto truncate font-medium text-yellow-900 group-hover:text-sky-500">
-                {event.name}
+                {event.eventName}
               </p>
               <time
-                dateTime={event.datetime}
+                dateTime={event.eventDate}
                 className="ml-3 hidden flex-none text-yellow-500 group-hover:text-sky-500 xl:block"
               >
-                {event.time}
+                {event.eventTime}
               </time>
-            </a>
+            </div>
           </li>
         ))}
         {selectedDayEvents.length > 2 && (
