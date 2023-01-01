@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# NUOVA PROPERTY MANAGEMENT APP | Property Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>
+	<img src="https://ibb.co/TL4gVGp" height="120" />
+</p>
 
-## Available Scripts
+This is a property management website (Clients nedd to login with their credencials provided by property manager which are using Authentication implemented by react-redux and redux-toolkit.Then, clients are taken to their respective portals according to their role).
 
-In the project directory, you can run:
+This project is deployed on Netlify. To visit the live website [click here](https://nuova-system-portals.netlify.app/).\
 
-### `npm start`
+1. To login as a Property Manager use `pm1@gmail.com` and `12345678` respectively for Username and Password.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. To login as a Tenant use `tenant1@gmail.com` and `12345678` respectively for Username and Password.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. To login as a Landlord use `landlord1@gmail.com` and `12345678` respectively for Username and Password.
 
-### `npm test`
+4. To login as a Contractor use `contractor1@gmail.com` and `12345678` respectively for Username and Password.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For the server-side repository [click here](https://github.com/sam002696/nuova-system-server).
 
-### `npm run build`
+## About This Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here is a brief about this project:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Lightening fast :zap: smooth experience with ReactJS
+- Dynamic server-side hosted on Railway
+- Interactive functional dashboard panel with API management for all the five portals namely Admin, Property Manager, Landlord, Tenant and Contractor.
+- Key Features, e.g. `Different Types of Property Adding`, `Tenant Adding on Specific Property`, `Manage All users from Admin Portal`, `System Chat App by Cloud Firestore`, `Internal Job Posting on Contractor Portal`, `Smooth Maintenance Experience for Tenants`, `Seperate Tasks Implementation for Both Teanants & Landlords`, `Real-time tracking on Maintenance Progress` etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Authentication System for Admin, Property Manager, Landlord, Tenant and Contractor for both Nuova App and Chat App.
 
-### `npm run eject`
+  ![image](https://img.shields.io/badge/Email%20&%20Password-FFC905?style=for-the-badge)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Organized and well-commented codes to keep it clean on both the developer and client sides
+- Lettings & Property Management, Fully stuffed from web - cost efficient, data rich, hassle free.
+- See and Track All the Properties in one place.
+- Chat App Included features like messaging, Sending images and Documents with optimizing features.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `built with`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project is built with [ReactJS](https://reactjs.org/).\
+Project's Login system is built with [React Redux](https://react-redux.js.org/).\
+Chat Authentication system is created with [Firebase](https://firebase.google.com/).\
+[Tailwind CSS](https://tailwindcss.com/) is used for the styles.\
+Server side is hosted on [Railway](https://railway.app/).\
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `purpose`
 
-## Learn More
+This site is a property management app which focuses on client's conveniences e.g. maintaining their projects for landlords, hassle free tenancy by solving their maintenance issues and finance,creating job opportunities for registered Contractors and letting for users at a glance.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `data`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Data used from Dynamic backend server on [Railway](https://ionic-wealth-app-server-production.up.railway.app/).\
 
-### Code Splitting
+### `icons`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Various icons have been used for this project.\
+Icons are collected from [this](https://react-icons.github.io/react-icons/) awesome icon library.
