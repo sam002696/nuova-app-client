@@ -1,12 +1,12 @@
-# NUOVA PROPERTY MANAGEMENT APP | Property Management App
+# NUOVA PROPERTY MANAGEMENT APP
 
 <p>
-	<img src="https://ibb.co/TL4gVGp" height="120" />
+	<img src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png" height="120" />
 </p>
 
 This is a property management website (Clients nedd to login with their credencials provided by property manager which are using Authentication implemented by react-redux and redux-toolkit.Then, clients are taken to their respective portals according to their role).
 
-This project is deployed on Netlify. To visit the live website [click here](https://nuova-system-portals.netlify.app/).\
+This project is deployed on Netlify. To visit the live website [click here](https://nuova-system-portals.netlify.app/).
 
 1. To login as a Property Manager use `pm1@gmail.com` and `12345678` respectively for Username and Password.
 
@@ -42,7 +42,7 @@ This project is built with [ReactJS](https://reactjs.org/).\
 Project's Login system is built with [React Redux](https://react-redux.js.org/).\
 Chat Authentication system is created with [Firebase](https://firebase.google.com/).\
 [Tailwind CSS](https://tailwindcss.com/) is used for the styles.\
-Server side is hosted on [Railway](https://railway.app/).\
+Server side is hosted on [Railway](https://railway.app/).
 
 ### `purpose`
 
@@ -50,7 +50,7 @@ This site is a property management app which focuses on client's conveniences e.
 
 ### `data`
 
-Data used from Dynamic backend server on [Railway](https://ionic-wealth-app-server-production.up.railway.app/).\
+Data used from Dynamic backend server on [Railway](https://ionic-wealth-app-server-production.up.railway.app/).
 
 ### `icons`
 
