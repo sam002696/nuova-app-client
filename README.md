@@ -1,7 +1,7 @@
 # NUOVA PROPERTY MANAGEMENT APP
 
 <p>
-	<img src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png" height="120" />
+	<img src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png" height="80" />
 </p>
 
 This is a property management website (Clients nedd to login with their credencials provided by property manager which are using Authentication implemented by react-redux and redux-toolkit.Then, clients are taken to their respective portals according to their role).
