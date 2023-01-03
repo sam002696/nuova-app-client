@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Fragment, useRef } from "react";
@@ -7,11 +7,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 
 const TenantMaintenanceModal = ({ open, setOpen }) => {
+  const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const cancelButtonRef = useRef(null);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (reportData) => {
+    setLoading(true);
     const data = new FormData();
     const image = reportData.issueImage[0];
 
@@ -36,9 +38,9 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
         reportData
       );
       if (res.data) {
-        alert("data has been sent");
+        setLoading(false);
         setOpen(false);
-        console.log(reportData);
+        window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -276,7 +278,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                         type="submit"
                         className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
                       >
-                        SUBMIT REQUEST
+                        {loading ? "SUBMITTING REQUEST" : "SUBMIT REQUEST"}
                       </button>
                     </div>
                   </form>

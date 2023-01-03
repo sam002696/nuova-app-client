@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 import Guarantors from "./Guarantors";
 import TenantInfo from "./TenantInfo";
@@ -14,19 +15,30 @@ const AddTenant = ({ singleProperty }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formData);
-    try {
-      const res = await axios.post(
-        `http://localhost:5500/api/uploadTenants/upload/${singleProperty._id}`,
-        formData
-      );
-      if (res.data) {
-        alert("FORM SUBMITTED");
-        console.log(res.data);
+    Swal.fire({
+      title: "Do you want to add the tenant?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.post(
+            `http://localhost:5500/api/uploadTenants/upload/${singleProperty._id}`,
+            formData
+          );
+          if (res.data) {
+            Swal.fire("Saved!", "", "success");
+            console.log(res.data);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    });
   };
   // console.log(singleProperty);
   return (

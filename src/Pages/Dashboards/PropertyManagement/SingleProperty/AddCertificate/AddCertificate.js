@@ -1,77 +1,10 @@
-import React, { useEffect } from "react";
-import {
-  CheckCircleIcon,
-  ChevronRightIcon,
-  MailIcon,
-  UserIcon,
-} from "@heroicons/react/solid";
+import React from "react";
+import { CheckCircleIcon, MailIcon, UserIcon } from "@heroicons/react/solid";
 import AddCertificateModal from "./AddCertificateModal";
 import { useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const applications = [
-  {
-    applicant: {
-      name: "Certificate Of EPC",
-      email: "ricardo.cooper@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Gas Safety Certificate",
-      email: "kristen.ramos@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Certificate of EICR",
-      email: "ted.fox@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Certificate of Fire Safety",
-      email: "ted.fox@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Fact Find Document",
-      email: "ted.fox@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-];
 const AddCertificate = ({ singleProperty }) => {
   const { id } = useParams();
   console.log(id);
@@ -79,22 +12,6 @@ const AddCertificate = ({ singleProperty }) => {
 
   const [open, setOpen] = useState(false);
 
-  // const [allCertificates, setAllCertificates] = useState([]);
-
-  // useEffect(() => {
-  //   const handleAllCertificates = async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `http://localhost:5500/api/properties/certificates/${id}`
-  //       );
-  //       console.log(res.data);
-  //       setAllCertificates(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   handleAllCertificates();
-  // }, []);
   return (
     <>
       <div className="sm:flex sm:items-center mx-10 mt-8">
@@ -121,7 +38,7 @@ const AddCertificate = ({ singleProperty }) => {
         <ul className="divide-y divide-gray-200">
           {singleProperty?.certificatesDocuments?.map((application) => (
             <li>
-              <a href="" className="block hover:bg-gray-50">
+              <Link to="" className="block hover:bg-gray-50">
                 <div className="flex items-center px-4 py-4 sm:px-6">
                   <div className="min-w-0 flex-1 flex items-center">
                     <div className="flex-shrink-0">
@@ -205,7 +122,7 @@ const AddCertificate = ({ singleProperty }) => {
                     </a>
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

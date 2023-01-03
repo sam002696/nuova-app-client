@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import Swal from "sweetalert2";
 import {
   CheckCircleIcon,
   ChevronRightIcon,
-  EyeIcon,
   ArrowCircleRightIcon,
   PlusCircleIcon,
 } from "@heroicons/react/solid";
@@ -11,47 +11,10 @@ import { useState } from "react";
 import axios from "axios";
 import TasksToTenantsModal from "./ManagerTasksModal/TasksToTenantsModal";
 
-const applications = [
-  {
-    applicant: {
-      name: "Ricardo Cooper",
-      email: "ricardo.cooper@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Kristen Ramos",
-      email: "kristen.ramos@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-  {
-    applicant: {
-      name: "Ted Fox",
-      email: "ted.fox@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
-    stage: "Completed phone screening",
-    href: "#",
-  },
-];
-
 const ManagerTasks = () => {
   const [showTenantTask, setShowTenantTask] = useState(false);
+  const [loadingIndividual, setLoadingIndividual] = useState(false);
+  const [loadingEveryone, setLoadingEveryone] = useState(false);
   const [showLandlordTask, setShowLandlordTask] = useState(false);
   const [tenantsTasks, setTenantsTasks] = useState([]);
   const [landlordsTasks, setLandlordsTasks] = useState([]);
@@ -78,11 +41,14 @@ const ManagerTasks = () => {
     setFormList({ ...formList, [name]: value });
   };
   const handleTaskSubmit = async (e) => {
+    setLoadingIndividual(true);
     e.preventDefault();
     try {
       const res = await axios.post(`http://localhost:5500/api/tasks`, formList);
       if (res.data) {
-        console.log("data has been sent");
+        setLoadingIndividual(false);
+        Swal.fire("The task has been uploaded");
+        window.location.reload(false);
         console.log(formList);
       }
     } catch (err) {
@@ -91,6 +57,7 @@ const ManagerTasks = () => {
   };
 
   const handleSendToEveryone = async (e) => {
+    setLoadingEveryone(true);
     e.preventDefault();
 
     const { assignedUsername, assignedUseremail, ...others } = formList;
@@ -101,7 +68,9 @@ const ManagerTasks = () => {
         others
       );
       if (res.data) {
-        console.log("data has been sent to all");
+        setLoadingEveryone(false);
+        Swal.fire("The tasks have been uploaded");
+        window.location.reload(false);
         console.log(others);
       }
     } catch (err) {
@@ -393,17 +362,19 @@ const ManagerTasks = () => {
                       <div className="sm:col-span-2">
                         {formList.sendTask === "Send to individual" ? (
                           <input
+                            disabled={loadingIndividual}
                             type="submit"
-                            value="Submit"
+                            value={loadingIndividual ? "Submitting" : "Submit"}
                             onClick={(e) => handleTaskSubmit(e)}
-                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                           ></input>
                         ) : (
                           <input
+                            disabled={loadingEveryone}
                             type="submit"
-                            value="Submit"
+                            value={loadingEveryone ? "Submitting" : "Submit"}
                             onClick={(e) => handleSendToEveryone(e)}
-                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                           ></input>
                         )}
                       </div>
@@ -660,17 +631,19 @@ const ManagerTasks = () => {
                       <div className="sm:col-span-2">
                         {formList.sendTask === "Send to individual" ? (
                           <input
+                            disabled={loadingIndividual}
                             type="submit"
-                            value="Submit"
+                            value={loadingIndividual ? "Submitting" : "Submit"}
                             onClick={(e) => handleTaskSubmit(e)}
-                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                           ></input>
                         ) : (
                           <input
+                            disabled={loadingEveryone}
                             type="submit"
-                            value="Submit"
+                            value={loadingEveryone ? "Submitting" : "Submit"}
                             onClick={(e) => handleSendToEveryone(e)}
-                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                           ></input>
                         )}
                       </div>
@@ -774,7 +747,7 @@ const ManagerTasks = () => {
           </div>
 
           <div className=" col-span-3">
-            <p className=" font-medium text-lg text-center text-gray-500 mb-5 underline underline-offset-4">
+            <p className=" font-medium text-lg text-center text-gray-500 mb-5 mt-4 underline underline-offset-4">
               List of the assigned landlord tasks
             </p>
             <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">

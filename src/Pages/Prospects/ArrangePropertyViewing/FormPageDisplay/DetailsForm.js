@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 const DetailsForm = ({ formData, setFormData }) => {
   const [detailsList, setDetailsList] = useState({
     moveindate: "",
-    firstName: "",
-    lastName: "",
+    fullName: "",
     emailAddress: "",
     mobile: "",
     address: "",
@@ -57,19 +56,19 @@ const DetailsForm = ({ formData, setFormData }) => {
         </h1>
       </div>
 
-      <div className=" grid grid-cols-2 gap-5 pt-5">
+      <div className=" grid grid-cols-3 gap-5 pt-5">
         <div className="col-span-1">
           <label
             htmlFor="first-name"
             className="block text-sm font-medium text-gray-700"
           >
-            First Name
+            Full Name
           </label>
           <div className="mt-1">
             <input
               type="text"
-              name="firstName"
-              id="firstName"
+              name="fullName"
+              id="fullName"
               onChange={(e) => {
                 handleDetailsChange(e);
               }}
@@ -77,25 +76,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             />
           </div>
         </div>
-        <div className="col-span-1">
-          <label
-            htmlFor="last-name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Last Name
-          </label>
-          <div className="mt-1">
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              onChange={(e) => {
-                handleDetailsChange(e);
-              }}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
+
         <div className="col-span-1">
           <label
             htmlFor="email"
@@ -134,7 +115,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             />
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-3">
           <label
             htmlFor="address"
             className="block text-sm font-medium text-gray-700"

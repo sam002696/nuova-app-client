@@ -59,6 +59,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
       );
       if (res.data) {
         setOpen(false);
+        window.location.reload(false);
         console.log(res.data);
       }
     } catch (err) {

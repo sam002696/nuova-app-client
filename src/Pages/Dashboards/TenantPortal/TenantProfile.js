@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../../Redux/userSlice";
+import Swal from "sweetalert2";
 
 const TenantProfile = () => {
   const [passwordError, setPasswordErr] = useState("");
   const [img, setImg] = useState(null);
-  //   const [uploadImg, setUploadImg] = useState(null);
+  const [loading, setLoading] = useState(null);
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
@@ -49,6 +50,7 @@ const TenantProfile = () => {
 
   const handleSaveAndUpdateButton = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const data = new FormData();
     const image = formList.profilePic;
 
@@ -71,8 +73,9 @@ const TenantProfile = () => {
         formList
       );
       if (res.data) {
+        setLoading(false);
         dispatch(updateUser(res.data));
-        console.log("user has been updated!!");
+        Swal.fire("Profile Updated!", "You updated your info!", "success");
         console.log(res.data);
       }
     } catch (err) {
@@ -364,8 +367,10 @@ const TenantProfile = () => {
                         type="date"
                         name="dob"
                         id="dob"
+                        defaultValue={new Date(currentUser.dob)
+                          .toISOString()
+                          .substring(0, 10)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-                        defaultValue={currentUser.dob}
                         onChange={(e) => {
                           handleFormChange(e);
                         }}
@@ -503,17 +508,12 @@ const TenantProfile = () => {
 
             <div className="flex justify-end py-5">
               <button
-                type="button"
-                className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-              >
-                Cancel
-              </button>
-              <button
                 type="submit"
+                disabled={loading}
                 className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-cyan-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 onClick={(e) => handleSaveAndUpdateButton(e)}
               >
-                Save and update
+                {loading ? "Updating Profile" : "Save and update"}
               </button>
             </div>
           </form>

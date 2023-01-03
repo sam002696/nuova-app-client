@@ -8,6 +8,7 @@ import SetOne from "./SetOne";
 import SetThree from "./SetThree";
 import SetTwo from "./SetTwo";
 import SetZero from "./SetZero";
+import Swal from "sweetalert2";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,6 +17,7 @@ function classNames(...classes) {
 const AddProperty = () => {
   const StatusData = ["current", "upcoming", "upcoming", "complete"];
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(page);
   const [middleStatus, setMiddleStatus] = useState(page);
   const [detailStatus, setDetailStatus] = useState(page);
@@ -86,6 +88,7 @@ const AddProperty = () => {
   };
 
   const handleSubmit = async (data) => {
+    setLoading(true);
     const data1 = new FormData();
     const data2 = new FormData();
     const data3 = new FormData();
@@ -133,14 +136,17 @@ const AddProperty = () => {
       data.images.pictureThird = url3;
       data.images.pictureFourth = url4;
 
-      console.log(data);
-
       const res = await axios.post(
         `http://localhost:5500/api/properties`,
         data
       );
       if (res.data) {
-        alert("FORM SUBMITTED");
+        setLoading(false);
+        Swal.fire(
+          "Well done!",
+          "You successfully added the property!",
+          "success"
+        );
         setAlert(true);
         console.log(res.data);
       }
@@ -339,6 +345,7 @@ const AddProperty = () => {
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
           </button>
           <button
+            disabled={loading}
             onClick={() => {
               if (page === steps.length - 1) {
                 handleSubmit(formData);
@@ -351,7 +358,11 @@ const AddProperty = () => {
           >
             <span className="sr-only">Next</span>
             {page === steps.length - 1 ? (
-              "Submit"
+              loading ? (
+                "Submitting.."
+              ) : (
+                "Submit"
+              )
             ) : (
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
             )}

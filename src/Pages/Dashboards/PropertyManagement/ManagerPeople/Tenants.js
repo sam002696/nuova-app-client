@@ -1,75 +1,23 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-];
+import axios from "axios";
 
 const Tenants = () => {
+  const [tenants, setTenants] = useState([]);
+  useEffect(() => {
+    const handleFetchtenants = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Tenant`
+        );
+        console.log(res.data);
+        setTenants(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchtenants();
+  }, []);
   return (
     <>
       <div className="max-w-7xl mx-auto">
@@ -123,32 +71,27 @@ const Tenants = () => {
                       </tr>
                     </thead>
                     <tbody className="bg-white">
-                      {people.map((person, personIdx) => (
-                        <tr
-                          key={person.email}
-                          className={
-                            personIdx % 2 === 0 ? undefined : "bg-gray-50"
-                          }
-                        >
+                      {tenants.map((tenant) => (
+                        <tr key={tenant._id}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            {person.name}
+                            {tenant.username}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.title}
+                            {tenant.phoneNo}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.email}
+                            {tenant.email}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.role}
+                            {tenant.role}
                           </td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <Link
                               to="#"
                               className="text-cyan-600 hover:text-cyan-900"
                             >
-                              Edit
-                              <span className="sr-only">, {person.name}</span>
+                              View
+                              <span className="sr-only">, {tenant.name}</span>
                             </Link>
                           </td>
                         </tr>

@@ -14,6 +14,13 @@ const PropertyViewingForm = () => {
   const [extrainfo, setExtraInfo] = useState(page);
   const [book, setBook] = useState(page);
   const [formData, setFormData] = useState({
+    propertyDetails: {
+      value: "",
+      address: "",
+      availableDate: "",
+      beds: "",
+      baths: "",
+    },
     details: {},
     preferences: {},
     extraInfo: {},

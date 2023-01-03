@@ -1,74 +1,23 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-];
 const Landlords = () => {
+  const [landlords, setLandlords] = useState([]);
+  useEffect(() => {
+    const handleFetchLandlords = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Landlord`
+        );
+        console.log(res.data);
+        setLandlords(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchLandlords();
+  }, []);
   return (
     <>
       <div className="max-w-7xl mx-auto">
@@ -77,7 +26,7 @@ const Landlords = () => {
             <div className="sm:flex-auto">
               <h1 className="text-xl font-semibold text-gray-900">Landlords</h1>
               <p className="mt-2 text-sm text-gray-700">
-                A list of all the users in your account including their name,
+                A list of all landlords in the website including their name,
                 title, email and role.
               </p>
             </div>
@@ -99,7 +48,7 @@ const Landlords = () => {
                           scope="col"
                           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                         >
-                          Title
+                          Phone No
                         </th>
                         <th
                           scope="col"
@@ -122,27 +71,27 @@ const Landlords = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 bg-white">
-                      {people.map((person) => (
-                        <tr key={person.email}>
+                      {landlords.map((landlord) => (
+                        <tr key={landlord._id}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            {person.name}
+                            {landlord.username}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.title}
+                            {landlord.phoneNo}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.email}
+                            {landlord.email}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.role}
+                            {landlord.role}
                           </td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <Link
                               to="#"
                               className="text-cyan-600 hover:text-cyan-900"
                             >
-                              Edit
-                              <span className="sr-only">, {person.name}</span>
+                              View
+                              <span className="sr-only">, {landlord.name}</span>
                             </Link>
                           </td>
                         </tr>
