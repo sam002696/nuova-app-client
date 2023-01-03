@@ -22,7 +22,7 @@ const SetOne = ({ formData, setFormData }) => {
   }, [serviceList]);
   return (
     <>
-      <div className="max-w-5xl mx-auto">
+      <div className=" max-w-5xl mx-auto pb-10 border mt-10 px-10 rounded-md  shadow-md bg-white">
         <div className="space-y-5 text-center mt-14">
           <h1 className=" font-medium text-2xl text-[#162A43]">
             Property address
@@ -44,8 +44,8 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="Street 1"
                 name="addressline1"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                placeholder=""
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                placeholder="6391, Elgian St."
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);
@@ -63,8 +63,8 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="propertyName"
                 name="propertyName"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                placeholder=""
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                placeholder="The Rose Garden"
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);
@@ -82,7 +82,7 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="city"
                 name="city"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="London"
                 required=""
                 onChange={(e) => {
@@ -95,13 +95,13 @@ const SetOne = ({ formData, setFormData }) => {
                 for="state"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                County
+                State
               </label>
               <input
                 type="text"
                 id="state"
                 name="state"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="Glasgow"
                 required=""
                 onChange={(e) => {
@@ -120,7 +120,7 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="country"
                 name="country"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
                 placeholder="United Kingdom"
                 required=""
                 onChange={(e) => {
@@ -139,8 +139,8 @@ const SetOne = ({ formData, setFormData }) => {
                 type="text"
                 id="zipcode"
                 name="zipcode"
-                className="bg-gray-50 border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                placeholder="10111"
+                className=" border shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
+                placeholder="89B AE3"
                 required=""
                 onChange={(e) => {
                   handleAddressChange(e);

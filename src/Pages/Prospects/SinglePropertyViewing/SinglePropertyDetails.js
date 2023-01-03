@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useParams, useRouteMatch } from "react-router-dom";
 
 import tickMark from "../../../Images/Pros/Vector.png";
 
@@ -58,12 +59,32 @@ const posts = [
 ];
 
 const SinglePropertyDetails = () => {
+  let { path, url } = useRouteMatch();
+  const { id } = useParams();
+  console.log(id);
+
+  const [singleProperty, setSingleProperty] = useState({});
+
+  useEffect(() => {
+    const handleSingleProperty = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/properties/${id}`
+        );
+        console.log(res.data);
+        setSingleProperty(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleSingleProperty();
+  }, []);
   return (
     <>
       <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16 lg:min-h-[70vh] ">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            src={singleProperty?.images?.pictureFirst}
             alt=""
             className="h-full  w-full object-cover object-center"
           />
@@ -81,7 +102,12 @@ const SinglePropertyDetails = () => {
           <div className="grid grid-cols-2 gap-x-12">
             <div className="space-y-8 p-10 col-span-1 ">
               <div className="text-white text-3xl font-medium font-sans ">
-                6391, Elgian St. Selina, Delwar 10299
+                {singleProperty?.propertyAddress?.propertyName}
+              </div>
+              <div className="text-white text-xl font-medium font-sans ">
+                {singleProperty?.propertyAddress?.addressline1},
+                {singleProperty?.propertyAddress?.city},
+                {singleProperty?.propertyAddress?.zipcode}
               </div>
               <p className="text-gray-200 font-normal text-lg">
                 Nuova System are proud to bring to the market this stunning
@@ -100,7 +126,9 @@ const SinglePropertyDetails = () => {
                       >
                         <path d="M32 32C49.67 32 64 46.33 64 64V320H288V160C288 142.3 302.3 128 320 128H544C597 128 640 170.1 640 224V448C640 465.7 625.7 480 608 480C590.3 480 576 465.7 576 448V416H64V448C64 465.7 49.67 480 32 480C14.33 480 0 465.7 0 448V64C0 46.33 14.33 32 32 32zM96 208C96 163.8 131.8 128 176 128C220.2 128 256 163.8 256 208C256 252.2 220.2 288 176 288C131.8 288 96 252.2 96 208z" />
                       </svg>
-                      <p className=" font-medium text-2xl text-gray-200">6</p>
+                      <p className=" font-medium text-2xl text-gray-200">
+                        {singleProperty?.propertyDetails?.bedroom}
+                      </p>
                     </div>
                     <div>
                       <p className=" font-base text-xl text-slate-200 pt-1">
@@ -119,7 +147,9 @@ const SinglePropertyDetails = () => {
                       >
                         <path d="M32 384c0 28.32 12.49 53.52 32 71.09V496C64 504.8 71.16 512 80 512h32C120.8 512 128 504.8 128 496v-15.1h256V496c0 8.836 7.164 16 16 16h32c8.836 0 16-7.164 16-16v-40.9c19.51-17.57 32-42.77 32-71.09V352H32V384zM496 256H96V77.25C95.97 66.45 111 60.23 118.6 67.88L132.4 81.66C123.6 108.6 129.4 134.5 144.2 153.2C137.9 159.5 137.8 169.8 144 176l11.31 11.31c6.248 6.248 16.38 6.248 22.63 0l105.4-105.4c6.248-6.248 6.248-16.38 0-22.63l-11.31-11.31c-6.248-6.248-16.38-6.248-22.63 0C230.7 33.26 204.7 27.55 177.7 36.41L163.9 22.64C149.5 8.25 129.6 0 109.3 0C66.66 0 32 34.66 32 77.25v178.8L16 256C7.164 256 0 263.2 0 272v32C0 312.8 7.164 320 16 320h480c8.836 0 16-7.164 16-16v-32C512 263.2 504.8 256 496 256z" />
                       </svg>
-                      <p className=" font-medium text-2xl text-gray-200">5</p>
+                      <p className=" font-medium text-2xl text-gray-200">
+                        {singleProperty?.propertyDetails?.bathroom}
+                      </p>
                     </div>
                     <div>
                       <p className=" font-base text-xl text-slate-200 pt-1">
@@ -134,7 +164,7 @@ const SinglePropertyDetails = () => {
             <div className="space-y-8 p-10 col-span-1">
               <div className="space-y-1">
                 <div className="text-white text-4xl font-semibold font-sans ">
-                  £6,000 pcm
+                  £{singleProperty?.propertyDetails?.propertyEstimatedValue} pcm
                 </div>
                 <p className="text-gray-200 font-semibold text-xl">
                   Deposit - £9000
@@ -154,7 +184,7 @@ const SinglePropertyDetails = () => {
               </div>
               <div className="grid grid-cols-5 items-center hover:bg-slate-600">
                 <div className=" col-span-2">
-                  <Link to="/arrange-property-viewing/1234567">
+                  <Link to={`/arrange-property-viewing/${singleProperty?._id}`}>
                     <button
                       type="button"
                       className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium  shadow-sm text-white bg-purple-700 hover:bg-cyan-700 "

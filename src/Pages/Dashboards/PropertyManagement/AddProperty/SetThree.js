@@ -164,7 +164,7 @@ const SetThree = ({ formData, setFormData }) => {
   return (
     <>
       {formData?.propertyType === "HMO" ? (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto border mt-10 px-10 rounded-md  shadow-md bg-white">
           <div className="space-y-5 text-center mt-14">
             <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
               Let's add the units for the property
@@ -307,7 +307,7 @@ const SetThree = ({ formData, setFormData }) => {
                     <button
                       type="button"
                       onClick={handleServiceAdd}
-                      className=" flex flex-row items-center"
+                      className=" flex flex-row items-center mt-4"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -323,7 +323,7 @@ const SetThree = ({ formData, setFormData }) => {
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                       </svg>
-                      <span className="text-cyan-600 underline underline-offset-1 text-lg font-semibold">
+                      <span className=" text-cyan-600 underline underline-offset-1 text-lg font-semibold">
                         Add Another Unit
                       </span>
                     </button>
@@ -335,7 +335,7 @@ const SetThree = ({ formData, setFormData }) => {
         </div>
       ) : (
         <form>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto pb-10 border mt-10 px-10 rounded-md  shadow-md bg-white">
             <div className="space-y-5 text-center mt-14">
               <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
                 Property details
@@ -1531,8 +1531,6 @@ const SetThree = ({ formData, setFormData }) => {
                     </div>
                   </div>
                 </div>
-
-                <hr className=" border-1 border-gray-400" />
               </div>
             </div>
           </div>

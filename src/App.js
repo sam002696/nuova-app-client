@@ -65,7 +65,7 @@ function App() {
           <Route path="/single-property-viewing/:id">
             <SinglePropertyViewing />
           </Route>
-          <Route path="/arrange-property-viewing/1234567">
+          <Route path="/arrange-property-viewing/:id">
             <ArrangePropertyViewing />
           </Route>
           <Route path="/single-property/:id">
