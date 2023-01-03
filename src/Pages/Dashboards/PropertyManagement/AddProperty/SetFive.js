@@ -48,42 +48,44 @@ const SetFive = ({ formData, setFormData }) => {
   console.log(features);
   return (
     <>
-      <div className=" text-center my-14">
-        <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
-          Property description
-        </h1>
-      </div>
-      <div className="my-14">
-        <Select
-          options={options}
-          onChange={setFeatures}
-          components={MakeAnimated()}
-          isMulti
-          className="w-1/2 mx-auto rounded-md focus:border-cyan-400"
-          closeMenuOnSelect={false}
-          placeholder="Select some key feautures of the property"
-          styles={false}
-          isSearchable
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="comment"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Add brief description of the property
-        </label>
-        <div className="mt-1">
-          <textarea
-            rows={4}
-            name="comment"
-            id="comment"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-            onChange={(e) => {
-              handleAddressChange(e);
-            }}
+      <div className="max-w-5xl mx-auto pb-10 border mt-10 px-10 rounded-md  shadow-md bg-white">
+        <div className=" text-center my-14">
+          <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
+            Property description
+          </h1>
+        </div>
+        <div className="my-14">
+          <Select
+            options={options}
+            onChange={setFeatures}
+            components={MakeAnimated()}
+            isMulti
+            className="w-1/2 mx-auto rounded-md focus:border-cyan-400"
+            closeMenuOnSelect={false}
+            placeholder="Select some key feautures of the property"
+            styles={false}
+            isSearchable
           />
+        </div>
+
+        <div>
+          <label
+            htmlFor="comment"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Add brief description of the property
+          </label>
+          <div className="mt-1">
+            <textarea
+              rows={8}
+              name="comment"
+              id="comment"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+              onChange={(e) => {
+                handleAddressChange(e);
+              }}
+            />
+          </div>
         </div>
       </div>
     </>

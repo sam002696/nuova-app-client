@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { CreditCardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
+import { ClipboardCheckIcon } from "@heroicons/react/solid";
+
 import axios from "axios";
 import MaintenanceReportModal from "./ManagerMaintenanceModal/MaintenanceReportModal";
 import MaintenanceReportUpdateModal from "./ManagerMaintenanceModal/MaintenanceReportUpdateModal";
@@ -13,53 +14,6 @@ const tabs = [
     current: true,
   },
   // { name: "Task Description", href: "#", icon: CreditCardIcon, current: false },
-];
-
-const contractors = [
-  {
-    name: "Daniel Petterson",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "janecooper5645675@example.com",
-    telephone: "+1-202-555-0170",
-    price: "250",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
-    desc: "Hi there,from what you describe it sounds like the problem is having the pressure. I am available to come and tomorrow 5pm and 7pm and Thu any time after 4pm",
-  },
-  {
-    name: "John Snow",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "janecooper8912123@example.com",
-    telephone: "+1-202-555-0170",
-    price: "267",
-    imageUrl:
-      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
-    desc: "Hi there,from what you describe it sounds like the problem is having the pressure. I am available to come and tomorrow 5pm and 7pm and Thu any time after 4pm",
-  },
-  {
-    name: "Rachel Berry",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "janecooper24536718@example.com",
-    telephone: "+1-202-555-0170",
-    price: "287",
-    imageUrl:
-      "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
-    desc: "Hi there,from what you describe it sounds like the problem is having the pressure. I am available to come and tomorrow 5pm and 7pm and Thu any time after 4pm",
-  },
-  {
-    name: "Fox Jenner",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "janecooper213321@example.com",
-    telephone: "+1-202-555-0170",
-    price: "398",
-    imageUrl:
-      "https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
-    desc: "Hi there,from what you describe it sounds like the problem is having the pressure. I am available to come and tomorrow 5pm and 7pm and Thu any time after 4pm",
-  },
 ];
 
 function classNames(...classes) {
@@ -239,14 +193,30 @@ const ManagerMaintenance = () => {
 
             <div className="grid grid-cols-1 lg:col-span-2">
               {/* Second Column 1st row issue heading */}
-
-              <div className="space-y-3 mb-5 mt-2">
-                <p className=" text-gray-600 font-bold text-4xl">
-                  {viewContractorBidding?.issueName}
-                </p>
-                <p className=" text-gray-400 font-medium text-sm">
-                  {viewContractorBidding?.tenantAddress}
-                </p>
+              <div className="relative bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200">
+                <div className="h-56 bg-indigo-600 sm:h-64 md:absolute md:left-0 md:h-full md:w-1/2 rounded-lg">
+                  <img
+                    className="h-full w-full object-cover rounded-lg"
+                    src={viewContractorBidding?.issueImage}
+                    alt=""
+                  />
+                </div>
+                <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+                  <div className="md:ml-auto md:w-1/2 md:pl-10">
+                    <h2 className="text-lg font-semibold text-gray-300">
+                      Maintenance Report
+                    </h2>
+                    <p className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl">
+                      Issue Name : {viewContractorBidding?.issueName}
+                    </p>
+                    <p className="mt-3 text-md text-gray-300">
+                      Issue Description : {viewContractorBidding?.issueDesc}
+                    </p>
+                    <p className="mt-2 text-md text-gray-300">
+                      Tenant Address : {viewContractorBidding?.tenantAddress}
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Tabs Events and Task Description */}
@@ -267,7 +237,7 @@ const ManagerMaintenance = () => {
                   ))}
                 </select>
               </div>
-              <div className="hidden sm:block mb-8">
+              <div className="hidden sm:block mb-8 mt-5">
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                     {tabs.map((tab) => (
@@ -287,7 +257,7 @@ const ManagerMaintenance = () => {
                             tab.current
                               ? "text-blue-500"
                               : "text-gray-400 group-hover:text-gray-500",
-                            "-ml-0.5 mr-2 h-5 w-5"
+                            "-ml-0.5 mr-2 h-6 w-6"
                           )}
                           aria-hidden="true"
                         />
