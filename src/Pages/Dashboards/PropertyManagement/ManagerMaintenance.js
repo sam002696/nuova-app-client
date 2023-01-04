@@ -27,6 +27,7 @@ const ManagerMaintenance = () => {
   const [singleUpdateReport, setSingleUpdateReport] = useState(false);
   const [singleUpdateModalReport, setSingleUpdateModalReport] = useState({});
   const [maintenanceReports, setMaintenanceReports] = useState([]);
+  const [viewIssue, setViewIssue] = useState(false);
   //   const { maintenanceReports } = useSelector(
   //     (state) => state.maintenanceReports
   //   );
@@ -55,6 +56,7 @@ const ManagerMaintenance = () => {
   const handleView = (report) => {
     setViewContractorBidding(report);
     setActionButton({});
+    setViewIssue(true);
   };
 
   const handleUpdateReport = (report) => {
@@ -133,12 +135,24 @@ const ManagerMaintenance = () => {
       <div className=" max-w-9xl mx-auto mt-10 pb-8">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="sr-only">Profile</h1>
+
+          <div className="text-center mb-8">
+            <h2 className="text-2xl tracking-tight font-bold text-gray-700 sm:text-2xl underline underline-offset-4">
+              All Maintenance Reports
+            </h2>
+          </div>
           {/* Main 3 column grid */}
           <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
             {/* Left column */}
-            <div className="grid grid-cols-1 lg:col-span-1 ">
-              <ul className="space-y-4">
-                {maintenanceReports.map((report) => (
+            <div
+              className={`${
+                viewIssue
+                  ? "grid grid-cols-1 lg:col-span-1 gap-y-5"
+                  : "grid grid-cols-3 lg:col-span-3 gap-8"
+              }`}
+            >
+              {maintenanceReports.map((report) => (
+                <ul className="space-y-5">
                   <li
                     key={report.email}
                     className="col-span-1 bg-white rounded-lg shadow-md divide-y divide-gray-200"
@@ -187,13 +201,20 @@ const ManagerMaintenance = () => {
                       </div>
                     </div>
                   </li>
-                ))}
-              </ul>
+                </ul>
+              ))}
             </div>
 
             <div className="grid grid-cols-1 lg:col-span-2">
               {/* Second Column 1st row issue heading */}
-              <div className="relative bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200">
+
+              <div
+                className={`${
+                  viewIssue
+                    ? "relative bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200"
+                    : "hidden"
+                }`}
+              >
                 <div className="h-56 bg-indigo-600 sm:h-64 md:absolute md:left-0 md:h-full md:w-1/2 rounded-lg">
                   <img
                     className="h-full w-full object-cover rounded-lg"
@@ -221,11 +242,11 @@ const ManagerMaintenance = () => {
 
               {/* Tabs Events and Task Description */}
 
-              <div className="sm:hidden mb-8">
+              <div className={`${viewIssue ? "sm:hidden mb-8" : "hidden"}`}>
                 <label htmlFor="tabs" className="sr-only">
                   Select a tab
                 </label>
-                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+
                 <select
                   id="tabs"
                   name="tabs"
@@ -237,7 +258,11 @@ const ManagerMaintenance = () => {
                   ))}
                 </select>
               </div>
-              <div className="hidden sm:block mb-8 mt-5">
+              <div
+                className={`${
+                  viewIssue ? "hidden sm:block mb-8 mt-5" : "hidden"
+                }`}
+              >
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                     {tabs.map((tab) => (

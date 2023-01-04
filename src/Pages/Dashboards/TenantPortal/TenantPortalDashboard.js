@@ -1,29 +1,32 @@
-import React, { useContext } from "react";
-import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import {
+  NavLink,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import logo from "../../../Images/Footer/logo.png";
-// import TenantProperty from "./TenantProperty";
+import logo from "../../../Images/Banner/Nuova Logo.png";
+
 import TenantPortalFinance from "./TenantPortalFinance";
 import TenantPortalTasks from "./TenantPortalTasks";
 import TenantPortalInbox from "./TenantPortalInbox";
 import TenantProfile from "./TenantProfile";
 import TenantPortalMaintenance from "./TenantPortalMaintenance";
-// import TenantPortalHomeTwo from "./TenantPortalHomeTwo";
-import { AuthContext } from "../../Chat/ChatContext/AuthContext";
+
 import ChatLogin from "./TenantChat/ChatLogin/ChatLogin";
 import ChatRegister from "./TenantChat/ChatRegister/ChatRegister";
 import TenantPortalHomeThree from "./TenantPortalHomeThree";
 import TenantPropertyThree from "./TenantPropertyThree";
-import TenantPortalHome from "./TenantPortalHome";
 
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../Redux/userSlice";
+
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@example.com",
@@ -36,8 +39,14 @@ function classNames(...classes) {
 }
 
 const TenantPortalDashboard = () => {
-  const { currentUser } = useContext(AuthContext);
   let { path, url } = useRouteMatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/");
+  };
   const navigation = [
     { name: "Tenant Dashboard", to: `${url}`, href: "#", current: false },
     {
@@ -174,15 +183,18 @@ const TenantPortalDashboard = () => {
                             </button>
                           </div>
                           <div className="mt-3 px-2 space-y-1">
-                            {userNavigation.map((item) => (
-                              <Link
-                                key={item.name}
-                                to={item.href}
-                                className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
-                              >
-                                {item.name}
-                              </Link>
-                            ))}
+                            <Link
+                              to="/tenant-portal-dashboard/tenant-my-profile"
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              My Profile
+                            </Link>
+                            <button
+                              onClick={handleLogout}
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              Sign out
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -197,7 +209,7 @@ const TenantPortalDashboard = () => {
                   <div className="absolute left-0 py-5 flex-shrink-0 lg:static">
                     <Link to="/home">
                       <span className="sr-only">Nuova</span>
-                      <img src={logo} className="h-6 w-6" alt="Nuova Logo" />
+                      <img src={logo} className="h-8 w-28" alt="Nuova Logo" />
                     </Link>
                   </div>
 
@@ -218,7 +230,21 @@ const TenantPortalDashboard = () => {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={user.imageUrl}
+                            src={
+                              currentUser?.profilePic ? (
+                                currentUser?.profilePic
+                              ) : (
+                                <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                                  <svg
+                                    className="h-full w-full text-gray-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                  </svg>
+                                </span>
+                              )
+                            }
                             alt=""
                           />
                         </Menu.Button>
@@ -230,21 +256,30 @@ const TenantPortalDashboard = () => {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
+                          <Menu.Item>
+                            {({ active }) => (
+                              <>
+                                <Link
+                                  to="/tenant-portal-dashboard/tenant-my-profile"
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"
                                   )}
                                 >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
+                                  My Profile
+                                </Link>
+                                <button
+                                  onClick={handleLogout}
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Sign out
+                                </button>
+                              </>
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </Menu>
