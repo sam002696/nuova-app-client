@@ -1,44 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-
+import axios from "axios";
 import ProspectsModal from "./ProspectsModal";
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    department: "Optimization",
-    email: "lindsay.walton@example.com",
-    phone: "4153671865",
-    role: "Member",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    department: "Optimization",
-    email: "lindsay.walton@example.com",
-    phone: "4153671865",
-    role: "Member",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    department: "Optimization",
-    email: "lindsay.walton@example.com",
-    phone: "4153671865",
-    role: "Member",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  // More people...
-];
 
 const Prospects = () => {
   const [open, setOpen] = useState(false);
+  const [prospects, setProspects] = useState([]);
+  const [singleProspect, setSingleProspect] = useState({});
+  useEffect(() => {
+    const fetchAllProspects = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/prospects`);
+        setProspects(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllProspects();
+  }, []);
 
+  const handleSingleProspectView = (prospect) => {
+    setSingleProspect(prospect);
+    setOpen(true);
+  };
   return (
     <>
       <div className="max-w-7xl mx-auto">
@@ -100,42 +84,60 @@ const Prospects = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 bg-white">
-                      {people.map((person) => (
-                        <tr key={person.email}>
+                      {prospects.map((prospect) => (
+                        <tr key={prospect._id}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                             <div className="flex items-center">
                               <div className="h-10 w-10 flex-shrink-0">
-                                <img
-                                  className="h-10 w-10 rounded-full"
-                                  src={person.image}
-                                  alt=""
-                                />
+                                <span className="inline-block h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                                  <svg
+                                    className="h-full w-full text-gray-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                  </svg>
+                                </span>
                               </div>
                               <div className="ml-4">
                                 <div className="font-medium text-gray-900">
-                                  {person.name}
+                                  {prospect.details?.fullName}
                                 </div>
                                 <div className="text-gray-500">
-                                  {person.email}
+                                  {prospect.details?.emailAddress}
                                 </div>
                                 <div className="text-gray-500">
-                                  {person.phone}
+                                  {prospect.details?.mobile}
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            <div className="text-gray-900">Houston Villa</div>
-                            <div className="text-gray-500">
-                              6391, Elgian St. Selina, Delwar 10299
+                            <div className="text-gray-900">
+                              {prospect.propertyDetails?.propertyName}
                             </div>
                             <div className="text-gray-500">
-                              Available: 14/12/22
+                              {prospect?.propertyDetails?.addressline1} ,{" "}
+                              {prospect?.propertyDetails?.city} ,{" "}
+                              {prospect?.propertyDetails?.zipcode}
+                            </div>
+                            <div className="text-gray-500">
+                              Available:{" "}
+                              {new Date(
+                                prospect.propertyDetails?.availableDate
+                              ).toLocaleDateString()}
                             </div>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            <div className="text-gray-500">Date: 10/12/22</div>
-                            <div className="text-gray-500">Time : 02:00 PM</div>
+                            <div className="text-gray-500">
+                              Date:{" "}
+                              {new Date(
+                                prospect.book?.preferredDay
+                              ).toDateString()}{" "}
+                            </div>
+                            <div className="text-gray-500">
+                              Time: {prospect.book?.preferredTime}
+                            </div>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
@@ -143,15 +145,17 @@ const Prospects = () => {
                             </span>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            01-01-2023
+                            {new Date(
+                              prospect.details?.moveindate
+                            ).toDateString()}
                           </td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <button
                               type="button"
-                              onClick={() => setOpen(true)}
-                              className="text-indigo-600 hover:text-indigo-900"
+                              onClick={() => handleSingleProspectView(prospect)}
+                              className="text-cyan-600 hover:text-cyan-900"
                             >
-                              Edit
+                              View
                               {/* <span className="sr-only">, {person.name}</span> */}
                             </button>
                           </td>
@@ -164,7 +168,11 @@ const Prospects = () => {
             </div>
           </div>
         </div>
-        <ProspectsModal setOpen={setOpen} open={open} />
+        <ProspectsModal
+          singleProspect={singleProspect}
+          setOpen={setOpen}
+          open={open}
+        />
       </div>
     </>
   );

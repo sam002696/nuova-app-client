@@ -1,40 +1,21 @@
 import { Disclosure, Tab } from "@headlessui/react";
 import { StarIcon, PhoneIcon, MailIcon } from "@heroicons/react/solid";
 import { HeartIcon, MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
-
-const people = [
-  {
-    name: "Leonard Krasner",
-    handle: "leonardkrasner",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Floyd Miles",
-    handle: "floydmiles",
-    imageUrl:
-      "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Emily Selman",
-    handle: "emilyselman",
-    imageUrl:
-      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Kristin Watson",
-    handle: "kristinwatson",
-    imageUrl:
-      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-];
+import { useState } from "react";
+import ViewTenantModal from "./ViewTenantModal";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ReviewProperty = ({ singleProperty }) => {
-  // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [openTenantModal, setOpenTenantModal] = useState(false);
+  const [singleTenant, setSingleTenant] = useState({});
+
+  const handleTenantView = (tenant) => {
+    setOpenTenantModal(true);
+    setSingleTenant(tenant);
+  };
 
   const product = {
     name: "Property 1",
@@ -180,38 +161,40 @@ const ReviewProperty = ({ singleProperty }) => {
                 <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-2">
                   Tenants
                 </h2>
-                <ul role="list" className="-my-5 divide-y divide-gray-200">
-                  {people.map((person) => (
-                    <li key={person.handle} className="py-4">
+                <ul className="-my-5 divide-y divide-gray-200">
+                  {singleProperty.tenantDetails?.map((tenant) => (
+                    <li key={tenant._id} className="py-4">
                       <div className="flex items-center space-x-4">
                         <div className="flex-shrink-0">
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={person.imageUrl}
-                            alt=""
-                          />
+                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
+                            <span className="font-medium leading-none text-white">
+                              TW
+                            </span>
+                          </span>
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium text-gray-900">
-                            {person.name}
-                          </p>
-                          <p className="truncate text-sm text-gray-500">
-                            {"@" + person.handle}
+                            {tenant.tenantPersonalInfo?.fullName}
                           </p>
                         </div>
                         <div>
-                          <a
-                            href="#"
+                          <button
+                            onClick={() => handleTenantView(tenant)}
                             className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
                           >
                             View
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
+              <ViewTenantModal
+                open={openTenantModal}
+                setOpen={setOpenTenantModal}
+                singleTenant={singleTenant}
+              />
             </div>
           </div>
 
@@ -220,11 +203,11 @@ const ReviewProperty = ({ singleProperty }) => {
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               {singleProperty?.propertyAddress?.propertyName}
             </h1>
-            <h1 className="text-lg font-medium tracking-tight text-gray-600 mt-4">
-              {singleProperty?.propertyAddress?.addressline1},
-              {singleProperty?.propertyAddress?.city},
-              {singleProperty?.propertyAddress?.state},
-              {singleProperty?.propertyAddress?.country},
+            <h1 className="text-lg font-medium  text-gray-600 mt-4 tracking-wide">
+              {singleProperty?.propertyAddress?.addressline1},{" "}
+              {singleProperty?.propertyAddress?.city},{" "}
+              {singleProperty?.propertyAddress?.state},{" "}
+              {singleProperty?.propertyAddress?.country},{" "}
               {singleProperty?.propertyAddress?.zipcode}
             </h1>
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import tickMark from "../../../Images/Pros/Vector.png";
 
@@ -59,7 +59,6 @@ const posts = [
 ];
 
 const SinglePropertyDetails = () => {
-  let { path, url } = useRouteMatch();
   const { id } = useParams();
   console.log(id);
 
@@ -78,7 +77,7 @@ const SinglePropertyDetails = () => {
       }
     };
     handleSingleProperty();
-  }, []);
+  }, [id]);
   return (
     <>
       <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16 lg:min-h-[70vh] ">

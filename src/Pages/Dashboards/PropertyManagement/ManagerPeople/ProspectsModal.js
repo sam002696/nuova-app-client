@@ -1,14 +1,8 @@
 import React from "react";
 import { Fragment, useRef } from "react";
-import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
-import { UserAddIcon } from "@heroicons/react/outline";
-const ProspectsModal = ({ open, setOpen }) => {
+const ProspectsModal = ({ open, setOpen, singleProspect }) => {
   const cancelButtonRef = useRef(null);
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -41,10 +35,10 @@ const ProspectsModal = ({ open, setOpen }) => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full sm:p-6">
+                <Dialog.Panel className="relative bg-gray-100 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full sm:p-6">
                   <div>
                     {/* Property Info */}
-
+                    {/* 
                     <div className=" rounded-md shadow-md bg-white">
                       <img
                         src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -87,9 +81,9 @@ const ProspectsModal = ({ open, setOpen }) => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="overflow-hidden bg-white shadow sm:rounded-lg mt-5">
+                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg mt-5">
                       {/* Personal Details */}
                       <div className="px-4 py-5 sm:px-6">
                         <h3 className="text-lg font-medium leading-6 text-gray-900">
@@ -103,7 +97,9 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Preferred Move In Date
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              01-01-2023
+                              {new Date(
+                                singleProspect.details?.moveindate
+                              ).toDateString()}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
@@ -111,7 +107,7 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Full Name
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              Margot Foster
+                              {singleProspect.details?.fullName}
                             </dd>
                           </div>
 
@@ -120,7 +116,7 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Email address
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              margotfoster@example.com
+                              {singleProspect.details?.emailAddress}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
@@ -128,7 +124,7 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Mobile
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              Backend Developer
+                              {singleProspect.details?.mobile}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
@@ -136,7 +132,9 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Address
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              $120,000
+                              {singleProspect?.propertyDetails?.addressline1} ,{" "}
+                              {singleProspect?.propertyDetails?.city} ,{" "}
+                              {singleProspect?.propertyDetails?.zipcode}
                             </dd>
                           </div>
                         </dl>
@@ -154,26 +152,36 @@ const ProspectsModal = ({ open, setOpen }) => {
                             <dt className="text-sm font-medium text-gray-500">
                               Max Rent
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3000</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {" "}
+                              £{singleProspect?.preferences?.maxRent}
+                            </dd>
                           </div>
 
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Max Beds
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect?.preferences?.maxBeds}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Furnished
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {" "}
+                              {singleProspect?.preferences?.preference}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Parking
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect?.preferences?.parking}
+                            </dd>
                           </div>
                         </dl>
                       </div>
@@ -192,7 +200,9 @@ const ProspectsModal = ({ open, setOpen }) => {
                               30 times the monthly rental, or can you provide a
                               UK based guarantor?
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              £{singleProspect?.extraInfo?.householdIncome}
+                            </dd>
                           </div>
 
                           <div className="sm:col-span-2">
@@ -200,75 +210,99 @@ const ProspectsModal = ({ open, setOpen }) => {
                               How many adults (16 or older) will be living in
                               the property? *
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.adults}
+                            </dd>
                           </div>
                           <div className="sm:col-span-2">
                             <dt className="text-sm font-medium text-gray-500">
                               How many children (15 or younger) will be living
                               in the property?
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.children}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Intended length of stay in the property?
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.lengthOfStay}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Current Living Arrangement
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.livingArrangement}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Reason for moving
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.reasonForMoving}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Current Occupation
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.currentOccupation}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               What is your job title?
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.jobTitle}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Total Household Income
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              £{singleProspect.extraInfo?.householdIncome}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Pets
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.pets}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Smoker
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">3</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.smoker}
+                            </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Do you have any adverse credit?
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.adverseCard}
+                            </dd>
                           </div>
                           <div className="sm:col-span-2">
                             <dt className="text-sm font-medium text-gray-500">
                               Please enter any relevant information you think
                               will support your application to rent the property
                             </dt>
-                            <dd className="mt-1 text-sm text-gray-900">Yes</dd>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleProspect.extraInfo?.relevantInfo}
+                            </dd>
                           </div>
                         </dl>
                       </div>
@@ -286,7 +320,9 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Viewing Date
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              20-12-2022
+                              {new Date(
+                                singleProspect.book?.preferredDay
+                              ).toDateString()}{" "}
                             </dd>
                           </div>
 
@@ -295,7 +331,7 @@ const ProspectsModal = ({ open, setOpen }) => {
                               Viewing Time
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              02:00 PM
+                              {singleProspect.book?.preferredTime}
                             </dd>
                           </div>
                         </dl>

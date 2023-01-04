@@ -39,7 +39,6 @@ const DetailsForm = ({ formData, setFormData }) => {
             type="date"
             name="moveindate"
             id="moveindate"
-            defaultValue={formData?.details.moveindate}
             onChange={(e) => {
               handleDetailsChange(e);
             }}
