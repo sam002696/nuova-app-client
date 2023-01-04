@@ -153,7 +153,7 @@ const TenantProfile = () => {
                         onChange={(e) => {
                           handleFormChange(e);
                         }}
-                        defaultValue={""}
+                        defaultValue={currentUser.aboutMe}
                       />
                     </div>
                     <p className="mt-2 text-sm text-gray-500">
@@ -367,9 +367,12 @@ const TenantProfile = () => {
                         type="date"
                         name="dob"
                         id="dob"
-                        defaultValue={new Date(currentUser.dob)
-                          .toISOString()
-                          .substring(0, 10)}
+                        defaultValue={
+                          currentUser.dob &&
+                          new Date(currentUser.dob)
+                            .toISOString()
+                            .substring(0, 10)
+                        }
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
                         onChange={(e) => {
                           handleFormChange(e);

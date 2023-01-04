@@ -184,7 +184,7 @@ const HeaderNavbarTwo = () => {
                 onClick={handleLogout}
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-red-100 py-2 px-4 text-base font-medium text-red-600 hover:bg-red-200"
               >
-                logout
+                Sign Out
               </button>
             </>
           ) : (
@@ -193,7 +193,7 @@ const HeaderNavbarTwo = () => {
                 to="/login"
                 className="whitespace-nowrap rounded-md border border-transparent bg-[#bd8472] py-2 px-4 text-base font-medium text-white hover:bg-[#bd8472]"
               >
-                Sign in
+                Sign In
               </Link>
             </>
           )}

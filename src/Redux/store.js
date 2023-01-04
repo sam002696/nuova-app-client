@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 // import userRegisterReducer from "./userRegisterSlice";
-// import tenantPropertyDetailsReducer from "./tenantPropertySlice";
+import tenantPropertyDetailsReducer from "./tenantPropertySlice";
 // import maintenanceReportsReducer from "./allReportsSlice";
 // import contractorCurrentJobsReducer from "./contractorJobsSlice";
 import {
@@ -27,7 +27,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   //   userRegister: userRegisterReducer,
-  //   tenantPropertyDetails: tenantPropertyDetailsReducer,
+  tenantPropertyDetails: tenantPropertyDetailsReducer,
   //   maintenanceReports: maintenanceReportsReducer,
   //   contractorCurrentJobs: contractorCurrentJobsReducer,
 });
