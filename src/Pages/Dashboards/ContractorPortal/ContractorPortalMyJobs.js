@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import {
   ClipboardCheckIcon,
@@ -12,43 +12,65 @@ import CompleteJobs from "./ContractorJobs/CompleteJobs";
 import InprogressJobs from "./ContractorJobs/InprogressJobs";
 import DeclinedJobs from "./ContractorJobs/DeclinedJobs";
 import IncompleteJobs from "./ContractorJobs/IncompleteJobs";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const ContractorPortalMyJobs = () => {
   let { path, url } = useRouteMatch();
+
+  const { currentUser } = useSelector((state) => state.user);
+
+  const [getAllJobs, setGetAllJobs] = useState([]);
+
+  useEffect(() => {
+    const handleAllJobs = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/contractorJobs`);
+        setGetAllJobs(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleAllJobs();
+  }, []);
+  console.log(getAllJobs);
+
+  console.log(currentUser.email);
+
   const tabs = [
     {
-      name: "Current jobs",
+      name: "Current Jobs",
       to: `${url}`,
       href: "#",
       icon: BriefcaseIcon,
       current: false,
     },
     {
-      name: "complete",
+      name: "Complete Jobs",
       href: "#",
       to: `${url}/complete`,
       icon: ClipboardCheckIcon,
       current: false,
     },
     {
-      name: "incomplete",
+      name: "Incomplete Jobs",
       to: `${url}/incomplete`,
       href: "#",
       icon: ChartPieIcon,
       current: false,
     },
     {
-      name: "in-progress",
+      name: "Applied Jobs",
       href: "#",
       to: `${url}/in-progress`,
       icon: AdjustmentsIcon,
       current: true,
     },
     {
-      name: "declined",
+      name: "Declined Jobs",
       href: "#",
       to: `${url}/declined`,
       icon: ShieldExclamationIcon,
@@ -108,19 +130,19 @@ const ContractorPortalMyJobs = () => {
         <main className="">
           <Switch>
             <Route exact path={`${path}`}>
-              <CurrentJobs />
+              <CurrentJobs getAllJobs={getAllJobs} />
             </Route>
             <Route path={`${path}/complete`}>
-              <CompleteJobs />
+              <CompleteJobs getAllJobs={getAllJobs} />
             </Route>
             <Route path={`${path}/incomplete`}>
-              <IncompleteJobs />
+              <IncompleteJobs getAllJobs={getAllJobs} />
             </Route>
             <Route path={`${path}/in-progress`}>
-              <InprogressJobs />
+              <InprogressJobs getAllJobs={getAllJobs} />
             </Route>
             <Route path={`${path}/declined`}>
-              <DeclinedJobs />
+              <DeclinedJobs getAllJobs={getAllJobs} />
             </Route>
           </Switch>
         </main>
