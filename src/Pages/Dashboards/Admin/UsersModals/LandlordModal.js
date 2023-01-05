@@ -1,38 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
 import { UserAddIcon } from "@heroicons/react/outline";
 import axios from "axios";
-
-// import { useDispatch } from "react-redux";
-// import {
-//   registerFailure,
-//   registerStart,
-//   registerSuccess,
-// } from "../../../../Redux/userRegisterSlice";
-// import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LandlordModal = ({ open, setOpen }) => {
-  // const history = useHistory();
-  //   const dispatch = useDispatch();
-
   const cancelButtonRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data, e) => {
-    console.log(data);
+    setLoading(true);
     e.preventDefault();
-    // dispatch(registerStart());
+
     try {
       const res = await axios.post(
         "http://localhost:5500/api/auth/register",
         data
       );
-      //   dispatch(registerSuccess(res.data));
-      //   history.push("/login");
+
       if (res.data) {
-        alert("User Registration Successful");
+        setLoading(false);
+        Swal.fire(
+          "User registration is successful!",
+          "The user has been added in the system!",
+          "success"
+        );
+        window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -180,9 +176,10 @@ const LandlordModal = ({ open, setOpen }) => {
                     <button
                       onClick={() => setOpen(false)}
                       type="submit"
-                      className="text-white bg-gradient-to-r from-sky-800 to-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-bold rounded-md text-sm w-full px-5 py-2.5 text-center"
+                      disabled={loading}
+                      className="text-white bg-gradient-to-r from-sky-800 to-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-bold rounded-md text-sm w-full px-5 py-2.5 text-center disabled:bg-blue-100 disabled:cursor-not-allowed"
                     >
-                      Add a landlord
+                      {loading ? "Adding a landlord" : "Add a landlord"}
                     </button>
                   </form>
                 </Dialog.Panel>

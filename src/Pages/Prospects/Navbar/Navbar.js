@@ -75,22 +75,6 @@ const Navbar = () => {
             >
               Log In
             </button> */}
-            <Link to="/property-manager-dashboard">
-              <button
-                type="button"
-                className="text-white text-base bg-[#BD8472] px-3 py-2 text-center rounded"
-              >
-                Property Manager
-              </button>
-            </Link>
-            <Link to="/tenant-portal-dashboard">
-              <button
-                type="button"
-                className="text-white text-base bg-[#BD8472] px-3 py-2 text-center rounded"
-              >
-                Tenant Portal
-              </button>
-            </Link>
           </div>
         </div>
       </nav>

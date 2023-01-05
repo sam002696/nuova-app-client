@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
+  const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const [formList, setFormList] = useState({
     contractorName: currentUser?.username,
@@ -23,13 +24,14 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
 
   const handleBidForJob = async (e) => {
     e.preventDefault();
-    console.log(formList);
+    setLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/biddings/${singleJob?.jobid}`,
         formList
       );
       if (res.data) {
+        setLoading(false);
         setOpen(false);
         window.location.reload(false);
       }
@@ -240,8 +242,12 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
 
                         <input
                           type="submit"
-                          value="Apply for the job"
-                          className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-indigo-600 px-4 py-2 text-base font-medium shadow-sm hover:bg-indigo-800  sm:col-start-1 sm:mt-4 sm:text-sm text-white cursor-pointer"
+                          value={
+                            loading
+                              ? "Applying for the job"
+                              : "Apply for the job"
+                          }
+                          className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-cyan-600 px-4 py-2 text-base font-medium shadow-sm hover:bg-cyan-800  sm:col-start-1 sm:mt-4 sm:text-sm text-white cursor-pointer"
                           onClick={(e) => handleBidForJob(e)}
                         ></input>
                       </div>

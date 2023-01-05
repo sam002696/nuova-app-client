@@ -9,6 +9,7 @@ import Landlords from "./ManagerPeople/Landlords";
 import Tenants from "./ManagerPeople/Tenants";
 import Contractors from "./ManagerPeople/Contractors";
 import Prospects from "./ManagerPeople/Prospects";
+import PropertyManagers from "./ManagerPeople/PropertyManagers";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,6 +24,13 @@ const ManagerPeople = () => {
       href: "#",
       icon: UserIcon,
       current: false,
+    },
+    {
+      name: "Property Managers",
+      href: "#",
+      to: `${url}/propertymanagers`,
+      icon: CreditCardIcon,
+      current: true,
     },
     {
       name: "Tenants",
@@ -110,6 +118,9 @@ const ManagerPeople = () => {
             </Route>
             <Route path={`${path}/prospects`}>
               <Prospects />
+            </Route>
+            <Route path={`${path}/propertymanagers`}>
+              <PropertyManagers />
             </Route>
           </Switch>
         </main>

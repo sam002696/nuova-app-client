@@ -18,7 +18,6 @@ const ContractorPortalFindJobs = () => {
   const [findAllJobs, setFindAllJobs] = useState([]);
   const [detailsButton, setDetailsButton] = useState(false);
   const [seeSingleJobDetails, setSeeSingleJobDetails] = useState({});
-  const [actionButton, setActionButton] = useState({});
 
   useEffect(() => {
     const handleReportsDetails = async () => {
@@ -36,7 +35,6 @@ const ContractorPortalFindJobs = () => {
   const seeJobDetails = (singleJob) => {
     setDetailsButton(true);
     setSeeSingleJobDetails(singleJob);
-    setActionButton({});
   };
 
   const handleBidForJob = (seeSingleJobDetails) => {
@@ -168,9 +166,9 @@ const ContractorPortalFindJobs = () => {
                         <p className="mt-1 text-gray-500 text-sm truncate">
                           {singleJob.createdAt && (
                             <time>
-                              {new Date(singleJob.createdAt).getFullYear()}-
-                              {new Date(singleJob.createdAt).getMonth()}-
-                              {new Date(singleJob.createdAt).getDate()} :{" "}
+                              {new Date(
+                                singleJob.createdAt
+                              ).toLocaleDateString()}
                             </time>
                           )}
                         </p>
@@ -298,7 +296,7 @@ const ContractorPortalFindJobs = () => {
                     )
                   }
                   onClick={() => handleBidForJob(seeSingleJobDetails)}
-                  className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                  className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:cursor-not-allowed"
                 >
                   <LightningBoltIcon
                     className="-ml-1 mr-2 h-5 w-5"

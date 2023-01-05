@@ -121,7 +121,7 @@ const AdminAddUsers = () => {
                       <div>
                         <PlusIcon className=" h-6 mr-2" />
                       </div>{" "}
-                      <span className="text-2xl"> Add a landlord</span>
+                      <span className="text-xl"> Add a landlord</span>
                     </h3>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ const AdminAddUsers = () => {
                       <div>
                         <PlusIcon className=" h-6 mr-2" />
                       </div>{" "}
-                      <span className="text-2xl"> Add a tenant</span>
+                      <span className="text-xl"> Add a tenant</span>
                     </h3>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ const AdminAddUsers = () => {
                       <div>
                         <PlusIcon className=" h-6 mr-2" />
                       </div>{" "}
-                      <span className="text-2xl"> Add a Contractor</span>
+                      <span className="text-xl"> Add a Contractor</span>
                     </h3>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ const AdminAddUsers = () => {
                       <div>
                         <PlusIcon className=" h-6 mr-2" />
                       </div>{" "}
-                      <span className="text-2xl"> Add a Manager</span>
+                      <span className="text-xl"> Add a Manager</span>
                     </h3>
                   </div>
                 </div>
