@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   NavLink,
   useRouteMatch,
@@ -26,6 +26,7 @@ import TenantPropertyThree from "./TenantPropertyThree";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
+import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 
 const user = {
   name: "Chelsea Hagon",
@@ -42,6 +43,7 @@ const TenantPortalDashboard = () => {
   let { path, url } = useRouteMatch();
   const history = useHistory();
   const dispatch = useDispatch();
+  const { currentUser: chatUser } = useContext(AuthContext);
   const { currentUser } = useSelector((state) => state.user);
   const handleLogout = () => {
     dispatch(logout());
@@ -370,7 +372,7 @@ const TenantPortalDashboard = () => {
               <TenantPortalTasks />
             </Route>
             <Route path={`${path}/tenant-portal-inbox`}>
-              {currentUser ? <TenantPortalInbox /> : <ChatLogin />}
+              {chatUser ? <TenantPortalInbox /> : <ChatLogin />}
             </Route>
             <Route path={`${path}/tenant-my-profile`}>
               <TenantProfile />
