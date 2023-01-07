@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 const CurrentJobs = ({ getAllJobs }) => {
   const { currentUser } = useSelector((state) => state.user);
+
+  console.log(getAllJobs);
   return (
     <>
       <div className="text-center mt-8">
@@ -22,7 +24,7 @@ const CurrentJobs = ({ getAllJobs }) => {
           {getAllJobs
             ?.filter(
               (myJobs) =>
-                myJobs?.contractorBiddingEmail.find(
+                myJobs?.contractorBiddingEmail?.find(
                   (email) => email === currentUser.email
                 ) === currentUser.email
             )

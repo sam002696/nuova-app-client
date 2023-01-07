@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import {
+  NavLink,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
@@ -17,26 +24,23 @@ import ContractorProfile from "./ContractorProfile";
 import InvoiceMaker from "./InvoiceMaker/InvoiceMaker";
 import ContractorPortalHomeTwo from "./ContractorPortalHomeTwo";
 import ContractorPortalFindJobsTwo from "./ContractorPortalFindJobsTwo";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../Redux/userSlice";
 
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
-const user = {
-  name: "Chelsea Hagon",
-  email: "chelsea.hagon@example.com",
-  role: "Human Resources Manager",
-  imageUrl:
-    "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ContractorPortalDashboard = () => {
-  const { currentUser } = useContext(AuthContext);
   let { path, url } = useRouteMatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { currentUser: chatUser } = useContext(AuthContext);
+  const { currentUser } = useSelector((state) => state.user);
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/");
+  };
   const navigation = [
     { name: "Contractor Dashboard", to: `${url}`, href: "#", current: false },
     {
@@ -128,8 +132,8 @@ const ContractorPortalDashboard = () => {
                             <div>
                               <img
                                 className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-mark-cyan-600.svg"
-                                alt="Workflow"
+                                src={logo}
+                                alt="Nuova Property"
                               />
                             </div>
                             <div className="-mr-2">
@@ -139,7 +143,7 @@ const ContractorPortalDashboard = () => {
                               </Popover.Button>
                             </div>
                           </div>
-                          <div className="mt-3 px-2 space-y-1">
+                          <div className="mt-5 px-2 space-y-2 flex flex-col">
                             {navigation.map((item) => (
                               <NavLink
                                 key={item.name}
@@ -148,7 +152,7 @@ const ContractorPortalDashboard = () => {
                                 //     color: 'white'
                                 // }
                                 // }
-                                className="text-cyan-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10"
+                                className="text-cyan-500 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10"
                               >
                                 {item.name}
                               </NavLink>
@@ -158,18 +162,30 @@ const ContractorPortalDashboard = () => {
                         <div className="pt-4 pb-2">
                           <div className="flex items-center px-5">
                             <div className="flex-shrink-0">
-                              <img
-                                className="h-10 w-10 rounded-full"
-                                src={user.imageUrl}
-                                alt=""
-                              />
+                              {currentUser?.profilePic ? (
+                                <img
+                                  className="h-10 w-10 rounded-full"
+                                  src={currentUser.profilePic}
+                                  alt=""
+                                />
+                              ) : (
+                                <span className=" h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                                  <svg
+                                    className="h-10 w-10 rounded-full text-gray-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                  </svg>
+                                </span>
+                              )}
                             </div>
                             <div className="ml-3 min-w-0 flex-1">
                               <div className="text-base font-medium text-gray-800 truncate">
-                                {user.name}
+                                {currentUser.username}
                               </div>
                               <div className="text-sm font-medium text-gray-500 truncate">
-                                {user.email}
+                                {currentUser.email}
                               </div>
                             </div>
                             <button
@@ -186,15 +202,18 @@ const ContractorPortalDashboard = () => {
                             </button>
                           </div>
                           <div className="mt-3 px-2 space-y-1">
-                            {userNavigation.map((item) => (
-                              <Link
-                                key={item.name}
-                                to={item.href}
-                                className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
-                              >
-                                {item.name}
-                              </Link>
-                            ))}
+                            <Link
+                              to="/contractor-portal-dashboard/contractor-my-profile"
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              My Profile
+                            </Link>
+                            <button
+                              onClick={handleLogout}
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              Sign out
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -228,11 +247,26 @@ const ContractorPortalDashboard = () => {
                       <div>
                         <Menu.Button className="bg-white rounded-full flex text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100">
                           <span className="sr-only">Open user menu</span>
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={user.imageUrl}
-                            alt=""
-                          />
+                          {currentUser?.profilePic ? (
+                            <img
+                              className="h-8 w-8 rounded-full"
+                              src={
+                                currentUser?.profilePic &&
+                                currentUser?.profilePic
+                              }
+                              alt=""
+                            />
+                          ) : (
+                            <span className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-100">
+                              <svg
+                                className="h-full w-full text-gray-300"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                              </svg>
+                            </span>
+                          )}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -242,21 +276,30 @@ const ContractorPortalDashboard = () => {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
+                          <Menu.Item>
+                            {({ active }) => (
+                              <>
+                                <Link
+                                  to="/contractor-portal-dashboard/contractor-my-profile"
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"
                                   )}
                                 >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
+                                  My Profile
+                                </Link>
+                                <button
+                                  onClick={handleLogout}
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Sign out
+                                </button>
+                              </>
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </Menu>
@@ -346,7 +389,7 @@ const ContractorPortalDashboard = () => {
               <ContractorPortalFinance />
             </Route>
             <Route path={`${path}/contractor-portal-inbox`}>
-              {currentUser ? <ContractorPortalInbox /> : <ChatLogin />}
+              {chatUser ? <ContractorPortalInbox /> : <ChatLogin />}
             </Route>
             <Route path={`${path}/contractor-my-profile`}>
               <ContractorProfile />

@@ -28,13 +28,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 
-const user = {
-  name: "Chelsea Hagon",
-  email: "chelsea.hagon@example.com",
-  role: "Human Resources Manager",
-  imageUrl:
-    "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -127,8 +120,8 @@ const TenantPortalDashboard = () => {
                             <div>
                               <img
                                 className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-mark-cyan-600.svg"
-                                alt="Workflow"
+                                src={logo}
+                                alt="Nuova Property"
                               />
                             </div>
                             <div className="-mr-2">
@@ -138,7 +131,7 @@ const TenantPortalDashboard = () => {
                               </Popover.Button>
                             </div>
                           </div>
-                          <div className="mt-3 px-2 space-y-1">
+                          <div className="mt-5 px-2 space-y-2 flex flex-col">
                             {navigation.map((item) => (
                               <NavLink
                                 key={item.name}
@@ -147,7 +140,7 @@ const TenantPortalDashboard = () => {
                                 //     color: 'white'
                                 // }
                                 // }
-                                className="text-cyan-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10"
+                                className="text-cyan-500 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10 "
                               >
                                 {item.name}
                               </NavLink>
@@ -157,18 +150,30 @@ const TenantPortalDashboard = () => {
                         <div className="pt-4 pb-2">
                           <div className="flex items-center px-5">
                             <div className="flex-shrink-0">
-                              <img
-                                className="h-10 w-10 rounded-full"
-                                src={user.imageUrl}
-                                alt=""
-                              />
+                              {currentUser?.profilePic ? (
+                                <img
+                                  className="h-10 w-10 rounded-full"
+                                  src={currentUser.profilePic}
+                                  alt=""
+                                />
+                              ) : (
+                                <span className=" h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                                  <svg
+                                    className="h-10 w-10 rounded-full text-gray-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                  </svg>
+                                </span>
+                              )}
                             </div>
                             <div className="ml-3 min-w-0 flex-1">
                               <div className="text-base font-medium text-gray-800 truncate">
-                                {user.name}
+                                {currentUser.username}
                               </div>
                               <div className="text-sm font-medium text-gray-500 truncate">
-                                {user.email}
+                                {currentUser.email}
                               </div>
                             </div>
                             <button

@@ -21,7 +21,7 @@ const InprogressJobs = ({ getAllJobs }) => {
           {getAllJobs
             ?.filter(
               (myJobs) =>
-                myJobs?.contractorBiddingEmail.find(
+                myJobs?.contractorBiddingEmail?.find(
                   (email) => email === currentUser.email
                 ) === currentUser.email
             )
