@@ -663,7 +663,104 @@ const ManagerTasks = () => {
               </p>
               <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
                 <ul className="divide-y divide-gray-200">
-                  {tenantsTasks.map((task) => (
+                  {tenantsTasks
+                    .sort(
+                      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+                    )
+                    .map((task) => (
+                      <li key={task._id}>
+                        <div className="block hover:bg-gray-50">
+                          <div className="flex items-center px-4 py-4 sm:px-6">
+                            <div className="min-w-0 flex-1 flex items-center">
+                              <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                                <div>
+                                  <p className="text-sm font-medium text-cyan-600 truncate">
+                                    {task.taskTitle}
+                                  </p>
+
+                                  <p className="mt-2 flex items-center text-sm text-gray-500">
+                                    <PlusCircleIcon
+                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                      aria-hidden="true"
+                                    />
+                                    <span className="truncate">
+                                      {task.assignedUseremail
+                                        ? "Individual"
+                                        : "Everyone"}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div className="hidden md:block">
+                                  <div>
+                                    <p className="text-sm text-gray-900">
+                                      Assigned on{" "}
+                                      <time>
+                                        {new Date(task.createdAt).getFullYear()}
+                                        -{new Date(task.createdAt).getMonth()}-
+                                        {new Date(task.createdAt).getDate()}
+                                      </time>
+                                    </p>
+                                    <p className="mt-2 flex items-center text-sm text-gray-500">
+                                      {(task.sendTask ===
+                                        "Send to individual" &&
+                                        task.uploadSingleTask?.taskComplete ===
+                                          true) ||
+                                      (task.sendTask === "Everyone" &&
+                                        task.uploadAllTasks?.every(
+                                          (task) => task.taskComplete === true
+                                        ) &&
+                                        task.uploadAllTasks?.length !== 0) ? (
+                                        <CheckCircleIcon
+                                          className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <ArrowCircleRightIcon
+                                          className="flex-shrink-0 mr-1.5 h-5 w-5 text-blue-400"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+
+                                      {(task.sendTask ===
+                                        "Send to individual" &&
+                                        task.uploadSingleTask?.taskComplete ===
+                                          true) ||
+                                      (task.sendTask === "Everyone" &&
+                                        task.uploadAllTasks?.every(
+                                          (task) => task.taskComplete === true
+                                        ) &&
+                                        task.uploadAllTasks?.length !== 0)
+                                        ? "completed"
+                                        : "Not yet completed"}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button onClick={() => handleTaskModal(task)}>
+                              <ChevronRightIcon
+                                className="h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className=" col-span-3">
+            <p className=" font-medium text-lg text-center text-gray-500 mb-5 mt-4 underline underline-offset-4">
+              List of the assigned landlord tasks
+            </p>
+            <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
+              <ul className="divide-y divide-gray-200">
+                {landlordsTasks
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .map((task) => (
                     <li key={task._id}>
                       <div className="block hover:bg-gray-50">
                         <div className="flex items-center px-4 py-4 sm:px-6">
@@ -741,95 +838,6 @@ const ManagerTasks = () => {
                       </div>
                     </li>
                   ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className=" col-span-3">
-            <p className=" font-medium text-lg text-center text-gray-500 mb-5 mt-4 underline underline-offset-4">
-              List of the assigned landlord tasks
-            </p>
-            <div className="bg-white shadow-lg shadow-cyan-200/50 overflow-hidden sm:rounded-md">
-              <ul className="divide-y divide-gray-200">
-                {landlordsTasks.map((task) => (
-                  <li key={task._id}>
-                    <div className="block hover:bg-gray-50">
-                      <div className="flex items-center px-4 py-4 sm:px-6">
-                        <div className="min-w-0 flex-1 flex items-center">
-                          <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                            <div>
-                              <p className="text-sm font-medium text-cyan-600 truncate">
-                                {task.taskTitle}
-                              </p>
-
-                              <p className="mt-2 flex items-center text-sm text-gray-500">
-                                <PlusCircleIcon
-                                  className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                                  aria-hidden="true"
-                                />
-                                <span className="truncate">
-                                  {task.assignedUseremail
-                                    ? "Individual"
-                                    : "Everyone"}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="hidden md:block">
-                              <div>
-                                <p className="text-sm text-gray-900">
-                                  Assigned on{" "}
-                                  <time>
-                                    {new Date(task.createdAt).getFullYear()}-
-                                    {new Date(task.createdAt).getMonth()}-
-                                    {new Date(task.createdAt).getDate()}
-                                  </time>
-                                </p>
-                                <p className="mt-2 flex items-center text-sm text-gray-500">
-                                  {(task.sendTask === "Send to individual" &&
-                                    task.uploadSingleTask?.taskComplete ===
-                                      true) ||
-                                  (task.sendTask === "Everyone" &&
-                                    task.uploadAllTasks?.every(
-                                      (task) => task.taskComplete === true
-                                    ) &&
-                                    task.uploadAllTasks?.length !== 0) ? (
-                                    <CheckCircleIcon
-                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                                      aria-hidden="true"
-                                    />
-                                  ) : (
-                                    <ArrowCircleRightIcon
-                                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-blue-400"
-                                      aria-hidden="true"
-                                    />
-                                  )}
-
-                                  {(task.sendTask === "Send to individual" &&
-                                    task.uploadSingleTask?.taskComplete ===
-                                      true) ||
-                                  (task.sendTask === "Everyone" &&
-                                    task.uploadAllTasks?.every(
-                                      (task) => task.taskComplete === true
-                                    ) &&
-                                    task.uploadAllTasks?.length !== 0)
-                                    ? "completed"
-                                    : "Not yet completed"}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <button onClick={() => handleTaskModal(task)}>
-                          <ChevronRightIcon
-                            className="h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                ))}
               </ul>
             </div>
           </div>

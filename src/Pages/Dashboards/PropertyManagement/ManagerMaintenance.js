@@ -5,6 +5,7 @@ import { ClipboardCheckIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import MaintenanceReportModal from "./ManagerMaintenanceModal/MaintenanceReportModal";
 import MaintenanceReportUpdateModal from "./ManagerMaintenanceModal/MaintenanceReportUpdateModal";
+import Swal from "sweetalert2";
 
 const tabs = [
   {
@@ -22,23 +23,18 @@ function classNames(...classes) {
 const ManagerMaintenance = () => {
   const [openModal, setOpenModal] = useState(false);
   const [actionButton, setActionButton] = useState({});
+  const [clickOnReport, setClickOnReport] = useState({});
   const [singleReport, setSingleReport] = useState({});
   const [viewContractorBidding, setViewContractorBidding] = useState({});
   const [singleUpdateReport, setSingleUpdateReport] = useState(false);
   const [singleUpdateModalReport, setSingleUpdateModalReport] = useState({});
   const [maintenanceReports, setMaintenanceReports] = useState([]);
   const [viewIssue, setViewIssue] = useState(false);
-  //   const { maintenanceReports } = useSelector(
-  //     (state) => state.maintenanceReports
-  //   );
-  //   const dispatch = useDispatch();
 
   useEffect(() => {
     const handleReportsDetails = async () => {
-      //   dispatch(fetchingStart());
       try {
         const res = await axios.get(`http://localhost:5500/api/reports`);
-        // dispatch(fetchingSuccess(res.data));
         console.log(res.data);
         setMaintenanceReports(res.data);
       } catch (err) {
@@ -57,6 +53,7 @@ const ManagerMaintenance = () => {
     setViewContractorBidding(report);
     setActionButton({});
     setViewIssue(true);
+    setClickOnReport(report);
   };
 
   const handleUpdateReport = (report) => {
@@ -75,8 +72,8 @@ const ManagerMaintenance = () => {
         `http://localhost:5500/api/reports/acceptoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
-        console.log("job has been assigned!");
-        window.location.reload(true);
+        Swal.fire("", "The job has been assigned!", "success");
+        window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -90,8 +87,8 @@ const ManagerMaintenance = () => {
         `http://localhost:5500/api/reports/declineoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
-        console.log("job has been declined!");
-        window.location.reload(true);
+        Swal.fire("", "The job has been declined!", "error");
+        window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -105,8 +102,8 @@ const ManagerMaintenance = () => {
         `http://localhost:5500/api/reports/completejob/${reportid}/${biddingid}`
       );
       if (res.data) {
-        console.log("Job has been completed!");
-        window.location.reload(true);
+        Swal.fire("", "Job is completed!", "success");
+        window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -120,7 +117,7 @@ const ManagerMaintenance = () => {
         `http://localhost:5500/api/reports/incompletejob/${reportid}/${biddingid}`
       );
       if (res.data) {
-        console.log("Job has been incompleted!");
+        Swal.fire("", "Job is incomplete!", "info");
         window.location.reload(true);
       }
     } catch (err) {
@@ -128,8 +125,6 @@ const ManagerMaintenance = () => {
     }
   };
 
-  console.log(viewContractorBidding?.assignedContractor?.contractorEmail);
-  //   console.log(maintenanceReports);
   return (
     <>
       <div className=" max-w-9xl mx-auto mt-10 pb-8">
@@ -151,58 +146,64 @@ const ManagerMaintenance = () => {
                   : "grid grid-cols-3 lg:col-span-3 gap-8"
               }`}
             >
-              {maintenanceReports.map((report) => (
-                <ul className="space-y-5">
-                  <li
-                    key={report.email}
-                    className="col-span-1 bg-white rounded-lg shadow-md divide-y divide-gray-200"
-                  >
-                    <div className="w-full flex items-center justify-between px-6 py-5 space-x-6">
-                      <img
-                        className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                        src={report.issueImage}
-                        alt=""
-                      />
-                      <div className="flex-1 truncate">
-                        <div className="flex items-center space-x-3">
-                          <h3 className="text-gray-900 text-xl font-semibold truncate">
-                            {report.issueName}
-                          </h3>
+              {maintenanceReports
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .map((report) => (
+                  <ul className="space-y-5">
+                    <li
+                      key={report._id}
+                      className={`${
+                        clickOnReport._id === report._id
+                          ? "bg-yellow-50"
+                          : "bg-white"
+                      } col-span-1  rounded-lg shadow-md divide-y divide-gray-200`}
+                    >
+                      <div className="w-full flex items-center justify-between px-6 py-5 space-x-6">
+                        <img
+                          className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
+                          src={report.issueImage}
+                          alt=""
+                        />
+                        <div className="flex-1 truncate">
+                          <div className="flex items-center space-x-3">
+                            <h3 className="text-gray-900 text-xl font-semibold truncate">
+                              {report.issueName}
+                            </h3>
+                            <button
+                              onClick={() => handleReport(report)}
+                              disabled={report?.post === true}
+                              className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full"
+                            >
+                              {report.post === true ? "Posted" : "Post"}
+                            </button>
+                            <button
+                              onClick={() => handleView(report)}
+                              className="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-yellow-100 rounded-full"
+                            >
+                              View
+                            </button>
+                          </div>
+
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.username}
+                          </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.email} / {report.phoneNo}
+                          </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.tenantAddress}
+                          </p>
                           <button
-                            onClick={() => handleReport(report)}
-                            disabled={report?.post === true}
-                            className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full"
+                            onClick={() => handleUpdateReport(report)}
+                            className="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-orange-200 rounded mt-2"
                           >
-                            {report.post === true ? "Posted" : "Post"}
-                          </button>
-                          <button
-                            onClick={() => handleView(report)}
-                            className="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-yellow-100 rounded-full"
-                          >
-                            View
+                            Update Maintenance Report
                           </button>
                         </div>
-
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.username}
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.email} / {report.phoneNo}
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.tenantAddress}
-                        </p>
-                        <button
-                          onClick={() => handleUpdateReport(report)}
-                          className="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-orange-200 rounded mt-2"
-                        >
-                          Update Maintenance Report
-                        </button>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-              ))}
+                    </li>
+                  </ul>
+                ))}
             </div>
 
             <div className="grid grid-cols-1 lg:col-span-2">

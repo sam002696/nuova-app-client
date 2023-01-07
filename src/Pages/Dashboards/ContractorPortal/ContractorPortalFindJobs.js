@@ -93,49 +93,51 @@ const ContractorPortalFindJobs = () => {
                   <span className="mx-3">Most Relevent Jobs </span>{" "}
                 </h2>
               </div>
-              {findAllJobs.map((singleJob) => (
-                <li
-                  key={singleJob.email}
-                  className="col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200"
-                >
-                  <div className="w-full flex justify-between px-6 py-6 space-x-6">
-                    <img
-                      className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                      src={singleJob.issueImage}
-                      alt=""
-                    />
-                    <div className="flex-1 truncate">
-                      <div className="flex items-center space-x-3">
-                        <h3 className="text-cyan-700 text-sm font-semibold truncate">
-                          Nuova System Jobs
-                        </h3>
-                        <span className="flex-shrink-0 inline-block px-2 py-0.5 text-white text-xs font-medium bg-indigo-400 rounded-full">
-                          Maintenance Issue
-                        </span>
+              {findAllJobs
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .map((singleJob) => (
+                  <li
+                    key={singleJob.email}
+                    className="col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200"
+                  >
+                    <div className="w-full flex justify-between px-6 py-6 space-x-6">
+                      <img
+                        className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
+                        src={singleJob.issueImage}
+                        alt=""
+                      />
+                      <div className="flex-1 truncate">
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-cyan-700 text-sm font-semibold truncate">
+                            Nuova System Jobs
+                          </h3>
+                          <span className="flex-shrink-0 inline-block px-2 py-0.5 text-white text-xs font-medium bg-indigo-400 rounded-full">
+                            Maintenance Issue
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-gray-900 text-xl font-semibold truncate">
+                            {singleJob.issueName}
+                          </h3>
+                        </div>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          {singleJob.tenantAddress}
+                        </p>
+                        <p className="mt-1 text-gray-500 text-sm truncate">
+                          {singleJob.perHourIncome}
+                        </p>
+                        <div className="mt-3">
+                          {singleJob.postBidding === true &&
+                            singleJob.contractorBiddingEmail.find(
+                              (element) => element === currentUser.email
+                            ) && (
+                              <span className=" inline-block px-3 py-1 text-white text-xs font-medium bg-green-400 rounded-full">
+                                Job Applied
+                              </span>
+                            )}
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <h3 className="text-gray-900 text-xl font-semibold truncate">
-                          {singleJob.issueName}
-                        </h3>
-                      </div>
-                      <p className="mt-1 text-gray-500 text-sm truncate">
-                        {singleJob.tenantAddress}
-                      </p>
-                      <p className="mt-1 text-gray-500 text-sm truncate">
-                        {singleJob.perHourIncome}
-                      </p>
-                      <div className="mt-3">
-                        {singleJob.postBidding === true &&
-                          singleJob.contractorBiddingEmail.find(
-                            (element) => element === currentUser.email
-                          ) && (
-                            <span className=" inline-block px-3 py-1 text-white text-xs font-medium bg-green-400 rounded-full">
-                              Job Applied
-                            </span>
-                          )}
-                      </div>
-                    </div>
-                    {/* <div className="flex-1 truncate">
+                      {/* <div className="flex-1 truncate">
                                             <div className="flex items-center space-x-3">
                                                 <h3 className="text-gray-900 text-md font-semibold truncate">
                                                     {report.tenant_name}
@@ -152,31 +154,31 @@ const ContractorPortalFindJobs = () => {
                                             </p>
 
                                         </div> */}
-                    <div className="flex flex-col justify-between">
-                      <button
-                        onClick={() => seeJobDetails(singleJob)}
-                        className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
-                      >
-                        Details
-                      </button>
-                      <div className="flex items-center space-x-2">
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          Easy Apply
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {singleJob.createdAt && (
-                            <time>
-                              {new Date(
-                                singleJob.createdAt
-                              ).toLocaleDateString()}
-                            </time>
-                          )}
-                        </p>
+                      <div className="flex flex-col justify-between">
+                        <button
+                          onClick={() => seeJobDetails(singleJob)}
+                          className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
+                        >
+                          Details
+                        </button>
+                        <div className="flex items-center space-x-2">
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            Easy Apply
+                          </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {singleJob.createdAt && (
+                              <time>
+                                {new Date(
+                                  singleJob.createdAt
+                                ).toLocaleDateString()}
+                              </time>
+                            )}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ))}
             </ul>
 
             <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
