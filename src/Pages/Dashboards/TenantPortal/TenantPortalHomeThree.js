@@ -61,12 +61,12 @@ const TenantPortalHomeThree = () => {
                 <div className="flex items-center">
                   {currentUser?.profilePic ? (
                     <img
-                      className="h-8 w-8 rounded-full"
+                      className="hidden h-12 w-12 rounded-full sm:block"
                       src={currentUser?.profilePic && currentUser?.profilePic}
                       alt=""
                     />
                   ) : (
-                    <span className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-100">
+                    <span className="hidden sm:block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
                       <svg
                         className="h-full w-full text-gray-300"
                         fill="currentColor"
@@ -76,53 +76,52 @@ const TenantPortalHomeThree = () => {
                       </svg>
                     </span>
                   )}
-                  {tenantProperty?.tenantDetails?.map((tenant) => (
-                    <div>
-                      <div className="flex items-center">
+
+                  <div>
+                    <div className="flex items-center">
+                      {currentUser?.profilePic ? (
                         <img
-                          className="h-16 w-16 rounded-full sm:hidden"
+                          className="h-12 w-12 rounded-full sm:hidden"
                           src={
-                            currentUser?.profilePic ? (
-                              currentUser?.profilePic
-                            ) : (
-                              <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
-                                <svg
-                                  className="h-full w-full text-gray-300"
-                                  fill="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                              </span>
-                            )
+                            currentUser?.profilePic && currentUser?.profilePic
                           }
                           alt=""
                         />
-                        <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                          Welcome, {tenant?.tenantPersonalInfo?.fullName}
-                        </h1>
-                      </div>
-
-                      <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
-                        <dt className="sr-only">Company</dt>
-                        <dd className="flex items-center text-sm font-medium lowercase text-gray-500 sm:mr-6">
-                          <BookmarkIcon
-                            className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          {tenant?.tenantPersonalInfo?.email}
-                        </dd>
-                        <dt className="sr-only">Account status</dt>
-                        <dd className="mt-3 flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6 sm:mt-0">
-                          <CheckCircleIcon
-                            className="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
-                            aria-hidden="true"
-                          />
-                          Verified account
-                        </dd>
-                      </dl>
+                      ) : (
+                        <span className=" h-12 w-12 overflow-hidden rounded-full bg-gray-100 sm:hidden">
+                          <svg
+                            className="h-full w-full text-gray-300"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                          </svg>
+                        </span>
+                      )}
+                      <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
+                        Welcome, {currentUser?.username}
+                      </h1>
                     </div>
-                  ))}
+
+                    <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                      <dt className="sr-only">Company</dt>
+                      <dd className="flex items-center text-sm font-medium lowercase text-gray-500 sm:mr-6">
+                        <BookmarkIcon
+                          className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        {currentUser?.email}
+                      </dd>
+                      <dt className="sr-only">Account status</dt>
+                      <dd className="mt-3 flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6 sm:mt-0">
+                        <CheckCircleIcon
+                          className="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
+                          aria-hidden="true"
+                        />
+                        Verified account
+                      </dd>
+                    </dl>
+                  </div>
                 </div>
               </div>
               <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
