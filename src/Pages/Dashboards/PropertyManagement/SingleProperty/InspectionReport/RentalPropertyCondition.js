@@ -1,6 +1,6 @@
 import React from "react";
 
-const RentalPropertyCondition = () => {
+const RentalPropertyCondition = ({ register }) => {
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
@@ -32,6 +32,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.entryway1.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -52,6 +55,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.entryway2.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -72,6 +78,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.livingRoom.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -92,6 +101,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.diningRoom.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -112,6 +124,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.kitchen.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -132,6 +147,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bedroom1.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -152,6 +170,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bedroom2.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -172,6 +193,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bedroom3.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -192,6 +216,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bathroom1.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -212,6 +239,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bathroom2.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -232,6 +262,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.bathroom3.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -252,6 +285,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.stairway1.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -272,6 +308,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.stairway2.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -292,6 +331,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.hallway1.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -312,6 +354,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.hallway2.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -332,6 +377,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.basement.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -352,6 +400,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.balcony.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -372,6 +423,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.garage.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -392,6 +446,9 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register("rentalPropertyCondition.yard.condition", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -413,6 +470,12 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register(
+                  "rentalPropertyCondition.numKeysControls.condition",
+                  {
+                    required: false,
+                  }
+                )}
               />
             </div>
           </div>
@@ -434,6 +497,12 @@ const RentalPropertyCondition = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Condition"
+                {...register(
+                  "rentalPropertyCondition.safetyEquipment.condition",
+                  {
+                    required: false,
+                  }
+                )}
               />
             </div>
           </div>
