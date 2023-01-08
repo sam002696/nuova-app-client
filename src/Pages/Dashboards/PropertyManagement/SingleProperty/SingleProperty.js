@@ -75,7 +75,6 @@ function classNames(...classes) {
 const SingleProperty = () => {
   let { path, url } = useRouteMatch();
   const { id } = useParams();
-  console.log(id);
 
   const [singleProperty, setSingleProperty] = useState({});
 
@@ -92,7 +91,7 @@ const SingleProperty = () => {
       }
     };
     handleSingleProperty();
-  }, []);
+  }, [id]);
 
   const subNavigation = [
     {
@@ -459,7 +458,7 @@ const SingleProperty = () => {
                     <InspectionReport />
                   </Route>
                   <Route path={`${path}/inventory`}>
-                    <Inventory />
+                    <Inventory singleProperty={singleProperty} />
                   </Route>
                 </Switch>
               </div>

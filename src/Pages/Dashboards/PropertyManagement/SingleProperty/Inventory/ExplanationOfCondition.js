@@ -119,7 +119,7 @@ const ExplanationOfCondition = () => {
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {people.map((person) => (
                       <tr
-                        key={person.email}
+                        key={person.title}
                         className="divide-x divide-gray-200"
                       >
                         <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">

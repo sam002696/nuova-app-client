@@ -2,14 +2,9 @@ import React from "react";
 import { CheckCircleIcon, MailIcon, UserIcon } from "@heroicons/react/solid";
 import AddCertificateModal from "./AddCertificateModal";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const AddCertificate = ({ singleProperty }) => {
-  const { id } = useParams();
-  console.log(id);
-  console.log(singleProperty);
-
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,7 +32,7 @@ const AddCertificate = ({ singleProperty }) => {
       <div className="bg-white shadow overflow-hidden sm:rounded-md w-5/6 mx-auto my-10">
         <ul className="divide-y divide-gray-200">
           {singleProperty?.certificatesDocuments?.map((application) => (
-            <li>
+            <li key={application._id}>
               <Link to="" className="block hover:bg-gray-50">
                 <div className="flex items-center px-4 py-4 sm:px-6">
                   <div className="min-w-0 flex-1 flex items-center">

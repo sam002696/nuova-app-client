@@ -1,6 +1,6 @@
 import React from "react";
 
-const RoomHallStairsLanding = () => {
+const RoomHallStairsLanding = ({ register }) => {
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
@@ -24,6 +24,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.doorExternal.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -39,6 +42,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.doorExternal.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -56,6 +62,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.doorInternal.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -71,6 +80,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.doorInternal.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -88,6 +100,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.walls.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -103,6 +118,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.walls.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -120,6 +138,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.floor.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -135,6 +156,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.floor.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -152,6 +176,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.ceiling.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -167,6 +194,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.ceiling.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -184,6 +214,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.skirting.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -199,6 +232,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.skirting.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -216,6 +252,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.window.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -231,6 +270,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.window.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -248,6 +290,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.radiator.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -263,6 +308,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.radiator.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -280,6 +328,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.lightFixture.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -295,6 +346,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.lightFixture.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -312,6 +366,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.sockets.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -327,6 +384,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.sockets.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -344,6 +404,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.switches.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -359,6 +422,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.switches.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -376,6 +442,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.loftHatch.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -391,6 +460,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.loftHatch.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -408,6 +480,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.cupboard.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -423,6 +498,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.cupboard.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -440,6 +518,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.bannister.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -455,6 +536,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.bannister.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -472,6 +556,9 @@ const RoomHallStairsLanding = () => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                {...register("hallStairsLanding.miscellaneous.description", {
+                  required: false,
+                })}
               >
                 <option>Description</option>
                 <option>Brand New</option>
@@ -487,6 +574,9 @@ const RoomHallStairsLanding = () => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
+                {...register("hallStairsLanding.miscellaneous.notes", {
+                  required: false,
+                })}
               />
             </div>
           </div>
