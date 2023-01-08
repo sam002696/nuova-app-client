@@ -1,6 +1,6 @@
 import React from "react";
 
-const AuthorizationForDeduction = () => {
+const AuthorizationForDeduction = ({ register }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -21,11 +21,14 @@ const AuthorizationForDeduction = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-2 ">
               <input
                 type="text"
-                name="tenant_name"
-                id="tenant_name"
-                autoComplete="tenant_name"
+                name="name"
+                id="name"
+                autoComplete="name"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder=""
+                {...register("authorisationForDeduction.name", {
+                  required: false,
+                })}
               />
             </div>
             <label
@@ -41,19 +44,31 @@ const AuthorizationForDeduction = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-2">
               <input
                 type="text"
-                name="amount_deducted"
-                id="amount_deducted"
-                autoComplete="amount_deducted"
+                name="amountDeducted"
+                id="amountDeducted"
+                autoComplete="amountDeducted"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
                 placeholder="Amount Deducted"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.0.amountDeducted",
+                  {
+                    required: false,
+                  }
+                )}
               />
               <input
                 type="text"
-                name="des_of_deposit"
-                id="des_of_deposit"
-                autoComplete="des_of_deposit"
+                name="desOfDeposit"
+                id="desOfDeposit"
+                autoComplete="desOfDeposit"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500  sm:text-sm border-gray-300 "
                 placeholder="Description of Deposit (e.g. security, pet, etc.)"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.0.desOfDeposit",
+                  {
+                    required: false,
+                  }
+                )}
               />
             </div>
           </div>
@@ -62,19 +77,31 @@ const AuthorizationForDeduction = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-2">
               <input
                 type="text"
-                name="amount_deducted"
-                id="amount_deducted"
-                autoComplete="amount_deducted"
+                name="amountDeducted"
+                id="amountDeducted"
+                autoComplete="amountDeducted"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
                 placeholder="Amount Deducted"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.1.amountDeducted",
+                  {
+                    required: false,
+                  }
+                )}
               />
               <input
                 type="text"
-                name="des_of_deposit"
-                id="des_of_deposit"
-                autoComplete="des_of_deposit"
+                name="desOfDeposit"
+                id="desOfDeposit"
+                autoComplete="desOfDeposit"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500  sm:text-sm border-gray-300 "
                 placeholder="Description of Deposit (e.g. security, pet, etc.)"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.1.desOfDeposit",
+                  {
+                    required: false,
+                  }
+                )}
               />
             </div>
           </div>
@@ -83,19 +110,31 @@ const AuthorizationForDeduction = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-2">
               <input
                 type="text"
-                name="amount_deducted"
-                id="amount_deducted"
-                autoComplete="amount_deducted"
+                name="amountDeducted"
+                id="amountDeducted"
+                autoComplete="amountDeducted"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300"
                 placeholder="Amount Deducted"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.2.amountDeducted",
+                  {
+                    required: false,
+                  }
+                )}
               />
               <input
                 type="text"
-                name="des_of_deposit"
-                id="des_of_deposit"
-                autoComplete="des_of_deposit"
+                name="desOfDeposit"
+                id="desOfDeposit"
+                autoComplete="desOfDeposit"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500  sm:text-sm border-gray-300 "
                 placeholder="Description of Deposit (e.g. security, pet, etc.)"
+                {...register(
+                  "authorisationForDeduction.amountDeposit.2.desOfDeposit",
+                  {
+                    required: false,
+                  }
+                )}
               />
             </div>
           </div>
@@ -104,7 +143,7 @@ const AuthorizationForDeduction = () => {
           <div className="sm:grid sm:grid-cols-2 sm:gap-20 sm:items-start mx-28 sm:border-gray-200 sm:pt-10">
             <div className="col-span-1">
               <label
-                htmlFor="project-name"
+                htmlFor="signingDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 Signing Date
@@ -112,16 +151,19 @@ const AuthorizationForDeduction = () => {
               <div className="mt-1">
                 <input
                   type="date"
-                  name="project-name"
-                  id="project-name"
+                  name="signingDate"
+                  id="signingDate"
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  {...register("authorisationForDeduction.signingDate", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
 
             <div className="col-span-1">
               <label
-                htmlFor="project-name"
+                htmlFor="signOfTenantOrAgent"
                 className="block text-sm font-medium text-gray-700"
               >
                 Signature of Tenant (or Agent)
@@ -129,9 +171,15 @@ const AuthorizationForDeduction = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="project-name"
-                  id="project-name"
+                  name="signOfTenantOrAgent"
+                  id="signOfTenantOrAgent"
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  {...register(
+                    "authorisationForDeduction.signOfTenantOrAgent",
+                    {
+                      required: false,
+                    }
+                  )}
                 />
               </div>
             </div>

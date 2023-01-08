@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasicInspectionInfo = () => {
+const BasicInspectionInfo = ({ register }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -21,11 +21,14 @@ const BasicInspectionInfo = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
               <input
                 type="date"
-                name="move_in_inspection_date"
-                id="move_in_inspection_date"
-                autoComplete="move_in_inspection_date"
+                name="inspectionDate"
+                id="inspectionDate"
+                autoComplete="inspectionDate"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="move_in_inspection_date"
+                {...register("propertyInspectionDate.inspectionDate", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -76,6 +79,9 @@ const BasicInspectionInfo = () => {
                 autoComplete="address"
                 className=" block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm  border-gray-300 rounded-md"
                 placeholder=""
+                {...register("rentalPropertyInformation.address", {
+                  required: false,
+                })}
               />
             </div>
           </div>
@@ -95,7 +101,7 @@ const BasicInspectionInfo = () => {
             {/* Inspector Name */}
             <div className="col-span-1">
               <label
-                htmlFor="inspector-name"
+                htmlFor="inspectorName"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Name
@@ -103,17 +109,20 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="inspector_name"
-                  id="inspector_name"
+                  name="inspectorName"
+                  id="inspectorName"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("inspectorInformation.inspectorName", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
             {/* Inspector Phone */}
             <div className="col-span-1">
               <label
-                htmlFor="inspector-phone"
+                htmlFor="inspectorPhone"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Phone
@@ -121,17 +130,20 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="number"
-                  name="inspector_phone"
-                  id="inspector_phone"
+                  name="inspectorPhone"
+                  id="inspectorPhone"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("inspectorInformation.inspectorPhone", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
             {/* Inspector Email */}
             <div className="col-span-1">
               <label
-                htmlFor="inspector-email"
+                htmlFor="inspectorEmail"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Email
@@ -139,10 +151,13 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="inspector_email"
-                  id="inspector_email"
+                  name="inspectorEmail"
+                  id="inspectorEmail"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("inspectorInformation.inspectorEmail", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
@@ -163,7 +178,7 @@ const BasicInspectionInfo = () => {
             {/* Tenant Name */}
             <div className="col-span-1">
               <label
-                htmlFor="tenant-name"
+                htmlFor="tenantName"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Name
@@ -171,17 +186,20 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="tenant_name"
-                  id="tenant_name"
+                  name="tenantName"
+                  id="tenantName"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("tenantInformation.tenantName", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
             {/* Tenant Phone */}
             <div className="col-span-1">
               <label
-                htmlFor="tenant-phone"
+                htmlFor="tenantPhone"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Phone
@@ -189,17 +207,20 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="number"
-                  name="tenant_phone"
-                  id="tenant_phone"
+                  name="tenantPhone"
+                  id="tenantPhone"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("tenantInformation.tenantPhone", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
             {/* Tenant Email */}
             <div className="col-span-1">
               <label
-                htmlFor="tenant-email"
+                htmlFor="tenantEmail"
                 className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
               >
                 Email
@@ -207,10 +228,13 @@ const BasicInspectionInfo = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="tenant_email"
-                  id="tenant_email"
+                  name="tenantEmail"
+                  id="tenantEmail"
                   className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                   placeholder=""
+                  {...register("tenantInformation.tenantEmail", {
+                    required: false,
+                  })}
                 />
               </div>
             </div>
@@ -219,7 +243,7 @@ const BasicInspectionInfo = () => {
           {/* Agent Name */}
           <div className="sm:grid sm:grid-cols-2 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-1">
             <label
-              htmlFor="item"
+              htmlFor="agentName"
               className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
             >
               Agent Name (if tenant unavailable for inspection)
@@ -227,11 +251,12 @@ const BasicInspectionInfo = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-1">
               <input
                 type="text"
-                name="agent-name"
-                id="agent-name"
+                name="agentName"
+                id="agentName"
                 autoComplete="agent-name"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                 placeholder=""
+                {...register("agentInformation.agentName", { required: false })}
               />
             </div>
           </div>
@@ -239,7 +264,7 @@ const BasicInspectionInfo = () => {
           {/* Forwarding Address */}
           <div className="sm:grid sm:grid-cols-2 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-1">
             <label
-              htmlFor="item"
+              htmlFor="forwardingAddress"
               className="block text-sm font-medium text-gray-600 sm:mt-px sm:pt-2"
             >
               Forwarding Address (After move-out)
@@ -247,11 +272,14 @@ const BasicInspectionInfo = () => {
             <div className="mt-1 sm:mt-0 sm:col-span-1">
               <input
                 type="text"
-                name="forwarding-address"
-                id="forwarding-address"
+                name="forwardingAddress"
+                id="forwardingAddress"
                 autoComplete="forwarding-address"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                 placeholder=""
+                {...register("forwardingAddAfterMoveOut.forwardingAddress", {
+                  required: false,
+                })}
               />
             </div>
           </div>

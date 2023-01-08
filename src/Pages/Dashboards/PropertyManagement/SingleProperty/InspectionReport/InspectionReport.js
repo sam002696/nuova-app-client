@@ -1,31 +1,40 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import AcceptanceInspectionReport from "./AcceptanceInspectionReport";
-import AcceptanceReportTwo from "./AcceptanceReportTwo";
+
 import AuthorizationForDeduction from "./AuthorizationForDeduction";
 import BasicInspectionInfo from "./BasicInspectionInfo";
-import DamageMoveOutInspection from "./DamageMoveOutInspection";
+
 import RentalPropertyCondition from "./RentalPropertyCondition";
 import RepairsToBeCompleted from "./RepairsToBeCompleted";
 
 const InspectionReport = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
     <>
       <div className=" w-5/6 mx-auto mb-10 mt-2">
-        <form className="space-y-8 divide-y-2 divide-gray-200">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-8 divide-y-2 divide-gray-200"
+        >
           <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
-            <BasicInspectionInfo />
+            <BasicInspectionInfo register={register} />
 
-            <RentalPropertyCondition />
+            <RentalPropertyCondition register={register} />
 
-            <RepairsToBeCompleted />
+            <RepairsToBeCompleted register={register} />
 
-            <AcceptanceInspectionReport />
+            <AcceptanceInspectionReport register={register} />
 
             {/* <DamageMoveOutInspection /> */}
 
             {/* <AcceptanceReportTwo /> */}
 
-            <AuthorizationForDeduction />
+            <AuthorizationForDeduction register={register} />
           </div>
 
           <div className="pt-5">
