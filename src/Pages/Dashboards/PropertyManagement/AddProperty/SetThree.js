@@ -20,6 +20,7 @@ const SetThree = ({ formData, setFormData }) => {
     propertyFloor: "",
     propertyEstimatedValue: "",
     livingArea: "",
+    marketRentPCM: "",
     bedroom: "",
     bathroom: "",
     availabilityDate: "",
@@ -414,12 +415,12 @@ const SetThree = ({ formData, setFormData }) => {
                   </div>
                 </div>
 
-                {/* Area , bedroom , bathroom */}
+                {/* Area, Market Rent (PCM)  */}
 
-                <div className="grid grid-cols-3 gap-x-5">
+                <div className="grid grid-cols-2 gap-x-5">
                   <div className="col-span-1">
                     <label
-                      htmlFor="propertyFloor"
+                      htmlFor="livingArea"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Living Area (m<sup>2</sup>)
@@ -436,7 +437,28 @@ const SetThree = ({ formData, setFormData }) => {
                   </div>
                   <div className="col-span-1">
                     <label
-                      htmlFor="propertyFloor"
+                      htmlFor="marketRentPCM"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Market Rent (PCM)
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        type="number"
+                        name="marketRentPCM"
+                        id="marketRentPCM"
+                        onChange={(e) => handleDetailsChange(e)}
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* bedroom , bathroom */}
+                <div className="grid grid-cols-2 gap-x-5">
+                  <div className="col-span-1">
+                    <label
+                      htmlFor="bedroom"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Bedrooms
@@ -454,7 +476,7 @@ const SetThree = ({ formData, setFormData }) => {
 
                   <div className="col-span-1">
                     <label
-                      htmlFor="propertyFloor"
+                      htmlFor="bathroom"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Bathrooms
