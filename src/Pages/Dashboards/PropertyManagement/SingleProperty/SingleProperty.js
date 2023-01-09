@@ -455,7 +455,7 @@ const SingleProperty = () => {
                     <AddCertificate singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/property-inspection-report`}>
-                    <InspectionReport />
+                    <InspectionReport singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/inventory`}>
                     <Inventory singleProperty={singleProperty} />
