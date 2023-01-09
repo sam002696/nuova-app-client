@@ -14,7 +14,6 @@ const tabs = [
     icon: ClipboardCheckIcon,
     current: true,
   },
-  // { name: "Task Description", href: "#", icon: CreditCardIcon, current: false },
 ];
 
 function classNames(...classes) {
@@ -131,8 +130,8 @@ const ManagerMaintenance = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="sr-only">Profile</h1>
 
-          <div className="text-center mb-8">
-            <h2 className="text-2xl tracking-tight font-bold text-gray-700 sm:text-2xl underline underline-offset-4">
+          <div className="text-center mb-14">
+            <h2 className="text-2xl tracking-wider font-bold  sm:text-3xl underline underline-offset-4 text-cyan-800">
               All Maintenance Reports
             </h2>
           </div>
@@ -212,13 +211,13 @@ const ManagerMaintenance = () => {
               <div
                 className={`${
                   viewIssue
-                    ? "relative bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200"
+                    ? "relative bg-cyan-800 rounded-md shadow-md divide-y divide-gray-200"
                     : "hidden"
                 }`}
               >
-                <div className="h-56 bg-indigo-600 sm:h-64 md:absolute md:left-0 md:h-full md:w-1/2 rounded-lg">
+                <div className="h-56 bg-cyan-600 sm:h-64 md:absolute md:left-0 md:h-full md:w-1/2 rounded-md">
                   <img
-                    className="h-full w-full object-cover rounded-lg"
+                    className="h-full w-full object-cover rounded-tl-lg rounded-bl-lg"
                     src={viewContractorBidding?.issueImage}
                     alt=""
                   />
@@ -272,7 +271,7 @@ const ManagerMaintenance = () => {
                         href={tab.href}
                         className={classNames(
                           tab.current
-                            ? "border-sky-500 text-sky-600"
+                            ? "border-cyan-500 text-cyan-600"
                             : "border-transparent text-gray-500 hover:text-gray-700",
                           "group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
                         )}
@@ -281,7 +280,7 @@ const ManagerMaintenance = () => {
                         <tab.icon
                           className={classNames(
                             tab.current
-                              ? "text-blue-500"
+                              ? "text-cyan-500"
                               : "text-gray-400 group-hover:text-gray-500",
                             "-ml-0.5 mr-2 h-6 w-6"
                           )}
@@ -324,23 +323,27 @@ const ManagerMaintenance = () => {
                           <p className="mt-3 text-gray-500 text-sm truncate">
                             {bidding.desc}
                           </p>
-                          <div className=" font-semibold mt-2 flex flex-col  ">
-                            <h1 className="text-red-600">
-                              {bidding.offerDeclined === true &&
-                                "Job Declined."}
-                            </h1>
-                            <h1 className="text-green-600">
-                              {bidding.offerAccepted === true &&
-                                "Job Assigned."}
-                            </h1>
-                            <h1 className="text-orange-600">
-                              {bidding.incompletedJob === true &&
-                                "Job Incompleted!"}
-                            </h1>
-                            <h1 className="text-blue-600">
-                              {bidding.completedJob === true &&
-                                "Job Completed !"}
-                            </h1>
+                          <div className=" font-bold  mt-2 flex flex-col  text-xs space-y-2">
+                            {bidding.offerDeclined === true && (
+                              <h1 className="text-red-600 bg-red-100 mr-auto px-2 py-1 rounded-md">
+                                Job Declined.
+                              </h1>
+                            )}
+                            {bidding.offerAccepted === true && (
+                              <h1 className="text-green-600 bg-green-100 mr-auto px-2 py-1 rounded-md">
+                                Job Assigned.
+                              </h1>
+                            )}
+                            {bidding.incompletedJob === true && (
+                              <h1 className="text-yellow-600 bg-yellow-100 mr-auto px-2 py-1 rounded-md">
+                                Job Incompleted!
+                              </h1>
+                            )}
+                            {bidding.completedJob === true && (
+                              <h1 className="text-blue-500 bg-blue-100 mr-auto px-2 py-1 rounded-md">
+                                Job Completed !
+                              </h1>
+                            )}
                           </div>
                         </div>
                         <div className=" truncate">
@@ -350,7 +353,7 @@ const ManagerMaintenance = () => {
                           </p>
                           <button
                             onClick={() => handleActionButton(bidding)}
-                            className="bg-blue-200 px-2 py-1 rounded-lg text-sm mt-2"
+                            className="bg-cyan-200 px-2 py-1 rounded-md text-sm mt-2 font-bold text-cyan-600"
                           >
                             Details
                           </button>
@@ -403,20 +406,20 @@ const ManagerMaintenance = () => {
                           <p className=" text-sm text-gray-400">
                             {actionButton.createdAt && (
                               <time>
-                                {new Date(actionButton.createdAt).getFullYear()}
-                                -{new Date(actionButton.createdAt).getMonth()}-
-                                {new Date(actionButton.createdAt).getDate()}
+                                {new Date(
+                                  actionButton.createdAt
+                                ).toLocaleDateString()}
                               </time>
                             )}
                           </p>
                         </div>
 
-                        <div className="bg-white rounded-md px-4 py-5 space-y-3 divide-y">
+                        <div className="space-y-3 divide-y">
                           <div
                             className={`${
                               actionButton?.offerDeclined === true
                                 ? "hidden"
-                                : " text-green-500 text-lg font-medium py-2"
+                                : " text-green-600 bg-green-200 text-lg font-bold px-4 py-5 rounded-md"
                             }`}
                           >
                             <button
@@ -442,7 +445,7 @@ const ManagerMaintenance = () => {
                             className={`${
                               actionButton?.offerAccepted === true
                                 ? "hidden"
-                                : " text-red-500 text-lg font-medium py-2"
+                                : " text-red-600 bg-red-200 text-lg font-bold px-4 py-5 rounded-md"
                             }`}
                           >
                             <button
@@ -468,7 +471,7 @@ const ManagerMaintenance = () => {
                               className={`${
                                 actionButton?.incompletedJob === true
                                   ? "hidden"
-                                  : "bg-white text-blue-600 rounded-md px-4 py-5 space-y-3 text-lg"
+                                  : "bg-blue-200 text-blue-500 rounded-md px-4 py-5 space-y-3 text-lg font-bold"
                               }`}
                             >
                               <button
@@ -490,7 +493,7 @@ const ManagerMaintenance = () => {
                               className={`${
                                 actionButton?.completedJob === true
                                   ? "hidden"
-                                  : " bg-yellow-200 rounded-md px-4 py-5 space-y-3"
+                                  : "text-yellow-600 bg-yellow-200 rounded-md px-4 py-5 space-y-3 font-bold text-lg"
                               }`}
                             >
                               <button

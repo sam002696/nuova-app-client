@@ -67,6 +67,7 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
+            <option>0</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -93,6 +94,7 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
           >
             <option>Select</option>
+            <option>0</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>

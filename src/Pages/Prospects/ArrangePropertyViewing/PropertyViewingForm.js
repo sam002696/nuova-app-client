@@ -109,7 +109,6 @@ const PropertyViewingForm = ({ id }) => {
       if (res.data) {
         setLoading(false);
         Swal.fire("Success!", "Your response has been submitted!", "success");
-        console.log(formData);
       }
     } catch (err) {
       console.log(err);
