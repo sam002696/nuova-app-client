@@ -11,11 +11,10 @@ import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import logo from "../../../Images/Footer/logo.png";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import ChatLogin from "./ContractorChat/ChatLogin/ChatLogin";
 import ChatRegister from "./ContractorChat/ChatRegister/ChatRegister";
-import ContractorPortalHome from "./ContractorPortalHome";
+// import ContractorPortalHome from "./ContractorPortalHome";
 import ContractorPortalFindJobs from "./ContractorPortalFindJobs";
 import ContractorPortalMyJobs from "./ContractorPortalMyJobs";
 import ContractorPortalFinance from "./ContractorPortalFinance";
@@ -23,7 +22,7 @@ import ContractorPortalInbox from "./ContractorPortalInbox";
 import ContractorProfile from "./ContractorProfile";
 import InvoiceMaker from "./InvoiceMaker/InvoiceMaker";
 import ContractorPortalHomeTwo from "./ContractorPortalHomeTwo";
-import ContractorPortalFindJobsTwo from "./ContractorPortalFindJobsTwo";
+// import ContractorPortalFindJobsTwo from "./ContractorPortalFindJobsTwo";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
 
@@ -132,7 +131,7 @@ const ContractorPortalDashboard = () => {
                             <div>
                               <img
                                 className="h-8 w-auto"
-                                src={logo}
+                                src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png"
                                 alt="Nuova Property"
                               />
                             </div>
@@ -228,7 +227,11 @@ const ContractorPortalDashboard = () => {
                   <div className="absolute left-0 py-5 flex-shrink-0 lg:static">
                     <Link to="/home">
                       <span className="sr-only">Nuova</span>
-                      <img src={logo} className="h-6 w-6" alt="Nuova Logo" />
+                      <img
+                        src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png"
+                        className="h-8 w-28"
+                        alt="Nuova Logo"
+                      />
                     </Link>
                   </div>
 

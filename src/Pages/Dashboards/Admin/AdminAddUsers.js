@@ -1,79 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PlusIcon } from "@heroicons/react/solid";
-
+import axios from "axios";
 import { Link } from "react-router-dom";
 import LandlordModal from "./UsersModals/LandlordModal";
 import TenantModal from "./UsersModals/TenantModal";
 import ContractorModal from "./UsersModals/ContractorModal";
 import PropertyManagerModal from "./UsersModals/PropertyManagerModal";
 
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-];
-
 const AdminAddUsers = () => {
+  const [allUsers, setAllUsers] = useState([]);
+
   const [open, setOpen] = useState(false);
   const [tenant, setTenant] = useState(false);
   const [contractor, setContractor] = useState(false);
   const [propertyManager, setPropertyManager] = useState(false);
+
+  useEffect(() => {
+    const handleFetchAllUsers = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/users`);
+        setAllUsers(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchAllUsers();
+  }, []);
   return (
     <>
       <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
-          Add tenants, landlords , contractors
+          Add tenants, landlords, contractors, property managers
         </h3>
         <p className="mt-1 text-sm text-gray-500">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sunt
@@ -81,6 +39,8 @@ const AdminAddUsers = () => {
           voluptatem repellat.
         </p>
       </div>
+
+      {/* Add users */}
 
       <div className="max-w-7xl mx-auto mt-5">
         <div className="grid grid-cols-4 gap-1 ">
@@ -296,7 +256,7 @@ const AdminAddUsers = () => {
                   scope="col"
                   className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
                 >
-                  Title
+                  Phone No
                 </th>
                 <th
                   scope="col"
@@ -316,13 +276,13 @@ const AdminAddUsers = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
-              {people.map((person) => (
-                <tr key={person.email}>
+              {allUsers.map((person) => (
+                <tr key={person._id}>
                   <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                    {person.name}
+                    {person.username}
                   </td>
                   <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                    {person.title}
+                    {person.phoneNo}
                   </td>
                   <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell">
                     {person.email}
@@ -332,7 +292,7 @@ const AdminAddUsers = () => {
                   </td>
                   <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                     <Link to="#" className="text-cyan-600 hover:text-cyan-900">
-                      Edit<span className="sr-only">, {person.name}</span>
+                      Edit<span className="sr-only">, {person.username}</span>
                     </Link>
                   </td>
                 </tr>

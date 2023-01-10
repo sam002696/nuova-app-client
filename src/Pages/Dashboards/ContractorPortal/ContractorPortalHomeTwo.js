@@ -1,108 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { XIcon, MicrophoneIcon } from "@heroicons/react/outline";
-
-import { AtSymbolIcon, PhoneIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 
-import {
-  CurrencyPoundIcon,
-  CalendarIcon,
-  ArrowRightIcon,
-  OfficeBuildingIcon,
-} from "@heroicons/react/outline";
-
-import {
-  AcademicCapIcon,
-  EyeIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
-} from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
-const actions = [
-  {
-    icon: ClockIcon,
-    name: "Tasks",
-    href: "#",
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
-  },
-  {
-    icon: EyeIcon,
-    name: "Maintenance",
-    href: "#",
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-  },
-  {
-    icon: UsersIcon,
-    name: "Schedule a one-on-one",
-    href: "#",
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-  },
-  {
-    icon: EyeIcon,
-    name: "Payment",
-    href: "#",
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-  },
-];
-
-const reports = [
-  {
-    name: "Boiler Fixation",
-    imageUrl:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Sink Replacement",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Blocked Pipe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-  {
-    name: "Bathroom Repair",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    title: "Flat No-13B, Holger Street, London",
-    role: "Admin",
-    telephone: "+1-202-555-0170",
-    date: "12-12-2022",
-    tenant_name: "Ricardo Cooper",
-    email: "ricardo.cooper@example.com",
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const ContractorPortalHomeTwo = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -120,7 +22,6 @@ const ContractorPortalHomeTwo = () => {
     };
     handleReportsDetails();
   }, []);
-  console.log(findAllJobs);
 
   return (
     <>

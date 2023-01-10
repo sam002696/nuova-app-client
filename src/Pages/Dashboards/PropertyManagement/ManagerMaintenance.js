@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { ExclamationIcon } from "@heroicons/react/solid";
 import { ClipboardCheckIcon } from "@heroicons/react/solid";
 
 import axios from "axios";
@@ -296,72 +296,95 @@ const ManagerMaintenance = () => {
               <div className="grid grid-cols-2 gap-8">
                 {/* Middle column */}
 
-                <ul className="space-y-4">
-                  {viewContractorBidding?.contracBiddingInfo?.map((bidding) => (
-                    <li
-                      key={bidding.email}
-                      className="col-span-1 bg-white rounded-lg shadow-md  divide-y divide-gray-200"
-                    >
-                      <div className="w-full flex items-center justify-between px-6 py-10 space-x-6 hover:bg-gray-50 transition">
-                        <img
-                          className="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0"
-                          src="https://cdn5.vectorstock.com/i/1000x1000/00/59/avatar-construction-man-graphic-vector-9650059.jpg"
-                          alt=""
+                {viewContractorBidding?.contracBiddingInfo?.length !== 0 ? (
+                  <ul className="space-y-4">
+                    {viewContractorBidding?.contracBiddingInfo?.map(
+                      (bidding) => (
+                        <li
+                          key={bidding.email}
+                          className="col-span-1 bg-white rounded-lg shadow-md  divide-y divide-gray-200"
+                        >
+                          <div className="w-full flex items-center justify-between px-6 py-10 space-x-6 hover:bg-gray-50 transition">
+                            <img
+                              className="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0"
+                              src="https://cdn5.vectorstock.com/i/1000x1000/00/59/avatar-construction-man-graphic-vector-9650059.jpg"
+                              alt=""
+                            />
+                            <div className="flex-1 truncate">
+                              <div className="flex items-center space-x-3">
+                                <h3 className="text-gray-900 text-xl font-semibold truncate">
+                                  {bidding.contractorName}
+                                </h3>
+                                <span className="flex-shrink-0 inline-block px-2 py-0.5 text-yellow-800 text-xs font-medium bg-yellow-100 rounded-full">
+                                  Contractor
+                                </span>
+                              </div>
+                              <p className="mt-1 text-gray-500 text-sm truncate">
+                                {bidding.contractorEmail}
+                              </p>
+                              <p className="mt-3 text-gray-500 text-sm truncate">
+                                {bidding.desc}
+                              </p>
+                              <div className=" font-bold  mt-2 flex flex-col  text-xs space-y-2">
+                                {bidding.offerDeclined === true && (
+                                  <h1 className="text-red-600 bg-red-100 mr-auto px-2 py-1 rounded-md">
+                                    Job Declined.
+                                  </h1>
+                                )}
+                                {bidding.offerAccepted === true && (
+                                  <h1 className="text-green-600 bg-green-100 mr-auto px-2 py-1 rounded-md">
+                                    Job Assigned.
+                                  </h1>
+                                )}
+                                {bidding.incompletedJob === true && (
+                                  <h1 className="text-yellow-600 bg-yellow-100 mr-auto px-2 py-1 rounded-md">
+                                    Job Incompleted!
+                                  </h1>
+                                )}
+                                {bidding.completedJob === true && (
+                                  <h1 className="text-blue-500 bg-blue-100 mr-auto px-2 py-1 rounded-md">
+                                    Job Completed !
+                                  </h1>
+                                )}
+                              </div>
+                            </div>
+                            <div className=" truncate">
+                              <p className="flex-shrink-0 mt-1 text-gray-500 text-lg font-bold truncate">
+                                {" "}
+                                &#163;{bidding.BiddingAmount}
+                              </p>
+                              <button
+                                onClick={() => handleActionButton(bidding)}
+                                className="bg-cyan-200 px-2 py-1 rounded-md text-sm mt-2 font-bold text-cyan-600"
+                              >
+                                Details
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                ) : (
+                  <div className="rounded-md bg-yellow-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <ExclamationIcon
+                          className="h-10 w-10 text-yellow-400"
+                          aria-hidden="true"
                         />
-                        <div className="flex-1 truncate">
-                          <div className="flex items-center space-x-3">
-                            <h3 className="text-gray-900 text-xl font-semibold truncate">
-                              {bidding.contractorName}
-                            </h3>
-                            <span className="flex-shrink-0 inline-block px-2 py-0.5 text-yellow-800 text-xs font-medium bg-yellow-100 rounded-full">
-                              Contractor
-                            </span>
-                          </div>
-                          <p className="mt-1 text-gray-500 text-sm truncate">
-                            {bidding.contractorEmail}
-                          </p>
-                          <p className="mt-3 text-gray-500 text-sm truncate">
-                            {bidding.desc}
-                          </p>
-                          <div className=" font-bold  mt-2 flex flex-col  text-xs space-y-2">
-                            {bidding.offerDeclined === true && (
-                              <h1 className="text-red-600 bg-red-100 mr-auto px-2 py-1 rounded-md">
-                                Job Declined.
-                              </h1>
-                            )}
-                            {bidding.offerAccepted === true && (
-                              <h1 className="text-green-600 bg-green-100 mr-auto px-2 py-1 rounded-md">
-                                Job Assigned.
-                              </h1>
-                            )}
-                            {bidding.incompletedJob === true && (
-                              <h1 className="text-yellow-600 bg-yellow-100 mr-auto px-2 py-1 rounded-md">
-                                Job Incompleted!
-                              </h1>
-                            )}
-                            {bidding.completedJob === true && (
-                              <h1 className="text-blue-500 bg-blue-100 mr-auto px-2 py-1 rounded-md">
-                                Job Completed !
-                              </h1>
-                            )}
-                          </div>
-                        </div>
-                        <div className=" truncate">
-                          <p className="flex-shrink-0 mt-1 text-gray-500 text-lg font-bold truncate">
-                            {" "}
-                            &#163;{bidding.BiddingAmount}
-                          </p>
-                          <button
-                            onClick={() => handleActionButton(bidding)}
-                            className="bg-cyan-200 px-2 py-1 rounded-md text-sm mt-2 font-bold text-cyan-600"
-                          >
-                            Details
-                          </button>
+                      </div>
+                      <div className="ml-3">
+                        <h3 className="text-lg font-bold tracking-wide text-yellow-800">
+                          Attention needed
+                        </h3>
+                        <div className="mt-2 text-base text-yellow-700 font-medium">
+                          <p>No contractor bidding for this job yet!</p>
                         </div>
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  </div>
+                )}
 
                 {/* Last Column */}
 
