@@ -22,6 +22,7 @@ import Prospects from "./Pages/Prospects/Prospects/Prospects";
 import SinglePropertyViewing from "./Pages/Prospects/SinglePropertyViewing/SinglePropertyViewing";
 import Login from "./Pages/Shared/Authentication/Login/Login";
 import Register from "./Pages/Shared/Authentication/Register/Register";
+import LandlordSingleProperty from "./Pages/Dashboards/LandlordPortal/LandlordPortalSingleProperty/LandlordSingleProperty";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -70,6 +71,9 @@ function App() {
           </Route>
           <Route path="/single-property/:id">
             <SingleProperty />
+          </Route>
+          <Route path="/landlord-single-property/:id">
+            <LandlordSingleProperty />
           </Route>
           {/* <Route path="/property-manager-dashboard">
             <PropertyManagerDashboard />

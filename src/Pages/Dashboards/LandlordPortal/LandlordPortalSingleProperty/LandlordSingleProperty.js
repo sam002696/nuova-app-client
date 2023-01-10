@@ -35,25 +35,28 @@ import { logout } from "../../../../Redux/userSlice";
 const navigation = [
   { name: "Review", to: "", current: true },
   {
-    name: "All Properties",
-    to: "/property-manager-dashboard/properties",
+    name: "Landlord Dashboard",
+    to: "/landlord-portal-dashboard",
+    current: false,
+  },
+  {
+    name: "Property",
+    to: "/landlord-portal-dashboard/landlord-property",
     current: false,
   },
   {
     name: "Maintenance",
-    to: "/property-manager-dashboard/maintenance",
+    to: "/landlord-portal-dashboard/landlord-portal-maintenance",
     current: false,
   },
-  { name: "Inbox", to: "/property-manager-dashboard/inbox", current: false },
-  { name: "People", to: "/property-manager-dashboard/people", current: false },
+  {
+    name: "Inbox",
+    to: "/landlord-portal-dashboard/landlord-portal-inbox",
+    current: false,
+  },
   {
     name: "Profile",
-    to: "/property-manager-dashboard/profile",
-    current: false,
-  },
-  {
-    name: "Calender",
-    to: "/property-manager-dashboard/calender",
+    to: "/landlord-portal-dashboard/landlord-my-profile",
     current: false,
   },
 ];
@@ -62,7 +65,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const SingleProperty = () => {
+const LandlordSingleProperty = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -106,27 +109,6 @@ const SingleProperty = () => {
       current: false,
     },
     {
-      name: "Add terms",
-      href: "#",
-      to: `${url}/add-terms`,
-      icon: KeyIcon,
-      current: false,
-    },
-    {
-      name: "Request deposit",
-      href: "#",
-      to: `${url}/request-deposit`,
-      icon: BellIcon,
-      current: false,
-    },
-    {
-      name: "Approve references",
-      href: "#",
-      to: `${url}/approve-references`,
-      icon: CreditCardIcon,
-      current: false,
-    },
-    {
       name: "Certificates & Documents",
       href: "#",
       to: `${url}/add-certificates`,
@@ -153,13 +135,13 @@ const SingleProperty = () => {
     <div>
       <Disclosure
         as="div"
-        className="relative bg-sky-700 pb-32 overflow-hidden"
+        className="relative bg-[#0f2e5a] pb-32 overflow-hidden"
       >
         {({ open }) => (
           <>
             <nav
               className={classNames(
-                open ? "bg-sky-700" : "bg-transparent",
+                open ? "bg-[#0f2e5a]" : "bg-transparent",
                 "relative z-10 border-b border-teal-500 border-opacity-25 lg:bg-transparent lg:border-none"
               )}
             >
@@ -167,7 +149,7 @@ const SingleProperty = () => {
                 <div className="relative h-16 flex items-center justify-between lg:border-b lg:border-sky-800">
                   <div className="px-2 flex items-center lg:px-0">
                     <div className="flex-shrink-0">
-                      <Link to="/property-manager-dashboard">
+                      <Link to="/home">
                         <span className="sr-only">Nuova</span>
                         <img src={logo} className="h-6 w-24" alt="Nuova Logo" />
                       </Link>
@@ -281,7 +263,7 @@ const SingleProperty = () => {
                               {({ active }) => (
                                 <>
                                   <Link
-                                    to="/property-manager-dashboard/profile"
+                                    to="/landlord-portal-dashboard/landlord-my-profile"
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
                                       "block px-4 py-2 text-sm text-gray-700"
@@ -312,10 +294,9 @@ const SingleProperty = () => {
               <Disclosure.Panel className="bg-sky-700 lg:hidden">
                 <div className="pt-2 pb-3 px-2 space-y-1">
                   {navigation.map((item) => (
-                    <Disclosure.Button
+                    <Link
                       key={item.name}
-                      as="a"
-                      href={item.href}
+                      to={item.to}
                       className={classNames(
                         item.current
                           ? "bg-black bg-opacity-25"
@@ -324,7 +305,7 @@ const SingleProperty = () => {
                       )}
                     >
                       {item.name}
-                    </Disclosure.Button>
+                    </Link>
                   ))}
                 </div>
                 <div className="pt-4 pb-3 border-t border-sky-800">
@@ -366,7 +347,7 @@ const SingleProperty = () => {
                   </div>
                   <div className="mt-3 px-2 space-y-1">
                     <Link
-                      to="/tenant-portal-dashboard/tenant-my-profile"
+                      to="/landlord-portal-dashboard/landlord-my-profile"
                       className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
                     >
                       My Profile
@@ -391,11 +372,11 @@ const SingleProperty = () => {
               <div className="absolute inset-0 flex">
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#0a527b" }}
+                  style={{ backgroundColor: "#0f2e5a" }}
                 />
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#065d8c" }}
+                  style={{ backgroundColor: "#0f2e5a" }}
                 />
               </div>
               <div className="relative flex justify-center">
@@ -408,19 +389,19 @@ const SingleProperty = () => {
                 >
                   <path
                     d="M284.161 308H1465.84L875.001 182.413 284.161 308z"
-                    fill="#0369a1"
+                    fill="#0f2e5a"
                   />
                   <path
                     d="M1465.84 308L16.816 0H1750v308h-284.16z"
-                    fill="#065d8c"
+                    fill="#0f2e5a"
                   />
                   <path
                     d="M1733.19 0L284.161 308H0V0h1733.19z"
-                    fill="#0a527b"
+                    fill="#0f2e5a"
                   />
                   <path
                     d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
-                    fill="#0a4f76"
+                    fill="#0f2e5a"
                   />
                 </svg>
               </div>
@@ -503,4 +484,4 @@ const SingleProperty = () => {
     </div>
   );
 };
-export default SingleProperty;
+export default LandlordSingleProperty;
