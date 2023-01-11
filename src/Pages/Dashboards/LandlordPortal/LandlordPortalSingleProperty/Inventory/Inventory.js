@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import ExplanationOfCondition from "./ExplanationOfCondition";
+// import ExplanationOfCondition from "./ExplanationOfCondition";
 import RoomHallStairsLanding from "./RoomHallStairsLanding";
 import RoomKitchen from "./RoomKitchen";
 import RoomOthers from "./RoomOthers";
@@ -40,13 +40,16 @@ const Inventory = ({ singleProperty }) => {
           className="space-y-8 divide-y-2 divide-gray-200"
         >
           <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
-            <ExplanationOfCondition />
+            {/* <ExplanationOfCondition /> */}
 
-            <RoomHallStairsLanding register={register} />
+            <RoomHallStairsLanding
+              register={register}
+              singleProperty={singleProperty}
+            />
 
             <RoomKitchen register={register} />
 
-            <RoomOthers register={register} />
+            <RoomOthers register={register} singleProperty={singleProperty} />
           </div>
 
           <div className="pt-5">

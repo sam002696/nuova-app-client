@@ -5,8 +5,6 @@ import logo from "../../../../Images/Banner/Nuova Logo.png";
 import {
   BellIcon,
   CogIcon,
-  CreditCardIcon,
-  KeyIcon,
   MenuIcon,
   UserCircleIcon,
   ViewGridAddIcon,

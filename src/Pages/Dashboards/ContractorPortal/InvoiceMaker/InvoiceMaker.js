@@ -64,7 +64,7 @@ const InvoiceMaker = () => {
   };
   return (
     <>
-      <div className=" bg-gray-100">
+      <div className=" ">
         <div className="mx-auto max-w-7xl px-4 pt-10 pb-12 lg:pb-16">
           <div
             ref={ref}

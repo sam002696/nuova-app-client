@@ -92,7 +92,7 @@ const LandlordModal = ({ open, setOpen }) => {
                         User's Credentials
                       </Dialog.Title>
                     </div>
-                    <div className="grid gap-3 mb-6 lg:grid-cols-2">
+                    <div className="grid gap-3 mb-6 lg:grid-cols-3">
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Full Name
@@ -116,6 +116,19 @@ const LandlordModal = ({ open, setOpen }) => {
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="example@gmail.com"
                           {...register("email", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          chatId
+                        </label>
+                        <input
+                          type="text"
+                          id="chat_id"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          placeholder="lindsaywalton34"
+                          {...register("chatid", { required: true })}
                         />
                       </div>
 
