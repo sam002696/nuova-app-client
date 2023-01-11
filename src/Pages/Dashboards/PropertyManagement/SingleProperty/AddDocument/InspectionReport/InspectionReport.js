@@ -1,13 +1,16 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import ExplanationOfCondition from "./ExplanationOfCondition";
-import RoomHallStairsLanding from "./RoomHallStairsLanding";
-import RoomKitchen from "./RoomKitchen";
-import RoomOthers from "./RoomOthers";
-import axios from "axios";
 import Swal from "sweetalert2";
+import AcceptanceInspectionReport from "./AcceptanceInspectionReport";
 
-const Inventory = ({ singleProperty }) => {
+import AuthorizationForDeduction from "./AuthorizationForDeduction";
+import BasicInspectionInfo from "./BasicInspectionInfo";
+
+import RentalPropertyCondition from "./RentalPropertyCondition";
+import RepairsToBeCompleted from "./RepairsToBeCompleted";
+
+const InspectionReport = ({ singleProperty }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
 
@@ -15,7 +18,7 @@ const Inventory = ({ singleProperty }) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `http://localhost:5500/api/inventory/upload/${singleProperty._id}`,
+        `http://localhost:5500/api/inspectionReport/upload/${singleProperty._id}`,
         data
       );
       if (res.data) {
@@ -40,16 +43,19 @@ const Inventory = ({ singleProperty }) => {
           className="space-y-8 divide-y-2 divide-gray-200"
         >
           <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
-            <ExplanationOfCondition />
+            <BasicInspectionInfo register={register} />
 
-            <RoomHallStairsLanding
-              register={register}
-              singleProperty={singleProperty}
-            />
+            <RentalPropertyCondition register={register} />
 
-            <RoomKitchen register={register} />
+            <RepairsToBeCompleted register={register} />
 
-            <RoomOthers register={register} />
+            <AcceptanceInspectionReport register={register} />
+
+            {/* <DamageMoveOutInspection /> */}
+
+            {/* <AcceptanceReportTwo /> */}
+
+            <AuthorizationForDeduction register={register} />
           </div>
 
           <div className="pt-5">
@@ -74,4 +80,4 @@ const Inventory = ({ singleProperty }) => {
   );
 };
 
-export default Inventory;
+export default InspectionReport;

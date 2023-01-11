@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
-import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import {
+  NavLink,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import logo from "../../../Images/Footer/logo.png";
+import logo from "../../../Images/Banner/Nuova Logo.png";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import ChatLogin from "./LandlordChat/ChatLogin/ChatLogin";
 import ChatRegister from "./LandlordChat/ChatRegister/ChatRegister";
@@ -17,11 +24,9 @@ import LandlordProfile from "./LandlordProfile";
 import LandlordPortalTasks from "./LandlordPortalTasks";
 import LandlordPortalHomeTwo from "./LandlordPortalHomeTwo";
 
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../Redux/userSlice";
+
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@example.com",
@@ -34,8 +39,15 @@ function classNames(...classes) {
 }
 
 const LandlordPortalDashboard = () => {
-  const { currentUser } = useContext(AuthContext);
   let { path, url } = useRouteMatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { currentUser: chatUser } = useContext(AuthContext);
+  const { currentUser } = useSelector((state) => state.user);
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/");
+  };
 
   const navigation = [
     { name: "Landlord Dashboard", to: `${url}`, href: "#", current: false },
@@ -126,8 +138,8 @@ const LandlordPortalDashboard = () => {
                             <div>
                               <img
                                 className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-mark-cyan-600.svg"
-                                alt="Workflow"
+                                src={logo}
+                                alt="Nuova Property"
                               />
                             </div>
                             <div className="-mr-2">
@@ -156,11 +168,23 @@ const LandlordPortalDashboard = () => {
                         <div className="pt-4 pb-2">
                           <div className="flex items-center px-5">
                             <div className="flex-shrink-0">
-                              <img
-                                className="h-10 w-10 rounded-full"
-                                src={user.imageUrl}
-                                alt=""
-                              />
+                              {currentUser?.profilePic ? (
+                                <img
+                                  className="h-10 w-10 rounded-full"
+                                  src={currentUser.profilePic}
+                                  alt=""
+                                />
+                              ) : (
+                                <span className=" h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                                  <svg
+                                    className="h-10 w-10 rounded-full text-gray-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                  </svg>
+                                </span>
+                              )}
                             </div>
                             <div className="ml-3 min-w-0 flex-1">
                               <div className="text-base font-medium text-gray-800 truncate">
@@ -184,15 +208,18 @@ const LandlordPortalDashboard = () => {
                             </button>
                           </div>
                           <div className="mt-3 px-2 space-y-1">
-                            {userNavigation.map((item) => (
-                              <Link
-                                key={item.name}
-                                to={item.href}
-                                className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
-                              >
-                                {item.name}
-                              </Link>
-                            ))}
+                            <Link
+                              to="landlord-portal-dashboard/landlord-my-profile"
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              My Profile
+                            </Link>
+                            <button
+                              onClick={handleLogout}
+                              className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
+                            >
+                              Sign out
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -207,7 +234,7 @@ const LandlordPortalDashboard = () => {
                   <div className="absolute left-0 py-5 flex-shrink-0 lg:static">
                     <Link to="/home">
                       <span className="sr-only">Nuova</span>
-                      <img src={logo} className="h-6 w-6" alt="Nuova Logo" />
+                      <img src={logo} className="h-8 w-28" alt="Nuova Logo" />
                     </Link>
                   </div>
 
@@ -226,11 +253,26 @@ const LandlordPortalDashboard = () => {
                       <div>
                         <Menu.Button className="bg-white rounded-full flex text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100">
                           <span className="sr-only">Open user menu</span>
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={user.imageUrl}
-                            alt=""
-                          />
+                          {currentUser?.profilePic ? (
+                            <img
+                              className="h-8 w-8 rounded-full"
+                              src={
+                                currentUser?.profilePic &&
+                                currentUser?.profilePic
+                              }
+                              alt=""
+                            />
+                          ) : (
+                            <span className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-100">
+                              <svg
+                                className="h-full w-full text-gray-300"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                              </svg>
+                            </span>
+                          )}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -240,21 +282,30 @@ const LandlordPortalDashboard = () => {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
+                          <Menu.Item>
+                            {({ active }) => (
+                              <>
+                                <Link
+                                  to="/landlord-portal-dashboard/landlord-my-profile"
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"
                                   )}
                                 >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
+                                  My Profile
+                                </Link>
+                                <button
+                                  onClick={handleLogout}
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Sign out
+                                </button>
+                              </>
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </Menu>
@@ -347,7 +398,7 @@ const LandlordPortalDashboard = () => {
               <LandlordPortalTasks />
             </Route>
             <Route path={`${path}/landlord-portal-inbox`}>
-              {currentUser ? <LandlordPortalInbox /> : <ChatLogin />}
+              {chatUser ? <LandlordPortalInbox /> : <ChatLogin />}
             </Route>
             <Route path={`${path}/landlord-my-profile`}>
               <LandlordProfile />
