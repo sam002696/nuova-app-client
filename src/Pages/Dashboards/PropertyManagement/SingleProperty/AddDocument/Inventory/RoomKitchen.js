@@ -1,9 +1,6 @@
 import React from "react";
 
-const RoomHallStairsLanding = ({ register, singleProperty }) => {
-  console.log(
-    singleProperty?.inventory?.hallStairsLanding?.doorExternal?.description
-  );
+const RoomKitchen = ({ register }) => {
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
@@ -27,7 +24,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.doorExternal.description", {
+                {...register("kitchen.doorExternal.description", {
                   required: false,
                 })}
               >
@@ -45,7 +42,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.doorExternal.notes", {
+                {...register("kitchen.doorExternal.notes", {
                   required: false,
                 })}
               />
@@ -65,7 +62,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.doorInternal.description", {
+                {...register("kitchen.doorInternal.description", {
                   required: false,
                 })}
               >
@@ -83,7 +80,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.doorInternal.notes", {
+                {...register("kitchen.doorInternal.notes", {
                   required: false,
                 })}
               />
@@ -103,7 +100,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.walls.description", {
+                {...register("kitchen.walls.description", {
                   required: false,
                 })}
               >
@@ -121,7 +118,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.walls.notes", {
+                {...register("kitchen.walls.notes", {
                   required: false,
                 })}
               />
@@ -141,7 +138,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.floor.description", {
+                {...register("kitchen.floor.description", {
                   required: false,
                 })}
               >
@@ -159,7 +156,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.floor.notes", {
+                {...register("kitchen.floor.notes", {
                   required: false,
                 })}
               />
@@ -179,7 +176,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.ceiling.description", {
+                {...register("kitchen.ceiling.description", {
                   required: false,
                 })}
               >
@@ -197,7 +194,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.ceiling.notes", {
+                {...register("kitchen.ceiling.notes", {
                   required: false,
                 })}
               />
@@ -217,7 +214,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.skirting.description", {
+                {...register("kitchen.skirting.description", {
                   required: false,
                 })}
               >
@@ -235,7 +232,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.skirting.notes", {
+                {...register("kitchen.skirting.notes", {
                   required: false,
                 })}
               />
@@ -255,7 +252,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.window.description", {
+                {...register("kitchen.window.description", {
                   required: false,
                 })}
               >
@@ -273,7 +270,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.window.notes", {
+                {...register("kitchen.window.notes", {
                   required: false,
                 })}
               />
@@ -293,7 +290,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.radiator.description", {
+                {...register("kitchen.radiator.description", {
                   required: false,
                 })}
               >
@@ -311,7 +308,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.radiator.notes", {
+                {...register("kitchen.radiator.notes", {
                   required: false,
                 })}
               />
@@ -331,7 +328,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.lightFixture.description", {
+                {...register("kitchen.lightFixture.description", {
                   required: false,
                 })}
               >
@@ -349,7 +346,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.lightFixture.notes", {
+                {...register("kitchen.lightFixture.notes", {
                   required: false,
                 })}
               />
@@ -369,7 +366,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.sockets.description", {
+                {...register("kitchen.sockets.description", {
                   required: false,
                 })}
               >
@@ -387,7 +384,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.sockets.notes", {
+                {...register("kitchen.sockets.notes", {
                   required: false,
                 })}
               />
@@ -407,7 +404,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.switches.description", {
+                {...register("kitchen.switches.description", {
                   required: false,
                 })}
               >
@@ -425,7 +422,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.switches.notes", {
+                {...register("kitchen.switches.notes", {
                   required: false,
                 })}
               />
@@ -445,7 +442,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.loftHatch.description", {
+                {...register("kitchen.loftHatch.description", {
                   required: false,
                 })}
               >
@@ -463,7 +460,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.loftHatch.notes", {
+                {...register("kitchen.loftHatch.notes", {
                   required: false,
                 })}
               />
@@ -483,7 +480,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.cupboard.description", {
+                {...register("kitchen.cupboard.description", {
                   required: false,
                 })}
               >
@@ -501,7 +498,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.cupboard.notes", {
+                {...register("kitchen.cupboard.notes", {
                   required: false,
                 })}
               />
@@ -521,7 +518,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.bannister.description", {
+                {...register("kitchen.bannister.description", {
                   required: false,
                 })}
               >
@@ -539,7 +536,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.bannister.notes", {
+                {...register("kitchen.bannister.notes", {
                   required: false,
                 })}
               />
@@ -559,7 +556,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 name="description"
                 autoComplete="description"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                {...register("hallStairsLanding.miscellaneous.description", {
+                {...register("kitchen.miscellaneous.description", {
                   required: false,
                 })}
               >
@@ -577,7 +574,7 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 autoComplete="notes"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Notes"
-                {...register("hallStairsLanding.miscellaneous.notes", {
+                {...register("kitchen.miscellaneous.notes", {
                   required: false,
                 })}
               />
@@ -589,4 +586,4 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
   );
 };
 
-export default RoomHallStairsLanding;
+export default RoomKitchen;

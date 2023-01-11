@@ -31,6 +31,7 @@ import InspectionReport from "./InspectionReport/InspectionReport";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../../Redux/userSlice";
+import AddDocument from "./AddDocument/AddDocument";
 
 const navigation = [
   { name: "Review", to: "", current: true },
@@ -127,9 +128,16 @@ const SingleProperty = () => {
       current: false,
     },
     {
-      name: "Certificates & Documents",
+      name: "Certificates",
       href: "#",
       to: `${url}/add-certificates`,
+      icon: ViewGridAddIcon,
+      current: false,
+    },
+    {
+      name: "Reports & Documents",
+      href: "#",
+      to: `${url}/add-documents`,
       icon: ViewGridAddIcon,
       current: false,
     },
@@ -487,6 +495,9 @@ const SingleProperty = () => {
                   <Route path={`${path}/approve-references`}></Route>
                   <Route path={`${path}/add-certificates`}>
                     <AddCertificate singleProperty={singleProperty} />
+                  </Route>
+                  <Route path={`${path}/add-documents`}>
+                    <AddDocument singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/property-inspection-report`}>
                     <InspectionReport singleProperty={singleProperty} />
