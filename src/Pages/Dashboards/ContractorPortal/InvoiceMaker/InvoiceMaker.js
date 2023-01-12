@@ -65,14 +65,14 @@ const InvoiceMaker = () => {
   return (
     <>
       <div className=" ">
-        <div className="mx-auto max-w-7xl px-4 pt-10 pb-12 lg:pb-16">
+        <div className="mx-auto max-w-7xl ">
           <div
             ref={ref}
-            className=" max-w-3xl mx-auto shadow-lg shadow-gray-500/40 py-8 px-2 bg-white rounded-md"
+            className=" max-w-4xl mx-auto shadow-lg shadow-gray-500/40 pt-8 pb-16 px-2 bg-white rounded-md"
           >
             <div className="px-4 sm:px-6 lg:px-8">
               <div className="sm:flex ">
-                <div className="sm:flex-auto">
+                <div className="sm:flex-auto text-left">
                   <h1 className="font-semibold ">
                     <input
                       type="text"
@@ -152,7 +152,7 @@ const InvoiceMaker = () => {
               </div>
 
               <div className="flex  justify-between my-5">
-                <div>
+                <div className="text-left">
                   <h1 className=" mb-2 text-gray-600 font-medium text-lg">
                     {" "}
                     Bill to:
