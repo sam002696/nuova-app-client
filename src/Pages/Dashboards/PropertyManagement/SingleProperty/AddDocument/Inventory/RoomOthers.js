@@ -1,6 +1,6 @@
 import React from "react";
 
-const RoomOthers = ({ register }) => {
+const RoomOthers = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -21,6 +21,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.0.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[0]?.room}
               />
               <input
                 type="text"
@@ -32,8 +33,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.0.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[0]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -41,14 +44,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.0.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[0]?.description}
+              />
             </div>
           </div>
 
@@ -64,6 +61,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.1.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[1]?.room}
               />
               <input
                 type="text"
@@ -75,8 +73,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.1.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[1]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -84,14 +84,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.1.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[1]?.description}
+              />
             </div>
           </div>
 
@@ -107,6 +101,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.2.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[2]?.room}
               />
               <input
                 type="text"
@@ -118,8 +113,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.2.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[2]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -127,14 +124,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.2.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[2]?.description}
+              />
             </div>
           </div>
 
@@ -150,6 +141,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.3.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[3]?.room}
               />
               <input
                 type="text"
@@ -161,8 +153,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.3.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[3]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -170,14 +164,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.3.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[3]?.description}
+              />
             </div>
           </div>
 
@@ -193,6 +181,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.4.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[4]?.room}
               />
               <input
                 type="text"
@@ -204,8 +193,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.4.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[4]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -213,14 +204,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.4.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[4]?.description}
+              />
             </div>
           </div>
 
@@ -236,6 +221,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.5.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[5]?.room}
               />
               <input
                 type="text"
@@ -247,8 +233,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.5.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[5]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -256,14 +244,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.5.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[5]?.description}
+              />
             </div>
           </div>
 
@@ -279,6 +261,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.6.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[6]?.room}
               />
               <input
                 type="text"
@@ -290,8 +273,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.6.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[6]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -299,14 +284,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.6.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[6]?.description}
+              />
             </div>
           </div>
 
@@ -322,6 +301,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.7.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[7]?.room}
               />
               <input
                 type="text"
@@ -333,8 +313,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.7.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[7]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -342,14 +324,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.7.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[7]?.description}
+              />
             </div>
           </div>
 
@@ -365,6 +341,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.8.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[8]?.room}
               />
               <input
                 type="text"
@@ -376,8 +353,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.8.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[8]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -385,14 +364,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.8.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[8]?.description}
+              />
             </div>
           </div>
 
@@ -408,6 +381,7 @@ const RoomOthers = ({ register }) => {
                 {...register("others.9.room", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[9]?.room}
               />
               <input
                 type="text"
@@ -419,8 +393,10 @@ const RoomOthers = ({ register }) => {
                 {...register("others.9.item", {
                   required: false,
                 })}
+                defaultValue={singleProperty?.inventory?.others[9]?.item}
               />
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -428,14 +404,8 @@ const RoomOthers = ({ register }) => {
                 {...register("others.9.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={singleProperty?.inventory?.others[9]?.description}
+              />
             </div>
           </div>
         </div>

@@ -6,9 +6,7 @@ const RoomKitchen = ({ register }) => {
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <div>
           <h3 className="text-lg leading-6 font-medium text-gray-900">Room</h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">
-            Hall, Stairs and Landing
-          </p>
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">Kitchen</p>
         </div>
         <div className=" sm:space-y-4 space-y-4">
           <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">

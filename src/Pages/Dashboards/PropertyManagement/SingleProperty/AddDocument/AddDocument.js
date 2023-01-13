@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Inventory from "../Inventory/Inventory";
+import Inventory from "../AddDocument/Inventory/Inventory";
 import InspectionReport from "../InspectionReport/InspectionReport";
 
 const AddDocument = ({ singleProperty }) => {
@@ -57,10 +57,10 @@ const AddDocument = ({ singleProperty }) => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                  <InspectionReport />
+                  <InspectionReport singleProperty={singleProperty} />
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                  <Inventory />
+                  <Inventory singleProperty={singleProperty} />
                 </div>
               </div>
             </div>
