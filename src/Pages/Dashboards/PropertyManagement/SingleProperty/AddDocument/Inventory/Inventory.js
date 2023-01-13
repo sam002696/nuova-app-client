@@ -47,12 +47,12 @@ const Inventory = ({ singleProperty }) => {
               singleProperty={singleProperty}
             />
 
-            <RoomKitchen register={register} />
+            <RoomKitchen register={register} singleProperty={singleProperty} />
 
-            <RoomOthers register={register} />
+            <RoomOthers register={register} singleProperty={singleProperty} />
           </div>
 
-          <div className="pt-5">
+          {/* <div className="pt-5">
             <div className="flex justify-end">
               <button
                 type="button"
@@ -67,7 +67,7 @@ const Inventory = ({ singleProperty }) => {
                 {loading ? "Saving" : "Save"}
               </button>
             </div>
-          </div>
+          </div> */}
         </form>
       </div>
     </>

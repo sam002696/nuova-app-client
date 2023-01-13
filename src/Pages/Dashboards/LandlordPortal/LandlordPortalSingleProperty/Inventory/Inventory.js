@@ -47,7 +47,7 @@ const Inventory = ({ singleProperty }) => {
               singleProperty={singleProperty}
             />
 
-            <RoomKitchen register={register} />
+            <RoomKitchen register={register} singleProperty={singleProperty} />
 
             <RoomOthers register={register} singleProperty={singleProperty} />
           </div>

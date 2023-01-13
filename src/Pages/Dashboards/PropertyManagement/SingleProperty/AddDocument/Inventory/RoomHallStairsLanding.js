@@ -4,6 +4,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
   console.log(
     singleProperty?.inventory?.hallStairsLanding?.doorExternal?.description
   );
+  console.log(
+    singleProperty?.inventory?.hallStairsLanding?.doorInternal?.description
+  );
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
@@ -22,7 +25,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Door External
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -30,14 +34,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.doorExternal.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.doorExternal
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -48,6 +49,10 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.doorExternal.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.doorExternal
+                    ?.notes
+                }
               />
             </div>
           </div>
@@ -60,7 +65,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Door Internal
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -68,14 +74,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.doorInternal.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.doorInternal
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -86,6 +89,10 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.doorInternal.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.doorInternal
+                    ?.notes
+                }
               />
             </div>
           </div>
@@ -98,7 +105,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Walls
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -106,14 +114,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.walls.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.walls
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -124,6 +129,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.walls.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.walls?.notes
+                }
               />
             </div>
           </div>
@@ -136,7 +144,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Floor
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -144,14 +153,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.floor.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.floor
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -162,6 +168,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.floor.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.floor?.notes
+                }
               />
             </div>
           </div>
@@ -174,7 +183,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Ceiling
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -182,14 +192,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.ceiling.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.ceiling
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -200,6 +207,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.ceiling.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.ceiling?.notes
+                }
               />
             </div>
           </div>
@@ -212,7 +222,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Skirting
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -220,14 +231,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.skirting.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.skirting
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -238,6 +246,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.skirting.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.skirting?.notes
+                }
               />
             </div>
           </div>
@@ -250,7 +261,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Window(s)
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -258,14 +270,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.window.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.window
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -276,6 +285,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.window.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.window?.notes
+                }
               />
             </div>
           </div>
@@ -288,7 +300,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Radiator(s)
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -296,14 +309,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.radiator.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.radiator
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -314,6 +324,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.radiator.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.radiator?.notes
+                }
               />
             </div>
           </div>
@@ -326,7 +339,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Light Fixture(s)
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -334,14 +348,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.lightFixture.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.lightFixture
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -352,6 +363,10 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.lightFixture.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.lightFixture
+                    ?.notes
+                }
               />
             </div>
           </div>
@@ -364,7 +379,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Sockets
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -372,14 +388,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.sockets.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.sockets
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -390,6 +403,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.sockets.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.sockets?.notes
+                }
               />
             </div>
           </div>
@@ -402,7 +418,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Switches
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -410,14 +427,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.switches.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.switches
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -428,6 +442,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.switches.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.switches?.notes
+                }
               />
             </div>
           </div>
@@ -440,7 +457,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Loft Hatch
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -448,14 +466,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.loftHatch.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.loftHatch
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -466,6 +481,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.loftHatch.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.loftHatch?.notes
+                }
               />
             </div>
           </div>
@@ -478,7 +496,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Cupboard
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -486,14 +505,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.cupboard.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.cupboard
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -504,6 +520,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.cupboard.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.cupboard?.notes
+                }
               />
             </div>
           </div>
@@ -516,7 +535,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Bannister
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -524,14 +544,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.bannister.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.bannister
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -542,6 +559,9 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.bannister.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.bannister?.notes
+                }
               />
             </div>
           </div>
@@ -554,7 +574,8 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
               Miscellaneous
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2 flex flex-row gap-10">
-              <select
+              <input
+                type="text"
                 id="description"
                 name="description"
                 autoComplete="description"
@@ -562,14 +583,11 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.miscellaneous.description", {
                   required: false,
                 })}
-              >
-                <option>Description</option>
-                <option>Brand New</option>
-                <option>Excellent Condition</option>
-                <option>Good Condition</option>
-                <option>Fair Condition</option>
-                <option>Poor Condition</option>
-              </select>
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.miscellaneous
+                    ?.description
+                }
+              />
               <input
                 type="text"
                 name="notes"
@@ -580,6 +598,10 @@ const RoomHallStairsLanding = ({ register, singleProperty }) => {
                 {...register("hallStairsLanding.miscellaneous.notes", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty?.inventory?.hallStairsLanding?.miscellaneous
+                    ?.notes
+                }
               />
             </div>
           </div>
