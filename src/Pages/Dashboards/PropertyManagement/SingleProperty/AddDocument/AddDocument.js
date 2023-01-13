@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Inventory from "../Inventory/Inventory";
+import Inventory from "../AddDocument/Inventory/Inventory";
 import InspectionReport from "../InspectionReport/InspectionReport";
 
 const AddDocument = ({ singleProperty }) => {
@@ -19,8 +19,8 @@ const AddDocument = ({ singleProperty }) => {
                 className={
                   "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-cyan-600"
-                    : "text-cyan-600 bg-white")
+                    ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
+                    : "text-teal-600 bg-white")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -38,8 +38,8 @@ const AddDocument = ({ singleProperty }) => {
                 className={
                   "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                   (openTab === 2
-                    ? "text-white bg-cyan-600"
-                    : "text-cyan-600 bg-white")
+                    ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
+                    : "text-teal-600 bg-white")
                 }
                 onClick={(e) => {
                   e.preventDefault();

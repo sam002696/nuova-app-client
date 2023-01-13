@@ -1,36 +1,38 @@
+import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { HomeIcon, EyeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-import Property from "../Property/Property";
-import PropertyDetails from "../PropertyDetails/PropertyDetails";
-import OwnershipDetails from "../OwnershipDetails/OwnershipDetails";
-import PropertyMaintenance from "../PropertyMaintenance/PropertyMaintenance";
-import logo from "../../../Images/Footer/logo.png";
-import MarketResearch from "../MarketResearch/MarketResearch";
-import Engagement from "../Engagement/Engagement";
-const navigation = [
-  { name: "Dashboard", href: "#" },
-  { name: "Jobs", href: "#" },
-  { name: "Applicants", href: "#" },
-  { name: "Company", href: "#" },
-];
-const breadcrumbs = [
-  { name: "Property", href: "#", current: false },
-  { name: "Project details", href: "#", current: true },
-  { name: "Ownership details", href: "#", current: true },
-  { name: "Property maintenance", href: "#", current: true },
-  { name: "Market research", href: "#", current: true },
-  { name: "Engagement of Nuova System", href: "#", current: true },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
-
-const PropertyFactFind = () => {
+import { useForm } from "react-hook-form";
+import StageOne from "../StageOne/StageOne";
+import StageTwo from "../Stage Two/StageTwo";
+import StageThree from "../Stage Three/StageThree";
+import StageFour from "../Stage Four/StageFour";
+import StageFive from "../Stage Five/StageFive";
+import StageSix from "../Stage Six/StageSix";
+const TenantFactFind = () => {
+  const { register, watch } = useForm({});
+  const navigation = [
+    { name: "Dashboard", href: "#" },
+    { name: "Jobs", href: "#" },
+    { name: "Applicants", href: "#" },
+    { name: "Company", href: "#" },
+  ];
+  const breadcrumbs = [
+    { name: "Stage 1", href: "#", current: false },
+    { name: "Stage 2", href: "#", current: true },
+    { name: "Stage 3", href: "#", current: true },
+    { name: "Stage 4", href: "#", current: true },
+    { name: "Stage 5", href: "#", current: true },
+    { name: "Stage 6", href: "#", current: true },
+  ];
+  const userNavigation = [
+    { name: "Your Profile", href: "#" },
+    { name: "Settings", href: "#" },
+    { name: "Sign out", href: "#" },
+  ];
   return (
     <>
+      {" "}
       <Disclosure as="nav" className="bg-cyan-800" aria-label="Global">
         {({ open }) => (
           <>
@@ -38,7 +40,11 @@ const PropertyFactFind = () => {
               <div className="flex h-16 justify-between">
                 <div className="flex items-center px-2 lg:px-0">
                   <div className="flex flex-shrink-0 items-center">
-                    <img className="h-8 w-auto" src={logo} alt="Your Company" />
+                    <img
+                      className="h-8 w-auto"
+                      src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png"
+                      alt="Your Company"
+                    />
                   </div>
                   <div className="hidden lg:ml-8 lg:flex lg:space-x-4">
                     {navigation.map((item) => (
@@ -98,7 +104,6 @@ const PropertyFactFind = () => {
           </>
         )}
       </Disclosure>
-
       {/* Breadcrumb */}
       <nav
         className="hidden border-b border-gray-200 bg-white lg:flex"
@@ -141,17 +146,16 @@ const PropertyFactFind = () => {
           ))}
         </ol>
       </nav>
-
       {/* Main Components */}
       <main className="mx-auto max-w-5xl px-4 pt-10 pb-12 lg:pb-16">
         <div className=" border-2 border-gray-500 p-10">
           <form>
-            <Property />
-            <PropertyDetails />
-            <OwnershipDetails />
-            <PropertyMaintenance />
-            <MarketResearch />
-            <Engagement />
+            <StageOne />
+            <StageTwo />
+            <StageThree />
+            <StageFour />
+            <StageFive register={register} watch={watch} />
+            <StageSix />
             <button
               type="button"
               className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "
@@ -164,4 +168,5 @@ const PropertyFactFind = () => {
     </>
   );
 };
-export default PropertyFactFind;
+
+export default TenantFactFind;

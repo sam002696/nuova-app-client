@@ -23,6 +23,7 @@ import SinglePropertyViewing from "./Pages/Prospects/SinglePropertyViewing/Singl
 import Login from "./Pages/Shared/Authentication/Login/Login";
 import Register from "./Pages/Shared/Authentication/Register/Register";
 import LandlordSingleProperty from "./Pages/Dashboards/LandlordPortal/LandlordPortalSingleProperty/LandlordSingleProperty";
+import TenantFactFind from "./Pages/Tenant Fact Find/TenantFactFInd/TenantFactFind";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -116,6 +117,9 @@ function App() {
           </Route>
           <Route path="/property-fact-find">
             <PropertyFactFind />
+          </Route>
+          <Route path="/tenancy-form">
+            <TenantFactFind />
           </Route>
           <Route path="/pricing-structure">
             <PricingHome />
