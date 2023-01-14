@@ -1,6 +1,6 @@
 import React from "react";
 
-const StageSix = () => {
+const StageSix = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -42,9 +42,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("firstRefereeName")}
             />
           </div>
         </div>
@@ -58,9 +57,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("firstRefereeWorkAddress")}
             />
           </div>
         </div>
@@ -78,6 +76,7 @@ const StageSix = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("firstRefereeEmailAddress")}
             />
           </div>
         </div>
@@ -94,6 +93,7 @@ const StageSix = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("firstRefereeRelationship")}
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ const StageSix = () => {
             htmlFor="project-name"
             className="block text-sm font-medium text-gray-700"
           >
-            Name of first referee :
+            Name of Second referee :
           </label>
           <div className="mt-1">
             <input
@@ -119,6 +119,7 @@ const StageSix = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("secondRefereeName")}
             />
           </div>
         </div>
@@ -132,9 +133,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("secondRefereeWorkAddress")}
             />
           </div>
         </div>
@@ -149,9 +149,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("secondRefereeEmailAddress")}
             />
           </div>
         </div>
@@ -165,9 +164,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("secondRefereeRelationship")}
             />
           </div>
         </div>
@@ -190,9 +188,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("nextOfKinName")}
             />
           </div>
         </div>
@@ -206,9 +203,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("nextOfKinRelationship")}
             />
           </div>
         </div>
@@ -223,9 +219,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("nextOfKinAddress")}
             />
           </div>
         </div>
@@ -239,9 +234,8 @@ const StageSix = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("nextOfKinTelNo")}
             />
           </div>
         </div>
@@ -259,6 +253,7 @@ const StageSix = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("nextOfKinEmailAddress")}
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const StageTwo = () => {
+const StageTwo = ({ register }) => {
   return (
     <>
       <p className=" text-lg  font-semibold pt-5 underline underline-offset-4">
@@ -17,9 +17,8 @@ const StageTwo = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("addressOfProperty")}
             />
           </div>
         </div>
@@ -33,9 +32,8 @@ const StageTwo = () => {
           <div className="mt-1">
             <input
               type="date"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("desiredEntryDate")}
             />
           </div>
         </div>
@@ -45,14 +43,13 @@ const StageTwo = () => {
             htmlFor="project-name"
             className="block text-sm font-medium text-gray-700"
           >
-            Desired entry date :
+            Rent :
           </label>
           <div className="mt-1">
             <input
-              type="date"
-              name="project-name"
-              id="project-name"
+              type="number"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("rent")}
             />
           </div>
         </div>
@@ -66,9 +63,8 @@ const StageTwo = () => {
           <div className="mt-1">
             <input
               type="number"
-              name="project-name"
-              id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("deposit")}
             />
           </div>
         </div>

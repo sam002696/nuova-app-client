@@ -10,7 +10,7 @@ import StageFour from "../Stage Four/StageFour";
 import StageFive from "../Stage Five/StageFive";
 import StageSix from "../Stage Six/StageSix";
 const TenantFactFind = () => {
-  const { register, watch } = useForm({});
+  const { register, handleSubmit, watch } = useForm({});
   const navigation = [
     { name: "Dashboard", href: "#" },
     { name: "Jobs", href: "#" },
@@ -30,6 +30,10 @@ const TenantFactFind = () => {
     { name: "Settings", href: "#" },
     { name: "Sign out", href: "#" },
   ];
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
     <>
       {" "}
@@ -149,15 +153,15 @@ const TenantFactFind = () => {
       {/* Main Components */}
       <main className="mx-auto max-w-5xl px-4 pt-10 pb-12 lg:pb-16">
         <div className=" border-2 border-gray-500 p-10">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <StageOne />
-            <StageTwo />
-            <StageThree />
-            <StageFour />
+            <StageTwo register={register} />
+            <StageThree register={register} />
+            <StageFour register={register} />
             <StageFive register={register} watch={watch} />
-            <StageSix />
+            <StageSix register={register} />
             <button
-              type="button"
+              type="submit"
               className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "
             >
               Submit the form
