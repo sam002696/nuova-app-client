@@ -31,7 +31,7 @@ const TenantFactFind = () => {
     { name: "Sign out", href: "#" },
   ];
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     console.log(data);
   };
   return (

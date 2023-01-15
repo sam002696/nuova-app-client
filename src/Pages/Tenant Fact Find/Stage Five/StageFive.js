@@ -46,7 +46,7 @@ const StageFive = ({ register, watch }) => {
     if (!limitExceeded) setUploadedBankStatementFiles(uploaded);
   };
 
-  const handleUploadPayslipEvent = (e) => {
+  const handleUploadPayslipEvent = async (e) => {
     const chosenFiles = Array.prototype.slice.call(e.target.files);
     handleUploadPayslipsFiles(chosenFiles);
   };
@@ -56,6 +56,7 @@ const StageFive = ({ register, watch }) => {
     handleUploadBankStatementFiles(chosenFiles);
   };
 
+  console.log(uploadedPaySlipFiles);
   const watchGuarantor = watch("guarantor");
   return (
     <>
@@ -93,6 +94,7 @@ const StageFive = ({ register, watch }) => {
                   name="project-name"
                   id="project-name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500   file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none  file:focus:border-gray-500 "
+                  {...register("creditScore")}
                 />
               </div>
             </div>
@@ -105,20 +107,20 @@ const StageFive = ({ register, watch }) => {
               </label>
               <div className="mt-1">
                 <input
-                  id="fileUpload"
                   type="file"
                   multiple
                   accept="application/pdf, image/png"
-                  name="project-name"
-                  onChange={handleUploadPayslipEvent}
                   disabled={paySlipFileLimit}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500   file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none  file:focus:border-gray-500 disabled:cursor-not-allowed"
+                  onChange={handleUploadPayslipEvent}
                 />
               </div>
               {uploadedPaySlipFiles.length !== 0 && (
-                <div className=" border mt-3 p-5 space-y-3 bg-gray-500 text-white rounded-md text-base">
-                  {uploadedPaySlipFiles.map((file) => (
-                    <div>{file.name}</div>
+                <div className="border mt-3 p-5 space-y-3 bg-gray-500 text-white rounded-md text-base">
+                  {uploadedPaySlipFiles.map((file, i) => (
+                    <div {...register(`payslips.${i}`, { value: file })}>
+                      {file.name}
+                    </div>
                   ))}
                 </div>
               )}
@@ -145,8 +147,10 @@ const StageFive = ({ register, watch }) => {
               </div>
               {uploadedBankStatmentFiles.length !== 0 && (
                 <div className=" border mt-3 p-5 space-y-3 bg-gray-500 text-white rounded-md text-base">
-                  {uploadedBankStatmentFiles.map((file) => (
-                    <div>{file.name}</div>
+                  {uploadedBankStatmentFiles.map((file, i) => (
+                    <div {...register(`bankStatements.${i}`, { value: file })}>
+                      {file.name}
+                    </div>
                   ))}
                 </div>
               )}
@@ -193,8 +197,10 @@ const StageFive = ({ register, watch }) => {
               </div>
               {uploadedBankStatmentFiles.length !== 0 && (
                 <div className=" border mt-3 p-5 space-y-3 bg-gray-500 text-white rounded-md text-base">
-                  {uploadedBankStatmentFiles.map((file) => (
-                    <div>{file.name}</div>
+                  {uploadedBankStatmentFiles.map((file, i) => (
+                    <div {...register(`bankStatements.${i}`, { value: file })}>
+                      {file.name}
+                    </div>
                   ))}
                 </div>
               )}
@@ -213,6 +219,7 @@ const StageFive = ({ register, watch }) => {
                   name="project-name"
                   id="project-name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500   file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none  file:focus:border-gray-500 "
+                  {...register("creditScore")}
                 />
               </div>
             </div>
