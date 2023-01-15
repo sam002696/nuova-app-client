@@ -49,10 +49,10 @@ const AllInOnePlatform = () => {
             Our Initial Fees will be as follows :
           </h2>
           <p className="mt-4 text-lg font-semibold text-gray-700">
-            Advertisement Fee - £120
+            Advertisement Fee : £120
           </p>
           <p className="mt-4 text-lg font-semibold text-gray-700">
-            Set up fee - 20% of first months rent. (Not included in the tenant
+            Set up fee : 20% of first months rent. (Not included in the tenant
             find)
           </p>
           <p className="mt-4 text-lg text-gray-500">
