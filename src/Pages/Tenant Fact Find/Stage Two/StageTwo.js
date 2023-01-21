@@ -18,7 +18,7 @@ const StageTwo = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("addressOfProperty")}
+              {...register("propertyApplyingFor.addressOfProperty")}
             />
           </div>
         </div>
@@ -33,7 +33,7 @@ const StageTwo = ({ register }) => {
             <input
               type="date"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("desiredEntryDate")}
+              {...register("propertyApplyingFor.desiredEntryDate")}
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ const StageTwo = ({ register }) => {
             <input
               type="number"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("rent")}
+              {...register("propertyApplyingFor.rent")}
             />
           </div>
         </div>
@@ -64,7 +64,7 @@ const StageTwo = ({ register }) => {
             <input
               type="number"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("deposit")}
+              {...register("propertyApplyingFor.deposit")}
             />
           </div>
         </div>
