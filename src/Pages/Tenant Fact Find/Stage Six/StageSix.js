@@ -43,7 +43,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("firstRefereeName")}
+              {...register("firstReferee.firstRefereeName")}
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("firstRefereeWorkAddress")}
+              {...register("firstReferee.firstRefereeWorkAddress")}
             />
           </div>
         </div>
@@ -76,7 +76,7 @@ const StageSix = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("firstRefereeEmailAddress")}
+              {...register("firstReferee.firstRefereeEmailAddress")}
             />
           </div>
         </div>
@@ -93,7 +93,7 @@ const StageSix = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("firstRefereeRelationship")}
+              {...register("firstReferee.firstRefereeRelationship")}
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ const StageSix = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("secondRefereeName")}
+              {...register("secondReferee.secondRefereeName")}
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("secondRefereeWorkAddress")}
+              {...register("secondReferee.secondRefereeWorkAddress")}
             />
           </div>
         </div>
@@ -150,7 +150,7 @@ const StageSix = ({ register }) => {
             <input
               type="email"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("secondRefereeEmailAddress")}
+              {...register("secondReferee.secondRefereeEmailAddress")}
             />
           </div>
         </div>
@@ -165,7 +165,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("secondRefereeRelationship")}
+              {...register("secondReferee.secondRefereeRelationship")}
             />
           </div>
         </div>
@@ -189,7 +189,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("nextOfKinName")}
+              {...register("nextOfKinDetails.nextOfKinName")}
             />
           </div>
         </div>
@@ -204,7 +204,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("nextOfKinRelationship")}
+              {...register("nextOfKinDetails.nextOfKinRelationship")}
             />
           </div>
         </div>
@@ -220,7 +220,7 @@ const StageSix = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("nextOfKinAddress")}
+              {...register("nextOfKinDetails.nextOfKinAddress")}
             />
           </div>
         </div>
@@ -235,7 +235,7 @@ const StageSix = ({ register }) => {
             <input
               type="tel"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("nextOfKinTelNo")}
+              {...register("nextOfKinDetails.nextOfKinTelNo")}
             />
           </div>
         </div>
@@ -253,7 +253,7 @@ const StageSix = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("nextOfKinEmailAddress")}
+              {...register("nextOfKinDetails.nextOfKinEmailAddress")}
             />
           </div>
         </div>

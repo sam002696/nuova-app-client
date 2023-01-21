@@ -9,8 +9,13 @@ import StageThree from "../Stage Three/StageThree";
 import StageFour from "../Stage Four/StageFour";
 import StageFive from "../Stage Five/StageFive";
 import StageSix from "../Stage Six/StageSix";
+import axios from "axios";
+
 const TenantFactFind = () => {
   const { register, handleSubmit, watch } = useForm({});
+
+  const url = "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload";
+
   const navigation = [
     { name: "Dashboard", href: "#" },
     { name: "Jobs", href: "#" },
@@ -31,9 +36,126 @@ const TenantFactFind = () => {
     { name: "Sign out", href: "#" },
   ];
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (reportData) => {
+    console.log(reportData);
+
+    const data = new FormData();
+    const photoGraphicIdFile = reportData?.tenantInfo?.photographicId[0];
+    const creditfile = reportData?.guarantorDetails?.creditScore[0];
+
+    console.log(reportData?.guarantorDetails?.guarantor);
+    if (
+      reportData?.guarantorDetails?.guarantor === "No" &&
+      reportData?.guarantorDetails?.salaryChanging === "Yes"
+    ) {
+      console.log(reportData?.guarantorDetails?.guarantor);
+      const proofECFile =
+        reportData?.guarantorDetails?.proofEmploymentContract[0];
+
+      if (proofECFile) {
+        data.append("file", proofECFile);
+
+        data.append("upload_preset", "eez1w4gg");
+
+        const uploadRes2 = await axios.post(
+          "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+          data
+        );
+
+        const { url: url2 } = uploadRes2.data;
+
+        reportData.guarantorDetails.proofEmploymentContract = url2;
+      }
+      console.log(reportData);
+    }
+
+    if (creditfile) {
+      data.append("file", creditfile);
+
+      data.append("upload_preset", "eez1w4gg");
+
+      const uploadRes1 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data
+      );
+
+      const { url: url1 } = uploadRes1.data;
+
+      reportData.guarantorDetails.creditScore = url1;
+    }
+    console.log(reportData);
+
+    if (photoGraphicIdFile) {
+      data.append("file", photoGraphicIdFile);
+
+      data.append("upload_preset", "eez1w4gg");
+
+      const uploadRes3 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data
+      );
+
+      const { url: url3 } = uploadRes3.data;
+
+      reportData.tenantInfo.photographicId = url3;
+    }
+    console.log(reportData);
+
+    if (reportData?.guarantorDetails?.payslips) {
+      for (let i = 0; i < reportData.guarantorDetails.payslips.length; i++) {
+        let file = reportData.guarantorDetails.payslips[i];
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", "eez1w4gg");
+
+        const response = await fetch(url, {
+          method: "POST",
+          body: data,
+        });
+        const result = await response.text();
+        const res = JSON.parse(result);
+        reportData.guarantorDetails.payslips[i] = res.secure_url;
+        console.log(res.secure_url);
+      }
+      console.log(reportData?.guarantorDetails?.payslips);
+    }
+
+    if (reportData?.guarantorDetails?.bankStatements) {
+      for (
+        let i = 0;
+        i < reportData.guarantorDetails.bankStatements.length;
+        i++
+      ) {
+        let file = reportData.guarantorDetails.bankStatements[i];
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", "eez1w4gg");
+
+        const response = await fetch(url, {
+          method: "POST",
+          body: data,
+        });
+        const result = await response.text();
+        const res = JSON.parse(result);
+        reportData.guarantorDetails.bankStatements[i] = res.secure_url;
+        console.log(res.secure_url);
+      }
+      console.log(reportData?.guarantorDetails?.bankStatements);
+    }
+
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/tenancyform`,
+        reportData
+      );
+      if (res.data) {
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <>
       {" "}

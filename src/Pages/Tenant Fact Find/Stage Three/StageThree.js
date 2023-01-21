@@ -18,7 +18,7 @@ const StageThree = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("title")}
+              {...register("tenantInfo.title")}
             />
           </div>
         </div>
@@ -33,7 +33,7 @@ const StageThree = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("fullName")}
+              {...register("tenantInfo.fullName")}
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ const StageThree = ({ register }) => {
             <input
               type="date"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("dob")}
+              {...register("tenantInfo.dob")}
             />
           </div>
         </div>
@@ -66,6 +66,7 @@ const StageThree = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("tenantInfo.nationality")}
             />
           </div>
         </div>
@@ -81,7 +82,7 @@ const StageThree = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("passportNo")}
+              {...register("tenantInfo.passportNo")}
             />
           </div>
         </div>
@@ -96,7 +97,7 @@ const StageThree = ({ register }) => {
             <input
               type="tel"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("telephoneNo")}
+              {...register("tenantInfo.telephoneNo")}
             />
           </div>
         </div>
@@ -111,7 +112,7 @@ const StageThree = ({ register }) => {
             <input
               type="email"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("email")}
+              {...register("tenantInfo.email")}
             />
           </div>
         </div>
@@ -126,7 +127,7 @@ const StageThree = ({ register }) => {
             <input
               type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("currentAddress")}
+              {...register("tenantInfo.currentAddress")}
             />
           </div>
         </div>
@@ -142,7 +143,7 @@ const StageThree = ({ register }) => {
             <input
               type="number"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("numberOfChildren")}
+              {...register("tenantInfo.numberOfChildren")}
             />
           </div>
         </div>
@@ -156,9 +157,9 @@ const StageThree = ({ register }) => {
           </label>
           <div className="mt-1">
             <input
-              type="number"
+              type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("smoker")}
+              {...register("tenantInfo.smoker")}
             />
           </div>
         </div>
@@ -172,16 +173,16 @@ const StageThree = ({ register }) => {
           </label>
           <div className="mt-1">
             <input
-              type="number"
+              type="text"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register("pets")}
+              {...register("tenantInfo.pets")}
             />
           </div>
         </div>
 
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="photographicId"
             className="block text-sm font-medium text-gray-700"
           >
             Please upload photographic ID :
@@ -189,10 +190,10 @@ const StageThree = ({ register }) => {
           <div className="mt-1">
             <input
               type="file"
-              name="project-name"
-              id="project-name"
+              name="photographicId"
+              id="photographicId"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500   file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none  file:focus:border-gray-500 "
-              {...register("photographicId")}
+              {...register("tenantInfo.photographicId")}
             />
           </div>
         </div>
