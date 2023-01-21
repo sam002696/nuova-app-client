@@ -12,7 +12,7 @@ const transferFeatures = [
     id: 1,
     name: "Competitive exchange rates",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      "Lorem ipsum Lorem Impus, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
     icon: GlobeAltIcon,
   },
   {
