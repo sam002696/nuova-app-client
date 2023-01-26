@@ -1,6 +1,6 @@
 import React from "react";
 
-const ServiceContractors = () => {
+const ServiceContractors = ({ register }) => {
   return (
     <>
       <p className=" text-lg text-gray-900 font-semibold ">
@@ -13,10 +13,13 @@ const ServiceContractors = () => {
             Does the Property have a Homecare, or similar, service agreement?
           </label>
           <select
-            id="smoker"
-            name="smoker"
-            autoComplete="smoker"
+            id="serviceAgreement"
+            name="serviceAgreement"
+            autoComplete="serviceAgreement"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register(
+              "propertyMaintenance.serviceContracts.serviceAgreement"
+            )}
           >
             <option>Select</option>
             <option>Yes</option>
@@ -25,7 +28,7 @@ const ServiceContractors = () => {
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="provider"
             className="block text-sm font-medium text-gray-700"
           >
             If yes, provider
@@ -33,15 +36,16 @@ const ServiceContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="provider"
+              id="provider"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.serviceContracts.provider")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="typeOfCover"
             className="block text-sm font-medium text-gray-700"
           >
             Type of cover (e.g. Homecare 100)
@@ -49,15 +53,16 @@ const ServiceContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="typeOfCover"
+              id="typeOfCover"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.serviceContracts.typeOfCover")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="accountNumber"
             className="block text-sm font-medium text-gray-700"
           >
             Account number / Policy number
@@ -65,15 +70,18 @@ const ServiceContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="accountNumber"
+              id="accountNumber"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.serviceContracts.accountNumber"
+              )}
             />
           </div>
         </div>
         <div className="col-span-2">
           <label
-            htmlFor="project-name"
+            htmlFor="contactTelSuppliedBy"
             className="block text-sm font-medium text-gray-700"
           >
             Contact telephone number Supplied by
@@ -81,9 +89,12 @@ const ServiceContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contactTelSuppliedBy"
+              id="contactTelSuppliedBy"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.serviceContracts.contactTelSuppliedBy"
+              )}
             />
           </div>
         </div>
@@ -93,10 +104,13 @@ const ServiceContractors = () => {
             inspection?
           </label>
           <select
-            id="smoker"
-            name="smoker"
-            autoComplete="smoker"
+            id="annualGasSafetyInspection"
+            name="annualGasSafetyInspection"
+            autoComplete="annualGasSafetyInspection"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register(
+              "propertyMaintenance.serviceContracts.annualGasSafetyInspection"
+            )}
           >
             <option>Select</option>
             <option>Yes</option>

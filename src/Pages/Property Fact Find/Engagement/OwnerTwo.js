@@ -1,6 +1,6 @@
 import React from "react";
 
-const OwnerTwo = () => {
+const OwnerTwo = ({ register }) => {
   return (
     <>
       <div className="">
@@ -8,7 +8,7 @@ const OwnerTwo = () => {
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="firstName"
               className="block text-sm font-medium text-gray-700"
             >
               First name
@@ -16,15 +16,16 @@ const OwnerTwo = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="firstName"
+                id="firstName"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.ownerTwo.firstName")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="surname"
               className="block text-sm font-medium text-gray-700"
             >
               Surname
@@ -32,15 +33,16 @@ const OwnerTwo = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="surname"
+                id="surname"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.ownerTwo.surname")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="dob"
               className="block text-sm font-medium text-gray-700"
             >
               Date of birth
@@ -48,32 +50,33 @@ const OwnerTwo = () => {
             <div className="mt-1">
               <input
                 type="date"
-                name="project-name"
-                id="project-name"
+                name="dob"
+                id="dob"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.ownerTwo.dob")}
               />
             </div>
           </div>
           <div className="col-span-3">
             <label
-              htmlFor="description"
+              htmlFor="address"
               className="block text-sm font-medium text-gray-700"
             >
               Address
             </label>
             <div className="mt-1">
               <textarea
-                id="description"
-                name="description"
+                id="address"
+                name="address"
                 rows={3}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                defaultValue={""}
+                {...register("engagementOfNuova.ownerTwo.address")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="signature"
               className="block text-sm font-medium text-gray-700"
             >
               Signature
@@ -81,15 +84,16 @@ const OwnerTwo = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="signature"
+                id="signature"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.ownerTwo.signature")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="todaysDate"
               className="block text-sm font-medium text-gray-700"
             >
               Today’s date (dd/mm/yyyy)
@@ -97,9 +101,10 @@ const OwnerTwo = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="todaysDate"
+                id="todaysDate"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.ownerTwo.todaysDate")}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Agent = () => {
+const Agent = ({ register }) => {
   return (
     <>
       <div className=" space-y-3">
@@ -12,7 +12,7 @@ const Agent = () => {
         <div className="grid grid-cols-3 gap-5 pt-5">
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="firstName"
               className="block text-sm font-medium text-gray-700"
             >
               Full name
@@ -20,15 +20,16 @@ const Agent = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="firstName"
+                id="firstName"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.agent.nuovaAgent.firstName")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="signature"
               className="block text-sm font-medium text-gray-700"
             >
               Signature
@@ -36,15 +37,16 @@ const Agent = () => {
             <div className="mt-1">
               <input
                 type="text"
-                name="project-name"
-                id="project-name"
+                name="signature"
+                id="signature"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.agent.nuovaAgent.signature")}
               />
             </div>
           </div>
           <div className="col-span-1">
             <label
-              htmlFor="project-name"
+              htmlFor="todaysDate"
               className="block text-sm font-medium text-gray-700"
             >
               Today’s date
@@ -52,9 +54,10 @@ const Agent = () => {
             <div className="mt-1">
               <input
                 type="date"
-                name="project-name"
-                id="project-name"
+                name="todaysDate"
+                id="todaysDate"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("engagementOfNuova.agent.nuovaAgent.todaysDate")}
               />
             </div>
           </div>

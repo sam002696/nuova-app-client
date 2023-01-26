@@ -1,6 +1,6 @@
 import React from "react";
 
-const SafetyCertificates = () => {
+const SafetyCertificates = ({ register }) => {
   return (
     <>
       <div className="space-y-3">
@@ -13,347 +13,384 @@ const SafetyCertificates = () => {
       </div>
 
       <div className="grid grid-cols-6 gap-5">
-        {/* GSC */}
-        <div className=" col-span-1">
-          <p className=" text-gray-900 text-base pt-2">
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
+          ></label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1">
+              <label
+                htmlFor="item"
+                className="block text-sm font-medium text-gray-700 sm:mt-px"
+              >
+                N/A <br />
+                No Gas
+              </label>
+            </div>
+
+            <div className="col-span-1">
+              <label
+                htmlFor="item"
+                className="block text-sm font-medium text-gray-700 sm:mt-px"
+              >
+                Owner(s) will provide
+              </label>
+            </div>
+
+            <div className="col-span-1">
+              <label
+                htmlFor="item"
+                className="block text-sm font-medium text-gray-700 sm:mt-px"
+              >
+                Owner(s) instruct the Agent to arrange
+              </label>
+            </div>
+
+            <div className="col-span-1">
+              <label
+                htmlFor="item"
+                className="block text-sm font-medium text-gray-700 sm:mt-px"
+              >
+                Owner(s) instruct the Agent to renew
+              </label>
+            </div>
+
+            <div className="col-span-2">
+              <label
+                htmlFor="item"
+                className="block text-sm font-medium text-gray-700 sm:mt-px"
+              >
+                Certificate Expiry Date
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
+          <label
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
+          >
             Gas Safety Certificate (GSC)
-          </p>
-        </div>
-        <div className="col-span-1">
-          <label
-            htmlFor="project-name"
-            className="block text-sm font-medium text-gray-700 pb-1"
-          >
-            N/A
-            <br /> No gas
           </label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1">
+              <input
+                type="checkbox"
+                name="notes"
+                id="notes"
+                value="NA / No Gas"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 "
+                placeholder="Notes"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
 
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) will provide"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to arrange"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to renew"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-2">
+              <input
+                type="date"
+                name="signingDate"
+                id="signingDate"
+                value="Certificate Expiry Date"
+                className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
           </div>
         </div>
-        <div className="col-span-1">
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
           <label
-            htmlFor="project-name"
-            className="block text-sm font-medium text-gray-700 pb-1"
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
           >
-            Owner(s)
-            <br /> will provide
-          </label>
-
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <label
-            htmlFor="project-name"
-            className="block text-sm font-medium text-gray-700 pb-1"
-          >
-            Owner(s) instruct
-            <br /> the Agent to arrange
-          </label>
-
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <label
-            htmlFor="project-name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Certificate expiry date
-          </label>
-          <div className="mt-1">
-            <input
-              type="date"
-              name="project-name"
-              id="project-name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <label
-            htmlFor="project-name"
-            className="block text-sm font-medium text-gray-700 pb-1"
-          >
-            Owner(s) instruct
-            <br /> the Agent to renew
-          </label>
-
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-        </div>
-
-        {/* EPC */}
-        <div className=" col-span-1">
-          <p className=" text-gray-900 text-base pt-2">
             Energy Performance Certificate (EPC)
-          </p>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="mt-1">
-            <input
-              type="date"
-              name="project-name"
-              id="project-name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
+          </label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1"></div>
 
-        {/* LRA */}
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) will provide"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
 
-        <div className=" col-span-1">
-          <p className=" text-gray-900 text-base pt-2">
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to arrange"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to renew"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-2">
+              <input
+                type="date"
+                name="signingDate"
+                id="signingDate"
+                value="Certificate Expiry Date"
+                className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
+          <label
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
+          >
             Legionnaires Risk Assessment (LRA)
-          </p>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="mt-1">
-            <input
-              type="date"
-              name="project-name"
-              id="project-name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
+          </label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1"></div>
 
-        {/*EICR  */}
-        <div className=" col-span-1">
-          <p className=" text-gray-900 text-base pt-2">
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) will provide"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to arrange"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to renew"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-2">
+              <input
+                type="date"
+                name="signingDate"
+                id="signingDate"
+                value="Certificate Expiry Date"
+                className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
+          <label
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
+          >
             Electrical Installation Condition Report (EICR)
-          </p>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="mt-1">
-            <input
-              type="date"
-              name="project-name"
-              id="project-name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
+          </label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1"></div>
 
-        {/* PAT */}
-        <div className=" col-span-1">
-          <p className=" text-gray-900 text-base pt-2">
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) will provide"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to arrange"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to renew"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-2">
+              <input
+                type="date"
+                name="signingDate"
+                id="signingDate"
+                value="Certificate Expiry Date"
+                className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
+          <label
+            htmlFor="item"
+            className="block text-sm font-medium text-gray-700 sm:mt-px"
+          >
             Portable Appliance Testing (PAT)
-          </p>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="mt-1">
-            <input
-              type="date"
-              name="project-name"
-              id="project-name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-            />
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mt-10"
-            />
+          </label>
+          <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
+            <div className="col-span-1"></div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) will provide"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to arrange"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-1">
+              <input
+                id="comments"
+                value="Owner(s) instruct the Agent to renew"
+                name="comments"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
+
+            <div className="col-span-2">
+              <input
+                type="date"
+                name="signingDate"
+                id="signingDate"
+                value="Certificate Expiry Date"
+                className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                {...register(
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                )}
+              />
+            </div>
           </div>
         </div>
       </div>

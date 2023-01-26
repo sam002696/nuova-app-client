@@ -1,6 +1,6 @@
 import React from "react";
 
-const MarketResearch = () => {
+const MarketResearch = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -19,14 +19,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="recommendation"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Recommendation"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="recommendation"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Recommendation
@@ -36,14 +37,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="websearch"
+                  name="marketResearchOption"
+                  type="radio"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  value="Web search"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="websearch"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Web search
@@ -53,14 +55,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="toLetForSaleBoard"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="To let / For sale board"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="toLetForSaleBoard"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   To let / For sale board
@@ -70,14 +73,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="brandedVehicle"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Branded vehicle"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="brandedVehicle"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Branded vehicle
@@ -87,14 +91,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="propertyPortal"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Property Portal"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="propertyPortal"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Property portal
@@ -104,31 +109,33 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="socialMedia"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Social media"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="socialMedia"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
-                  Social media
+                  Social Media
                 </label>
               </div>
             </div>
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="passingOurOffice"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Passing our office"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="passingOurOffice"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Passing our office
@@ -138,14 +145,15 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="alreadyAwareOfCompany"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="Already aware of company"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="alreadyAwareOfCompany"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   Already aware of company
@@ -155,34 +163,18 @@ const MarketResearch = () => {
             <div className="col-span-1 pt-3">
               <div className="flex h-5 items-center">
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
+                  id="existingClient"
+                  name="marketResearchOption"
+                  type="radio"
+                  value="I am an existing client"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  {...register("marketResearch.marketResearchOption")}
                 />
                 <label
-                  htmlFor="project-name"
+                  htmlFor="existingClient"
                   className="block text-sm font-medium text-gray-700 pl-2"
                 >
                   I am an existing client
-                </label>
-              </div>
-            </div>
-            <div className="col-span-1 pt-3">
-              <div className="flex h-5 items-center">
-                <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                <label
-                  htmlFor="project-name"
-                  className="block text-sm font-medium text-gray-700 pl-2"
-                >
-                  Other (please specify)
                 </label>
               </div>
             </div>
