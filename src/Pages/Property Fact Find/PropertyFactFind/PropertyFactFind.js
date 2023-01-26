@@ -155,9 +155,9 @@ const PropertyFactFind = () => {
             <Property register={register} />
             <PropertyDetails register={register} />
             <OwnershipDetails register={register} />
-            <PropertyMaintenance />
-            <MarketResearch />
-            <Engagement />
+            <PropertyMaintenance register={register} />
+            <MarketResearch register={register} />
+            <Engagement register={register} />
             <button
               type="submit"
               className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "

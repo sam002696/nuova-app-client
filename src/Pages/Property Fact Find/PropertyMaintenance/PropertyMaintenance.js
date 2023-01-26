@@ -6,7 +6,7 @@ import SafetyCertificates from "./SafetyCertificates";
 import ServiceContractors from "./ServiceContractors";
 import Warranties from "./Warranties";
 
-const PropertyMaintenance = () => {
+const PropertyMaintenance = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -33,25 +33,25 @@ const PropertyMaintenance = () => {
 
         <hr className=" border-1 border-gray-400" />
 
-        <ContactDetails />
+        <ContactDetails register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
-        <PreferredContractors />
+        <PreferredContractors register={register} />
 
-        <ServiceContractors />
-
-        <hr className=" border-1 border-gray-400" />
-
-        <SafetyCertificates />
+        <ServiceContractors register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
-        <Warranties />
+        <SafetyCertificates register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
-        <AdditionalInfo />
+        <Warranties register={register} />
+
+        <hr className=" border-1 border-gray-400" />
+
+        <AdditionalInfo register={register} />
       </div>
     </>
   );
