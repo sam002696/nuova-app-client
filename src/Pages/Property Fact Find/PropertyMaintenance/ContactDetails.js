@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContactDetails = () => {
+const ContactDetails = ({ register }) => {
   return (
     <>
       <div className="space-y-3">
@@ -16,7 +16,7 @@ const ContactDetails = () => {
       <div className=" grid grid-cols-2 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="fullName"
             className="block text-sm font-medium text-gray-700"
           >
             Full name
@@ -24,15 +24,18 @@ const ContactDetails = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="fullName"
+              id="fullName"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.maintenanceContactDetails.fullName"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="relationshipOwner"
             className="block text-sm font-medium text-gray-700"
           >
             Relationship to Owner
@@ -40,15 +43,18 @@ const ContactDetails = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="relationshipOwner"
+              id="relationshipOwner"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.maintenanceContactDetails.relationshipOwner"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="telephone"
             className="block text-sm font-medium text-gray-700"
           >
             Telephone
@@ -56,15 +62,18 @@ const ContactDetails = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
+              name="telephone"
+              id="telephone"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.maintenanceContactDetails.telephone"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="emailAddress"
             className="block text-sm font-medium text-gray-700"
           >
             Email address
@@ -72,9 +81,12 @@ const ContactDetails = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
+              name="emailAddress"
+              id="emailAddress"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.maintenanceContactDetails.emailAddress"
+              )}
             />
           </div>
         </div>

@@ -3,7 +3,7 @@ import Agent from "./Agent";
 import OwnerOne from "./OwnerOne";
 import OwnerTwo from "./OwnerTwo";
 
-const Engagement = () => {
+const Engagement = ({ register }) => {
   return (
     <>
       <div className="space-y-6">

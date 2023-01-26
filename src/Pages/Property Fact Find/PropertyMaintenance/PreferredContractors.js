@@ -1,6 +1,6 @@
 import React from "react";
 
-const PreferredContractors = () => {
+const PreferredContractors = ({ register }) => {
   return (
     <>
       <div className="space-y-3">
@@ -19,7 +19,7 @@ const PreferredContractors = () => {
       <div className=" grid grid-cols-2 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorName"
             className="block text-sm font-medium text-gray-700"
           >
             1. Contractor name
@@ -27,15 +27,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorName"
+              id="contractorName"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorOne.contractorName"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorPhone"
             className="block text-sm font-medium text-gray-700"
           >
             Telephone number
@@ -43,15 +46,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorPhone"
+              id="contractorPhone"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorOne.contractorPhone"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorTrade"
             className="block text-sm font-medium text-gray-700"
           >
             Trade
@@ -59,9 +65,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
+              name="contractorTrade"
+              id="contractorTrade"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorOne.contractorTrade"
+              )}
             />
           </div>
         </div>
@@ -75,9 +84,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
+              name="contractorEmail"
+              id="contractorEmail"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorOne.contractorEmail"
+              )}
             />
           </div>
         </div>
@@ -88,7 +100,7 @@ const PreferredContractors = () => {
       <div className=" grid grid-cols-2 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorName"
             className="block text-sm font-medium text-gray-700"
           >
             2. Contractor name
@@ -96,15 +108,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorName"
+              id="contractorName"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorTwo.contractorName"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorPhone"
             className="block text-sm font-medium text-gray-700"
           >
             Telephone number
@@ -112,15 +127,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorPhone"
+              id="contractorPhone"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorTwo.contractorPhone"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorTrade"
             className="block text-sm font-medium text-gray-700"
           >
             Trade
@@ -128,9 +146,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
+              name="contractorTrade"
+              id="contractorTrade"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorTwo.contractorTrade"
+              )}
             />
           </div>
         </div>
@@ -144,9 +165,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
+              name="contractorEmail"
+              id="contractorEmail"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorTwo.contractorEmail"
+              )}
             />
           </div>
         </div>
@@ -157,7 +181,7 @@ const PreferredContractors = () => {
       <div className=" grid grid-cols-2 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorName"
             className="block text-sm font-medium text-gray-700"
           >
             3. Contractor name
@@ -165,15 +189,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorName"
+              id="contractorName"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorThree.contractorName"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorPhone"
             className="block text-sm font-medium text-gray-700"
           >
             Telephone number
@@ -181,15 +208,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorPhone"
+              id="contractorPhone"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorThree.contractorPhone"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorTrade"
             className="block text-sm font-medium text-gray-700"
           >
             Trade
@@ -197,9 +227,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
+              name="contractorTrade"
+              id="contractorTrade"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorThree.contractorTrade"
+              )}
             />
           </div>
         </div>
@@ -213,9 +246,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
+              name="contractorEmail"
+              id="contractorEmail"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorThree.contractorEmail"
+              )}
             />
           </div>
         </div>
@@ -226,7 +262,7 @@ const PreferredContractors = () => {
       <div className=" grid grid-cols-2 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorName"
             className="block text-sm font-medium text-gray-700"
           >
             4. Contractor name
@@ -234,15 +270,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorName"
+              id="contractorName"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorFour.contractorName"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorPhone"
             className="block text-sm font-medium text-gray-700"
           >
             Telephone number
@@ -250,15 +289,18 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contractorPhone"
+              id="contractorPhone"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorFour.contractorPhone"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contractorTrade"
             className="block text-sm font-medium text-gray-700"
           >
             Trade
@@ -266,9 +308,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="tel"
-              name="project-name"
-              id="project-name"
+              name="contractorTrade"
+              id="contractorTrade"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorFour.contractorTrade"
+              )}
             />
           </div>
         </div>
@@ -282,9 +327,12 @@ const PreferredContractors = () => {
           <div className="mt-1">
             <input
               type="email"
-              name="project-name"
-              id="project-name"
+              name="contractorEmail"
+              id="contractorEmail"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.preferredcontractors.contractorFour.contractorEmail"
+              )}
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Warranties = () => {
+const Warranties = ({ register }) => {
   return (
     <>
       <div className="space-y-3">
@@ -13,7 +13,7 @@ const Warranties = () => {
       <div className=" grid grid-cols-4 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="item"
             className="block text-sm font-medium text-gray-700"
           >
             1. Item
@@ -21,15 +21,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="item"
+              id="item"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.item")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="manufacturer"
             className="block text-sm font-medium text-gray-700"
           >
             Manufacturer
@@ -37,15 +38,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="manufacturer"
+              id="manufacturer"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.manufacturer")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="model"
             className="block text-sm font-medium text-gray-700"
           >
             Model
@@ -53,15 +55,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="model"
+              id="model"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.model")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="warrantyExpiryDate"
             className="block text-sm font-medium text-gray-700"
           >
             Warranty expiry date
@@ -69,15 +72,18 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="date"
-              name="project-name"
-              id="project-name"
+              name="warrantyExpiryDate"
+              id="warrantyExpiryDate"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.warranties.0.warrantyExpiryDate"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="provider"
             className="block text-sm font-medium text-gray-700"
           >
             Provider
@@ -85,15 +91,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="provider"
+              id="provider"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.provider")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contactDetails"
             className="block text-sm font-medium text-gray-700"
           >
             Contact details
@@ -101,15 +108,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contactDetails"
+              id="contactDetails"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.contactDetails")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="refNumber"
             className="block text-sm font-medium text-gray-700"
           >
             Reference number
@@ -117,9 +125,10 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="refNumber"
+              id="refNumber"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.0.refNumber")}
             />
           </div>
         </div>
@@ -129,7 +138,7 @@ const Warranties = () => {
       <div className=" grid grid-cols-4 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="item"
             className="block text-sm font-medium text-gray-700"
           >
             2. Item
@@ -137,15 +146,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="item"
+              id="item"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.item")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="manufacturer"
             className="block text-sm font-medium text-gray-700"
           >
             Manufacturer
@@ -153,15 +163,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="manufacturer"
+              id="manufacturer"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.manufacturer")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="model"
             className="block text-sm font-medium text-gray-700"
           >
             Model
@@ -169,15 +180,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="model"
+              id="model"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.model")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="warrantyExpiryDate"
             className="block text-sm font-medium text-gray-700"
           >
             Warranty expiry date
@@ -185,15 +197,18 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="date"
-              name="project-name"
-              id="project-name"
+              name="warrantyExpiryDate"
+              id="warrantyExpiryDate"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.warranties.1.warrantyExpiryDate"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="provider"
             className="block text-sm font-medium text-gray-700"
           >
             Provider
@@ -201,15 +216,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="provider"
+              id="provider"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.provider")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contactDetails"
             className="block text-sm font-medium text-gray-700"
           >
             Contact details
@@ -217,15 +233,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contactDetails"
+              id="contactDetails"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.contactDetails")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="refNumber"
             className="block text-sm font-medium text-gray-700"
           >
             Reference number
@@ -233,9 +250,10 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="refNumber"
+              id="refNumber"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.1.refNumber")}
             />
           </div>
         </div>
@@ -246,7 +264,7 @@ const Warranties = () => {
       <div className=" grid grid-cols-4 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="item"
             className="block text-sm font-medium text-gray-700"
           >
             3. Item
@@ -254,15 +272,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="item"
+              id="item"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.item")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="manufacturer"
             className="block text-sm font-medium text-gray-700"
           >
             Manufacturer
@@ -270,15 +289,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="manufacturer"
+              id="manufacturer"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.manufacturer")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="model"
             className="block text-sm font-medium text-gray-700"
           >
             Model
@@ -286,15 +306,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="model"
+              id="model"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.model")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="warrantyExpiryDate"
             className="block text-sm font-medium text-gray-700"
           >
             Warranty expiry date
@@ -302,15 +323,18 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="date"
-              name="project-name"
-              id="project-name"
+              name="warrantyExpiryDate"
+              id="warrantyExpiryDate"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.warranties.2.warrantyExpiryDate"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="provider"
             className="block text-sm font-medium text-gray-700"
           >
             Provider
@@ -318,15 +342,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="provider"
+              id="provider"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.provider")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contactDetails"
             className="block text-sm font-medium text-gray-700"
           >
             Contact details
@@ -334,15 +359,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contactDetails"
+              id="contactDetails"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.contactDetails")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="refNumber"
             className="block text-sm font-medium text-gray-700"
           >
             Reference number
@@ -350,9 +376,10 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="refNumber"
+              id="refNumber"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.2.refNumber")}
             />
           </div>
         </div>
@@ -363,7 +390,7 @@ const Warranties = () => {
       <div className=" grid grid-cols-4 gap-5">
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="item"
             className="block text-sm font-medium text-gray-700"
           >
             4. Item
@@ -371,15 +398,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="item"
+              id="item"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.item")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="manufacturer"
             className="block text-sm font-medium text-gray-700"
           >
             Manufacturer
@@ -387,15 +415,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="manufacturer"
+              id="manufacturer"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.manufacturer")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="model"
             className="block text-sm font-medium text-gray-700"
           >
             Model
@@ -403,15 +432,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="model"
+              id="model"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.model")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="warrantyExpiryDate"
             className="block text-sm font-medium text-gray-700"
           >
             Warranty expiry date
@@ -419,15 +449,18 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="date"
-              name="project-name"
-              id="project-name"
+              name="warrantyExpiryDate"
+              id="warrantyExpiryDate"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyMaintenance.warranties.3.warrantyExpiryDate"
+              )}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="provider"
             className="block text-sm font-medium text-gray-700"
           >
             Provider
@@ -435,15 +468,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="provider"
+              id="provider"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.provider")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="contactDetails"
             className="block text-sm font-medium text-gray-700"
           >
             Contact details
@@ -451,15 +485,16 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="contactDetails"
+              id="contactDetails"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.contactDetails")}
             />
           </div>
         </div>
         <div className="col-span-1">
           <label
-            htmlFor="project-name"
+            htmlFor="refNumber"
             className="block text-sm font-medium text-gray-700"
           >
             Reference number
@@ -467,9 +502,10 @@ const Warranties = () => {
           <div className="mt-1">
             <input
               type="text"
-              name="project-name"
-              id="project-name"
+              name="refNumber"
+              id="refNumber"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyMaintenance.warranties.3.refNumber")}
             />
           </div>
         </div>

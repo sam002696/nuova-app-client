@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdditionalInfo = () => {
+const AdditionalInfo = ({ register }) => {
   return (
     <>
       <p className=" text-lg text-gray-900 font-semibold ">
@@ -9,7 +9,7 @@ const AdditionalInfo = () => {
 
       <div className="pt-1">
         <label
-          htmlFor="description"
+          htmlFor="additionalInformation"
           className="block text-sm font-medium text-gray-700"
         >
           Please provide any information which may be unique/helpful to tenants
@@ -17,10 +17,11 @@ const AdditionalInfo = () => {
         </label>
         <div className="mt-1">
           <textarea
-            id="description"
-            name="description"
+            id="additionalInformation"
+            name="additionalInformation"
             rows={5}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyMaintenance.additionalInformation")}
             defaultValue={""}
           />
         </div>
