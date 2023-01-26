@@ -1,6 +1,6 @@
 import React from "react";
 
-const FeaturesAppliances = () => {
+const FeaturesAppliances = ({ register }) => {
   return (
     <>
       <div>
@@ -16,7 +16,11 @@ const FeaturesAppliances = () => {
               aria-describedby="comments-description"
               name="comments"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Gas central heating"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -32,7 +36,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="White meter heating"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -48,7 +56,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Electric central heating"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -64,7 +76,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Under floor heating"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -80,7 +96,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Double glazing"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -96,7 +116,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Tumble dryer"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -112,7 +136,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Dishwasher"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -128,7 +156,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="TV"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -144,7 +176,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Balcony/Terrace"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -160,7 +196,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Private garden"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -176,7 +216,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Shared Garden"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -192,7 +236,11 @@ const FeaturesAppliances = () => {
               aria-describedby="offers-description"
               name="offers"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Washing machine"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliances"
+              )}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -217,6 +265,9 @@ const FeaturesAppliances = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.featuresAppliances.featuresAndAppliancesOther"
+              )}
             />
           </div>
         </div>
@@ -233,6 +284,9 @@ const FeaturesAppliances = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.featuresAppliances.externalAreasFacilities"
+              )}
             />
           </div>
         </div>
@@ -249,6 +303,9 @@ const FeaturesAppliances = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.featuresAppliances.sharedAreasFacilities"
+              )}
             />
           </div>
         </div>
@@ -265,6 +322,9 @@ const FeaturesAppliances = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.featuresAppliances.excludedAreaFacilities"
+              )}
             />
           </div>
         </div>

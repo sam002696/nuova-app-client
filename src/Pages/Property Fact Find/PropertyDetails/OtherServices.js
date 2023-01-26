@@ -1,6 +1,6 @@
 import React from "react";
 
-const OtherServices = () => {
+const OtherServices = ({ register }) => {
   return (
     <>
       <div>
@@ -17,6 +17,9 @@ const OtherServices = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.otherServices.stairCleaningAgreement.place"
+              )}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -36,6 +39,9 @@ const OtherServices = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.otherServices.stairCleaningAgreement.provider"
+                )}
               />
             </div>
           </div>
@@ -48,6 +54,9 @@ const OtherServices = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.otherServices.gardenMaintenanceContract.place"
+              )}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -67,6 +76,9 @@ const OtherServices = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.otherServices.gardenMaintenanceContract.provider"
+                )}
               />
             </div>
           </div>
@@ -88,6 +100,7 @@ const OtherServices = () => {
                 rows={3}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                 defaultValue={""}
+                {...register("propertyDetails.otherServices.other")}
               />
             </div>
           </div>
@@ -105,6 +118,9 @@ const OtherServices = () => {
                 rows={3}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                 defaultValue={""}
+                {...register(
+                  "propertyDetails.otherServices.mainsWaterLocation"
+                )}
               />
             </div>
           </div>
@@ -120,6 +136,7 @@ const OtherServices = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.otherServices.phoneLineBroadband")}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -139,6 +156,9 @@ const OtherServices = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.otherServices.phoneLineBroadbandProvider"
+                )}
               />
             </div>
           </div>
@@ -151,6 +171,7 @@ const OtherServices = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.otherServices.cableSatellite")}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -170,6 +191,9 @@ const OtherServices = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.otherServices.cableSatelliteProvider"
+                )}
               />
             </div>
           </div>
@@ -182,6 +206,7 @@ const OtherServices = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.otherServices.mainWiredSmoke")}
             >
               <option>Select</option>
               <option>Yes</option>

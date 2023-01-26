@@ -1,6 +1,6 @@
 import React from "react";
 
-const OwnerTwo = () => {
+const OwnerTwo = ({ register }) => {
   return (
     <>
       <div className="space-y-4">
@@ -10,7 +10,7 @@ const OwnerTwo = () => {
         <p className="text-base leading-6 text-gray-900 italic">
           Or secondary point of contact if company owned
         </p>
-        <div className=" grid grid-cols-2 gap-5 pt-2 ">
+        <div className=" grid grid-cols-2 gap-5 pt-2">
           <div className="col-span-1">
             <label
               htmlFor="project-name"
@@ -24,6 +24,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.title")}
               />
             </div>
           </div>
@@ -40,6 +41,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.companyName")}
               />
             </div>
           </div>
@@ -56,6 +58,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.firstName")}
               />
             </div>
           </div>
@@ -72,6 +75,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.emailAddress")}
               />
             </div>
           </div>
@@ -88,6 +92,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.surname")}
               />
             </div>
           </div>
@@ -104,6 +109,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.landlineNo")}
               />
             </div>
           </div>
@@ -120,6 +126,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.correspondenceAddress")}
               />
             </div>
           </div>
@@ -136,6 +143,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.mobileTelephone")}
               />
             </div>
           </div>
@@ -152,6 +160,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.townCity")}
               />
             </div>
           </div>
@@ -168,6 +177,9 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "ownershipDetails.ownerTwo.landlordRegistrationNumber"
+                )}
               />
             </div>
           </div>
@@ -184,6 +196,7 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("ownershipDetails.ownerTwo.postCode")}
               />
             </div>
           </div>
@@ -200,6 +213,9 @@ const OwnerTwo = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "ownershipDetails.ownerTwo.landlordRegistrationApplication"
+                )}
               />
             </div>
           </div>
@@ -218,16 +234,20 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="comments"
-                    aria-describedby="comments-description"
-                    name="comments"
+                    id="agreedContactMethod"
+                    aria-describedby="agreedContactMethod-description"
+                    name="agreedContactMethod"
                     type="checkbox"
+                    value="Email"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register(
+                      "ownershipDetails.contactMethod.agreedContactMethod"
+                    )}
                   />
                 </div>
                 <div className="ml-3 text-sm">
                   <label
-                    htmlFor="comments"
+                    htmlFor="agreedContactMethod"
                     className="font-medium text-gray-700"
                   >
                     Email
@@ -238,11 +258,15 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="agreedContactMethod"
+                    aria-describedby="agreedContactMethod-description"
+                    name="agreedContactMethod"
                     type="checkbox"
+                    value="Mobile"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register(
+                      "ownershipDetails.contactMethod.agreedContactMethod"
+                    )}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -254,11 +278,15 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="agreedContactMethod"
+                    aria-describedby="agreedContactMethod-description"
+                    name="agreedContactMethod"
                     type="checkbox"
+                    value="Landline"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register(
+                      "ownershipDetails.contactMethod.agreedContactMethod"
+                    )}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -281,11 +309,13 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="comments"
-                    aria-describedby="comments-description"
-                    name="comments"
+                    id="contactMe"
+                    aria-describedby="contactMe-description"
+                    name="contactMe"
+                    value="Only when necessary"
                     type="checkbox"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -301,11 +331,13 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="contactMe"
+                    aria-describedby="contactMe-description"
+                    name="contactMe"
                     type="checkbox"
+                    value="Every now and then"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -317,11 +349,13 @@ const OwnerTwo = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="contactMe"
+                    aria-describedby="contactMe-description"
+                    name="contactMe"
                     type="checkbox"
+                    value="Regular updates"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
                 <div className="ml-3 text-sm">

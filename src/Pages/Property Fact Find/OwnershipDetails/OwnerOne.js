@@ -1,6 +1,6 @@
 import React from "react";
 
-const OwnerOne = () => {
+const OwnerOne = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -20,6 +20,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.title")}
             />
           </div>
         </div>
@@ -36,6 +37,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.companyName")}
             />
           </div>
         </div>
@@ -52,6 +54,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.firstName")}
             />
           </div>
         </div>
@@ -68,6 +71,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.emailAddress")}
             />
           </div>
         </div>
@@ -84,6 +88,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.surname")}
             />
           </div>
         </div>
@@ -100,6 +105,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.landlineNo")}
             />
           </div>
         </div>
@@ -116,6 +122,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.correspondenceAddress")}
             />
           </div>
         </div>
@@ -132,6 +139,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.mobileTelephone")}
             />
           </div>
         </div>
@@ -148,6 +156,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.townCity")}
             />
           </div>
         </div>
@@ -164,6 +173,9 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "ownershipDetails.ownerOne.landlordRegistrationNumber"
+              )}
             />
           </div>
         </div>
@@ -180,6 +192,7 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.ownerOne.postCode")}
             />
           </div>
         </div>
@@ -196,6 +209,9 @@ const OwnerOne = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "ownershipDetails.ownerOne.landlordRegistrationApplication"
+              )}
             />
           </div>
         </div>

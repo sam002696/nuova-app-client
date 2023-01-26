@@ -1,6 +1,6 @@
 import React from "react";
 
-const Factoring = () => {
+const Factoring = ({ register }) => {
   return (
     <>
       <div>
@@ -18,6 +18,7 @@ const Factoring = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.factoring.propertyFactored")}
           >
             <option>Select</option>
             <option>Yes</option>
@@ -37,6 +38,7 @@ const Factoring = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.factoring.factoringCompany")}
             />
           </div>
         </div>
@@ -53,6 +55,7 @@ const Factoring = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.factoring.emailAddress")}
             />
           </div>
         </div>
@@ -69,6 +72,7 @@ const Factoring = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.factoring.telephone")}
             />
           </div>
         </div>
@@ -86,6 +90,7 @@ const Factoring = () => {
               rows={5}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               defaultValue={""}
+              {...register("propertyDetails.factoring.address")}
             />
           </div>
         </div>
@@ -102,6 +107,7 @@ const Factoring = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.factoring.postCode")}
             />
           </div>
 

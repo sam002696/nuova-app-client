@@ -1,6 +1,6 @@
 import React from "react";
 
-const EmergencyContact = () => {
+const EmergencyContact = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -21,6 +21,7 @@ const EmergencyContact = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.emergencyContact.fullName")}
             />
           </div>
         </div>
@@ -37,6 +38,7 @@ const EmergencyContact = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.emergencyContact.relationship")}
             />
           </div>
         </div>
@@ -53,6 +55,7 @@ const EmergencyContact = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.emergencyContact.telephoneNo")}
             />
           </div>
         </div>
@@ -69,6 +72,7 @@ const EmergencyContact = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.emergencyContact.emailAddress")}
             />
           </div>
         </div>

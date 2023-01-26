@@ -8,6 +8,7 @@ import PropertyMaintenance from "../PropertyMaintenance/PropertyMaintenance";
 import logo from "../../../Images/Footer/logo.png";
 import MarketResearch from "../MarketResearch/MarketResearch";
 import Engagement from "../Engagement/Engagement";
+import { useForm } from "react-hook-form";
 const navigation = [
   { name: "Dashboard", href: "#" },
   { name: "Jobs", href: "#" },
@@ -29,6 +30,11 @@ const userNavigation = [
 ];
 
 const PropertyFactFind = () => {
+  const { register, handleSubmit } = useForm({});
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
     <>
       <Disclosure as="nav" className="bg-cyan-800" aria-label="Global">
@@ -145,15 +151,15 @@ const PropertyFactFind = () => {
       {/* Main Components */}
       <main className="mx-auto max-w-5xl px-4 pt-10 pb-12 lg:pb-16">
         <div className=" border-2 border-gray-500 p-10">
-          <form>
-            <Property />
-            <PropertyDetails />
-            <OwnershipDetails />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Property register={register} />
+            <PropertyDetails register={register} />
+            <OwnershipDetails register={register} />
             <PropertyMaintenance />
             <MarketResearch />
             <Engagement />
             <button
-              type="button"
+              type="submit"
               className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "
             >
               Submit the form

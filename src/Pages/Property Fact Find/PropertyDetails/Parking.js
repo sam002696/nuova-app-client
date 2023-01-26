@@ -1,127 +1,12 @@
 import React from "react";
 
-const Parking = () => {
+const Parking = ({ register }) => {
   return (
     <>
       <div>
         <h1 className="text-xl font-semibold leading-6 text-gray-900">
           2.d Parking
         </h1>
-      </div>
-
-      <div className="grid grid-cols-4 gap-x-2">
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="comments" className="font-medium text-gray-700">
-              Gas central heating
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              White meter heating
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              Electric central heating
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              Under floor heating
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              Double glazing
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              Tumble dryer
-            </label>
-          </div>
-        </div>
-        <div className="relative flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
-              Dishwasher
-            </label>
-          </div>
-        </div>
       </div>
 
       <div className=" grid grid-cols-3 gap-5 pt-5">
@@ -138,6 +23,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.permitSuppliedBy")}
             />
           </div>
         </div>
@@ -154,6 +40,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.spaceNumber")}
             />
           </div>
         </div>
@@ -170,6 +57,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.permitsPerProperty")}
             />
           </div>
         </div>
@@ -186,6 +74,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.spaceLocation")}
             />
           </div>
         </div>
@@ -202,6 +91,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.entryCode")}
             />
           </div>
         </div>
@@ -214,6 +104,7 @@ const Parking = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.parking.remoteFob")}
           >
             <option>Select</option>
             <option>Yes</option>
@@ -233,6 +124,7 @@ const Parking = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.parking.suppliedBy")}
             />
           </div>
         </div>

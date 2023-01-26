@@ -1,6 +1,6 @@
 import React from "react";
 
-const Rooms = () => {
+const Rooms = ({ register }) => {
   return (
     <>
       <div>
@@ -14,15 +14,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
+              id="room"
+              aria-describedby="room-description"
+              name="room"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Double bedroom"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="comments" className="font-medium text-gray-700">
+            <label htmlFor="room" className="font-medium text-gray-700">
               Double bedroom
             </label>
           </div>
@@ -30,15 +32,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Living/Sitting room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Living/Sitting room
             </label>
           </div>
@@ -46,15 +50,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Bathroom (with shower)"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Bathroom (with shower)
             </label>
           </div>
@@ -62,15 +68,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Shower room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Shower room
             </label>
           </div>
@@ -78,15 +86,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Single bedroom"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Single bedroom
             </label>
           </div>
@@ -94,15 +104,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Open plan kitchen/Living"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Open plan kitchen/Living
             </label>
           </div>
@@ -110,15 +122,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Bathroom (with bath only)"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Bathroom (with bath only)
             </label>
           </div>
@@ -126,15 +140,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Separate WC"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Separate WC
             </label>
           </div>
@@ -142,15 +158,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Box room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Box room
             </label>
           </div>
@@ -158,15 +176,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Separate kitchen"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Separate kitchen
             </label>
           </div>
@@ -174,15 +194,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="En-suite bathroom"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               En-suite bathroom
             </label>
           </div>
@@ -190,15 +212,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Utility room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Utility room
             </label>
           </div>
@@ -206,15 +230,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Study/Office"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Study/Office
             </label>
           </div>
@@ -222,15 +248,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Dining room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               Dining room
             </label>
           </div>
@@ -238,15 +266,17 @@ const Rooms = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="rooms"
+              aria-describedby="rooms-description"
+              name="rooms"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="En-suite shower room"
+              {...register("propertyDetails.roomObject.rooms")}
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="rooms" className="font-medium text-gray-700">
               En-suite shower room
             </label>
           </div>
@@ -266,6 +296,7 @@ const Rooms = () => {
             name="project-name"
             id="project-name"
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.roomObject.roomsOther")}
           />
         </div>
       </div>

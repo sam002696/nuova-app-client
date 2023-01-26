@@ -1,6 +1,6 @@
 import React from "react";
 
-const UtilitySuppliers = () => {
+const UtilitySuppliers = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -21,6 +21,7 @@ const UtilitySuppliers = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.utilitySuppliers.gasObject.gas")}
           >
             <option>Select</option>
             <option>Gas</option>
@@ -39,6 +40,9 @@ const UtilitySuppliers = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register(
+              "propertyDetails.utilitySuppliers.gasObject.meterType"
+            )}
           >
             <option>Select</option>
             <option>Smart</option>
@@ -59,6 +63,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.gasObject.location"
+              )}
             />
           </div>
         </div>
@@ -76,6 +83,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.gasObject.supplier"
+              )}
             />
           </div>
         </div>
@@ -92,6 +102,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.gasObject.meterPoint"
+              )}
             />
           </div>
         </div>
@@ -108,6 +121,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.gasObject.meterSerialNo"
+              )}
             />
           </div>
         </div>
@@ -127,6 +143,9 @@ const UtilitySuppliers = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register(
+              "propertyDetails.utilitySuppliers.electricity.meterType"
+            )}
           >
             <option>Select</option>
             <option>Smart</option>
@@ -134,7 +153,7 @@ const UtilitySuppliers = () => {
             <option>Prepay</option>
           </select>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-1">
           <label
             htmlFor="project-name"
             className="block text-sm font-medium text-gray-700"
@@ -147,6 +166,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.electricity.location"
+              )}
             />
           </div>
         </div>
@@ -164,6 +186,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.electricity.supplier"
+              )}
             />
           </div>
         </div>
@@ -180,6 +205,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.electricity.supplyNumber"
+              )}
             />
           </div>
         </div>
@@ -196,6 +224,9 @@ const UtilitySuppliers = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.electricity.meterSerialNo"
+              )}
             />
           </div>
         </div>

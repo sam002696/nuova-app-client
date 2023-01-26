@@ -1,6 +1,6 @@
 import React from "react";
 
-const Property = () => {
+const Property = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -29,6 +29,7 @@ const Property = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("property.propertyFloor")}
               />
             </div>
           </div>
@@ -38,11 +39,12 @@ const Property = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="comments"
-                    aria-describedby="comments-description"
-                    name="comments"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    type="radio"
+                    id="furnishChoice1"
+                    className="h-4 w-4 rounded-full border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    name="propertyFurnished"
+                    value="furnsished"
+                    {...register("property.propertyFurnished")}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -58,11 +60,12 @@ const Property = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    type="radio"
+                    id="furnishChoice2"
+                    className="h-4 w-4 rounded-full border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    name="propertyFurnished"
+                    value="unfurnished"
+                    {...register("property.propertyFurnished")}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -78,6 +81,17 @@ const Property = () => {
         {/* Property Address */}
 
         <div className="grid grid-cols-2 gap-x-5 pt-3">
+          <div className=" mt-1">
+            <label className="block mb-2 text-sm font-medium text-gray-900 ">
+              Property Name
+            </label>
+            <input
+              type="text"
+              id="propertyName"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("property.propertyName")}
+            />
+          </div>
           <div>
             <label
               htmlFor="description"
@@ -92,6 +106,7 @@ const Property = () => {
                 rows={5}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                 defaultValue={""}
+                {...register("property.propertyAddress")}
               />
             </div>
           </div>
@@ -104,6 +119,7 @@ const Property = () => {
               name="adverseCard"
               autoComplete="adverseCard"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("property.councilTaxBand")}
             >
               <option>Select</option>
               <option>A</option>
@@ -123,6 +139,7 @@ const Property = () => {
                 type="date"
                 id="jobtitle"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("property.availabilityDate")}
               />
             </div>
           </div>
@@ -144,6 +161,7 @@ const Property = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("property.city")}
               />
             </div>
           </div>
@@ -160,6 +178,7 @@ const Property = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register("property.postcode")}
               />
             </div>
           </div>
@@ -173,11 +192,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="comments"
-                aria-describedby="comments-description"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="petsYes"
+                name="petsPermission"
+                type="radio"
+                value="I/We would consider allowing tenants to have pets"
+                className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.petsPermission")}
               />
             </div>
             <div className="ml-3 text-sm">
@@ -190,11 +210,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="offers"
-                aria-describedby="offers-description"
-                name="offers"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="petsNo"
+                name="petsPermission"
+                type="radio"
+                value="I/We would not permit any pets within this property"
+                className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.petsPermission")}
               />
             </div>
             <div className="ml-3 text-sm">
@@ -218,11 +239,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="comments"
-                aria-describedby="comments-description"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="studentsAcceptance"
+                name="studentsAccept"
+                type="radio"
+                value="yes"
+                className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.studentsAccept")}
               />
             </div>
             <div className="ml-3 text-sm">
@@ -235,11 +257,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="offers"
-                aria-describedby="offers-description"
-                name="offers"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="studentsAcceptance"
+                name="studentsAccept"
+                type="radio"
+                value="no"
+                className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.studentsAccept")}
               />
             </div>
             <div className="ml-3 text-sm">
@@ -262,11 +285,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="comments"
-                aria-describedby="comments-description"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="tolet1"
+                name="toLet"
+                type="radio"
+                value="yes"
+                className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.toLet")}
               />
             </div>
             <div className="ml-3 text-sm">
@@ -279,11 +303,12 @@ const Property = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="offers"
-                aria-describedby="offers-description"
-                name="offers"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                id="tolet2"
+                name="toLet"
+                type="radio"
+                value="no"
+                className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                {...register("property.toLet")}
               />
             </div>
             <div className="ml-3 text-sm">

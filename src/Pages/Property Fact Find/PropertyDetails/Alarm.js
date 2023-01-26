@@ -1,6 +1,6 @@
 import React from "react";
 
-const Alarm = () => {
+const Alarm = ({ register }) => {
   return (
     <>
       <div>
@@ -22,6 +22,7 @@ const Alarm = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.alarm.alarmCode")}
             />
           </div>
         </div>
@@ -38,6 +39,7 @@ const Alarm = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("propertyDetails.alarm.alarmPanelLocation")}
             />
           </div>
         </div>
@@ -50,6 +52,7 @@ const Alarm = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.alarm.alarmFob")}
           >
             <option>Select</option>
             <option>Yes</option>
@@ -65,6 +68,7 @@ const Alarm = () => {
             name="smoker"
             autoComplete="smoker"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+            {...register("propertyDetails.alarm.alarmType")}
           >
             <option>Select</option>
             <option>Monitored</option>
@@ -85,6 +89,7 @@ const Alarm = () => {
               rows={5}
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               defaultValue={""}
+              {...register("propertyDetails.alarm.serviceProvider")}
             />
           </div>
         </div>

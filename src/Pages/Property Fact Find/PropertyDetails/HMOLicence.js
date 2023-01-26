@@ -1,6 +1,6 @@
 import React from "react";
 
-const HMOLicence = () => {
+const HMOLicence = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -18,6 +18,9 @@ const HMOLicence = () => {
               name="smoker"
               autoComplete="smoker"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.hmoLicenceObject.hmoLicence"
+              )}
             >
               <option>Select</option>
               <option>Yes</option>
@@ -37,6 +40,9 @@ const HMOLicence = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.utilitySuppliers.hmoLicenceObject.referenceNumber"
+                )}
               />
             </div>
           </div>
@@ -53,6 +59,9 @@ const HMOLicence = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.utilitySuppliers.hmoLicenceObject.noOfOccupants"
+                )}
               />
             </div>
           </div>
@@ -69,6 +78,9 @@ const HMOLicence = () => {
                 name="project-name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                {...register(
+                  "propertyDetails.utilitySuppliers.hmoLicenceObject.renewalDate"
+                )}
               />
             </div>
           </div>
@@ -82,7 +94,11 @@ const HMOLicence = () => {
                     aria-describedby="comments-description"
                     name="comments"
                     type="checkbox"
+                    value="HMO administration and renewal to be handled by the Owner(s)"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register(
+                      "propertyDetails.utilitySuppliers.hmoLicenceObject.handledBy"
+                    )}
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -102,7 +118,12 @@ const HMOLicence = () => {
                     aria-describedby="offers-description"
                     name="offers"
                     type="checkbox"
+                    value="HMO administration and renewal is to be arranged by the
+                    Agent"
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register(
+                      "propertyDetails.utilitySuppliers.hmoLicenceObject.handledBy"
+                    )}
                   />
                 </div>
                 <div className="ml-3 text-sm">

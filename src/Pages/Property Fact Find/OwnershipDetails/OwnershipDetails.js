@@ -5,7 +5,7 @@ import OwnerOne from "./OwnerOne";
 import OwnerTwo from "./OwnerTwo";
 import TaxDeclaration from "./TaxDeclaration";
 
-const OwnershipDetails = () => {
+const OwnershipDetails = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -26,11 +26,13 @@ const OwnershipDetails = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="comments"
-                    aria-describedby="comments-description"
-                    name="comments"
+                    id="propertyOwnership"
+                    aria-describedby="propertyOwnership-description"
+                    name="propertyOwnership"
+                    value="Solely owned"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    {...register("ownershipDetails.propertyOwnership")}
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   />
                 </div>
                 <div className="ml-3 text-sm">
@@ -46,15 +48,20 @@ const OwnershipDetails = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="propertyOwnership"
+                    aria-describedby="propertyOwnership-description"
+                    name="propertyOwnership"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    value="Jointly owned"
+                    {...register("ownershipDetails.propertyOwnership")}
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="offers" className="font-medium text-gray-700">
+                  <label
+                    htmlFor="propertyOwnership"
+                    className="font-medium text-gray-700"
+                  >
                     Jointly owned
                   </label>
                 </div>
@@ -62,15 +69,20 @@ const OwnershipDetails = () => {
               <div className="relative flex items-start">
                 <div className="flex h-5 items-center">
                   <input
-                    id="offers"
-                    aria-describedby="offers-description"
-                    name="offers"
+                    id="propertyOwnership"
+                    aria-describedby="propertyOwnership-description"
+                    name="propertyOwnership"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    value="Company owned"
+                    {...register("ownershipDetails.propertyOwnership")}
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="offers" className="font-medium text-gray-700">
+                  <label
+                    htmlFor="propertyOwnership"
+                    className="font-medium text-gray-700"
+                  >
                     Company owned
                   </label>
                 </div>
@@ -86,11 +98,11 @@ const OwnershipDetails = () => {
         </div>
         <hr className=" border-1 border-gray-400" />
 
-        <OwnerOne />
-        <OwnerTwo />
-        <BankDetails />
-        <EmergencyContact />
-        <TaxDeclaration />
+        <OwnerOne register={register} />
+        <OwnerTwo register={register} />
+        <BankDetails register={register} />
+        <EmergencyContact register={register} />
+        <TaxDeclaration register={register} />
       </div>
     </>
   );

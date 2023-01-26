@@ -1,11 +1,11 @@
 import React from "react";
 
-const Insurance = () => {
+const Insurance = ({ register }) => {
   return (
     <>
       <div className="space-y-4">
         <h1 className="text-xl font-semibold leading-6 text-gray-900">
-          2.g Factoring
+          2.j Insurance
         </h1>
         <p className="text-base leading-6 text-gray-900">
           The owner(s) have independently arranged for comprehensive landlord’s
@@ -27,6 +27,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.buildings.insuredWith"
+              )}
             />
           </div>
         </div>
@@ -43,6 +46,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.buildings.excessAmount"
+              )}
             />
           </div>
         </div>
@@ -59,6 +65,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.buildings.policyNumber"
+              )}
             />
           </div>
         </div>
@@ -75,6 +84,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.buildings.expiryDate"
+              )}
             />
           </div>
         </div>
@@ -94,6 +106,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.contents.insuredWith"
+              )}
             />
           </div>
         </div>
@@ -110,6 +125,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.contents.excessAmount"
+              )}
             />
           </div>
         </div>
@@ -126,6 +144,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.contents.policyNumber"
+              )}
             />
           </div>
         </div>
@@ -142,6 +163,9 @@ const Insurance = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register(
+                "propertyDetails.utilitySuppliers.insurance.contents.expiryDate"
+              )}
             />
           </div>
         </div>

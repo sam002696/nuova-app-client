@@ -1,6 +1,6 @@
 import React from "react";
 
-const PropertyType = () => {
+const PropertyType = ({ register }) => {
   return (
     <>
       <div>
@@ -13,11 +13,13 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Studio Flat"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
@@ -29,15 +31,17 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Flat"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="propertyType" className="font-medium text-gray-700">
               Flat
             </label>
           </div>
@@ -45,15 +49,17 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Bungalow"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="propertyType" className="font-medium text-gray-700">
               Bungalow
             </label>
           </div>
@@ -61,15 +67,17 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Terraced house"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="propertyType" className="font-medium text-gray-700">
               Terraced house
             </label>
           </div>
@@ -77,15 +85,17 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Semi-detached house"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="propertyType" className="font-medium text-gray-700">
               Semi-detached house
             </label>
           </div>
@@ -93,15 +103,17 @@ const PropertyType = () => {
         <div className="relative flex items-start">
           <div className="flex h-5 items-center">
             <input
-              id="offers"
-              aria-describedby="offers-description"
-              name="offers"
+              id="propertyType"
+              aria-describedby="propertyType-description"
+              name="propertyType"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Detached house"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register("propertyDetails.propertyType")}
             />
           </div>
           <div className="ml-3 text-sm">
-            <label htmlFor="offers" className="font-medium text-gray-700">
+            <label htmlFor="propertyType" className="font-medium text-gray-700">
               Detached house
             </label>
           </div>

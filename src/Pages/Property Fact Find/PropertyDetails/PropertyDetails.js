@@ -11,7 +11,7 @@ import PropertyType from "./PropertyType";
 import Rooms from "./Rooms";
 import UtilitySuppliers from "./UtilitySuppliers";
 
-const PropertyDetails = () => {
+const PropertyDetails = ({ register }) => {
   return (
     <>
       <div className="space-y-6">
@@ -23,57 +23,57 @@ const PropertyDetails = () => {
 
         {/* Property Type */}
 
-        <PropertyType />
+        <PropertyType register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/* Rooms */}
 
-        <Rooms />
+        <Rooms register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/* Features and Appliances */}
 
-        <FeaturesAppliances />
+        <FeaturesAppliances register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/* Parking */}
 
-        <Parking />
+        <Parking register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/* Keys */}
 
-        <Keys />
+        <Keys register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/*Alarm */}
 
-        <Alarm />
+        <Alarm register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
         {/*Factoring */}
 
-        <Factoring />
+        <Factoring register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
-        <OtherServices />
+        <OtherServices register={register} />
 
-        <UtilitySuppliers />
-
-        <hr className=" border-1 border-gray-400" />
-
-        <Insurance />
+        <UtilitySuppliers register={register} />
 
         <hr className=" border-1 border-gray-400" />
 
-        <HMOLicence />
+        <Insurance register={register} />
+
+        <hr className=" border-1 border-gray-400" />
+
+        <HMOLicence register={register} />
 
         <hr className=" border-1 border-gray-400" />
       </div>

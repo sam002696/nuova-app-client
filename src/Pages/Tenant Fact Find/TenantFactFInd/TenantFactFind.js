@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { HomeIcon, EyeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
@@ -10,8 +10,10 @@ import StageFour from "../Stage Four/StageFour";
 import StageFive from "../Stage Five/StageFive";
 import StageSix from "../Stage Six/StageSix";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const TenantFactFind = () => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch } = useForm({});
 
   const url = "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload";
@@ -37,8 +39,7 @@ const TenantFactFind = () => {
   ];
 
   const onSubmit = async (reportData) => {
-    console.log(reportData);
-
+    setLoading(true);
     const data = new FormData();
     const photoGraphicIdFile = reportData?.tenantInfo?.photographicId[0];
     const creditfile = reportData?.guarantorDetails?.creditScore[0];
@@ -66,7 +67,6 @@ const TenantFactFind = () => {
 
         reportData.guarantorDetails.proofEmploymentContract = url2;
       }
-      console.log(reportData);
     }
 
     if (creditfile) {
@@ -83,7 +83,6 @@ const TenantFactFind = () => {
 
       reportData.guarantorDetails.creditScore = url1;
     }
-    console.log(reportData);
 
     if (photoGraphicIdFile) {
       data.append("file", photoGraphicIdFile);
@@ -99,7 +98,6 @@ const TenantFactFind = () => {
 
       reportData.tenantInfo.photographicId = url3;
     }
-    console.log(reportData);
 
     if (reportData?.guarantorDetails?.payslips) {
       for (let i = 0; i < reportData.guarantorDetails.payslips.length; i++) {
@@ -115,9 +113,7 @@ const TenantFactFind = () => {
         const result = await response.text();
         const res = JSON.parse(result);
         reportData.guarantorDetails.payslips[i] = res.secure_url;
-        console.log(res.secure_url);
       }
-      console.log(reportData?.guarantorDetails?.payslips);
     }
 
     if (reportData?.guarantorDetails?.bankStatements) {
@@ -150,6 +146,8 @@ const TenantFactFind = () => {
       );
       if (res.data) {
         console.log(res.data);
+        Swal.fire("Success!", "Your response has been submitted!", "success");
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
@@ -284,9 +282,10 @@ const TenantFactFind = () => {
             <StageSix register={register} />
             <button
               type="submit"
+              disabled={loading}
               className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "
             >
-              Submit the form
+              {loading ? "Submitting the form" : "Submit the form"}
             </button>
           </form>
         </div>

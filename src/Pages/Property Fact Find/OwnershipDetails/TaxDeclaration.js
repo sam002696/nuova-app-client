@@ -1,6 +1,6 @@
 import React from "react";
 
-const TaxDeclaration = () => {
+const TaxDeclaration = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -50,11 +50,12 @@ const TaxDeclaration = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="comments"
-                aria-describedby="comments-description"
-                name="comments"
+                id="landlordTaxDeclaration"
+                aria-describedby="landlordTaxDeclaration-description"
+                name="landlordTaxDeclaration"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register("ownershipDetails.landlordTaxDeclaration")}
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
             </div>
             <div className="ml-3 text-sm">
@@ -67,15 +68,19 @@ const TaxDeclaration = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="offers"
-                aria-describedby="offers-description"
-                name="offers"
+                id="landlordTaxDeclaration"
+                aria-describedby="landlordTaxDeclaration-description"
+                name="landlordTaxDeclaration"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register("ownershipDetails.landlordTaxDeclaration")}
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
             </div>
             <div className="ml-3 text-sm">
-              <label htmlFor="offers" className="font-medium text-gray-700">
+              <label
+                htmlFor="landlordTaxDeclaration"
+                className="font-medium text-gray-700"
+              >
                 Owner 1 is will be living abroad and classed as a non resident
                 for tax purposes
               </label>
@@ -89,7 +94,8 @@ const TaxDeclaration = () => {
                 aria-describedby="comments-description"
                 name="comments"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register("ownershipDetails.landlordTaxDeclaration")}
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
             </div>
             <div className="ml-3 text-sm">
@@ -102,15 +108,19 @@ const TaxDeclaration = () => {
           <div className="relative flex items-start">
             <div className="flex h-5 items-center">
               <input
-                id="offers"
-                aria-describedby="offers-description"
-                name="offers"
+                id="landlordTaxDeclaration"
+                aria-describedby="landlordTaxDeclaration-description"
+                name="landlordTaxDeclaration"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                {...register("ownershipDetails.landlordTaxDeclaration")}
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
             </div>
             <div className="ml-3 text-sm">
-              <label htmlFor="offers" className="font-medium text-gray-700">
+              <label
+                htmlFor="landlordTaxDeclaration"
+                className="font-medium text-gray-700"
+              >
                 Owner 2 is will be living abroad and classed as a non resident
                 for tax purposes
               </label>

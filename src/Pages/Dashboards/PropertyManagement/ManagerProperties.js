@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/solid";
 import AddProperty from "./AddProperty/AddProperty";
 import AllProperties from "./AllProperties";
+import TenancyForm from "./TenancyForm/TenancyForm";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -37,9 +38,9 @@ export default function ManagerProperties() {
       current: false,
     },
     {
-      name: "Billing",
+      name: "Tenancy Form",
       href: "#",
-      to: `${url}/billing`,
+      to: `${url}/tenancyform`,
       icon: CreditCardIcon,
       current: true,
     },
@@ -103,7 +104,9 @@ export default function ManagerProperties() {
             <AddProperty />
           </Route>
           <Route path={`${path}/review-property`}></Route>
-          <Route path={`${path}/billing`}></Route>
+          <Route path={`${path}/tenancyform`}>
+            <TenancyForm />
+          </Route>
         </Switch>
       </main>
     </div>

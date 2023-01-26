@@ -1,6 +1,6 @@
 import React from "react";
 
-const BankDetails = () => {
+const BankDetails = ({ register }) => {
   return (
     <>
       <h1 className="text-xl font-semibold leading-6 text-gray-900">
@@ -19,10 +19,11 @@ const BankDetails = () => {
           </label>
           <div className="mt-1">
             <input
-              type="number"
+              type="text"
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerOne.sortCode")}
             />
           </div>
         </div>
@@ -39,6 +40,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerOne.bank")}
             />
           </div>
         </div>
@@ -55,6 +57,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerOne.accountNo")}
             />
           </div>
         </div>
@@ -71,6 +74,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerOne.accountName")}
             />
           </div>
         </div>
@@ -90,10 +94,11 @@ const BankDetails = () => {
           </label>
           <div className="mt-1">
             <input
-              type="number"
+              type="text"
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerTwo.sortCode")}
             />
           </div>
         </div>
@@ -110,6 +115,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerTwo.bank")}
             />
           </div>
         </div>
@@ -126,6 +132,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerTwo.accountNo")}
             />
           </div>
         </div>
@@ -142,6 +149,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.ownerTwo.accountName")}
             />
           </div>
         </div>
@@ -168,6 +176,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.percentage.ownerOne")}
             />
           </div>
         </div>
@@ -184,6 +193,7 @@ const BankDetails = () => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              {...register("ownershipDetails.bankAccount.percentage.ownerTwo")}
             />
           </div>
         </div>
