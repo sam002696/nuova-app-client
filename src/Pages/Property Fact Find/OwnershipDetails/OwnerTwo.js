@@ -239,7 +239,7 @@ const OwnerTwo = ({ register }) => {
                     name="agreedContactMethod"
                     type="checkbox"
                     value="Email"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register(
                       "ownershipDetails.contactMethod.agreedContactMethod"
                     )}
@@ -263,7 +263,7 @@ const OwnerTwo = ({ register }) => {
                     name="agreedContactMethod"
                     type="checkbox"
                     value="Mobile"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register(
                       "ownershipDetails.contactMethod.agreedContactMethod"
                     )}
@@ -283,7 +283,7 @@ const OwnerTwo = ({ register }) => {
                     name="agreedContactMethod"
                     type="checkbox"
                     value="Landline"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register(
                       "ownershipDetails.contactMethod.agreedContactMethod"
                     )}
@@ -314,7 +314,7 @@ const OwnerTwo = ({ register }) => {
                     name="contactMe"
                     value="Only when necessary"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
@@ -336,7 +336,7 @@ const OwnerTwo = ({ register }) => {
                     name="contactMe"
                     type="checkbox"
                     value="Every now and then"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
@@ -354,7 +354,7 @@ const OwnerTwo = ({ register }) => {
                     name="contactMe"
                     type="checkbox"
                     value="Regular updates"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     {...register("ownershipDetails.contactMethod.contactMe")}
                   />
                 </div>
