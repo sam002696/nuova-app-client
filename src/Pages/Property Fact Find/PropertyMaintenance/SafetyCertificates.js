@@ -12,7 +12,7 @@ const SafetyCertificates = ({ register }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-6 gap-5">
+      <div className="">
         <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
             htmlFor="item"
