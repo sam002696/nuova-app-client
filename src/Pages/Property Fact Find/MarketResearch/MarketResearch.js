@@ -23,7 +23,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Recommendation"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -40,7 +40,7 @@ const MarketResearch = ({ register }) => {
                   id="websearch"
                   name="marketResearchOption"
                   type="radio"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   value="Web search"
                   {...register("marketResearch.marketResearchOption")}
                 />
@@ -59,7 +59,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="To let / For sale board"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -77,7 +77,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Branded vehicle"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -95,7 +95,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Property Portal"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -113,7 +113,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Social media"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -131,7 +131,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Passing our office"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -149,7 +149,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="Already aware of company"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label
@@ -167,7 +167,7 @@ const MarketResearch = ({ register }) => {
                   name="marketResearchOption"
                   type="radio"
                   value="I am an existing client"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                   {...register("marketResearch.marketResearchOption")}
                 />
                 <label

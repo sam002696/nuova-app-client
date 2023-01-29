@@ -54,6 +54,7 @@ const TaxDeclaration = ({ register }) => {
                 aria-describedby="landlordTaxDeclaration-description"
                 name="landlordTaxDeclaration"
                 type="checkbox"
+                value="Owner 1 is classed as a UK resident for tax purposes"
                 {...register("ownershipDetails.landlordTaxDeclaration")}
                 className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
@@ -72,6 +73,7 @@ const TaxDeclaration = ({ register }) => {
                 aria-describedby="landlordTaxDeclaration-description"
                 name="landlordTaxDeclaration"
                 type="checkbox"
+                value="Owner 1 is will be living abroad and classed as a non resident for tax purposes"
                 {...register("ownershipDetails.landlordTaxDeclaration")}
                 className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
@@ -94,6 +96,7 @@ const TaxDeclaration = ({ register }) => {
                 aria-describedby="comments-description"
                 name="comments"
                 type="checkbox"
+                value="Owner 2 is classed as a UK resident for tax purposes"
                 {...register("ownershipDetails.landlordTaxDeclaration")}
                 className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />
@@ -112,6 +115,8 @@ const TaxDeclaration = ({ register }) => {
                 aria-describedby="landlordTaxDeclaration-description"
                 name="landlordTaxDeclaration"
                 type="checkbox"
+                value="Owner 2 is will be living abroad and classed as a non resident
+                for tax purposes"
                 {...register("ownershipDetails.landlordTaxDeclaration")}
                 className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
               />

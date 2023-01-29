@@ -12,7 +12,7 @@ const SafetyCertificates = ({ register }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-6 gap-5">
+      <div className="">
         <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
             htmlFor="item"
@@ -76,11 +76,11 @@ const SafetyCertificates = ({ register }) => {
           <div className="mt-1 sm:mt-0 sm:col-span-4 grid grid-cols-6 gap-2">
             <div className="col-span-1">
               <input
+                name="gsc"
+                id="gsc"
                 type="checkbox"
-                name="notes"
-                id="notes"
                 value="NA / No Gas"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 "
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500 "
                 placeholder="Notes"
                 {...register(
                   "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
@@ -90,11 +90,11 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="gsc"
+                name="gsc"
+                type="checkbox"
                 value="Owner(s) will provide"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
                   "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
                 )}
@@ -103,11 +103,11 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="gsc"
+                name="gsc"
+                type="checkbox"
                 value="Owner(s) instruct the Agent to arrange"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
                   "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
                 )}
@@ -116,11 +116,11 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
-                value="Owner(s) instruct the Agent to renew"
-                name="comments"
+                id="gsc"
+                name="gsc"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                value="Owner(s) instruct the Agent to renew"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
                   "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
                 )}
@@ -130,12 +130,11 @@ const SafetyCertificates = ({ register }) => {
             <div className="col-span-2">
               <input
                 type="date"
-                name="signingDate"
-                id="signingDate"
-                value="Certificate Expiry Date"
+                name="gscExpiryDate"
+                id="gscExpiryDate"
                 className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.gscExpiryDate"
                 )}
               />
             </div>
@@ -153,39 +152,39 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="epc"
                 value="Owner(s) will provide"
-                name="comments"
+                name="epc"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.epc"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="epc"
                 value="Owner(s) instruct the Agent to arrange"
-                name="comments"
+                name="epc"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.epc"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="epc"
                 value="Owner(s) instruct the Agent to renew"
-                name="comments"
+                name="epc"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.epc"
                 )}
               />
             </div>
@@ -193,12 +192,11 @@ const SafetyCertificates = ({ register }) => {
             <div className="col-span-2">
               <input
                 type="date"
-                name="signingDate"
-                id="signingDate"
-                value="Certificate Expiry Date"
+                name="epcExpiryDate"
+                id="epcExpiryDate"
                 className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.epcExpiryDate"
                 )}
               />
             </div>
@@ -216,39 +214,39 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="lra"
                 value="Owner(s) will provide"
-                name="comments"
+                name="lra"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.lra"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="lra"
                 value="Owner(s) instruct the Agent to arrange"
-                name="comments"
+                name="lra"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.lra"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="lra"
                 value="Owner(s) instruct the Agent to renew"
-                name="comments"
+                name="lra"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.lra"
                 )}
               />
             </div>
@@ -256,12 +254,11 @@ const SafetyCertificates = ({ register }) => {
             <div className="col-span-2">
               <input
                 type="date"
-                name="signingDate"
-                id="signingDate"
-                value="Certificate Expiry Date"
+                name="lraExpiryDate"
+                id="lraExpiryDate"
                 className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.lraExpiryDate"
                 )}
               />
             </div>
@@ -279,39 +276,39 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="eicr"
                 value="Owner(s) will provide"
-                name="comments"
+                name="eicr"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.eicr"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="eicr"
                 value="Owner(s) instruct the Agent to arrange"
-                name="comments"
+                name="eicr"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.eicr"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="eicr"
                 value="Owner(s) instruct the Agent to renew"
-                name="comments"
+                name="eicr"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.eicr"
                 )}
               />
             </div>
@@ -319,12 +316,11 @@ const SafetyCertificates = ({ register }) => {
             <div className="col-span-2">
               <input
                 type="date"
-                name="signingDate"
-                id="signingDate"
-                value="Certificate Expiry Date"
+                name="eicrExpiryDate"
+                id="eicrExpiryDate"
                 className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.eicrExpiryDate"
                 )}
               />
             </div>
@@ -332,7 +328,7 @@ const SafetyCertificates = ({ register }) => {
         </div>
         <div className="sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start  sm:pt-5">
           <label
-            htmlFor="item"
+            htmlFor="pat"
             className="block text-sm font-medium text-gray-700 sm:mt-px"
           >
             Portable Appliance Testing (PAT)
@@ -342,39 +338,39 @@ const SafetyCertificates = ({ register }) => {
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="pat"
+                name="pat"
+                type="checkbox"
                 value="Owner(s) will provide"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.pat"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
+                id="pat"
+                name="pat"
+                type="checkbox"
                 value="Owner(s) instruct the Agent to arrange"
-                name="comments"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.pat"
                 )}
               />
             </div>
 
             <div className="col-span-1">
               <input
-                id="comments"
-                value="Owner(s) instruct the Agent to renew"
-                name="comments"
+                id="pat"
+                name="pat"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                value="Owner(s) instruct the Agent to renew"
+                className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.pat"
                 )}
               />
             </div>
@@ -382,12 +378,11 @@ const SafetyCertificates = ({ register }) => {
             <div className="col-span-2">
               <input
                 type="date"
-                name="signingDate"
-                id="signingDate"
-                value="Certificate Expiry Date"
+                name="patExpiryDate"
+                id="patExpiryDate"
                 className=" rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
                 {...register(
-                  "propertyMaintenance.safetyTestsEssentialCertificates.gsc"
+                  "propertyMaintenance.safetyTestsEssentialCertificates.patExpiryDate"
                 )}
               />
             </div>
@@ -413,11 +408,15 @@ const SafetyCertificates = ({ register }) => {
 
           <div className="flex h-5 items-center">
             <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
+              id="smokeAndHeatDetector"
+              // aria-describedby="comments-description"
+              name="smokeAndHeatDetector"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="Yes"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register(
+                "propertyMaintenance.safetyTestsEssentialCertificates.smokeAndHeatDetector"
+              )}
             />
           </div>
         </div>
@@ -431,11 +430,15 @@ const SafetyCertificates = ({ register }) => {
 
           <div className="flex h-5 items-center">
             <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
+              id="smokeAndHeatDetector"
+              // aria-describedby="comments-description"
+              name="smokeAndHeatDetector"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              value="No"
+              className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+              {...register(
+                "propertyMaintenance.safetyTestsEssentialCertificates.smokeAndHeatDetector"
+              )}
             />
           </div>
         </div>

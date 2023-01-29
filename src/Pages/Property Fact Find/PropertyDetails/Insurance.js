@@ -27,9 +27,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.buildings.insuredWith"
-              )}
+              {...register("propertyDetails.insurance.buildings.insuredWith")}
             />
           </div>
         </div>
@@ -46,9 +44,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.buildings.excessAmount"
-              )}
+              {...register("propertyDetails.insurance.buildings.excessAmount")}
             />
           </div>
         </div>
@@ -65,9 +61,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.buildings.policyNumber"
-              )}
+              {...register("propertyDetails.insurance.buildings.policyNumber")}
             />
           </div>
         </div>
@@ -84,9 +78,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.buildings.expiryDate"
-              )}
+              {...register("propertyDetails.insurance.buildings.expiryDate")}
             />
           </div>
         </div>
@@ -106,9 +98,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.contents.insuredWith"
-              )}
+              {...register("propertyDetails.insurance.contents.insuredWith")}
             />
           </div>
         </div>
@@ -125,9 +115,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.contents.excessAmount"
-              )}
+              {...register("propertyDetails.insurance.contents.excessAmount")}
             />
           </div>
         </div>
@@ -144,9 +132,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.contents.policyNumber"
-              )}
+              {...register("propertyDetails.insurance.contents.policyNumber")}
             />
           </div>
         </div>
@@ -163,9 +149,7 @@ const Insurance = ({ register }) => {
               name="project-name"
               id="project-name"
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-              {...register(
-                "propertyDetails.utilitySuppliers.insurance.contents.expiryDate"
-              )}
+              {...register("propertyDetails.insurance.contents.expiryDate")}
             />
           </div>
         </div>
