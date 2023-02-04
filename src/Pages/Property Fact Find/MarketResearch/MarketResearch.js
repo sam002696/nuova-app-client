@@ -13,7 +13,7 @@ const MarketResearch = ({ register }) => {
 
         <div className="bg-gray-200 px-2 py-3">
           <p className="text-base text-gray-800">
-            Where did you first hear about Nuova System?
+            Where did you first hear about Nuova Property Management & Letting?
           </p>
           <div className=" grid grid-cols-4 gap-5">
             <div className="col-span-1 pt-3">

@@ -8,8 +8,14 @@ import PropertyMaintenance from "../PropertyMaintenance/PropertyMaintenance";
 import MarketResearch from "../MarketResearch/MarketResearch";
 import Engagement from "../Engagement/Engagement";
 import { useForm } from "react-hook-form";
+
 import HeaderNavbarTwo from "../../Shared/Header/HeaderNavbar/HeaderNavbarTwo";
 import Footer from "../../Shared/Footer/Footer";
+
+
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const breadcrumbs = [
   { name: "Property", href: "#", current: false },
@@ -22,9 +28,23 @@ const breadcrumbs = [
 
 const PropertyFactFind = () => {
   const { register, handleSubmit } = useForm({});
-
+  const [loading, setLoading] = useState(false);
   const onSubmit = async (data) => {
     console.log(data);
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        `http://localhost:5500/api/propertyFactFindForm`,
+        data
+      );
+      if (res.data) {
+        setLoading(false);
+        Swal.fire("Well Done!", "The form has been submitted!", "success");
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -85,10 +105,11 @@ const PropertyFactFind = () => {
             <MarketResearch register={register} />
             <Engagement register={register} />
             <button
+              disabled={loading}
               type="submit"
-              className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  text-gray-600 shadow-sm bg-gray-300 hover:bg-gray-500 hover:text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide "
+              className="lg:w-full rounded border border-transparent px-4 py-2 text-lg  shadow-sm bg-gray-500 text-white focus:ring-gray-500 focus:ring-offset-2 mt-20 font-semibold uppercase tracking-wide disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-700"
             >
-              Submit the form
+              {loading ? "Submitting the form" : "Submit the form"}
             </button>
           </form>
         </div>

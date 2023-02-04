@@ -5,7 +5,7 @@ const OwnerTwo = ({ register }) => {
     <>
       <div className="space-y-4">
         <h1 className="text-xl font-semibold leading-6 text-gray-900 ">
-          Owner 2
+          Owner 2 (if any)
         </h1>
         <p className="text-base leading-6 text-gray-900 italic">
           Or secondary point of contact if company owned

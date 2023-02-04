@@ -8,6 +8,7 @@ import {
 import AddProperty from "./AddProperty/AddProperty";
 import AllProperties from "./AllProperties";
 import TenancyForm from "./TenancyForm/TenancyForm";
+import PropertyFactFind from "./PropertyFactFind/PropertyFactFind";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -31,8 +32,8 @@ export default function ManagerProperties() {
       current: false,
     },
     {
-      name: "Review Property",
-      to: `${url}/review-property`,
+      name: "Property Fact Find",
+      to: `${url}/property-fact-find`,
       href: "#",
       icon: UsersIcon,
       current: false,
@@ -51,11 +52,11 @@ export default function ManagerProperties() {
         <label htmlFor="tabs" className="sr-only">
           Select a tab
         </label>
-        {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+
         <select
           id="tabs"
           name="tabs"
-          className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+          className="block w-full focus:ring-cyan-500 focus:border-cyan-500 border-gray-300 rounded-md"
           defaultValue={tabs.find((tab) => tab.current).name}
         >
           {tabs.map((tab) => (
@@ -103,7 +104,9 @@ export default function ManagerProperties() {
           <Route path={`${path}/add-a-property`}>
             <AddProperty />
           </Route>
-          <Route path={`${path}/review-property`}></Route>
+          <Route path={`${path}/property-fact-find`}>
+            <PropertyFactFind />
+          </Route>
           <Route path={`${path}/tenancyform`}>
             <TenancyForm />
           </Route>

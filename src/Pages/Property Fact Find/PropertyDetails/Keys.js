@@ -8,8 +8,8 @@ const Keys = ({ register }) => {
           2.e Keys
         </h1>
         <p className="text-base pt-3 text-gray-600">
-          Nuova System requires a set of keys for each tenant, plan an
-          additional two set of keys for office use.
+          Nuova requires a set of keys for each tenant, plan an additional two
+          set of keys for office use.
         </p>
       </div>
       <div className=" grid grid-cols-3 gap-5 pt-5">
