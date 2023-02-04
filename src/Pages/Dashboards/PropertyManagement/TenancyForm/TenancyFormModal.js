@@ -39,7 +39,57 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                   <div>
                     {/* Property Info */}
 
-                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg mt-5">
+                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg mt-5 p-5">
+                      {/* Preferences */}
+                      <div className="px-4 py-5 sm:px-6">
+                        <h3 className="text-lg font-medium leading-6 text-gray-900">
+                          Property Applying For
+                        </h3>
+                      </div>
+                      <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                        <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Adderess of Property
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {" "}
+                              {
+                                singleTenantform?.propertyApplyingFor
+                                  ?.addressOfProperty
+                              }
+                            </dd>
+                          </div>
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Desired Entry Date
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {new Date(
+                                singleTenantform?.propertyApplyingFor?.desiredEntryDate
+                              ).toLocaleDateString()}
+                            </dd>
+                          </div>
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Rent
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {" "}
+                              £{singleTenantform?.propertyApplyingFor?.rent}
+                            </dd>
+                          </div>
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Deposit
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              £{singleTenantform?.propertyApplyingFor?.deposit}
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+
                       {/* Personal Details */}
                       <div className="px-4 py-5 sm:px-6">
                         <h3 className="text-lg font-medium leading-6 text-gray-900">
@@ -48,6 +98,14 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                       </div>
                       <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                         <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Full Name
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleTenantform.tenantInfo?.fullName}
+                            </dd>
+                          </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Date of birth
@@ -60,18 +118,27 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Current Address
+                              Nationality
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform.tenantInfo?.currentAddress}
+                              {singleTenantform?.tenantInfo?.nationality}
+                            </dd>
+                          </div>
+
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Passport No
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {singleTenantform?.tenantInfo?.passportNo}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Full Name
+                              Mobile
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform.tenantInfo?.fullName}
+                              {singleTenantform.tenantInfo?.telephoneNo}
                             </dd>
                           </div>
 
@@ -83,22 +150,7 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                               {singleTenantform.tenantInfo?.email}
                             </dd>
                           </div>
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Mobile
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform.tenantInfo?.telephoneNo}
-                            </dd>
-                          </div>
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Nationality
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform?.tenantInfo?.nationality}
-                            </dd>
-                          </div>
+
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
                               Number of Children
@@ -109,10 +161,10 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Passport No
+                              Smoker
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform?.tenantInfo?.passportNo}
+                              {singleTenantform?.tenantInfo?.smoker}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
@@ -123,63 +175,60 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                               {singleTenantform?.tenantInfo?.pets}
                             </dd>
                           </div>
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Smoker
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform?.tenantInfo?.smoker}
-                            </dd>
-                          </div>
                         </dl>
                       </div>
 
-                      {/* Preferences */}
+                      {/* Work Details */}
                       <div className="px-4 py-5 sm:px-6">
                         <h3 className="text-lg font-medium leading-6 text-gray-900">
-                          Property Applying For
+                          Work Details
                         </h3>
                       </div>
                       <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                         <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Rent
+                              Occupation
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
                               {" "}
-                              £{singleTenantform?.propertyApplyingFor?.rent}
-                            </dd>
-                          </div>
-
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Deposit
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                              £{singleTenantform?.propertyApplyingFor?.deposit}
+                              {singleTenantform?.workDetailsChange?.occupation}
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Adderess of property
+                              Length of time at this Job
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
                               {" "}
                               {
-                                singleTenantform?.propertyApplyingFor
-                                  ?.addressOfProperty
+                                singleTenantform?.workDetailsChange
+                                  ?.lengthOfTime
                               }
                             </dd>
                           </div>
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">
-                              Desired entry date
+                              Annual Income
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900">
-                              {new Date(
-                                singleTenantform?.propertyApplyingFor?.desiredEntryDate
-                              ).toLocaleDateString()}
+                              {" "}
+                              £
+                              {
+                                singleTenantform?.workDetailsChange
+                                  ?.annualIncome
+                              }
+                            </dd>
+                          </div>
+                          <div className="sm:col-span-1">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Previous Employer
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                              {
+                                singleTenantform?.workDetailsChange
+                                  ?.previousEmployer
+                              }
                             </dd>
                           </div>
                         </dl>
@@ -191,76 +240,191 @@ const TenancyFormModal = ({ open, setOpen, singleTenantform }) => {
                           Guarantor Details
                         </h3>
                       </div>
-                      <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-                        <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Guarantor
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                              {singleTenantform.guarantorDetails?.guarantor}
-                            </dd>
-                          </div>
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Credit Score
-                            </dt>
-                            <dt className=" mt-3">
-                              <a
-                                href={
-                                  singleTenantform.guarantorDetails?.creditScore
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
-                              >
-                                Credit Score document
-                              </a>
-                            </dt>
-                          </div>
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              Bank Statements
-                            </dt>
-                            <div className="mt-3 flex space-x-3">
-                              {singleTenantform.guarantorDetails?.bankStatements.map(
-                                (bankstatment, index) => (
-                                  <a
-                                    key={index}
-                                    href={bankstatment}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
-                                  >
-                                    Bank Statment {index + 1}
-                                  </a>
-                                )
-                              )}
+                      {singleTenantform.guarantorDetails?.guarantor ===
+                        "Yes" && (
+                        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                          <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Guarantor
+                              </dt>
+                              <dd className="mt-1 text-sm text-gray-900">
+                                {singleTenantform.guarantorDetails?.guarantor}
+                              </dd>
                             </div>
-                          </div>
 
-                          <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                              PaySlips
-                            </dt>
-                            <div className="mt-3 flex space-x-3">
-                              {singleTenantform.guarantorDetails?.payslips.map(
-                                (payslip, index) => (
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                PaySlips
+                              </dt>
+                              <div className="mt-3 flex space-x-3">
+                                {singleTenantform.guarantorDetails?.payslips.map(
+                                  (payslip, index) => (
+                                    <a
+                                      key={index}
+                                      href={payslip}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                    >
+                                      Payslip {index + 1}
+                                    </a>
+                                  )
+                                )}
+                              </div>
+                            </div>
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Bank Statements
+                              </dt>
+                              <div className="mt-3 flex space-x-3">
+                                {singleTenantform.guarantorDetails?.bankStatements.map(
+                                  (bankstatment, index) => (
+                                    <a
+                                      key={index}
+                                      href={bankstatment}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                    >
+                                      Statment {index + 1}
+                                    </a>
+                                  )
+                                )}
+                              </div>
+                            </div>
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Credit Score
+                              </dt>
+                              <div className="mt-5">
+                                <a
+                                  href={
+                                    singleTenantform.guarantorDetails
+                                      ?.creditScore
+                                  }
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                >
+                                  Credit Score document
+                                </a>
+                              </div>
+                            </div>
+                          </dl>
+                        </div>
+                      )}
+
+                      {singleTenantform.guarantorDetails?.guarantor ===
+                        "No" && (
+                        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                          <dl className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Guarantor
+                              </dt>
+                              <dd className="mt-1 text-sm text-gray-900">
+                                {singleTenantform.guarantorDetails?.guarantor}
+                              </dd>
+                            </div>
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Will your salary/career be changing in the next
+                                3 month ?
+                              </dt>
+                              <dd className="mt-1 text-sm text-gray-900">
+                                {
+                                  singleTenantform.guarantorDetails
+                                    ?.salaryChanging
+                                }
+                              </dd>
+                            </div>
+                            {singleTenantform.guarantorDetails
+                              ?.salaryChanging === "Yes" && (
+                              <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-gray-500">
+                                  Proof of Employment Contract
+                                </dt>
+                                <div className="mt-5">
                                   <a
-                                    key={index}
-                                    href={payslip}
+                                    href={
+                                      singleTenantform.guarantorDetails
+                                        ?.proofEmploymentContract
+                                    }
                                     target="_blank"
                                     rel="noreferrer"
                                     className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
                                   >
-                                    Payslip {index + 1}
+                                    Employment Contract
                                   </a>
-                                )
-                              )}
+                                </div>
+                              </div>
+                            )}
+                            {singleTenantform.guarantorDetails
+                              ?.salaryChanging === "No" && (
+                              <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-gray-500">
+                                  PaySlips
+                                </dt>
+                                <div className="mt-3 flex space-x-3">
+                                  {singleTenantform.guarantorDetails?.payslips.map(
+                                    (payslip, index) => (
+                                      <a
+                                        key={index}
+                                        href={payslip}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                      >
+                                        Payslip {index + 1}
+                                      </a>
+                                    )
+                                  )}
+                                </div>
+                              </div>
+                            )}
+
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Bank Statements
+                              </dt>
+                              <div className="mt-3 flex space-x-3">
+                                {singleTenantform.guarantorDetails?.bankStatements.map(
+                                  (bankstatment, index) => (
+                                    <a
+                                      key={index}
+                                      href={bankstatment}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                    >
+                                      Statment {index + 1}
+                                    </a>
+                                  )
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        </dl>
-                      </div>
+                            <div className="sm:col-span-1">
+                              <dt className="text-sm font-medium text-gray-500">
+                                Credit Score
+                              </dt>
+                              <div className="mt-5">
+                                <a
+                                  href={
+                                    singleTenantform.guarantorDetails
+                                      ?.creditScore
+                                  }
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className=" text-sm text-cyan-700 bg-cyan-200 p-3 rounded-md"
+                                >
+                                  Credit Score document
+                                </a>
+                              </div>
+                            </div>
+                          </dl>
+                        </div>
+                      )}
 
                       {/* First Referee */}
                       <div className="px-4 py-5 sm:px-6">

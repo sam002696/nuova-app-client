@@ -9,7 +9,7 @@ const StageSix = ({ register }) => {
             Important to note :
           </h1>
 
-          <ul className=" text-lg text-white font-semibold bg-gray-500 pl-1 py-2">
+          <ul className=" text-md text-white font-semibold bg-gray-500 px-4 py-4">
             <li> References cannot come from family members or friends.</li>
             <li> You must have two referees</li>
             <li>
