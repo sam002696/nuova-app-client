@@ -1,23 +1,22 @@
-import { Disclosure } from "@headlessui/react";
-import { HomeIcon, EyeIcon } from "@heroicons/react/solid";
+import { HomeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import Property from "../Property/Property";
 import PropertyDetails from "../PropertyDetails/PropertyDetails";
 import OwnershipDetails from "../OwnershipDetails/OwnershipDetails";
 import PropertyMaintenance from "../PropertyMaintenance/PropertyMaintenance";
-import logo from "../../../Images/Footer/logo.png";
+
 import MarketResearch from "../MarketResearch/MarketResearch";
 import Engagement from "../Engagement/Engagement";
 import { useForm } from "react-hook-form";
+
+import HeaderNavbarTwo from "../../Shared/Header/HeaderNavbar/HeaderNavbarTwo";
+import Footer from "../../Shared/Footer/Footer";
+
+
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
-const navigation = [
-  { name: "Dashboard", href: "#" },
-  { name: "Jobs", href: "#" },
-  { name: "Applicants", href: "#" },
-  { name: "Company", href: "#" },
-];
+
 const breadcrumbs = [
   { name: "Property", href: "#", current: false },
   { name: "Project details", href: "#", current: true },
@@ -25,11 +24,6 @@ const breadcrumbs = [
   { name: "Property maintenance", href: "#", current: true },
   { name: "Market research", href: "#", current: true },
   { name: "Engagement of Nuova System", href: "#", current: true },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
 ];
 
 const PropertyFactFind = () => {
@@ -54,83 +48,18 @@ const PropertyFactFind = () => {
   };
   return (
     <>
-      <Disclosure as="nav" className="bg-cyan-800" aria-label="Global">
-        {({ open }) => (
-          <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-              <div className="flex h-16 justify-between">
-                <div className="flex items-center px-2 lg:px-0">
-                  <div className="flex flex-shrink-0 items-center">
-                    <img className="h-8 w-auto" src={logo} alt="Your Company" />
-                  </div>
-                  <div className="hidden lg:ml-8 lg:flex lg:space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-sky-400"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center lg:hidden">
-                  {/* Mobile menu button */}
-                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-sky-200 hover:bg-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    <span className="sr-only">Open menu</span>
-                    {open ? (
-                      <EyeIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <EyeIcon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
-                </div>
-              </div>
-            </div>
-
-            <Disclosure.Panel className="lg:hidden">
-              <div className="space-y-1 px-2 pt-2 pb-3">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-sky-400 hover:text-white"
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
-              <div className="border-t border-sky-500 pt-4 pb-3">
-                <div className="mt-3 px-2">
-                  {userNavigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className="block rounded-md py-2 px-3 text-base font-medium text-sky-200 hover:bg-sky-400 hover:text-white"
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
-              </div>
-            </Disclosure.Panel>
-          </>
-        )}
-      </Disclosure>
+      {/* Header */}
+      <HeaderNavbarTwo />
 
       {/* Breadcrumb */}
       <nav
-        className="hidden border-b border-gray-200 bg-white lg:flex"
+        className="hidden border-b border-gray-200 bg-gray-500 lg:flex"
         aria-label="Breadcrumb"
       >
         <ol className="mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8">
           <li className="flex">
             <div className="flex items-center">
-              <Link to="#" className="text-gray-400 hover:text-gray-500">
+              <Link to="#" className="text-white hover:text-white">
                 <HomeIcon
                   className="h-5 w-5 flex-shrink-0"
                   aria-hidden="true"
@@ -154,7 +83,7 @@ const PropertyFactFind = () => {
                 </svg>
                 <a
                   href={item.href}
-                  className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                  className="ml-4 text-sm font-medium text-white hover:text-white"
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
@@ -185,6 +114,9 @@ const PropertyFactFind = () => {
           </form>
         </div>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };

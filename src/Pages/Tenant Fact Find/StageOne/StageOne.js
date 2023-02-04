@@ -13,7 +13,7 @@ const StageOne = () => {
         <h1 className="text-xl font-semibold leading-6 text-gray-900 pb-6">
           Before you proceed, please make sure you have the following :
         </h1>
-        <ul className=" text-lg text-white font-semibold bg-gray-500 pl-1 py-2">
+        <ul className=" text-md text-white font-semibold bg-gray-500 px-4 py-4">
           <li> Photographic ID (driving license, passport)</li>
           <li> credit check per tenant</li>
           <li> months most recent bank statements</li>
