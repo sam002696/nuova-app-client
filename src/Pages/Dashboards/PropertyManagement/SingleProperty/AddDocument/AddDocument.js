@@ -67,37 +67,6 @@ const AddDocument = ({ singleProperty }) => {
           </div>
         </div>
       </div>
-
-      {/* <div className="sm:flex sm:items-center mx-10 mt-8">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">
-            Property Inspection Report
-          </h1>
-          <p className="mt-2 text-sm text-gray-700">
-            A list of all the certificates in your account including their dates
-            and description.
-          </p>
-        </div>
-      </div> */}
-      {/* <div className="bg-white shadow overflow-hidden sm:rounded-md w-5/6 mx-auto my-10">
-       
-      </div> */}
-
-      {/* Inventory */}
-      {/* <div className="sm:flex sm:items-center mx-10 mt-8">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">
-            Inventory Document
-          </h1>
-          <p className="mt-2 text-sm text-gray-700">
-            A list of all the certificates in your account including their dates
-            and description.
-          </p>
-        </div>
-      </div> */}
-      {/* <div className="bg-white shadow overflow-hidden sm:rounded-md w-5/6 mx-auto my-10">
-        
-      </div> */}
     </>
   );
 };
