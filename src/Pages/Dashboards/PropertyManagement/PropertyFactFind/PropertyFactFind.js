@@ -5,6 +5,7 @@ const PropertyFactFind = () => {
   const [propertyFactFindForm, setPropertyFactFindForm] = useState([]);
   const [open, setOpen] = useState(false);
   const [property, setProperty] = useState({});
+  const [propertyDetails, setPropertyDetails] = useState({});
   useEffect(() => {
     const handlePropertyFactFind = async () => {
       try {
@@ -22,6 +23,7 @@ const PropertyFactFind = () => {
 
   const handleView = (factfindform) => {
     setProperty(factfindform?.property);
+    setPropertyDetails(factfindform?.propertyDetails);
     setOpen(true);
   };
   return (
@@ -163,6 +165,7 @@ const PropertyFactFind = () => {
         open={open}
         setOpen={setOpen}
         property={property}
+        propertyDetails={propertyDetails}
       />
     </>
   );

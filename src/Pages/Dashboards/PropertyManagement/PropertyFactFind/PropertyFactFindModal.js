@@ -3,7 +3,12 @@ import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Property from "./PropertyFactFindTabs/Property";
 import PropertyDetails from "./PropertyFactFindTabs/PropertyDetails";
-const PropertyFactFindModal = ({ open, setOpen, property }) => {
+const PropertyFactFindModal = ({
+  open,
+  setOpen,
+  property,
+  propertyDetails,
+}) => {
   const [openTab, setOpenTab] = useState(1);
   const cancelButtonRef = useRef(null);
   return (
@@ -62,7 +67,7 @@ const PropertyFactFindModal = ({ open, setOpen, property }) => {
                               href="#link1"
                               role="tablist"
                             >
-                              Property Inspection Report
+                              Property
                             </a>
                           </li>
                           <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -81,7 +86,7 @@ const PropertyFactFindModal = ({ open, setOpen, property }) => {
                               href="#link2"
                               role="tablist"
                             >
-                              Inventory Document
+                              Property Details
                             </a>
                           </li>
                         </ul>
@@ -98,7 +103,9 @@ const PropertyFactFindModal = ({ open, setOpen, property }) => {
                                 className={openTab === 2 ? "block" : "hidden"}
                                 id="link2"
                               >
-                                <PropertyDetails />
+                                <PropertyDetails
+                                  propertyDetails={propertyDetails}
+                                />
                               </div>
                             </div>
                           </div>
