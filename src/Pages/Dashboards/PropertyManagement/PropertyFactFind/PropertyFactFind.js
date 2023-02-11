@@ -6,6 +6,11 @@ const PropertyFactFind = () => {
   const [open, setOpen] = useState(false);
   const [property, setProperty] = useState({});
   const [propertyDetails, setPropertyDetails] = useState({});
+  const [ownershipDetails, setOwnershipDetails] = useState({});
+  const [propertyMaintenance, setPropertyMaintenance] = useState({});
+  const [marketResearch, setMarketResearch] = useState({});
+  const [engagementOfNuova, setEngagementOfNuova] = useState({});
+
   useEffect(() => {
     const handlePropertyFactFind = async () => {
       try {
@@ -24,6 +29,10 @@ const PropertyFactFind = () => {
   const handleView = (factfindform) => {
     setProperty(factfindform?.property);
     setPropertyDetails(factfindform?.propertyDetails);
+    setOwnershipDetails(factfindform?.ownershipDetails);
+    setPropertyMaintenance(factfindform?.propertyMaintenance);
+    setMarketResearch(factfindform?.marketResearch);
+    setEngagementOfNuova(factfindform?.engagementOfNuova);
     setOpen(true);
   };
   return (
@@ -166,6 +175,10 @@ const PropertyFactFind = () => {
         setOpen={setOpen}
         property={property}
         propertyDetails={propertyDetails}
+        ownershipDetails={ownershipDetails}
+        propertyMaintenance={propertyMaintenance}
+        marketResearch={marketResearch}
+        engagementOfNuova={engagementOfNuova}
       />
     </>
   );
