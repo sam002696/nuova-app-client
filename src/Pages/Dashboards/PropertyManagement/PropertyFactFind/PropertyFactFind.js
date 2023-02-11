@@ -10,6 +10,7 @@ const PropertyFactFind = () => {
   const [propertyMaintenance, setPropertyMaintenance] = useState({});
   const [marketResearch, setMarketResearch] = useState({});
   const [engagementOfNuova, setEngagementOfNuova] = useState({});
+
   useEffect(() => {
     const handlePropertyFactFind = async () => {
       try {
