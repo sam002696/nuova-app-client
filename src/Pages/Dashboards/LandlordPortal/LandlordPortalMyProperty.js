@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 const LandlordPortalMyProperty = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -37,7 +37,7 @@ const LandlordPortalMyProperty = () => {
         <div className="mt-12 max-w-lg mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-7xl">
           {landlordProperty?.map((property) => (
             <div
-              key={property.title}
+              key={property._id}
               className="flex flex-col rounded-lg shadow-lg overflow-hidden"
             >
               <div className="flex-shrink-0">
@@ -50,20 +50,20 @@ const LandlordPortalMyProperty = () => {
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-cyan-600">
-                    <a href="" className="hover:underline">
+                    <Link to="" className="hover:underline">
                       {property.propertyAddress?.propertyName}
-                    </a>
+                    </Link>
                   </p>
                   {property?.propertyType !== "HMO" && (
                     <>
-                      <a href="" className="block mt-2">
+                      <Link to="" className="block mt-2">
                         <p className="text-2xl font-semibold text-gray-800">
                           <span className=" text-3xl font-semibold ">
                             &#163;
                           </span>
                           {property.propertyDetails?.propertyEstimatedValue}
                         </p>
-                      </a>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -211,16 +211,16 @@ const LandlordPortalMyProperty = () => {
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      stroke-width="2"
+                      strokeWidth="2"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                       />
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                     </svg>

@@ -64,7 +64,7 @@ const PropertyFactFindModal = ({
                                 "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                                 (openTab === 1
                                   ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
-                                  : "text-teal-600 bg-white")
+                                  : "text-teal-600 bg-white hover:bg-teal-100 hover:text-teal-600 hover:border-teal-500 hover:border-b-4")
                               }
                               onClick={(e) => {
                                 e.preventDefault();
@@ -77,13 +77,13 @@ const PropertyFactFindModal = ({
                               Property
                             </a>
                           </li>
-                          <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                          <li className="-mb-px  flex-auto text-center">
                             <a
                               className={
                                 "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                                 (openTab === 2
                                   ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
-                                  : "text-teal-600 bg-white")
+                                  : "text-teal-600 bg-white hover:bg-teal-100 hover:text-teal-600 hover:border-teal-500 hover:border-b-4")
                               }
                               onClick={(e) => {
                                 e.preventDefault();
@@ -96,13 +96,13 @@ const PropertyFactFindModal = ({
                               Property Details
                             </a>
                           </li>
-                          <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                          <li className="-mb-px  flex-auto text-center">
                             <a
                               className={
                                 "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                                 (openTab === 3
                                   ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
-                                  : "text-teal-600 bg-white")
+                                  : "text-teal-600 bg-white hover:bg-teal-100 hover:text-teal-600 hover:border-teal-500 hover:border-b-4")
                               }
                               onClick={(e) => {
                                 e.preventDefault();
@@ -115,13 +115,13 @@ const PropertyFactFindModal = ({
                               Ownership Details
                             </a>
                           </li>
-                          <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                          <li className="-mb-px  flex-auto text-center">
                             <a
                               className={
                                 "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                                 (openTab === 4
                                   ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
-                                  : "text-teal-600 bg-white")
+                                  : "text-teal-600 bg-white hover:bg-teal-100 hover:text-teal-600 hover:border-teal-500 hover:border-b-4")
                               }
                               onClick={(e) => {
                                 e.preventDefault();
@@ -134,13 +134,13 @@ const PropertyFactFindModal = ({
                               Property Maintenance
                             </a>
                           </li>
-                          <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                          <li className="-mb-px last:mr-0 flex-auto text-center">
                             <a
                               className={
                                 "text-xs font-bold uppercase px-5 py-3  block leading-normal " +
                                 (openTab === 5
                                   ? "text-teal-600 bg-teal-100 border-b-4 border-teal-500"
-                                  : "text-teal-600 bg-white")
+                                  : "text-teal-600 bg-white hover:bg-teal-100 hover:text-teal-600 hover:border-teal-500 hover:border-b-4")
                               }
                               onClick={(e) => {
                                 e.preventDefault();

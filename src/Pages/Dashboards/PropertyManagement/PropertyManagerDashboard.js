@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useRouteMatch, Switch, Route, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
@@ -17,6 +17,7 @@ import { logout } from "../../../Redux/userSlice";
 import ChatLogin from "../../Chat/ChatLogin/ChatLogin";
 import ChatRegister from "../../Chat/ChatRegister/ChatRegister";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 // import ManagerMaintenanceTwo from "./ManagerMaintenanceTwo";
 
 const userNavigation = [
@@ -41,6 +42,7 @@ const PropertyManagerDashboard = () => {
     dispatch(logout());
     history.push("/");
   };
+  const { currentUser: chatUser } = useContext(AuthContext);
   const { currentUser } = useSelector((state) => state.user);
 
   let { path, url } = useRouteMatch();
@@ -355,7 +357,7 @@ const PropertyManagerDashboard = () => {
             </Route>
 
             <Route path={`${path}/inbox`}>
-              {currentUser ? <ManagerInbox /> : <ChatLogin />}
+              {chatUser ? <ManagerInbox /> : <ChatLogin />}
             </Route>
 
             <Route path={`${path}/people`}>

@@ -250,7 +250,7 @@ const ContractorPortalHomeTwo = () => {
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0">
                 {findAllJobs.slice(0, 4).map((report) => (
                   <div
-                    key={report.email}
+                    key={report._id}
                     className=" bg-white rounded-lg shadow-md divide-y divide-gray-200"
                   >
                     <div className="w-full flex justify-between px-6 py-6 space-x-6">
