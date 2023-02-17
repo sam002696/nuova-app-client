@@ -17,7 +17,7 @@ const Navbar = () => {
     const handleUser = async () => {
       const q = query(
         collection(db, "users"),
-        where("uid", "==", currentUser.uid)
+        where("uid", "==", currentUser?.uid)
       );
 
       try {
@@ -28,9 +28,8 @@ const Navbar = () => {
       } catch (err) {}
     };
     handleUser();
-  }, [currentUser.uid]);
+  }, [currentUser?.uid]);
 
-  console.log(currentUser);
   return (
     <>
       <div className="flex flex-shrink-0 items-center justify-between px-4">
@@ -40,8 +39,8 @@ const Navbar = () => {
             <img
               className=" rounded-full w-10 h-10 mr-2 border"
               src={
-                currentUser.photoURL ? (
-                  currentUser.photoURL
+                currentUser?.photoURL ? (
+                  currentUser?.photoURL
                 ) : (
                   <span className="inline-block h-10 w-10 overflow-hidden rounded-full bg-gray-100">
                     <svg
@@ -90,7 +89,7 @@ const Navbar = () => {
                         "block px-4 py-2 text-sm underline underline-offset-4"
                       )}
                     >
-                      {user.userName} (username)
+                      {user?.userName} (username)
                     </div>
                   )}
                 </Menu.Item>

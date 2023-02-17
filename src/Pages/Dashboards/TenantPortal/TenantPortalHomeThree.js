@@ -208,7 +208,10 @@ const TenantPortalHomeThree = () => {
                 )
                 .map((filteredTenant) => (
                   <>
-                    <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
+                    <div
+                      className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40"
+                      key={filteredTenant._id}
+                    >
                       <div className="p-8">
                         <div className="flex items-center">
                           <div className="flex-shrink-0">
@@ -310,7 +313,7 @@ const TenantPortalHomeThree = () => {
                       )
                       .map((filteredTenant) => (
                         <>
-                          <div className="mt-2 block">
+                          <div className="mt-2 block" key={filteredTenant._id}>
                             <p className="flex items-center text-2xl font-semibold font-mono text-green-600">
                               {" "}
                               <CurrencyPoundIcon
@@ -391,7 +394,7 @@ const TenantPortalHomeThree = () => {
                       <ul className="grid grid-col-1 gap-3">
                         {tenantProperty?.tenantDetails?.map((tenant) => (
                           <li
-                            key={tenant?.tenantPersonalInfo?.email}
+                            key={tenant?._id}
                             className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
                           >
                             <div className="flex w-full items-center justify-between space-x-6 p-4">
@@ -498,7 +501,7 @@ const TenantPortalHomeThree = () => {
                       <ul className="grid grid-cols-1 gap-3">
                         {propertymanager.map((person) => (
                           <li
-                            key={person.email}
+                            key={person._id}
                             className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
                           >
                             <div className="flex flex-1 flex-col p-8">
@@ -611,7 +614,7 @@ const TenantPortalHomeThree = () => {
                           currentUser.email
                       )
                       .map((filteredTenant) => (
-                        <div className="mt-2 block">
+                        <div className="mt-2 block" key={filteredTenant._id}>
                           <p className="flex items-center text-2xl font-semibold font-mono text-sky-600">
                             {" "}
                             <CurrencyPoundIcon

@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import HeaderNavbarTwo from "../../Shared/Header/HeaderNavbar/HeaderNavbarTwo";
 import Footer from "../../Shared/Footer/Footer";
 
-
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";

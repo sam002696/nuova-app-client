@@ -4,10 +4,10 @@ import { XIcon, MicrophoneIcon } from "@heroicons/react/outline";
 
 import { Link } from "react-router-dom";
 
-import landlord_dash_img1 from "../../../Images/LandlordPortalImages/LandLordDashboard/red_wave.png";
-import landlord_dash_img2 from "../../../Images/LandlordPortalImages/LandLordDashboard/green_wave.png";
-import landlord_dash_img3 from "../../../Images/LandlordPortalImages/LandLordDashboard/blue_wave.png";
-import landlord_dash_img4 from "../../../Images/LandlordPortalImages/LandLordDashboard/orange_wave.png";
+// import landlord_dash_img1 from "../../../Images/LandlordPortalImages/LandLordDashboard/red_wave.png";
+// import landlord_dash_img2 from "../../../Images/LandlordPortalImages/LandLordDashboard/green_wave.png";
+// import landlord_dash_img3 from "../../../Images/LandlordPortalImages/LandLordDashboard/blue_wave.png";
+// import landlord_dash_img4 from "../../../Images/LandlordPortalImages/LandLordDashboard/orange_wave.png";
 import IncExpBarChart from "./LandlordRecharts/IncExpBarChart";
 import RatingRadialBarChart from "./LandlordRecharts/RatingRadialBarChart";
 
@@ -76,7 +76,7 @@ const LandlordPortalHomeTwo = () => {
         {/* <div className="mx-auto  max-w-2xl   px-4 sm:px-6  lg:max-w-7xl  lg:px-8">
           <div className="grid grid-col-1 lg:grid-cols-4 gap-x-5">
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="relative border-b-4 border-b-[#E63167] border border-solid border-[#E3E8EF] rounded-md bg-white">
+              <div className="relative border-b-4 border-b-[#E63167] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
                   <img
                     className="h-full w-full object-cover"
@@ -112,7 +112,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">GBP </span>
                     5000.00
                   </span>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
                     <span className="font-semibold">1000</span>
                     <span> Monthly Income</span>
                   </div>
@@ -121,7 +121,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="relative border-b-4 border-b-[#29CC9E] border border-solid border-[#E3E8EF] rounded-md bg-white">
+              <div className="relative border-b-4 border-b-[#29CC9E] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
                   <img
                     className="h-full w-full object-cover"
@@ -156,7 +156,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">GBP </span>
                     2000.00
                   </span>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
                     <span className="font-semibold">350</span>
                     <span> Monthly Expenses</span>
                   </div>
@@ -165,7 +165,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
+              <div className="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
                   <img
                     className="h-full w-full object-cover"
@@ -200,7 +200,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">GBP </span>
                     3000.00
                   </span>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
                     <span className="font-semibold">750</span>
                     <span> Monthly Profit</span>
                   </div>
@@ -209,7 +209,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="relative border-b-4 border-b-[#FF7776] border border-solid border-[#E3E8EF] rounded-md bg-white">
+              <div className="relative border-b-4 border-b-[#FF7776] border border-solid border-[#E3E8EF] rounded-md bg-white">
                 <div className="absolute inset-0">
                   <img
                     className="h-full w-full object-cover"
@@ -244,7 +244,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">4.5 </span>
                     Out of 5
                   </span>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68]">
                     <span className="font-semibold">5.0</span>
                     <span> Monthly Rating</span>
                   </div>
@@ -257,7 +257,7 @@ const LandlordPortalHomeTwo = () => {
         <div className="mx-auto  max-w-2xl   px-4 sm:px-6  lg:max-w-7xl  lg:px-8">
           <div className="grid grid-col-1 lg:grid-cols-4 gap-x-12">
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="rounded-2xl bg-[#f8f5fb] shadow-lg">
+              <div className="rounded-2xl bg-[#f8f5fb] shadow-lg">
                 <div className="pt-10 ">
                   <div className="w-1/6 mx-auto">
                     <svg
@@ -283,7 +283,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">$ </span>
                     150 000
                   </div>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
                     <span>Monthly Income</span>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="rounded-2xl bg-[#f0f8fa] shadow-lg">
+              <div className="rounded-2xl bg-[#f0f8fa] shadow-lg">
                 <div className="pt-10 ">
                   <div className="w-1/6 mx-auto">
                     <svg
@@ -317,7 +317,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">$ </span>
                     28 000
                   </div>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
                     <span>Monthly Expense</span>
                   </div>
                 </div>
@@ -325,7 +325,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="rounded-2xl bg-[#ecfafc] shadow-lg">
+              <div className="rounded-2xl bg-[#ecfafc] shadow-lg">
                 <div className="pt-10 ">
                   <div className="w-1/6 mx-auto">
                     <svg
@@ -351,7 +351,7 @@ const LandlordPortalHomeTwo = () => {
                     <span className="text-xl">$ </span>
                     17 000
                   </div>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
                     <span>Monthly Profit</span>
                   </div>
                 </div>
@@ -359,7 +359,7 @@ const LandlordPortalHomeTwo = () => {
             </div>
 
             <div className="space-y-2 py-8 col-span-1 ">
-              <div class="rounded-2xl bg-[#fcf3e1] shadow-lg">
+              <div className="rounded-2xl bg-[#fcf3e1] shadow-lg">
                 <div className="pt-10 ">
                   <div className="w-1/6 mx-auto">
                     <svg
@@ -384,7 +384,7 @@ const LandlordPortalHomeTwo = () => {
                   <div className=" font-bold text-xl ml-3 text-[#5A5F68] text-center">
                     <span className="text-xl">4.5 </span>/ 5
                   </div>
-                  <div class=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
+                  <div className=" mt-1 pb-4 text-lg ml-3 text-[#5A5F68] text-center">
                     <span>Monthly Rating</span>
                   </div>
                 </div>
@@ -540,7 +540,7 @@ const LandlordPortalHomeTwo = () => {
             {/* <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 lg:grid-cols-3">
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div className="relative border-b-4 border-b-[#3980E5] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">
                       Application submitted
                     </div>
@@ -564,7 +564,7 @@ const LandlordPortalHomeTwo = () => {
                     </div>
 
                     <div className=" p-4">
-                      <div class=" text-md text-[#5A5F68]">
+                      <div className=" text-md text-[#5A5F68]">
                         <span className="font-semibold">0</span>
                         <span> this month</span>
                       </div>
@@ -572,8 +572,8 @@ const LandlordPortalHomeTwo = () => {
                   </div>
                 </div>
                 <div className="space-y-2 col-span-2 ">
-                  <div class="relative p-3 text-center text-white rounded-md bg-[#2272E2]">
-                    <div class="flex items-center justify-center font-bold tracking-wider p-3 pt-4">
+                  <div className="relative p-3 text-center text-white rounded-md bg-[#2272E2]">
+                    <div className="flex items-center justify-center font-bold tracking-wider p-3 pt-4">
                       <img
                         src="https://portal.landlordstudio.com/Content/images/shared/chewy-quote.svg"
                         className="align-bottom"
@@ -588,7 +588,7 @@ const LandlordPortalHomeTwo = () => {
                         alt=""
                       />
                     </div>
-                    <p class="p-2">
+                    <p className="p-2">
                       Create a listing to market your property and find quality
                       tenants.
                     </p>
@@ -627,8 +627,8 @@ const LandlordPortalHomeTwo = () => {
                       </p>
                       <div className="text-center mt-4">
                         Net Gain:&nbsp;
-                        <span class="dark-blue text-lg">USD </span>
-                        <span class="dark-blue text-lg">0.00</span>
+                        <span className="dark-blue text-lg">USD </span>
+                        <span className="dark-blue text-lg">0.00</span>
                       </div>
 
                       <div className=" text-blue-700 mt-1 flex justify-center">
@@ -711,7 +711,7 @@ const LandlordPortalHomeTwo = () => {
             <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 lg:grid-cols-3">
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#01cc74] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div className="relative border-b-4 border-b-[#01cc74] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">
                       Maintenance Request
                     </div>
@@ -735,7 +735,7 @@ const LandlordPortalHomeTwo = () => {
                     </div>
 
                     <div className=" p-4">
-                      <div class=" text-md text-[#5A5F68]">
+                      <div className=" text-md text-[#5A5F68]">
                         <span className="font-semibold">3</span>
                         <span> this month</span>
                       </div>
@@ -743,7 +743,7 @@ const LandlordPortalHomeTwo = () => {
                   </div>
                 </div>
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#ff4998] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div className="relative border-b-4 border-b-[#ff4998] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">Task Lists</div>
                     <div className="flex flex-wrap justify-center items-center mt-4">
                       <svg
@@ -765,7 +765,7 @@ const LandlordPortalHomeTwo = () => {
                     </div>
 
                     <div className=" p-4">
-                      <div class=" text-md text-[#5A5F68]">
+                      <div className=" text-md text-[#5A5F68]">
                         <span className="font-semibold">1</span>
                         <span> this month</span>
                       </div>
@@ -773,7 +773,7 @@ const LandlordPortalHomeTwo = () => {
                   </div>
                 </div>
                 <div className="space-y-2 col-span-1 ">
-                  <div class="relative border-b-4 border-b-[#f29a16] border border-solid border-[#E3E8EF] rounded-md bg-white">
+                  <div className="relative border-b-4 border-b-[#f29a16] border border-solid border-[#E3E8EF] rounded-md bg-white">
                     <div className="text-md p-4 font-mono">Total Occupancy</div>
                     <div className="flex flex-wrap justify-center items-center mt-4">
                       <svg
@@ -795,7 +795,7 @@ const LandlordPortalHomeTwo = () => {
                     </div>
 
                     <div className=" p-4">
-                      <div class=" text-md text-[#5A5F68]">
+                      <div className=" text-md text-[#5A5F68]">
                         <span className="font-semibold">2</span>
                         <span> this month</span>
                       </div>

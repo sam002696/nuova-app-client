@@ -10,7 +10,7 @@ const Chat = () => {
   return (
     <>
       <div className="chat flex-1">
-        {data.chatId.includes(currentUser.uid, data.user.uid) &&
+        {data.chatId.includes(currentUser?.uid, data?.user?.uid) &&
         data.user.uid ? (
           <div>
             <div className="chatInfo h-[77px] py-7 px-3 border-b">

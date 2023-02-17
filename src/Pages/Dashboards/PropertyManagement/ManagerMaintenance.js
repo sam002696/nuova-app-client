@@ -148,9 +148,8 @@ const ManagerMaintenance = () => {
               {maintenanceReports
                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                 .map((report) => (
-                  <ul className="space-y-5">
+                  <ul key={report._id} className="space-y-5">
                     <li
-                      key={report._id}
                       className={`${
                         clickOnReport._id === report._id
                           ? "bg-yellow-50"
