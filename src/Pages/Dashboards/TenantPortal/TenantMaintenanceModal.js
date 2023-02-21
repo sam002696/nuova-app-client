@@ -7,6 +7,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 
 const TenantMaintenanceModal = ({ open, setOpen }) => {
+  const { tenantPropertyDetails } = useSelector(
+    (state) => state.tenantPropertyDetails
+  );
+  console.log(tenantPropertyDetails);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const cancelButtonRef = useRef(null);
@@ -165,6 +169,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="address"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Glasgow 2nd Street.."
+                          value={`${tenantPropertyDetails?.propertyAddress?.addressline1}, ${tenantPropertyDetails?.propertyAddress?.city}, ${tenantPropertyDetails?.propertyAddress?.state}, ${tenantPropertyDetails?.propertyAddress?.country}, ${tenantPropertyDetails?.propertyAddress?.zipcode}`}
                           {...register("tenantAddress", { required: true })}
                         />
                       </div>
@@ -189,19 +194,10 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="property_name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Houston Villa"
+                          value={
+                            tenantPropertyDetails?.propertyAddress?.propertyName
+                          }
                           {...register("propertyName", { required: true })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Landlord Name
-                        </label>
-                        <input
-                          type="text"
-                          id="landlord_name"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Alex Cyton"
-                          {...register("landlordName", { required: true })}
                         />
                       </div>
                       <div>
@@ -214,6 +210,36 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="2345"
                           {...register("unitName", { required: false })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Landlord Name
+                        </label>
+                        <input
+                          type="text"
+                          id="landlordName"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          placeholder="Alex Cyton"
+                          value={
+                            tenantPropertyDetails?.landlordInfo?.landlordName
+                          }
+                          {...register("landlordName", { required: true })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Landlord Email
+                        </label>
+                        <input
+                          type="email"
+                          id="landlordEmail"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          placeholder="landlord@gmail.com"
+                          value={
+                            tenantPropertyDetails?.landlordInfo?.landlordEmail
+                          }
+                          {...register("landlordEmail", { required: true })}
                         />
                       </div>
                     </div>
