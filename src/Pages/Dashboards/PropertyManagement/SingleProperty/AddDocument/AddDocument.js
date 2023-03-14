@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Inventory from "../AddDocument/Inventory/Inventory";
-import InspectionReport from "../InspectionReport/InspectionReport";
+import InspectionReport from "../AddDocument/InspectionReport/InspectionReport";
 
 const AddDocument = ({ singleProperty }) => {
   const [openTab, setOpenTab] = useState(1);
