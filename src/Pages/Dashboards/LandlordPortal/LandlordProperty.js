@@ -9,6 +9,8 @@ import AddProperty from "../PropertyManagement/AddProperty/AddProperty";
 
 import LandlordPortalMyProperty from "./LandlordPortalMyProperty";
 
+import PropertyFactFind from "./PropertyFactFind/PropertyFactFind";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -31,8 +33,8 @@ export default function LandlordPropeerty() {
       current: false,
     },
     {
-      name: "Review Property",
-      to: `${url}/review-property`,
+      name: "Property Fact Find",
+      to: `${url}/property-fact-find`,
       href: "#",
       icon: UsersIcon,
       current: false,
@@ -103,7 +105,9 @@ export default function LandlordPropeerty() {
           <Route path={`${path}/add-a-property`}>
             <AddProperty />
           </Route>
-          <Route path={`${path}/review-property`}></Route>
+          <Route path={`${path}/property-fact-find`}>
+            <PropertyFactFind />
+          </Route>
           <Route path={`${path}/billing`}></Route>
         </Switch>
       </main>
