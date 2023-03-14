@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AcademicCapIcon,
   EyeIcon,
@@ -7,42 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-const actions = [
-  {
-    icon: ClockIcon,
-    name: "Tasks",
-    href: "#",
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
-    backgroundColor: "bg-green-100",
-  },
-  {
-    icon: EyeIcon,
-    name: "Maintenance",
-    href: "#",
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-    backgroundColor: "bg-purple-100",
-  },
-
-  {
-    icon: ReceiptRefundIcon,
-    name: "Calender Events",
-    href: "#",
-    iconForeground: "text-rose-700",
-    iconBackground: "bg-rose-50",
-    backgroundColor: "bg-red-100",
-  },
-  {
-    icon: AcademicCapIcon,
-    name: "Inbox",
-    href: "#",
-    iconForeground: "text-indigo-700",
-    iconBackground: "bg-indigo-50",
-    backgroundColor: "bg-blue-100",
-  },
-];
+import axios from "axios";
 
 const announcements = [
   {
@@ -72,6 +37,119 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const PropertyManagerHome = () => {
+  const [tenantsTasks, setTenantsTasks] = useState([]);
+  const [landlordsTasks, setLandlordsTasks] = useState([]);
+  const [maintenanceReports, setMaintenanceReports] = useState([]);
+  const [addEvents, setAddEvents] = useState([]);
+
+  const [allProperties, setAllProperties] = useState([]);
+
+  useEffect(() => {
+    const handleAllProperties = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/properties`);
+        console.log(res.data);
+        setAllProperties(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleAllProperties();
+  }, []);
+
+  useEffect(() => {
+    const handleFetchTenantTasks = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?taskFor=Tenants`
+        );
+
+        setTenantsTasks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchTenantTasks();
+  }, []);
+
+  useEffect(() => {
+    const handleFetchLandlordTasks = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?taskFor=Landlords`
+        );
+        setLandlordsTasks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchLandlordTasks();
+  }, []);
+
+  useEffect(() => {
+    const handleReportsDetails = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/reports`);
+        setMaintenanceReports(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleReportsDetails();
+  }, []);
+
+  useEffect(() => {
+    const handleFetchAllEvents = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/calenderEvents`);
+        setAddEvents(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchAllEvents();
+  }, []);
+
+  const actions = [
+    {
+      icon: ClockIcon,
+      name: "Tasks",
+      href: "#",
+      iconForeground: "text-teal-700",
+      iconBackground: "bg-teal-50",
+      backgroundColor: "bg-green-100",
+      notification: tenantsTasks.length + landlordsTasks.length,
+    },
+    {
+      icon: EyeIcon,
+      name: "Maintenance",
+      href: "#",
+      iconForeground: "text-purple-700",
+      iconBackground: "bg-purple-50",
+      backgroundColor: "bg-purple-100",
+      notification: maintenanceReports.length,
+    },
+
+    {
+      icon: ReceiptRefundIcon,
+      name: "Calender Events",
+      href: "#",
+      iconForeground: "text-rose-700",
+      iconBackground: "bg-rose-50",
+      backgroundColor: "bg-red-100",
+      notification: addEvents.length,
+    },
+    {
+      icon: AcademicCapIcon,
+      name: "Properties",
+      href: "#",
+      iconForeground: "text-indigo-700",
+      iconBackground: "bg-indigo-50",
+      backgroundColor: "bg-blue-100",
+      notification: allProperties.length,
+    },
+  ];
+
   const { currentUser } = useSelector((state) => state.user);
   return (
     <>
@@ -189,7 +267,7 @@ const PropertyManagerHome = () => {
                               >
                                 <circle cx={4} cy={4} r={3} />
                               </svg>
-                              15
+                              {action.notification}
                             </span>
                           </a>
                         </h3>

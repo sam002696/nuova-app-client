@@ -15,7 +15,7 @@ import logo from "../../../Images/Banner/Nuova Logo.png";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import ChatLogin from "./LandlordChat/ChatLogin/ChatLogin";
 import ChatRegister from "./LandlordChat/ChatRegister/ChatRegister";
-import LandlordPortalHome from "./LandlordPortalHome";
+// import LandlordPortalHome from "./LandlordPortalHome";
 import LandlordPortalMaintenance from "./LandlordPortalMaintenance";
 import LandlordProperty from "./LandlordProperty";
 import LandlordPortalFinance from "./LandlordPortalFinance";

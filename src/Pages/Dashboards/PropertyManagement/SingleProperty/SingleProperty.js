@@ -33,32 +33,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../../Redux/userSlice";
 import AddDocument from "./AddDocument/AddDocument";
 
-const navigation = [
-  { name: "Review", to: "", current: true },
-  {
-    name: "All Properties",
-    to: "/property-manager-dashboard/properties",
-    current: false,
-  },
-  {
-    name: "Maintenance",
-    to: "/property-manager-dashboard/maintenance",
-    current: false,
-  },
-  { name: "Inbox", to: "/property-manager-dashboard/inbox", current: false },
-  { name: "People", to: "/property-manager-dashboard/people", current: false },
-  {
-    name: "Profile",
-    to: "/property-manager-dashboard/profile",
-    current: false,
-  },
-  {
-    name: "Calender",
-    to: "/property-manager-dashboard/calender",
-    current: false,
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -90,6 +64,47 @@ const SingleProperty = () => {
     };
     handleSingleProperty();
   }, [id]);
+
+  const navigation = [
+    (currentUser.role === "Admin" || "Property Manager") && {
+      name: "Review",
+      to: "",
+      current: true,
+    },
+    (currentUser.role === "Admin" || "Property Manager") && {
+      name: "All Properties",
+      to:
+        currentUser.role === "Property Manager"
+          ? "/property-manager-dashboard/properties"
+          : "/admindashboard/viewings",
+      current: false,
+    },
+    currentUser.role === "Property Manager" && {
+      name: "Maintenance",
+      to: "/property-manager-dashboard/maintenance",
+      current: false,
+    },
+    currentUser.role === "Property Manager" && {
+      name: "Inbox",
+      to: "/property-manager-dashboard/inbox",
+      current: false,
+    },
+    currentUser.role === "Property Manager" && {
+      name: "People",
+      to: "/property-manager-dashboard/people",
+      current: false,
+    },
+    currentUser.role === "Property Manager" && {
+      name: "Profile",
+      to: "/property-manager-dashboard/profile",
+      current: false,
+    },
+    currentUser.role === "Property Manager" && {
+      name: "Calender",
+      to: "/property-manager-dashboard/calender",
+      current: false,
+    },
+  ];
 
   const subNavigation = [
     {
@@ -175,14 +190,20 @@ const SingleProperty = () => {
                 <div className="relative h-16 flex items-center justify-between lg:border-b lg:border-sky-800">
                   <div className="px-2 flex items-center lg:px-0">
                     <div className="flex-shrink-0">
-                      <Link to="/property-manager-dashboard">
+                      <Link
+                        to={
+                          currentUser.role === "Property Manager"
+                            ? "/property-manager-dashboard"
+                            : "/admindashboard"
+                        }
+                      >
                         <span className="sr-only">Nuova</span>
                         <img src={logo} className="h-6 w-24" alt="Nuova Logo" />
                       </Link>
                     </div>
                     <div className="hidden lg:block lg:ml-6 lg:space-x-4">
                       <div className="flex">
-                        {navigation.map((item) => (
+                        {navigation.filter(Boolean).map((item) => (
                           <Link
                             key={item.name}
                             to={item.to}

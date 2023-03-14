@@ -1,12 +1,12 @@
 import React from "react";
 
-const AcceptanceReportTwo = ({ register }) => {
+const AcceptanceReportThree = () => {
   return (
     <div>
-      <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5 hidden">
+      <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
         <div>
           <h3 className="text-lg leading-6 font-medium text-gray-700">
-            Acceptance of Inspection Report (Tenant)
+            Acceptance of Inspection Report (Landlord)
           </h3>
         </div>
         <div className=" sm:space-y-3 space-y-3">
@@ -25,10 +25,7 @@ const AcceptanceReportTwo = ({ register }) => {
                 id="condition"
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                placeholder="Tenant Name"
-                {...register("acceptanceOfInspectionReportTenant.tenantName", {
-                  required: false,
-                })}
+                placeholder="Landlord Name"
               />
             </div>
           </div>
@@ -40,15 +37,11 @@ const AcceptanceReportTwo = ({ register }) => {
                 <div className="relative flex items-start">
                   <div className="flex h-5 items-center">
                     <input
-                      type="radio"
-                      id="agreement1"
-                      name="agreement"
-                      value="AGREE that this report fairly represents the condition of
-                      the rental property"
-                      className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
-                      {...register(
-                        "acceptanceOfInspectionReportTenant.agreement"
-                      )}
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -65,16 +58,11 @@ const AcceptanceReportTwo = ({ register }) => {
                 <div className="relative flex items-start">
                   <div className="flex h-5 items-center">
                     <input
-                      type="radio"
-                      id="agreement2"
-                      name="agreement"
-                      value="DO NOT AGREE that this report fairly represents the
-                      condition of the rental property for the following
-                      reasons"
-                      className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
-                      {...register(
-                        "acceptanceOfInspectionReportTenant.agreement"
-                      )}
+                      id="offers"
+                      aria-describedby="offers-description"
+                      name="offers"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -88,24 +76,19 @@ const AcceptanceReportTwo = ({ register }) => {
                     </label>
                   </div>
                 </div>
-              </fieldset>
-              <div>
-                <div className="mt-1">
-                  <textarea
-                    id="description"
-                    name="description"
-                    rows={3}
-                    className="block w-full mx-7 rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                    defaultValue={""}
-                    {...register(
-                      "acceptanceOfInspectionReportTenant.disagreeTerm",
-                      {
-                        required: false,
-                      }
-                    )}
-                  />
+
+                <div>
+                  <div className="mt-1">
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows={3}
+                      className="block w-full mx-7 rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                      defaultValue={""}
+                    />
+                  </div>
                 </div>
-              </div>
+              </fieldset>
             </div>
           </div>
 
@@ -123,12 +106,6 @@ const AcceptanceReportTwo = ({ register }) => {
                   name="project-name"
                   id="project-name"
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                  {...register(
-                    "acceptanceOfInspectionReportTenant.signingDate",
-                    {
-                      required: false,
-                    }
-                  )}
                 />
               </div>
             </div>
@@ -138,7 +115,7 @@ const AcceptanceReportTwo = ({ register }) => {
                 htmlFor="project-name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Signature of Tenant
+                Signature of Landlord
               </label>
               <div className="mt-1">
                 <input
@@ -146,12 +123,6 @@ const AcceptanceReportTwo = ({ register }) => {
                   name="project-name"
                   id="project-name"
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                  {...register(
-                    "acceptanceOfInspectionReportTenant.signOfTenant",
-                    {
-                      required: false,
-                    }
-                  )}
                 />
               </div>
             </div>
@@ -162,4 +133,4 @@ const AcceptanceReportTwo = ({ register }) => {
   );
 };
 
-export default AcceptanceReportTwo;
+export default AcceptanceReportThree;

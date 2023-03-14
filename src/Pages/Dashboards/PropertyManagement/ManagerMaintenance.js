@@ -131,7 +131,7 @@ const ManagerMaintenance = () => {
           <h1 className="sr-only">Profile</h1>
 
           <div className="text-center mb-14">
-            <h2 className="text-2xl tracking-wider font-bold  sm:text-3xl underline underline-offset-4 text-cyan-800">
+            <h2 className="text-2xl tracking-wider font-bold  sm:text-3xl  text-cyan-800">
               All Maintenance Reports
             </h2>
           </div>

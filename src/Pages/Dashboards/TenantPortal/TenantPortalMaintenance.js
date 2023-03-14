@@ -103,7 +103,7 @@ const TenantPortalMaintenance = () => {
             {/* Callout */}
             <section
               aria-labelledby="sale-heading"
-              className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-32 text-center sm:px-6 lg:px-8"
+              className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-24 text-center sm:px-6 lg:px-8"
             >
               <div className="mx-auto max-w-2xl lg:max-w-none">
                 <h2
@@ -112,10 +112,7 @@ const TenantPortalMaintenance = () => {
                 >
                   Maintenance becomes easy with Nuova.
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
-                  Most of our products are limited releases that won't come
-                  back. Get your favorite items while they're in stock.
-                </p>
+
                 <button
                   type="button"
                   onClick={() => setOpen(true)}

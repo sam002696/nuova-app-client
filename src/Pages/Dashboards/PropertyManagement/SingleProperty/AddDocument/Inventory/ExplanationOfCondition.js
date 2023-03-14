@@ -28,7 +28,7 @@ const people = [
   // More people...
 ];
 
-const ExplanationOfCondition = () => {
+const ExplanationOfCondition = ({ singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -40,6 +40,10 @@ const ExplanationOfCondition = () => {
             The following is a schedule of condition for the above property and
             denotes the current condition of all rooms and items within. Any
             damage or disrepair within the property will be listed below.
+          </p>
+          <p className="mt-5 text-center max-w-3xl mx-auto text-sm text-gray-500">
+            Inventory report last modified on :{" "}
+            {new Date(singleProperty.inventory?.updatedAt).toDateString()}
           </p>
         </div>
         <div className="">

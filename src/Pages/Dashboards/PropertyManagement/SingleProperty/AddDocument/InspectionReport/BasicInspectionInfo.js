@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasicInspectionInfo = ({ register }) => {
+const BasicInspectionInfo = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -29,6 +29,15 @@ const BasicInspectionInfo = ({ register }) => {
                 {...register("propertyInspectionDate.inspectionDate", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.propertyInspectionDate
+                    ?.inspectionDate &&
+                  new Date(
+                    singleProperty.inspectionReport?.propertyInspectionDate?.inspectionDate
+                  )
+                    .toISOString()
+                    .substring(0, 10)
+                }
               />
             </div>
           </div>
@@ -82,6 +91,10 @@ const BasicInspectionInfo = ({ register }) => {
                 {...register("rentalPropertyInformation.address", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyInformation
+                    ?.address
+                }
               />
             </div>
           </div>
@@ -116,6 +129,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("inspectorInformation.inspectorName", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.inspectorInformation
+                      ?.inspectorName
+                  }
                 />
               </div>
             </div>
@@ -137,6 +154,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("inspectorInformation.inspectorPhone", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.inspectorInformation
+                      ?.inspectorPhone
+                  }
                 />
               </div>
             </div>
@@ -158,6 +179,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("inspectorInformation.inspectorEmail", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.inspectorInformation
+                      ?.inspectorEmail
+                  }
                 />
               </div>
             </div>
@@ -193,6 +218,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("tenantInformation.tenantName", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.tenantInformation
+                      ?.tenantName
+                  }
                 />
               </div>
             </div>
@@ -214,6 +243,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("tenantInformation.tenantPhone", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.tenantInformation
+                      ?.tenantPhone
+                  }
                 />
               </div>
             </div>
@@ -235,6 +268,10 @@ const BasicInspectionInfo = ({ register }) => {
                   {...register("tenantInformation.tenantEmail", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.tenantInformation
+                      ?.tenantEmail
+                  }
                 />
               </div>
             </div>
@@ -257,6 +294,9 @@ const BasicInspectionInfo = ({ register }) => {
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                 placeholder=""
                 {...register("agentInformation.agentName", { required: false })}
+                value={
+                  singleProperty.inspectionReport?.agentInformation?.agentName
+                }
               />
             </div>
           </div>
@@ -280,6 +320,10 @@ const BasicInspectionInfo = ({ register }) => {
                 {...register("forwardingAddAfterMoveOut.forwardingAddress", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.forwardingAddAfterMoveOut
+                    ?.forwardingAddress
+                }
               />
             </div>
           </div>

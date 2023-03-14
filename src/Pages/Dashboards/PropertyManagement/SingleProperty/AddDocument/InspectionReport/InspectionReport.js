@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import AcceptanceInspectionReport from "./AcceptanceInspectionReport";
+import AcceptanceReportThree from "./AcceptanceReportThree";
+import AcceptanceReportTwo from "./AcceptanceReportTwo";
 
 import AuthorizationForDeduction from "./AuthorizationForDeduction";
 import BasicInspectionInfo from "./BasicInspectionInfo";
+import DamageMoveOutInspection from "./DamageMoveOutInspection";
 
 import RentalPropertyCondition from "./RentalPropertyCondition";
 import RepairsToBeCompleted from "./RepairsToBeCompleted";
@@ -43,19 +46,36 @@ const InspectionReport = ({ singleProperty }) => {
           className="space-y-8 divide-y-2 divide-gray-200"
         >
           <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
-            <BasicInspectionInfo register={register} />
+            <BasicInspectionInfo
+              register={register}
+              singleProperty={singleProperty}
+            />
 
-            <RentalPropertyCondition register={register} />
+            <RentalPropertyCondition
+              register={register}
+              singleProperty={singleProperty}
+            />
 
-            <RepairsToBeCompleted register={register} />
+            <RepairsToBeCompleted
+              register={register}
+              singleProperty={singleProperty}
+            />
 
-            <AcceptanceInspectionReport register={register} />
+            <AcceptanceInspectionReport
+              register={register}
+              singleProperty={singleProperty}
+            />
 
             {/* <DamageMoveOutInspection /> */}
 
-            {/* <AcceptanceReportTwo /> */}
+            <AcceptanceReportTwo />
 
-            <AuthorizationForDeduction register={register} />
+            <AcceptanceReportThree />
+
+            <AuthorizationForDeduction
+              register={register}
+              singleProperty={singleProperty}
+            />
           </div>
 
           <div className="pt-5">

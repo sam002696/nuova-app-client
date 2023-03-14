@@ -35,6 +35,8 @@ const Login = () => {
         history.push("/landlord-portal-dashboard");
       } else if (res.data?.role === "Property Manager") {
         history.push("/property-manager-dashboard");
+      } else if (res.data?.role === "Admin") {
+        history.push("/admindashboard");
       }
     } catch (err) {
       console.log(err);

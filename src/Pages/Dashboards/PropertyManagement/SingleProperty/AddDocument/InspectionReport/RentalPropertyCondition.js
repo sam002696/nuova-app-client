@@ -1,6 +1,6 @@
 import React from "react";
 
-const RentalPropertyCondition = ({ register }) => {
+const RentalPropertyCondition = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
@@ -35,6 +35,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.entryway1.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.entryway1?.condition
+                }
               />
             </div>
           </div>
@@ -58,6 +62,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.entryway2.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.entryway2?.condition
+                }
               />
             </div>
           </div>
@@ -81,6 +89,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.livingRoom.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.livingRoom?.condition
+                }
               />
             </div>
           </div>
@@ -104,6 +116,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.diningRoom.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.diningRoom?.condition
+                }
               />
             </div>
           </div>
@@ -127,6 +143,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.kitchen.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.kitchen?.condition
+                }
               />
             </div>
           </div>
@@ -150,6 +170,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bedroom1.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bedroom1?.condition
+                }
               />
             </div>
           </div>
@@ -173,6 +197,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bedroom2.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bedroom2?.condition
+                }
               />
             </div>
           </div>
@@ -196,6 +224,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bedroom3.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bedroom3?.condition
+                }
               />
             </div>
           </div>
@@ -219,6 +251,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bathroom1.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bathroom1?.condition
+                }
               />
             </div>
           </div>
@@ -242,6 +278,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bathroom2.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bathroom2?.condition
+                }
               />
             </div>
           </div>
@@ -265,6 +305,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.bathroom3.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.bathroom3?.condition
+                }
               />
             </div>
           </div>
@@ -288,6 +332,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.stairway1.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.stairway1?.condition
+                }
               />
             </div>
           </div>
@@ -311,6 +359,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.stairway2.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.stairway2?.condition
+                }
               />
             </div>
           </div>
@@ -334,6 +386,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.hallway1.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.hallway1?.condition
+                }
               />
             </div>
           </div>
@@ -357,6 +413,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.hallway2.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.hallway2?.condition
+                }
               />
             </div>
           </div>
@@ -380,6 +440,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.basement.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.basement?.condition
+                }
               />
             </div>
           </div>
@@ -403,6 +467,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.balcony.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.balcony?.condition
+                }
               />
             </div>
           </div>
@@ -426,6 +494,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.garage.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.garage?.condition
+                }
               />
             </div>
           </div>
@@ -449,6 +521,10 @@ const RentalPropertyCondition = ({ register }) => {
                 {...register("rentalPropertyCondition.yard.condition", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition?.yard
+                    ?.condition
+                }
               />
             </div>
           </div>
@@ -476,6 +552,10 @@ const RentalPropertyCondition = ({ register }) => {
                     required: false,
                   }
                 )}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.numKeysControls?.condition
+                }
               />
             </div>
           </div>
@@ -503,6 +583,10 @@ const RentalPropertyCondition = ({ register }) => {
                     required: false,
                   }
                 )}
+                value={
+                  singleProperty.inspectionReport?.rentalPropertyCondition
+                    ?.safetyEquipment?.condition
+                }
               />
             </div>
           </div>

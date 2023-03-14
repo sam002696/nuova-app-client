@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 // import userRegisterReducer from "./userRegisterSlice";
 import tenantPropertyDetailsReducer from "./tenantPropertySlice";
+import singlePropertyDetailsReducer from "./singlePropertySlice";
 // import maintenanceReportsReducer from "./allReportsSlice";
 // import contractorCurrentJobsReducer from "./contractorJobsSlice";
 import {
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   //   userRegister: userRegisterReducer,
   tenantPropertyDetails: tenantPropertyDetailsReducer,
+  singlePropertyDetails: singlePropertyDetailsReducer,
   //   maintenanceReports: maintenanceReportsReducer,
   //   contractorCurrentJobs: contractorCurrentJobsReducer,
 });

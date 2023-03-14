@@ -14,10 +14,13 @@ import {
 } from "@heroicons/react/outline";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import AdminHome from "./AdminHome";
-import AdminManageUsers from "./AdminManageUsers";
 import logo from "../../../Images/Footer/logo.png";
 import AdminAddUsers from "./AdminAddUsers";
 import AdminViewings from "./AdminViewings";
+import AdminManageUsers from "./AdminManageUsers/AdminManageUsers";
+import AdminNavbar from "./AdminNavbar/AdminNavbar";
+import AdminFactFind from "./AdminFactFind";
+import { Link } from "react-router-dom";
 
 const secondaryNavigation = [
   { name: "Settings", href: "#", icon: CogIcon },
@@ -54,11 +57,11 @@ const AdminDashboard = () => {
       to: `${url}/balances`,
     },
     {
-      name: "Cards",
+      name: "Fact Find",
       href: "#",
       icon: CreditCardIcon,
       current: false,
-      to: `${url}/cards`,
+      to: `${url}/fact-find`,
     },
     {
       name: "Recipients",
@@ -196,7 +199,14 @@ const AdminDashboard = () => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center px-4">
-              <img className="h-7 w-auto" src={logo} alt="Nuova logo" />
+              <Link to="/">
+                <span className="sr-only">Nuova</span>
+                <img
+                  src="https://i.ibb.co/vY3j7Wg/Nuova-Logo.png"
+                  className="h-8 w-28"
+                  alt="Nuova Logo"
+                />
+              </Link>
             </div>
             <nav
               className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto"
@@ -247,6 +257,7 @@ const AdminDashboard = () => {
 
         <div className="flex flex-1 flex-col lg:pl-64">
           <main className="flex-1 pb-8">
+            <AdminNavbar />
             <Switch>
               <Route exact path={`${path}`}>
                 <AdminHome />
@@ -255,12 +266,13 @@ const AdminDashboard = () => {
                 <AdminAddUsers />
               </Route>
               <Route path={`${path}/balances`}></Route>
-              <Route path={`${path}/cards`}></Route>
+              <Route path={`${path}/fact-find`}>
+                <AdminFactFind />
+              </Route>
 
               <Route path={`${path}/recipients`}>
                 <AdminManageUsers />
               </Route>
-
               <Route path={`${path}/viewings`}>
                 <AdminViewings />
               </Route>

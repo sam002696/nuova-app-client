@@ -1,6 +1,6 @@
 import React from "react";
 
-const RepairsToBeCompleted = ({ register }) => {
+const RepairsToBeCompleted = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -32,6 +32,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.0.tiarc", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[0]
+                      .tiarc
+                  }
                 />
               </div>
             </div>
@@ -53,6 +57,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.0.desOfRepair", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[0]
+                      .desOfRepair
+                  }
                 />
               </div>
             </div>
@@ -72,6 +80,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.1.tiarc", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[1]
+                      .tiarc
+                  }
                 />
               </div>
             </div>
@@ -87,6 +99,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.1.desOfRepair", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[1]
+                      .desOfRepair
+                  }
                 />
               </div>
             </div>
@@ -106,6 +122,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.2.tiarc", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[2]
+                      .tiarc
+                  }
                 />
               </div>
             </div>
@@ -121,6 +141,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.2.desOfRepair", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[2]
+                      .desOfRepair
+                  }
                 />
               </div>
             </div>
@@ -140,6 +164,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.3.tiarc", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[3]
+                      .tiarc
+                  }
                 />
               </div>
             </div>
@@ -155,6 +183,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.3.desOfRepair", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[3]
+                      .desOfRepair
+                  }
                 />
               </div>
             </div>
@@ -174,6 +206,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.4.tiarc", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[4]
+                      .tiarc
+                  }
                 />
               </div>
             </div>
@@ -189,6 +225,10 @@ const RepairsToBeCompleted = ({ register }) => {
                   {...register("repairsToBeCompleted.4.desOfRepair", {
                     required: false,
                   })}
+                  value={
+                    singleProperty.inspectionReport?.repairsToBeCompleted?.[4]
+                      .desOfRepair
+                  }
                 />
               </div>
             </div>

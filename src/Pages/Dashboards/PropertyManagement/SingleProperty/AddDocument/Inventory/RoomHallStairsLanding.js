@@ -1,12 +1,6 @@
 import React from "react";
 
 const RoomHallStairsLanding = ({ register, singleProperty }) => {
-  console.log(
-    singleProperty?.inventory?.hallStairsLanding?.doorExternal?.description
-  );
-  console.log(
-    singleProperty?.inventory?.hallStairsLanding?.doorInternal?.description
-  );
   return (
     <div>
       <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">

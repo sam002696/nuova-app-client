@@ -16,6 +16,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
     certificateProviderPhone: "",
     uploadedCertificate: "",
     certificateAddedBy: "",
+    certificateExpiryDate: "",
   });
   const cancelButtonRef = useRef(null);
 
@@ -66,6 +67,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
       console.log(err);
     }
   };
+
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -203,6 +205,22 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
                           type="text"
                           id="certificateAddedBy"
                           name="certificateAddedBy"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          placeholder="Glasgow 2nd Street.."
+                          onChange={(e) => {
+                            handleCertificateUpload(e);
+                          }}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                          Certificate Validation Date
+                        </label>
+                        <input
+                          type="date"
+                          id="certificateExpiryDate"
+                          name="certificateExpiryDate"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="Glasgow 2nd Street.."
                           onChange={(e) => {

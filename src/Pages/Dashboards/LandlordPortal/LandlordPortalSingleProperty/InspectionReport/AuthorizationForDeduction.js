@@ -1,6 +1,6 @@
 import React from "react";
 
-const AuthorizationForDeduction = ({ register }) => {
+const AuthorizationForDeduction = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -29,6 +29,10 @@ const AuthorizationForDeduction = ({ register }) => {
                 {...register("authorisationForDeduction.name", {
                   required: false,
                 })}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.name
+                }
               />
             </div>
             <label
@@ -55,6 +59,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[0].amountDeducted
+                }
               />
               <input
                 type="text"
@@ -69,6 +77,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[0].desOfDeposit
+                }
               />
             </div>
           </div>
@@ -88,6 +100,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[1].amountDeducted
+                }
               />
               <input
                 type="text"
@@ -102,6 +118,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[1].desOfDeposit
+                }
               />
             </div>
           </div>
@@ -121,6 +141,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[2].amountDeducted
+                }
               />
               <input
                 type="text"
@@ -135,6 +159,10 @@ const AuthorizationForDeduction = ({ register }) => {
                     required: false,
                   }
                 )}
+                defaultValue={
+                  singleProperty.inspectionReport?.authorisationForDeduction
+                    ?.amountDeposit?.[2].desOfDeposit
+                }
               />
             </div>
           </div>
@@ -157,6 +185,15 @@ const AuthorizationForDeduction = ({ register }) => {
                   {...register("authorisationForDeduction.signingDate", {
                     required: false,
                   })}
+                  defaultValue={
+                    singleProperty.inspectionReport?.authorisationForDeduction
+                      ?.signingDate &&
+                    new Date(
+                      singleProperty.inspectionReport?.authorisationForDeduction?.signingDate
+                    )
+                      .toISOString()
+                      .substring(0, 10)
+                  }
                 />
               </div>
             </div>
@@ -166,7 +203,7 @@ const AuthorizationForDeduction = ({ register }) => {
                 htmlFor="signOfTenantOrAgent"
                 className="block text-sm font-medium text-gray-700"
               >
-                Signature of Tenant (or Agent)
+                Signature of Landlord
               </label>
               <div className="mt-1">
                 <input
@@ -180,6 +217,10 @@ const AuthorizationForDeduction = ({ register }) => {
                       required: false,
                     }
                   )}
+                  defaultValue={
+                    singleProperty.inspectionReport?.authorisationForDeduction
+                      ?.signOfTenantOrAgent
+                  }
                 />
               </div>
             </div>

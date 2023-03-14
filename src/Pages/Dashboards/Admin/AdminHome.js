@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { CheckCircleIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
@@ -9,61 +9,9 @@ import {
   UsersIcon,
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-import { Menu, Transition } from "@headlessui/react";
-import { BellIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-
-const cards = [
-  {
-    name: "Properties",
-    href: "#",
-    icon: OfficeBuildingIcon,
-    amount: "24",
-    color: "bg-blue-100",
-    cardColor: "text-blue-400",
-  },
-  {
-    name: "Property managers",
-    href: "#",
-    icon: UsersIcon,
-    amount: "13",
-    color: "bg-red-100",
-    cardColor: "text-red-400",
-  },
-  {
-    name: "tenants",
-    href: "#",
-    icon: UsersIcon,
-    amount: "27",
-    color: "bg-teal-100",
-    cardColor: "text-teal-400",
-  },
-  {
-    name: "landlords",
-    href: "#",
-    icon: UsersIcon,
-    amount: "10",
-    color: "bg-cyan-100",
-    cardColor: "text-cyan-400",
-  },
-  {
-    name: "Contractors",
-    href: "#",
-    icon: UsersIcon,
-    amount: "20",
-    color: "bg-gray-100",
-    cardColor: "text-gray-400",
-  },
-  {
-    name: "Applicants",
-    href: "#",
-    icon: UsersIcon,
-    amount: "21",
-    color: "bg-purple-100",
-    cardColor: "text-purple-400",
-  },
-];
 const recentActivities = [
   {
     id: 1,
@@ -131,146 +79,197 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const AdminHome = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
+  const [allProperties, setAllProperties] = useState([]);
+  const [propertyManagers, setPropertyManagers] = useState([]);
+  const [tenants, setTenants] = useState([]);
+  const [landlords, setLandlords] = useState([]);
+  const [contractors, setContractors] = useState([]);
+  const [prospects, setProspects] = useState([]);
+  useEffect(() => {
+    const fetchAllProspects = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/prospects`);
+        setProspects(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllProspects();
+  }, []);
+  useEffect(() => {
+    const handleFetchcontractors = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Contractor`
+        );
+        setContractors(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchcontractors();
+  }, []);
+  useEffect(() => {
+    const handleFetchLandlords = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Landlord`
+        );
+        setLandlords(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchLandlords();
+  }, []);
+  useEffect(() => {
+    const handleFetchtenants = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Tenant`
+        );
+        setTenants(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchtenants();
+  }, []);
+  useEffect(() => {
+    const handleFetchPropertyManagers = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?role=Property Manager`
+        );
+        setPropertyManagers(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchPropertyManagers();
+  }, []);
+
+  useEffect(() => {
+    const handleAllProperties = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5500/api/properties`);
+        console.log(res.data);
+        setAllProperties(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleAllProperties();
+  }, []);
+
+  const cards = [
+    {
+      name: "Properties",
+      href: "#",
+      icon: OfficeBuildingIcon,
+      amount: "24",
+      color: "bg-blue-100",
+      cardColor: "text-blue-400",
+      count: allProperties.length,
+    },
+    {
+      name: "Property managers",
+      href: "#",
+      icon: UsersIcon,
+      amount: "13",
+      color: "bg-red-100",
+      cardColor: "text-red-400",
+      count: propertyManagers.length,
+    },
+    {
+      name: "tenants",
+      href: "#",
+      icon: UsersIcon,
+      amount: "27",
+      color: "bg-teal-100",
+      cardColor: "text-teal-400",
+      count: tenants.length,
+    },
+    {
+      name: "landlords",
+      href: "#",
+      icon: UsersIcon,
+      amount: "10",
+      color: "bg-cyan-100",
+      cardColor: "text-cyan-400",
+      count: landlords.length,
+    },
+    {
+      name: "Contractors",
+      href: "#",
+      icon: UsersIcon,
+      amount: "20",
+      color: "bg-gray-100",
+      cardColor: "text-gray-400",
+      count: contractors.length,
+    },
+    {
+      name: "Applicants",
+      href: "#",
+      icon: UsersIcon,
+      amount: "21",
+      color: "bg-purple-100",
+      cardColor: "text-purple-400",
+      count: prospects.length,
+    },
+  ];
+
   return (
     <>
-      <div className="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:border-none">
-        <button
-          type="button"
-          className="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
-          onClick={() => setSidebarOpen(true)}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <EyeIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
-        {/* Search bar */}
-        <div className="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
-          <div className="flex flex-1">
-            <form className="flex w-full md:ml-0" action="#" method="GET">
-              <label htmlFor="search-field" className="sr-only">
-                Search
-              </label>
-              <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                <div
-                  className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                  aria-hidden="true"
-                >
-                  <EyeIcon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <input
-                  id="search-field"
-                  name="search-field"
-                  className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                  placeholder="Search transactions"
-                  type="search"
-                />
-              </div>
-            </form>
-          </div>
-          <div className="ml-4 flex items-center md:ml-6">
-            <button
-              type="button"
-              className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-            >
-              <span className="sr-only">View notifications</span>
-              <BellIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-
-            {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                  <span className="ml-3 hidden text-sm font-medium text-gray-700 lg:block">
-                    <span className="sr-only">Open user menu for </span>
-                    John Smith
-                  </span>
-                  <ChevronDownIcon
-                    className="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block"
-                    aria-hidden="true"
-                  />
-                </Menu.Button>
-              </div>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
-                        )}
-                      >
-                        Your Profile
-                      </Link>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
-                        )}
-                      >
-                        Settings
-                      </Link>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
-                        )}
-                      >
-                        Logout
-                      </Link>
-                    )}
-                  </Menu.Item>
-                </Menu.Items>
-              </Transition>
-            </Menu>
-          </div>
-        </div>
-      </div>
       {/* Page header */}
       <div className="bg-white shadow">
         <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
-          <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+          <div className="py-6 md:flex md:items-center md:justify-between ">
             <div className="min-w-0 flex-1">
               {/* Profile */}
+
               <div className="flex items-center">
-                <img
-                  className="hidden h-16 w-16 rounded-full sm:block"
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                {currentUser.profilePic ? (
+                  <img
+                    className="hidden h-16 w-16 rounded-full sm:block"
+                    src={currentUser.profilePic}
+                    alt=""
+                  />
+                ) : (
+                  <span class="inline-block h-14 w-14 overflow-hidden rounded-full bg-gray-100">
+                    <svg
+                      class="h-full w-full text-gray-300"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </span>
+                )}
+
                 <div>
                   <div className="flex items-center">
-                    <img
-                      className="h-16 w-16 rounded-full sm:hidden"
-                      src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
+                    {currentUser.profilePic ? (
+                      <img
+                        className="h-16 w-16 rounded-full sm:hidden"
+                        src={currentUser.profilePic}
+                        alt=""
+                      />
+                    ) : (
+                      <span class="inline-block h-14 w-14 overflow-hidden rounded-full bg-gray-100 sm:hidden">
+                        <svg
+                          class="h-full w-full text-gray-300"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                      </span>
+                    )}
+
                     <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                      Good morning, John Smith
+                      Good morning, {currentUser.username}
                     </h1>
                   </div>
                   <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
@@ -333,7 +332,7 @@ const AdminHome = () => {
                         </dt>
                         <dd>
                           <div className="text-lg font-medium text-gray-900">
-                            {card.amount}
+                            {card.count}
                           </div>
                         </dd>
                       </dl>

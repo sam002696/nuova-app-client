@@ -53,6 +53,12 @@ const HeaderNavbarTwo = () => {
         "Get all of your questions answered in our forums or contact support.",
       href: "/property-manager-dashboard",
     },
+    currentUser?.role === "Admin" && {
+      name: "Admin Portal",
+      description:
+        "Get all of your questions answered in our forums or contact support.",
+      href: "/admindashboard",
+    },
   ];
   return (
     <Popover className="relative z-50">

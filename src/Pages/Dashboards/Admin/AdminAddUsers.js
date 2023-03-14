@@ -6,6 +6,7 @@ import LandlordModal from "./UsersModals/LandlordModal";
 import TenantModal from "./UsersModals/TenantModal";
 import ContractorModal from "./UsersModals/ContractorModal";
 import PropertyManagerModal from "./UsersModals/PropertyManagerModal";
+import AdminModal from "./UsersModals/AdminModal";
 
 const AdminAddUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -14,6 +15,7 @@ const AdminAddUsers = () => {
   const [tenant, setTenant] = useState(false);
   const [contractor, setContractor] = useState(false);
   const [propertyManager, setPropertyManager] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     const handleFetchAllUsers = async () => {
@@ -43,7 +45,7 @@ const AdminAddUsers = () => {
       {/* Add users */}
 
       <div className="max-w-7xl mx-auto mt-5">
-        <div className="grid grid-cols-4 gap-1 ">
+        <div className="grid grid-cols-3 gap-1 ">
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -220,6 +222,50 @@ const AdminAddUsers = () => {
               </div>
             </div>
           </button>
+          <button
+            type="button"
+            onClick={() => setAdmin(true)}
+            className="px-4   pt-8"
+          >
+            <div className="relative overflow-hidden rounded-md bg-yellow-500  shadow-md shadow-gray-500/50">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0"
+              >
+                <svg
+                  className="absolute inset-0 h-full w-full"
+                  preserveAspectRatio="xMidYMid slice"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 1463 360"
+                >
+                  <path
+                    className="text-yellow-400 text-opacity-40"
+                    fill="currentColor"
+                    d="M-82.673 72l1761.849 472.086-134.327 501.315-1761.85-472.086z"
+                  />
+                  <path
+                    className="text-yellow-700 text-opacity-40"
+                    fill="currentColor"
+                    d="M-217.088 544.086L1544.761 72l134.327 501.316-1761.849 472.086z"
+                  />
+                </svg>
+              </div>
+
+              <div className="rounded-lg  divide-y divide-gray-200 relative">
+                <div className="w-full">
+                  <div className="text-center  py-10">
+                    <h3 className="text-white text-sm font-semibold flex items-center justify-center">
+                      <div>
+                        <PlusIcon className=" h-6 mr-2" />
+                      </div>{" "}
+                      <span className="text-xl"> Add an Admin</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
         </div>
         <LandlordModal setOpen={setOpen} open={open} />
         <TenantModal setOpen={setTenant} open={tenant} />
@@ -228,6 +274,7 @@ const AdminAddUsers = () => {
           setOpen={setPropertyManager}
           open={propertyManager}
         />
+        <AdminModal setOpen={setAdmin} open={admin} />
       </div>
 
       {/* People */}

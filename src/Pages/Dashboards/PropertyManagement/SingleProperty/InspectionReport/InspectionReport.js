@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import AcceptanceInspectionReport from "./AcceptanceInspectionReport";
+import AcceptanceReportThree from "./AcceptanceReportThree";
+import AcceptanceReportTwo from "./AcceptanceReportTwo";
 
 import AuthorizationForDeduction from "./AuthorizationForDeduction";
 import BasicInspectionInfo from "./BasicInspectionInfo";
@@ -42,7 +44,7 @@ const InspectionReport = ({ singleProperty }) => {
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-8 divide-y-2 divide-gray-200"
         >
-          <div className="space-y-8 divide-y-2 divide-gray-200 sm:space-y-5">
+          <div className="space-y-8  sm:space-y-5">
             <BasicInspectionInfo register={register} />
 
             <RentalPropertyCondition register={register} />
@@ -53,7 +55,9 @@ const InspectionReport = ({ singleProperty }) => {
 
             {/* <DamageMoveOutInspection /> */}
 
-            {/* <AcceptanceReportTwo /> */}
+            <AcceptanceReportTwo register={register} />
+
+            <AcceptanceReportThree register={register} />
 
             <AuthorizationForDeduction register={register} />
           </div>

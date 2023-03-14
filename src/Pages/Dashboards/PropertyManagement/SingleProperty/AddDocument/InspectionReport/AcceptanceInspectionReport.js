@@ -1,12 +1,12 @@
 import React from "react";
 
-const AcceptanceInspectionReport = ({ register }) => {
+const AcceptanceInspectionReport = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5 sm:border-b sm:border-gray-200 sm:pb-6">
         <div>
           <h3 className="text-lg leading-6 font-medium text-gray-700">
-            Acceptance of Inspection Report{" "}
+            Acceptance of Inspection Report (Inspector)
           </h3>
         </div>
         <div className=" sm:space-y-3 space-y-3 hidden">
@@ -29,6 +29,10 @@ const AcceptanceInspectionReport = ({ register }) => {
                 {...register("acceptanceOfInspectionReport.name", {
                   required: false,
                 })}
+                value={
+                  singleProperty.inspectionReport?.acceptanceOfInspectionReport
+                    ?.name
+                }
               />
             </div>
           </div>

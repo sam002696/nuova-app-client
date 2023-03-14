@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AddCertificate = ({ singleProperty }) => {
+  let currentDate = new Date();
   const [open, setOpen] = useState(false);
 
   return (
@@ -81,18 +82,30 @@ const AddCertificate = ({ singleProperty }) => {
                       <div className="hidden md:block">
                         <div>
                           <p className="text-sm text-gray-900">
-                            Added on{" "}
+                            Added on :{" "}
                             <time dateTime={application.date}>
-                              {application.createdAt && (
-                                <time>
-                                  {new Date(
-                                    application.createdAt
-                                  ).getFullYear()}
-                                  -{new Date(application.createdAt).getMonth()}-
-                                  {new Date(application.createdAt).getDate()}
-                                </time>
-                              )}
+                              {new Date(
+                                application.createdAt
+                              ).toLocaleDateString()}
                             </time>
+                          </p>
+                          <p className="text-sm text-gray-900">
+                            Validation date :
+                            <time>
+                              {application.certificateExpiryDate
+                                ? new Date(
+                                    application.certificateExpiryDate
+                                  ).toLocaleDateString()
+                                : "N/A"}
+                            </time>
+                          </p>
+                          <p className="text-sm text-gray-900">
+                            {currentDate.getTime() >
+                            new Date(
+                              application.certificateExpiryDate
+                            ).getTime()
+                              ? "Expired"
+                              : "Valid"}
                           </p>
                           <p className="mt-2 flex items-center text-sm text-gray-500">
                             <CheckCircleIcon
