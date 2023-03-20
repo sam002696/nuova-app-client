@@ -16,12 +16,29 @@ const InspectionReport = ({ singleProperty }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (form) => {
+    console.log(form);
     setLoading(true);
+    const data = new FormData();
+    const inspectorSign =
+      form?.acceptanceOfInspectionReport?.signOfInspector[0];
+    console.log(inspectorSign);
+    if (inspectorSign) {
+      data.append("file", inspectorSign);
+      //upload presets
+      data.append("upload_preset", "eez1w4gg");
+
+      const uploadRes1 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data
+      );
+      const { url: url1 } = uploadRes1.data;
+      form.acceptanceOfInspectionReport.signOfInspector = url1;
+    }
     try {
       const res = await axios.post(
         `http://localhost:5500/api/inspectionReport/upload/${singleProperty._id}`,
-        data
+        form
       );
       if (res.data) {
         Swal.fire(

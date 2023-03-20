@@ -32,10 +32,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.0.tiarc", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[0]
-                      .tiarc
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[0].tiarc}
                 />
               </div>
             </div>
@@ -57,10 +54,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.0.desOfRepair", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[0]
-                      .desOfRepair
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[0].desOfRepair}
                 />
               </div>
             </div>
@@ -80,10 +74,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.1.tiarc", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[1]
-                      .tiarc
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[1].tiarc}
                 />
               </div>
             </div>
@@ -99,10 +90,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.1.desOfRepair", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[1]
-                      .desOfRepair
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[1].desOfRepair}
                 />
               </div>
             </div>
@@ -122,10 +110,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.2.tiarc", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[2]
-                      .tiarc
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[2].tiarc}
                 />
               </div>
             </div>
@@ -141,10 +126,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.2.desOfRepair", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[2]
-                      .desOfRepair
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[2].desOfRepair}
                 />
               </div>
             </div>
@@ -164,10 +146,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.3.tiarc", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[3]
-                      .tiarc
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[3].tiarc}
                 />
               </div>
             </div>
@@ -183,10 +162,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.3.desOfRepair", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[3]
-                      .desOfRepair
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[3].desOfRepair}
                 />
               </div>
             </div>
@@ -206,10 +182,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.4.tiarc", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[4]
-                      .tiarc
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[4].tiarc}
                 />
               </div>
             </div>
@@ -225,10 +198,7 @@ const RepairsToBeCompleted = ({ register, singleProperty }) => {
                   {...register("repairsToBeCompleted.4.desOfRepair", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.repairsToBeCompleted?.[4]
-                      .desOfRepair
-                  }
+                  value={singleProperty?.repairsToBeCompleted?.[4].desOfRepair}
                 />
               </div>
             </div>

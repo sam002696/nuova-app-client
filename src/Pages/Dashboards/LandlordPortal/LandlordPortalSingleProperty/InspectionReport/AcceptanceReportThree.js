@@ -33,8 +33,8 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport
-                    ?.acceptanceOfInspectionReportLandlord?.landlordName
+                  singleProperty?.acceptanceOfInspectionReportLandlord
+                    ?.landlordName
                 }
               />
             </div>
@@ -60,14 +60,12 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                         }
                       )}
                       checked={
-                        singleProperty.inspectionReport
-                          ?.acceptanceOfInspectionReportLandlord?.agreement ===
+                        singleProperty?.acceptanceOfInspectionReportLandlord
+                          ?.agreement &&
+                        singleProperty?.acceptanceOfInspectionReportLandlord
+                          ?.agreement ===
                           "AGREE that this report fairly represents the condition of the rental property" &&
                         "checked"
-                      }
-                      defaultValue={
-                        singleProperty.inspectionReport
-                          ?.acceptanceOfInspectionReportLandlord?.agreement
                       }
                     />
                   </div>
@@ -98,13 +96,11 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                           required: false,
                         }
                       )}
-                      defaultValue={
-                        singleProperty.inspectionReport
-                          ?.acceptanceOfInspectionReportLandlord?.agreement
-                      }
                       checked={
-                        singleProperty.inspectionReport
-                          ?.acceptanceOfInspectionReportLandlord?.agreement ===
+                        singleProperty?.acceptanceOfInspectionReportLandlord
+                          ?.agreement &&
+                        singleProperty?.acceptanceOfInspectionReportLandlord
+                          ?.agreement ===
                           "DO NOT AGREE that this report fairly represents the condition of the rental property for the following reasons" &&
                         "checked"
                       }
@@ -136,8 +132,8 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                         }
                       )}
                       defaultValue={
-                        singleProperty.inspectionReport
-                          ?.acceptanceOfInspectionReportLandlord?.disagreeTerm
+                        singleProperty?.acceptanceOfInspectionReportLandlord
+                          ?.disagreeTerm
                       }
                     />
                   </div>
@@ -166,11 +162,11 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                       required: false,
                     }
                   )}
-                  defaultValue={
-                    singleProperty.inspectionReport
-                      ?.acceptanceOfInspectionReportLandlord?.signingDate &&
+                  value={
+                    singleProperty?.acceptanceOfInspectionReportLandlord
+                      ?.signingDate &&
                     new Date(
-                      singleProperty.inspectionReport?.acceptanceOfInspectionReportLandlord?.signingDate
+                      singleProperty?.acceptanceOfInspectionReportLandlord?.signingDate
                     )
                       .toISOString()
                       .substring(0, 10)
@@ -187,22 +183,51 @@ const AcceptanceReportThree = ({ register, singleProperty }) => {
                 Signature of Landlord
               </label>
               <div className="mt-1">
-                <input
-                  type="text"
-                  name="project-name"
-                  id="project-name"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                  {...register(
-                    "acceptanceOfInspectionReportLandlord.signOfLandlord",
-                    {
-                      required: false,
+                {singleProperty?.acceptanceOfInspectionReportLandlord
+                  ?.signOfLandlord ? (
+                  <span
+                    className={`inline-block h-16 w-72 overflow-hidden  ${
+                      singleProperty?.acceptanceOfInspectionReportLandlord
+                        ?.signOfLandlord
+                        ? "bg-white border"
+                        : "bg-gray-100"
+                    }`}
+                  >
+                    {singleProperty?.acceptanceOfInspectionReportLandlord
+                      ?.signOfLandlord ? (
+                      <img
+                        className=" w-full h-full"
+                        src={
+                          singleProperty?.acceptanceOfInspectionReportLandlord
+                            ?.signOfLandlord
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      <p className=" text-red-400 font-bold">
+                        No signature has been uploaded
+                      </p>
+                    )}
+                  </span>
+                ) : (
+                  <input
+                    type="file"
+                    name="project-name"
+                    id="project-name"
+                    accept="image/*"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
+                    {...register(
+                      "acceptanceOfInspectionReportLandlord.signOfLandlord",
+                      {
+                        required: false,
+                      }
+                    )}
+                    defaultValue={
+                      singleProperty?.acceptanceOfInspectionReportLandlord
+                        ?.signOfLandlord
                     }
-                  )}
-                  defaultValue={
-                    singleProperty.inspectionReport
-                      ?.acceptanceOfInspectionReportLandlord?.signOfLandlord
-                  }
-                />
+                  />
+                )}
               </div>
             </div>
           </div>

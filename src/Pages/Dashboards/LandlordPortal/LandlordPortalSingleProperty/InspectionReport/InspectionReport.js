@@ -1,27 +1,67 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import AcceptanceInspectionReport from "./AcceptanceInspectionReport";
 import AcceptanceReportThree from "./AcceptanceReportThree";
-import AcceptanceReportTwo from "./AcceptanceReportTwo";
-
+// import AcceptanceReportTwo from "./AcceptanceReportTwo";
 import AuthorizationForDeduction from "./AuthorizationForDeduction";
 import BasicInspectionInfo from "./BasicInspectionInfo";
-
 import RentalPropertyCondition from "./RentalPropertyCondition";
 import RepairsToBeCompleted from "./RepairsToBeCompleted";
+import { updateInspectionReport } from "../../../../../Redux/singlePropertySlice";
 
 const InspectionReport = ({ singleProperty }) => {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (form) => {
+    console.log(form.rentalPropertyInformation?.address);
+    console.log(form.acceptanceOfInspectionReport?.signOfInspector);
+    console.log(form);
+    form.acceptanceOfInspectionReport.signOfInspector =
+      singleProperty?.acceptanceOfInspectionReport.signOfInspector;
+    console.log(form.acceptanceOfInspectionReport.signOfInspector);
     setLoading(true);
-    try {
-      const res = await axios.post(
-        `http://localhost:5500/api/inspectionReport/upload/${singleProperty._id}`,
+    const data = new FormData();
+    const data1 = new FormData();
+    if (form?.acceptanceOfInspectionReportLandlord?.signOfLandlord[0]) {
+      data.append(
+        "file",
+        form?.acceptanceOfInspectionReportLandlord?.signOfLandlord[0]
+      );
+      //upload presets
+      data.append("upload_preset", "eez1w4gg");
+
+      const uploadRes1 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
         data
+      );
+      const { url: url1 } = uploadRes1.data;
+      form.acceptanceOfInspectionReportLandlord.signOfLandlord = url1;
+    }
+    if (form?.authorisationForDeduction?.signOfTenantOrAgent[0]) {
+      data1.append(
+        "file",
+        form?.authorisationForDeduction?.signOfTenantOrAgent[0]
+      );
+      //upload presets
+      data1.append("upload_preset", "eez1w4gg");
+
+      const uploadRes1 = await axios.post(
+        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        data1
+      );
+      const { url: url1 } = uploadRes1.data;
+      form.authorisationForDeduction.signOfTenantOrAgent = url1;
+    }
+    console.log(form.authorisationForDeduction.signOfTenantOrAgent);
+    try {
+      const res = await axios.put(
+        `http://localhost:5500/api/inspectionReport/${singleProperty?._id}`,
+        form
       );
       if (res.data) {
         Swal.fire(
@@ -31,7 +71,8 @@ const InspectionReport = ({ singleProperty }) => {
         );
         setLoading(false);
         console.log(res.data);
-        window.location.reload(false);
+        dispatch(updateInspectionReport(res.data));
+        // window.location.reload(false);
       }
     } catch (err) {
       console.log(err);
@@ -67,7 +108,7 @@ const InspectionReport = ({ singleProperty }) => {
 
             {/* <DamageMoveOutInspection /> */}
 
-            <AcceptanceReportTwo register={register} />
+            {/* <AcceptanceReportTwo register={register} /> */}
 
             <AcceptanceReportThree
               register={register}
@@ -82,10 +123,9 @@ const InspectionReport = ({ singleProperty }) => {
 
           <div
             className={` ${
-              singleProperty.inspectionReport
-                ?.acceptanceOfInspectionReportLandlord?.signOfLandlord &&
-              singleProperty.inspectionReport?.authorisationForDeduction
-                ?.signOfTenantOrAgent &&
+              singleProperty?.acceptanceOfInspectionReportLandlord
+                ?.signOfLandlord &&
+              singleProperty?.authorisationForDeduction?.signOfTenantOrAgent &&
               "hidden"
             } pt-5`}
           >

@@ -9,7 +9,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
             RESIDENTIAL RENTAL INSPECTION REPORT
           </h3>
         </div>
-        <div className=" sm:space-y-2 space-y-2">
+        <div className="sm:space-y-2 space-y-2">
           {/* Move-In Inspection Date */}
           <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
             <label
@@ -30,13 +30,13 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   required: false,
                 })}
                 value={
-                  singleProperty.inspectionReport?.propertyInspectionDate
-                    ?.inspectionDate &&
-                  new Date(
-                    singleProperty.inspectionReport?.propertyInspectionDate?.inspectionDate
-                  )
-                    .toISOString()
-                    .substring(0, 10)
+                  singleProperty?.propertyInspectionDate?.inspectionDate
+                    ? new Date(
+                        singleProperty?.propertyInspectionDate?.inspectionDate
+                      )
+                        .toISOString()
+                        .substring(0, 10)
+                    : singleProperty?.propertyInspectionDate?.inspectionDate
                 }
               />
             </div>
@@ -91,10 +91,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                 {...register("rentalPropertyInformation.address", {
                   required: false,
                 })}
-                value={
-                  singleProperty.inspectionReport?.rentalPropertyInformation
-                    ?.address
-                }
+                value={singleProperty?.rentalPropertyInformation?.address}
               />
             </div>
           </div>
@@ -129,10 +126,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("inspectorInformation.inspectorName", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.inspectorInformation
-                      ?.inspectorName
-                  }
+                  value={singleProperty?.inspectorInformation?.inspectorName}
                 />
               </div>
             </div>
@@ -154,10 +148,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("inspectorInformation.inspectorPhone", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.inspectorInformation
-                      ?.inspectorPhone
-                  }
+                  value={singleProperty?.inspectorInformation?.inspectorPhone}
                 />
               </div>
             </div>
@@ -179,10 +170,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("inspectorInformation.inspectorEmail", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.inspectorInformation
-                      ?.inspectorEmail
-                  }
+                  value={singleProperty?.inspectorInformation?.inspectorEmail}
                 />
               </div>
             </div>
@@ -218,10 +206,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("tenantInformation.tenantName", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.tenantInformation
-                      ?.tenantName
-                  }
+                  value={singleProperty?.tenantInformation?.tenantName}
                 />
               </div>
             </div>
@@ -243,10 +228,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("tenantInformation.tenantPhone", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.tenantInformation
-                      ?.tenantPhone
-                  }
+                  value={singleProperty?.tenantInformation?.tenantPhone}
                 />
               </div>
             </div>
@@ -268,10 +250,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   {...register("tenantInformation.tenantEmail", {
                     required: false,
                   })}
-                  value={
-                    singleProperty.inspectionReport?.tenantInformation
-                      ?.tenantEmail
-                  }
+                  value={singleProperty?.tenantInformation?.tenantEmail}
                 />
               </div>
             </div>
@@ -294,9 +273,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm  border-gray-300 rounded-md"
                 placeholder=""
                 {...register("agentInformation.agentName", { required: false })}
-                value={
-                  singleProperty.inspectionReport?.agentInformation?.agentName
-                }
+                value={singleProperty?.agentInformation?.agentName}
               />
             </div>
           </div>
@@ -321,8 +298,7 @@ const BasicInspectionInfo = ({ register, singleProperty }) => {
                   required: false,
                 })}
                 value={
-                  singleProperty.inspectionReport?.forwardingAddAfterMoveOut
-                    ?.forwardingAddress
+                  singleProperty?.forwardingAddAfterMoveOut?.forwardingAddress
                 }
               />
             </div>

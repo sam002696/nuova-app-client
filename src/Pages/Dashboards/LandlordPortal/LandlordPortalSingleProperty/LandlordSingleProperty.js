@@ -29,6 +29,7 @@ import InspectionReport from "./InspectionReport/InspectionReport";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../../Redux/userSlice";
+import { propertyFetchingSuccess } from "../../../../Redux/singlePropertySlice";
 
 const navigation = [
   { name: "Review", to: "", current: true },
@@ -64,6 +65,9 @@ function classNames(...classes) {
 }
 
 const LandlordSingleProperty = () => {
+  const { inspectionReport } = useSelector(
+    (state) => state.singlePropertyDetails
+  );
   const history = useHistory();
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -84,12 +88,13 @@ const LandlordSingleProperty = () => {
         );
         console.log(res.data);
         setSingleProperty(res.data);
+        dispatch(propertyFetchingSuccess(res.data));
       } catch (err) {
         console.log(err);
       }
     };
     handleSingleProperty();
-  }, [id]);
+  }, [id, dispatch]);
 
   const subNavigation = [
     {
@@ -468,7 +473,7 @@ const LandlordSingleProperty = () => {
                     <AddCertificate singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/property-inspection-report`}>
-                    <InspectionReport singleProperty={singleProperty} />
+                    <InspectionReport singleProperty={inspectionReport} />
                   </Route>
                   <Route path={`${path}/inventory`}>
                     <Inventory singleProperty={singleProperty} />

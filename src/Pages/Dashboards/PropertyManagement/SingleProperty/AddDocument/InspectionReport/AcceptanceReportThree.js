@@ -1,6 +1,6 @@
 import React from "react";
 
-const AcceptanceReportThree = () => {
+const AcceptanceReportThree = ({ register, singleProperty }) => {
   return (
     <div>
       <div className="pt-6 space-y-6 sm:pt-8 sm:space-y-5">
@@ -26,6 +26,16 @@ const AcceptanceReportThree = () => {
                 autoComplete="condition"
                 className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 placeholder="Landlord Name"
+                {...register(
+                  "acceptanceOfInspectionReportLandlord.landlordName",
+                  {
+                    required: false,
+                  }
+                )}
+                defaultValue={
+                  singleProperty?.inspectionReport
+                    ?.acceptanceOfInspectionReportLandlord?.landlordName
+                }
               />
             </div>
           </div>
@@ -37,11 +47,26 @@ const AcceptanceReportThree = () => {
                 <div className="relative flex items-start">
                   <div className="flex h-5 items-center">
                     <input
-                      id="comments"
-                      aria-describedby="comments-description"
-                      name="comments"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      id="agreement1"
+                      name="agreement"
+                      type="radio"
+                      value="AGREE that this report fairly represents the condition of
+                      the rental property"
+                      className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                      {...register(
+                        "acceptanceOfInspectionReportLandlord.agreement",
+                        {
+                          required: false,
+                        }
+                      )}
+                      checked={
+                        singleProperty?.inspectionReport
+                          ?.acceptanceOfInspectionReportLandlord?.agreement &&
+                        singleProperty?.inspectionReport
+                          ?.acceptanceOfInspectionReportLandlord?.agreement ===
+                          "AGREE that this report fairly represents the condition of the rental property" &&
+                        "checked"
+                      }
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -58,11 +83,27 @@ const AcceptanceReportThree = () => {
                 <div className="relative flex items-start">
                   <div className="flex h-5 items-center">
                     <input
-                      id="offers"
-                      aria-describedby="offers-description"
-                      name="offers"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      id="agreement2"
+                      name="agreement"
+                      type="radio"
+                      value="DO NOT AGREE that this report fairly represents the
+                      condition of the rental property for the following
+                      reasons"
+                      className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                      {...register(
+                        "acceptanceOfInspectionReportLandlord.agreement",
+                        {
+                          required: false,
+                        }
+                      )}
+                      checked={
+                        singleProperty?.inspectionReport
+                          ?.acceptanceOfInspectionReportLandlord?.agreement &&
+                        singleProperty?.inspectionReport
+                          ?.acceptanceOfInspectionReportLandlord?.agreement ===
+                          "DO NOT AGREE that this report fairly represents the condition of the rental property for the following reasons" &&
+                        "checked"
+                      }
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -84,7 +125,16 @@ const AcceptanceReportThree = () => {
                       name="description"
                       rows={3}
                       className="block w-full mx-7 rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                      defaultValue={""}
+                      {...register(
+                        "acceptanceOfInspectionReportLandlord.disagreeTerm",
+                        {
+                          required: false,
+                        }
+                      )}
+                      defaultValue={
+                        singleProperty?.inspectionReport
+                          ?.acceptanceOfInspectionReportLandlord?.disagreeTerm
+                      }
                     />
                   </div>
                 </div>
@@ -106,6 +156,21 @@ const AcceptanceReportThree = () => {
                   name="project-name"
                   id="project-name"
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                  {...register(
+                    "acceptanceOfInspectionReportLandlord.signingDate",
+                    {
+                      required: false,
+                    }
+                  )}
+                  value={
+                    singleProperty?.inspectionReport
+                      ?.acceptanceOfInspectionReportLandlord?.signingDate &&
+                    new Date(
+                      singleProperty?.inspectionReport?.acceptanceOfInspectionReportLandlord?.signingDate
+                    )
+                      .toISOString()
+                      .substring(0, 10)
+                  }
                 />
               </div>
             </div>
@@ -118,12 +183,52 @@ const AcceptanceReportThree = () => {
                 Signature of Landlord
               </label>
               <div className="mt-1">
-                <input
-                  type="text"
-                  name="project-name"
-                  id="project-name"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                />
+                {singleProperty?.inspectionReport
+                  ?.acceptanceOfInspectionReportLandlord?.signOfLandlord ? (
+                  <span
+                    className={`inline-block h-16 w-72 overflow-hidden  ${
+                      singleProperty?.inspectionReport
+                        ?.acceptanceOfInspectionReportLandlord?.signOfLandlord
+                        ? "bg-white border"
+                        : "bg-gray-100"
+                    }`}
+                  >
+                    {singleProperty?.inspectionReport
+                      ?.acceptanceOfInspectionReportLandlord?.signOfLandlord ? (
+                      <img
+                        className=" w-full h-full"
+                        src={
+                          singleProperty?.inspectionReport
+                            ?.acceptanceOfInspectionReportLandlord
+                            ?.signOfLandlord
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      <p className=" text-red-400 font-bold">
+                        No signature has been uploaded
+                      </p>
+                    )}
+                  </span>
+                ) : (
+                  <input
+                    type="file"
+                    name="project-name"
+                    id="project-name"
+                    accept="image/*"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
+                    {...register(
+                      "acceptanceOfInspectionReportLandlord.signOfLandlord",
+                      {
+                        required: false,
+                      }
+                    )}
+                    defaultValue={
+                      singleProperty?.inspectionReport
+                        ?.acceptanceOfInspectionReportLandlord?.signOfLandlord
+                    }
+                  />
+                )}
               </div>
             </div>
           </div>

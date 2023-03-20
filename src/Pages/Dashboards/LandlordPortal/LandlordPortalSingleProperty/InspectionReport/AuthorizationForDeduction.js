@@ -29,10 +29,7 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                 {...register("authorisationForDeduction.name", {
                   required: false,
                 })}
-                defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.name
-                }
+                defaultValue={singleProperty?.authorisationForDeduction?.name}
               />
             </div>
             <label
@@ -60,8 +57,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[0].amountDeducted
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[0]
+                    .amountDeducted
                 }
               />
               <input
@@ -78,8 +75,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[0].desOfDeposit
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[0]
+                    .desOfDeposit
                 }
               />
             </div>
@@ -101,8 +98,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[1].amountDeducted
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[1]
+                    .amountDeducted
                 }
               />
               <input
@@ -119,8 +116,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[1].desOfDeposit
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[1]
+                    .desOfDeposit
                 }
               />
             </div>
@@ -142,8 +139,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[2].amountDeducted
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[2]
+                    .amountDeducted
                 }
               />
               <input
@@ -160,8 +157,8 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                   }
                 )}
                 defaultValue={
-                  singleProperty.inspectionReport?.authorisationForDeduction
-                    ?.amountDeposit?.[2].desOfDeposit
+                  singleProperty?.authorisationForDeduction?.amountDeposit?.[2]
+                    .desOfDeposit
                 }
               />
             </div>
@@ -186,10 +183,9 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                     required: false,
                   })}
                   defaultValue={
-                    singleProperty.inspectionReport?.authorisationForDeduction
-                      ?.signingDate &&
+                    singleProperty?.authorisationForDeduction?.signingDate &&
                     new Date(
-                      singleProperty.inspectionReport?.authorisationForDeduction?.signingDate
+                      singleProperty?.authorisationForDeduction?.signingDate
                     )
                       .toISOString()
                       .substring(0, 10)
@@ -206,22 +202,47 @@ const AuthorizationForDeduction = ({ register, singleProperty }) => {
                 Signature of Landlord
               </label>
               <div className="mt-1">
-                <input
-                  type="text"
-                  name="signOfTenantOrAgent"
-                  id="signOfTenantOrAgent"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                  {...register(
-                    "authorisationForDeduction.signOfTenantOrAgent",
-                    {
-                      required: false,
-                    }
-                  )}
-                  defaultValue={
-                    singleProperty.inspectionReport?.authorisationForDeduction
-                      ?.signOfTenantOrAgent
-                  }
-                />
+                {singleProperty?.authorisationForDeduction
+                  ?.signOfTenantOrAgent ? (
+                  <span
+                    className={`inline-block h-16 w-72 overflow-hidden  ${
+                      singleProperty?.authorisationForDeduction
+                        ?.signOfTenantOrAgent
+                        ? "bg-white border"
+                        : "bg-gray-100"
+                    }`}
+                  >
+                    {singleProperty?.authorisationForDeduction
+                      ?.signOfTenantOrAgent ? (
+                      <img
+                        className=" w-full h-full"
+                        src={
+                          singleProperty?.authorisationForDeduction
+                            ?.signOfTenantOrAgent
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      <p className=" text-red-400 font-bold">
+                        No signature has been uploaded
+                      </p>
+                    )}
+                  </span>
+                ) : (
+                  <input
+                    type="file"
+                    name="project-name"
+                    id="project-name"
+                    accept="image/*"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
+                    {...register(
+                      "authorisationForDeduction.signOfTenantOrAgent",
+                      {
+                        required: false,
+                      }
+                    )}
+                  />
+                )}
               </div>
             </div>
           </div>

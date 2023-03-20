@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   singlePropertyDetails: null,
+  inspectionReport: null,
   loading: false,
   error: false,
 };
@@ -16,15 +17,15 @@ export const singlePropertySlice = createSlice({
     propertyFetchingSuccess: (state, action) => {
       state.loading = false;
       state.singlePropertyDetails = action.payload;
+      state.inspectionReport = action.payload.inspectionReport;
       state.error = false;
     },
     propertyFetchingFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
-    updateSingleProperty: (state, action) => {
-      state.singlePropertyDetails = action.payload;
-      //   window.location.reload(false);
+    updateInspectionReport: (state, action) => {
+      state.inspectionReport = action.payload;
     },
   },
 });
@@ -35,6 +36,8 @@ export const {
   propertyFetchingFailure,
   singlePropertyDetails,
   updateSingleProperty,
+  updateInspectionReport,
+  inspectionReport,
 } = singlePropertySlice.actions;
 
 export default singlePropertySlice.reducer;

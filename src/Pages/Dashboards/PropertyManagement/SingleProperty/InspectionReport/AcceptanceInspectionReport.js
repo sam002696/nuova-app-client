@@ -39,10 +39,11 @@ const AcceptanceInspectionReport = ({ register }) => {
           </label>
           <div className="mt-1">
             <input
-              type="text"
+              type="file"
               name="signOfInspectorOrAgent"
               id="signOfInspectorOrAgent"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              accept="image/*"
+              className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
               {...register("acceptanceOfInspectionReport.signOfInspector", {
                 required: false,
               })}

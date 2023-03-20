@@ -28,10 +28,9 @@ const AcceptanceInspectionReport = ({ register, singleProperty }) => {
                 required: false,
               })}
               value={
-                singleProperty.inspectionReport?.acceptanceOfInspectionReport
-                  ?.signingDate &&
+                singleProperty?.acceptanceOfInspectionReport?.signingDate &&
                 new Date(
-                  singleProperty.inspectionReport?.acceptanceOfInspectionReport?.signingDate
+                  singleProperty?.acceptanceOfInspectionReport?.signingDate
                 )
                   .toISOString()
                   .substring(0, 10)
@@ -47,17 +46,39 @@ const AcceptanceInspectionReport = ({ register, singleProperty }) => {
             Signature of Inspector (or Agent)
           </label>
           <div className="mt-1">
+            <span
+              className={`inline-block h-16 w-72 overflow-hidden  ${
+                singleProperty?.acceptanceOfInspectionReport?.signOfInspector
+                  ? "bg-white border"
+                  : "bg-gray-100"
+              }`}
+            >
+              {singleProperty?.acceptanceOfInspectionReport?.signOfInspector ? (
+                <img
+                  className=" w-full h-full"
+                  src={
+                    singleProperty?.acceptanceOfInspectionReport
+                      ?.signOfInspector
+                  }
+                  alt=""
+                />
+              ) : (
+                <p className=" text-red-400 font-bold">
+                  No signature has been uploaded
+                </p>
+              )}
+            </span>
+
             <input
               type="text"
               name="signOfInspectorOrAgent"
               id="signOfInspectorOrAgent"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              className="hidden w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               {...register("acceptanceOfInspectionReport.signOfInspector", {
                 required: false,
               })}
               value={
-                singleProperty.inspectionReport?.acceptanceOfInspectionReport
-                  ?.signOfInspector
+                singleProperty?.acceptanceOfInspectionReport?.signOfInspector
               }
             />
           </div>
