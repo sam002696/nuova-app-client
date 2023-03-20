@@ -17,7 +17,7 @@ const TenantPortalMaintenance = () => {
   const timeline = [
     singleTracking?.Timeline?.taskOne?.maintenanceReq === true && {
       id: 1,
-      content: "Maintenance Request send to",
+      content: "Maintenance Request sent to",
       target: "Property Manager",
       task: singleTracking?.Timeline?.taskOne?.maintenanceReq,
       date: singleTracking?.Timeline?.taskOne?.createdAt,

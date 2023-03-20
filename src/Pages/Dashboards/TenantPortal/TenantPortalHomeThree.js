@@ -50,6 +50,18 @@ const TenantPortalHomeThree = () => {
     handleTenantProperty();
   }, [currentUser.email]);
   console.log(tenantProperty);
+
+  const getNextRentalPaymentDueDate = (leaseStartDate) => {
+    const startTimestamp = new Date(leaseStartDate).getTime();
+    let nextTimestamp = startTimestamp + 30 * 24 * 60 * 60 * 1000; // set to 30 days after lease start date
+    const currentDate = new Date();
+
+    while (nextTimestamp <= currentDate.getTime()) {
+      nextTimestamp += 30 * 24 * 60 * 60 * 1000; // add 30 days until next rental payment due date is greater than current date
+    }
+
+    return new Date(nextTimestamp).toDateString();
+  };
   return (
     <>
       <div className=" bg-gradient-to-l from-stone-100 to-white">
@@ -200,7 +212,7 @@ const TenantPortalHomeThree = () => {
                 </div>
               </Link>
             </div>
-            <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
               {tenantProperty?.tenantDetails
                 ?.filter(
                   (singletenant) =>
@@ -293,7 +305,7 @@ const TenantPortalHomeThree = () => {
                     </div>
                   </>
                 ))}
-            </div>
+            </div> */}
           </div>
 
           <div className="relative pt-4 pb-20  lg:pt-4 lg:pb-28">
@@ -325,41 +337,26 @@ const TenantPortalHomeThree = () => {
                             <p className="text-sm font-medium text-gray-400">
                               Monthly Rent (payment is secured)
                             </p>
-                            <div className="flex flex-row justify-between mt-8">
-                              <p className=" flex items-center text-md font-medium text-gray-600">
-                                <CalendarIcon
-                                  className="h-6 w-6 text-green-400 rounded-lg"
-                                  aria-hidden="true"
-                                />{" "}
-                                <span className="mx-2">
-                                  <time>
-                                    {new Date(
-                                      filteredTenant?.tenantResidency?.leaseStartDate
-                                    ).toLocaleDateString()}
-                                  </time>
-                                </span>
+
+                            <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                              <p className="text-md font-medium text-green-600">
+                                Next Rental Payment Due
                               </p>
-                              <p className=" flex items-center text-md font-medium text-cyan-600">
-                                <ArrowRightIcon
-                                  className="h-4 w-6 text-gray-700 rounded-lg"
-                                  aria-hidden="true"
-                                />{" "}
-                                <span></span>
-                              </p>
-                              <p className="flex text-md font-medium text-gray-600">
+                              <p className="text-md font-medium text-gray-600">
                                 <span>
                                   <time>
-                                    {new Date(
-                                      filteredTenant?.tenantResidency?.leaseEndDate
-                                    ).toLocaleDateString()}
+                                    {/* {new Date(
+                                      filteredTenant?.tenantResidency?.leaseStartDate
+                                    ).toDateString()} */}
+
+                                    {getNextRentalPaymentDueDate(
+                                      filteredTenant?.tenantResidency
+                                        ?.leaseStartDate
+                                    )}
                                   </time>
                                 </span>
                               </p>
                             </div>
-                            <p className="text-sm font-medium text-gray-400 mt-1">
-                              Tenancy Period (12 Months)
-                            </p>
-
                             <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
                               <p className="text-md font-medium text-green-600">
                                 Next Renewal
@@ -599,7 +596,7 @@ const TenantPortalHomeThree = () => {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
               <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
@@ -663,7 +660,7 @@ const TenantPortalHomeThree = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

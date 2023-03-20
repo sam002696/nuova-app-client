@@ -570,7 +570,7 @@ const TenantPropertyThree = () => {
                       ))}
                   </div>
 
-                  <div className="border-t divide-y divide-gray-200">
+                  {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -641,7 +641,7 @@ const TenantPropertyThree = () => {
                           )}
                         </Disclosure>
                       ))}
-                  </div>
+                  </div> */}
 
                   <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
@@ -771,7 +771,7 @@ const TenantPropertyThree = () => {
                       ))}
                   </div>
 
-                  <div className="border-t divide-y divide-gray-200">
+                  {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -882,7 +882,7 @@ const TenantPropertyThree = () => {
                           )}
                         </Disclosure>
                       ))}
-                  </div>
+                  </div> */}
                 </section>
               </div>
             </div>
