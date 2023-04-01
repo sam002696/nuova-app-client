@@ -18,6 +18,7 @@ import ChatLogin from "../../Chat/ChatLogin/ChatLogin";
 import ChatRegister from "../../Chat/ChatRegister/ChatRegister";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
+import Notification from "../../Notification/Notification";
 // import ManagerMaintenanceTwo from "./ManagerMaintenanceTwo";
 
 const userNavigation = [
@@ -201,12 +202,9 @@ const PropertyManagerDashboard = () => {
 
                   {/* Right section on desktop */}
                   <div className="hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5">
-                    <button
-                      type="button"
-                      className="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white"
-                    >
+                    <button type="button">
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      <Notification />
                     </button>
 
                     {/* Profile dropdown */}

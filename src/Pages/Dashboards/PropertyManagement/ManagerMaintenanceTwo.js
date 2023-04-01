@@ -161,7 +161,7 @@ const ManagerMaintenanceTwo = () => {
             {viewContractorBidding?.contracBiddingInfo?.map((bidding) => (
               <>
                 <div className=" grid grid-cols-6 justify-center items-center">
-                  <div className=" col-span-5 bg-indigo-200 p-5 border-b-2">
+                  <div className=" col-span-5 bg-cyan-200 p-5 border-b-2">
                     <h1>{bidding.contractorName}</h1>
                     <h1>{bidding.contractorEmail}</h1>
                     <h1>{bidding.BiddingAmount}</h1>
@@ -195,7 +195,7 @@ const ManagerMaintenanceTwo = () => {
           >
             <>
               <div className=" grid grid-cols-6 justify-center items-center">
-                <div className=" col-span-5 bg-indigo-200 p-5">
+                <div className=" col-span-5 bg-cyan-200 p-5">
                   <h1>{actionButton.contractorName}</h1>
                   <h1>{actionButton.contractorEmail}</h1>
                 </div>

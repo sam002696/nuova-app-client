@@ -95,7 +95,7 @@ const TenantPortalMaintenanceTwo = () => {
 
                 {tenantReports.map((report) => (
                   <>
-                    <div className=" grid grid-cols-4 my-10 border p-5 border-black bg-indigo-300">
+                    <div className=" grid grid-cols-4 my-10 border p-5 border-black bg-cyan-300">
                       <div className=" col-span-1">
                         <p>{report.issueName}</p>
                         <p>{report.email}</p>

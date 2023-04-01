@@ -168,7 +168,7 @@ const TenantPortalHomeThree = () => {
                   </div>
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-indigo-600">
+                      <p className="text-sm font-medium text-cyan-600">
                         {tenantProperty?.propertyAddress?.propertyName}
                       </p>
                       <div className="mt-2 block">
@@ -583,7 +583,7 @@ const TenantPortalHomeThree = () => {
                         <dd>
                           <Link
                             to="/tenant-portal-dashboard/tenant-portal-maintenance"
-                            className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                            className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 mt-3"
                           >
                             <PlusIcon className="h-4 w-4" aria-hidden="true" />
                             <span className="mx-2">Create One</span>

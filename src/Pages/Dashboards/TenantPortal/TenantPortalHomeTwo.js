@@ -2,13 +2,9 @@ import React from "react";
 
 import { Fragment } from "react";
 
-
 import {
   ArrowCircleUpIcon,
-
-
   ServerIcon,
-
   FastForwardIcon,
   CheckCircleIcon,
   UserAddIcon,
@@ -17,12 +13,7 @@ import {
   LocationMarkerIcon,
 } from "@heroicons/react/outline";
 
-import {
-  BookmarkIcon,
-
-} from "@heroicons/react/solid";
-
-
+import { BookmarkIcon } from "@heroicons/react/solid";
 
 const cards = [
   {
@@ -91,8 +82,6 @@ const features = [
   },
 ];
 
-
-
 const TenantPortalHomeTwo = () => {
   return (
     <>
@@ -124,7 +113,7 @@ const TenantPortalHomeTwo = () => {
                                             <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
                                                 <a
                                                     href="#"
-                                                    className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-cyan-700 shadow-sm hover:bg-indigo-50 sm:px-8"
+                                                    className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-cyan-700 shadow-sm hover:bg-cyan-50 sm:px-8"
                                                 >
                                                     Get started
                                                 </a>
@@ -244,9 +233,7 @@ const TenantPortalHomeTwo = () => {
                       </div>
                     </div>
                     <div className="bg-teal-50 px-5 py-3">
-                      <div className="text-sm">
-
-                      </div>
+                      <div className="text-sm"></div>
                     </div>
                   </div>
                 ))}

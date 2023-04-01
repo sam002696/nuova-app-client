@@ -180,7 +180,7 @@ const ContractorPortalHomeTwo = () => {
                     </div>
                     <button
                       type="button"
-                      className="inline-flex items-center rounded-md border border-transparent bg-green-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                      className="inline-flex items-center rounded-md border border-transparent bg-green-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2"
                     >
                       Get Started
                     </button>
@@ -332,7 +332,7 @@ const ContractorPortalHomeTwo = () => {
                       type="email"
                       autoComplete="email"
                       required
-                      className="w-full rounded-md border-gray-300 px-5 py-1 placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs"
+                      className="w-full rounded-md border-gray-300 px-5 py-1 placeholder-gray-500 focus:border-cyan-500 focus:ring-cyan-500 sm:max-w-xs"
                       placeholder="Enter your email"
                     />
                     <label htmlFor="email-address" className="sr-only">
@@ -344,7 +344,7 @@ const ContractorPortalHomeTwo = () => {
                       type="email"
                       autoComplete="email"
                       required
-                      className="w-full rounded-md border-gray-300 px-5 py-2 placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs mx-8"
+                      className="w-full rounded-md border-gray-300 px-5 py-2 placeholder-gray-500 focus:border-cyan-500 focus:ring-cyan-500 sm:max-w-xs mx-8"
                       placeholder="Job Location"
                     />
                     <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">

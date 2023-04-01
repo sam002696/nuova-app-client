@@ -41,7 +41,7 @@ const AcceptanceReportTwo = () => {
                       aria-describedby="comments-description"
                       name="comments"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -62,7 +62,7 @@ const AcceptanceReportTwo = () => {
                       aria-describedby="offers-description"
                       name="offers"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                     />
                   </div>
                   <div className="ml-3 text-sm">

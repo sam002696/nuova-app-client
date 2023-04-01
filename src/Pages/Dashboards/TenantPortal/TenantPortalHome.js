@@ -67,8 +67,8 @@ const actions = [
     name: "Notice",
     value: "Not Available",
     href: "#",
-    iconForeground: "text-indigo-700",
-    iconBackground: "bg-indigo-50",
+    iconForeground: "text-cyan-700",
+    iconBackground: "bg-cyan-50",
   },
 ];
 //   const recentHires = [

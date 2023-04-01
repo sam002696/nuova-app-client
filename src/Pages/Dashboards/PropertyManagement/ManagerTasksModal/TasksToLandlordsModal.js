@@ -180,7 +180,7 @@ const TasksToLandlordsModal = ({ open, setOpen, singletask }) => {
                                         <div className="ml-4 flex-shrink-0">
                                           <a
                                             href="#"
-                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                            className="font-medium text-cyan-600 hover:text-cyan-500"
                                           >
                                             Download
                                           </a>
@@ -202,7 +202,7 @@ const TasksToLandlordsModal = ({ open, setOpen, singletask }) => {
                                         <div className="ml-4 flex-shrink-0">
                                           <a
                                             href="#"
-                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                            className="font-medium text-cyan-600 hover:text-cyan-500"
                                           >
                                             Download
                                           </a>
@@ -311,7 +311,7 @@ const TasksToLandlordsModal = ({ open, setOpen, singletask }) => {
                                             <div className="ml-4 flex-shrink-0">
                                               <a
                                                 href="#"
-                                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                className="font-medium text-cyan-600 hover:text-cyan-500"
                                               >
                                                 Download
                                               </a>
@@ -330,7 +330,7 @@ const TasksToLandlordsModal = ({ open, setOpen, singletask }) => {
                                             <div className="ml-4 flex-shrink-0">
                                               <a
                                                 href="#"
-                                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                className="font-medium text-cyan-600 hover:text-cyan-500"
                                               >
                                                 Download
                                               </a>

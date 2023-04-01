@@ -624,7 +624,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         value="I/We would consider allowing tenants to have pets"
                         onChange={(e) => handlePetsChange(e)}
-                        className="h-4 w-4  border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -645,7 +645,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         onChange={(e) => handlePetsChange(e)}
                         value="I/We would not permit any pets within this property"
-                        className="h-4 w-4  border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -677,7 +677,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         value="yes"
                         onChange={(e) => handleStudentsChange(e)}
-                        className="h-4 w-4  border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -698,7 +698,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         value="no"
                         onChange={(e) => handleStudentsChange(e)}
-                        className="h-4 w-4  border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -729,7 +729,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         value="yes"
                         onChange={(e) => handleToLetChange(e)}
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -750,7 +750,7 @@ const SetThree = ({ formData, setFormData }) => {
                         type="radio"
                         value="no"
                         onChange={(e) => handleToLetChange(e)}
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -790,7 +790,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="double bedroom"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -810,7 +810,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Living/Sitting room"
                         onChange={(e) => handleRoomChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -830,7 +830,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Bathroom (with shower)"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -850,7 +850,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="showerroom"
                         onChange={(e) => handleRoomChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -870,7 +870,7 @@ const SetThree = ({ formData, setFormData }) => {
                         onChange={(e) => handleRoomChange(e)}
                         name="Single Bedroom"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -890,7 +890,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Open plan kitchen/Living"
                         onChange={(e) => handleRoomChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -910,7 +910,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Bathroom (with bath only)"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -930,7 +930,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Separate WC"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -950,7 +950,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Box room"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -970,7 +970,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Separate kitchen"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -990,7 +990,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="En-suite bathroomm"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1010,7 +1010,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Utility room"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1030,7 +1030,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Study/Office"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1050,7 +1050,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Dining room"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1070,7 +1070,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="En-suite shower room"
                         type="checkbox"
                         onChange={(e) => handleRoomChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1120,7 +1120,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Gas central heating"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1140,7 +1140,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="White meter heating"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1160,7 +1160,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Electric central heating"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1180,7 +1180,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Under floor heating"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1200,7 +1200,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Double glazing"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1220,7 +1220,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Tumble dryerr"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1240,7 +1240,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Dishwasher"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1260,7 +1260,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="TV"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1277,7 +1277,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Balcony/Terrace"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1297,7 +1297,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Private garden"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1317,7 +1317,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Shared Garden"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -1337,7 +1337,7 @@ const SetThree = ({ formData, setFormData }) => {
                         name="Washing machine"
                         type="checkbox"
                         onChange={(e) => handleFeaturesAppliancesChange(e)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">

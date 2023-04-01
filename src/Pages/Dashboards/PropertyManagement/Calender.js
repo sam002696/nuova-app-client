@@ -382,7 +382,7 @@ export default function Calender() {
                   dateTime={format(day, "yyyy-MM-dd")}
                   className={
                     isToday(day)
-                      ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-400 font-semibold text-white"
+                      ? "flex h-6 w-6 items-center justify-center rounded-full bg-cyan-400 font-semibold text-white"
                       : undefined
                   }
                 >

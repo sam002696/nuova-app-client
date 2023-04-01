@@ -289,7 +289,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
                           type="submit"
                           onClick={(e) => handleSendTask(e)}
                           value="Send"
-                          className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-indigo-600 px-4 py-2 text-base font-medium shadow-sm hover:bg-indigo-800  sm:col-start-1 sm:mt-4 sm:text-sm text-white cursor-pointer"
+                          className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-cyan-600 px-4 py-2 text-base font-medium shadow-sm hover:bg-cyan-800  sm:col-start-1 sm:mt-4 sm:text-sm text-white cursor-pointer"
                         ></input>
                       </div>
                     </form>

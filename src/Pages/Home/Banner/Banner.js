@@ -93,7 +93,7 @@ const Banner = () => {
                       <div className="mt-3 sm:mt-0">
                         <button
                           type="submit"
-                          className="block rounded-md bg-white py-3 px-4 font-medium text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+                          className="block rounded-md bg-white py-3 px-4 font-medium text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-gray-900"
                         >
                           Get Started
                         </button>
@@ -110,7 +110,7 @@ const Banner = () => {
                   </span>
                   <span className="block text-white">Letting</span>
                 </h1>
-                <p className=" mt-6 max-w-lg text-left text-xl text-indigo-200 sm:max-w-3xl">
+                <p className=" mt-6 max-w-lg text-left text-xl text-cyan-200 sm:max-w-3xl">
                   More than just your traditional property manager, we are a
                   premium property management service here in Glasgow
                 </p>
@@ -118,7 +118,7 @@ const Banner = () => {
                   <div className="mt-3 sm:mt-0">
                     <button
                       type="submit"
-                      className="block rounded-md bg-white py-3 px-4 font-medium text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+                      className="block rounded-md bg-white py-3 px-4 font-medium text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-gray-900"
                     >
                       Get Started
                     </button>
