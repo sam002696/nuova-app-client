@@ -12,18 +12,12 @@ import RentalPropertyCondition from "./RentalPropertyCondition";
 import RepairsToBeCompleted from "./RepairsToBeCompleted";
 import { updateInspectionReport } from "../../../../../Redux/singlePropertySlice";
 
-const InspectionReport = ({ singleProperty }) => {
+const InspectionReport = ({ singleProperty, property }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (form) => {
-    console.log(form.rentalPropertyInformation?.address);
-    console.log(form.acceptanceOfInspectionReport?.signOfInspector);
-    console.log(form);
-    form.acceptanceOfInspectionReport.signOfInspector =
-      singleProperty?.acceptanceOfInspectionReport.signOfInspector;
-    console.log(form.acceptanceOfInspectionReport.signOfInspector);
     setLoading(true);
     const data = new FormData();
     const data1 = new FormData();
@@ -60,7 +54,7 @@ const InspectionReport = ({ singleProperty }) => {
     console.log(form.authorisationForDeduction.signOfTenantOrAgent);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/inspectionReport/${singleProperty?._id}`,
+        `http://localhost:5500/api/inspectionReport/${singleProperty?._id}/${property?._id}`,
         form
       );
       if (res.data) {

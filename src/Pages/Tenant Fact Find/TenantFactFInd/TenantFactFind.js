@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Disclosure } from "@headlessui/react";
-import { HomeIcon, EyeIcon } from "@heroicons/react/solid";
+import { HomeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import StageOne from "../StageOne/StageOne";
@@ -20,12 +19,6 @@ const TenantFactFind = () => {
 
   const url = "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload";
 
-  const navigation = [
-    { name: "Dashboard", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Applicants", href: "#" },
-    { name: "Company", href: "#" },
-  ];
   const breadcrumbs = [
     { name: "Stage 1", href: "#", current: false },
     { name: "Stage 2", href: "#", current: true },
@@ -34,24 +27,21 @@ const TenantFactFind = () => {
     { name: "Stage 5", href: "#", current: true },
     { name: "Stage 6", href: "#", current: true },
   ];
-  const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
-  ];
+  // const userNavigation = [
+  //   { name: "Your Profile", href: "#" },
+  //   { name: "Settings", href: "#" },
+  //   { name: "Sign out", href: "#" },
+  // ];
 
   const onSubmit = async (reportData) => {
     setLoading(true);
     const data = new FormData();
     const photoGraphicIdFile = reportData?.tenantInfo?.photographicId[0];
     const creditfile = reportData?.guarantorDetails?.creditScore[0];
-
-    console.log(reportData?.guarantorDetails?.guarantor);
     if (
       reportData?.guarantorDetails?.guarantor === "No" &&
       reportData?.guarantorDetails?.salaryChanging === "Yes"
     ) {
-      console.log(reportData?.guarantorDetails?.guarantor);
       const proofECFile =
         reportData?.guarantorDetails?.proofEmploymentContract[0];
 

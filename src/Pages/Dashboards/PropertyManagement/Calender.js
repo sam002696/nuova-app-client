@@ -27,6 +27,7 @@ import {
 import { Menu } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import CalenderEventsModal from "./CalenderEventsModal";
+import Swal from "sweetalert2";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -47,7 +48,11 @@ export default function Calender() {
         data
       );
       if (res.data) {
-        alert("FORM SUBMITTED");
+        Swal.fire(
+          "Event addition is successful!",
+          "New event been added in the calender!",
+          "success"
+        );
         window.location.reload(false);
       }
     } catch (err) {

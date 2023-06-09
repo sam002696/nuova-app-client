@@ -35,6 +35,10 @@
     height: calc(100vh - 1px);
   }
 
+  .height-custom-notifications {
+    height: calc(100vh - 450px);
+  }
+
   .custom-border-radius {
     border-radius: 0px 10px 10px 10px;
   }

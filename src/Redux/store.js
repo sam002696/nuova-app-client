@@ -3,6 +3,7 @@ import userReducer from "./userSlice";
 // import userRegisterReducer from "./userRegisterSlice";
 import tenantPropertyDetailsReducer from "./tenantPropertySlice";
 import singlePropertyDetailsReducer from "./singlePropertySlice";
+import notificationDetailsReducer from "./notificationSlice";
 // import maintenanceReportsReducer from "./allReportsSlice";
 // import contractorCurrentJobsReducer from "./contractorJobsSlice";
 import {
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   //   userRegister: userRegisterReducer,
   tenantPropertyDetails: tenantPropertyDetailsReducer,
   singlePropertyDetails: singlePropertyDetailsReducer,
+  notifications: notificationDetailsReducer,
   //   maintenanceReports: maintenanceReportsReducer,
   //   contractorCurrentJobs: contractorCurrentJobsReducer,
 });

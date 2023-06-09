@@ -473,7 +473,10 @@ const LandlordSingleProperty = () => {
                     <AddCertificate singleProperty={singleProperty} />
                   </Route>
                   <Route path={`${path}/property-inspection-report`}>
-                    <InspectionReport singleProperty={inspectionReport} />
+                    <InspectionReport
+                      property={singleProperty}
+                      singleProperty={inspectionReport}
+                    />
                   </Route>
                   <Route path={`${path}/inventory`}>
                     <Inventory singleProperty={singleProperty} />
