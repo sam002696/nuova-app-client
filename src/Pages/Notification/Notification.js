@@ -22,7 +22,6 @@ import {
 
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-// import { format } from "timeago.js";
 import { formatDistanceToNow } from "date-fns";
 import {
   notificationContractor,
@@ -32,10 +31,10 @@ import {
   notificationPropertyManager,
   notificationTenant,
 } from "../../Redux/notificationSlice";
+import io from "socket.io-client";
 
 const Notification = () => {
   const dispatch = useDispatch();
-  // const [notifications, setNotifications] = useState({});
   const { currentUser } = useSelector((state) => state.user);
   const {
     propertyManagerNotifications,
@@ -45,20 +44,33 @@ const Notification = () => {
     allNotifications,
   } = useSelector((state) => state.notifications);
   console.log(allNotifications);
+  // fetching notifications from 6500
+  useEffect(() => {
+    const socket = io("http://localhost:6500");
+    dispatch(notificationFetchingStart());
+    socket.on("notifications", (data) => {
+      console.log("server notifications", data);
+      if (data[0]) {
+        dispatch(notificationFetchingSuccess(data[0]));
+      } else {
+        dispatch(notificationFetchingSuccess(data));
+      }
+    });
+  }, [dispatch]);
+  // fetching the notifications from 5500
   useEffect(() => {
     const handleFetchAllNotifications = async () => {
       try {
-        dispatch(notificationFetchingStart());
+        // dispatch(notificationFetchingStart());
         const res = await axios.get(`http://localhost:5500/api/notifications`);
-        console.log(res.data);
-        // setNotifications(res.data);
-        dispatch(notificationFetchingSuccess(res.data));
+        console.log("main notifications", res.data);
+        // dispatch(notificationFetchingSuccess(res.data));
       } catch (err) {
         console.log(err);
       }
     };
     handleFetchAllNotifications();
-  }, [dispatch]);
+  }, []);
 
   // property manager dashboard
 
@@ -100,20 +112,20 @@ const Notification = () => {
 
   const concatenatedNotificationsTenant = useMemo(
     () => [
-      ...(allNotifications.TenantMaintenance?.TenantMaintenanceAcceptance
-        ? allNotifications.TenantMaintenance?.TenantMaintenanceAcceptance
+      ...(allNotifications?.TenantMaintenance?.TenantMaintenanceAcceptance
+        ? allNotifications?.TenantMaintenance?.TenantMaintenanceAcceptance
         : []),
-      ...(allNotifications.TenantMaintenance?.contractorAssignInfo
-        ? allNotifications.TenantMaintenance?.contractorAssignInfo
+      ...(allNotifications?.TenantMaintenance?.contractorAssignInfo
+        ? allNotifications?.TenantMaintenance?.contractorAssignInfo
         : []),
-      ...(allNotifications.TenantMaintenance?.jobCompletion
-        ? allNotifications.TenantMaintenance?.jobCompletion
+      ...(allNotifications?.TenantMaintenance?.jobCompletion
+        ? allNotifications?.TenantMaintenance?.jobCompletion
         : []),
-      ...(allNotifications.TenantMaintenance?.jobIncomplete
-        ? allNotifications.TenantMaintenance?.jobIncomplete
+      ...(allNotifications?.TenantMaintenance?.jobIncomplete
+        ? allNotifications?.TenantMaintenance?.jobIncomplete
         : []),
-      ...(allNotifications.TaskReceiveTenant
-        ? allNotifications.TaskReceiveTenant
+      ...(allNotifications?.TaskReceiveTenant
+        ? allNotifications?.TaskReceiveTenant
         : []),
     ],
     [allNotifications]
@@ -127,20 +139,20 @@ const Notification = () => {
 
   const concatenatedNotificationsContractor = useMemo(
     () => [
-      ...(allNotifications.ContractorJobPosting
-        ? allNotifications.ContractorJobPosting
+      ...(allNotifications?.ContractorJobPosting
+        ? allNotifications?.ContractorJobPosting
         : []),
-      ...(allNotifications.Jobs?.CompleteJobs
-        ? allNotifications.Jobs?.CompleteJobs
+      ...(allNotifications?.Jobs?.CompleteJobs
+        ? allNotifications?.Jobs?.CompleteJobs
         : []),
-      ...(allNotifications.Jobs?.InCompleteJobs
-        ? allNotifications.Jobs?.InCompleteJobs
+      ...(allNotifications?.Jobs?.InCompleteJobs
+        ? allNotifications?.Jobs?.InCompleteJobs
         : []),
-      ...(allNotifications.Jobs?.CurrentJobs
-        ? allNotifications.Jobs?.CurrentJobs
+      ...(allNotifications?.Jobs?.CurrentJobs
+        ? allNotifications?.Jobs?.CurrentJobs
         : []),
-      ...(allNotifications.Jobs?.DeclinedJobs
-        ? allNotifications.Jobs?.DeclinedJobs
+      ...(allNotifications?.Jobs?.DeclinedJobs
+        ? allNotifications?.Jobs?.DeclinedJobs
         : []),
     ],
     [allNotifications]
@@ -154,14 +166,14 @@ const Notification = () => {
 
   const concatenatedNotificationsLandlord = useMemo(
     () => [
-      ...(allNotifications.TaskReceiveLandlord
-        ? allNotifications.TaskReceiveLandlord
+      ...(allNotifications?.TaskReceiveLandlord
+        ? allNotifications?.TaskReceiveLandlord
         : []),
-      ...(allNotifications.PropertyAdd?.landlord
-        ? allNotifications.PropertyAdd?.landlord
+      ...(allNotifications?.PropertyAdd?.landlord
+        ? allNotifications?.PropertyAdd?.landlord
         : []),
-      ...(allNotifications.ReportsDocuments?.landlord?.inspectionReport
-        ? allNotifications.ReportsDocuments?.landlord?.inspectionReport
+      ...(allNotifications?.ReportsDocuments?.landlord?.inspectionReport
+        ? allNotifications?.ReportsDocuments?.landlord?.inspectionReport
         : []),
     ],
     [allNotifications]
@@ -175,12 +187,45 @@ const Notification = () => {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none ">
-          <BellIcon className="h-7 w-7" aria-hidden="true" />
-          {/* <span className="absolute top-0 right-0 block h-2 w-2 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-red-400 ring-2 ring-white" /> */}
-        </Menu.Button>
-      </div>
+      {((currentUser.role === "Property Manager" &&
+        propertyManagerNotifications?.length !== 0) ||
+        (currentUser.role === "Tenant" && tenantNotifications?.length !== 0) ||
+        (currentUser.role === "Landlord" &&
+          landlordNotifications?.length !== 0) ||
+        (currentUser.role === "Contractor" &&
+          contractorNotifications?.length !== 0)) && (
+        <div>
+          <Menu.Button className="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white focus:outline-none">
+            <span className="relative inline-block">
+              <BellIcon className="h-8 w-8" aria-hidden="true" />
+              {currentUser.role === "Property Manager" &&
+                propertyManagerNotifications?.length > 0 && (
+                  <span className="absolute -top-2.5 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-xs font-semibold text-white">
+                    {propertyManagerNotifications?.length}
+                  </span>
+                )}
+              {currentUser.role === "Tenant" &&
+                tenantNotifications?.length > 0 && (
+                  <span className="absolute -top-2.5 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-xs font-semibold text-white">
+                    {tenantNotifications?.length}
+                  </span>
+                )}
+              {currentUser.role === "Landlord" &&
+                landlordNotifications?.length > 0 && (
+                  <span className="absolute -top-2.5 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-xs font-semibold text-white">
+                    {landlordNotifications?.length}
+                  </span>
+                )}
+              {currentUser.role === "Contractor" &&
+                contractorNotifications?.length > 0 && (
+                  <span className="absolute -top-2.5 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-xs font-semibold text-white">
+                    {contractorNotifications?.length}
+                  </span>
+                )}
+            </span>
+          </Menu.Button>
+        </div>
+      )}
 
       <Transition
         as={Fragment}
