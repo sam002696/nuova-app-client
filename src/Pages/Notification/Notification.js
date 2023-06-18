@@ -32,8 +32,10 @@ import {
   notificationTenant,
 } from "../../Redux/notificationSlice";
 import io from "socket.io-client";
+import { useHistory } from "react-router-dom";
 
 const Notification = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const {
@@ -185,6 +187,14 @@ const Notification = () => {
 
   console.log(concatenatedNotificationsPm);
 
+  const handleSingleNotification = (e, notification) => {
+    e.preventDefault();
+    console.log(notification._id);
+    if (notification.userAddMessage) {
+      history.push("/property-manager-dashboard/people");
+    }
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       {((currentUser.role === "Property Manager" &&
@@ -256,10 +266,14 @@ const Notification = () => {
                   .map((notification) => (
                     <Menu.Item key={notification._id}>
                       {({ active }) => (
-                        <div className="pointer-events-auto flex w-full max-w-md  bg-white  ring-1 ring-black ring-opacity-5">
+                        <div
+                          onClick={(e) =>
+                            handleSingleNotification(e, notification)
+                          }
+                          className="pointer-events-auto flex w-full max-w-md  bg-white  ring-1 ring-black ring-opacity-5"
+                        >
                           <div className="w-0 flex-1 p-4 hover:bg-gray-100">
                             <div className="flex items-start">
-                              {/* <div className={`${notification.calenderMessage && "bg-cyan-200" }flex-shrink-0 p-0.5 rounded-full `}> */}
                               <div className="bg-cyan-200 flex-shrink-0 p-0.5 rounded-full">
                                 {notification.calenderMessage && (
                                   <CalendarIcon className="h-8 w-8  p-1.5 " />
