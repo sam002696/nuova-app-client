@@ -24,7 +24,7 @@ import {
 import ReviewProperty from "./ReviewProperty";
 import AddTenant from "./AddTenant/AddTenant";
 import AddTerms from "./AddTerms/AddTerms";
-import RequestDeposit from "./RequestDeposit/RequestDeposit";
+// import RequestDeposit from "./RequestDeposit/RequestDeposit";
 import AddCertificate from "./AddCertificate/AddCertificate";
 import Inventory from "./Inventory/Inventory";
 import InspectionReport from "./InspectionReport/InspectionReport";
@@ -128,13 +128,13 @@ const SingleProperty = () => {
       icon: KeyIcon,
       current: false,
     },
-    {
-      name: "Request deposit",
-      href: "#",
-      to: `${url}/request-deposit`,
-      icon: BellIcon,
-      current: false,
-    },
+    // {
+    //   name: "Request deposit",
+    //   href: "#",
+    //   to: `${url}/request-deposit`,
+    //   icon: BellIcon,
+    //   current: false,
+    // },
     {
       name: "Approve references",
       href: "#",
@@ -510,9 +510,9 @@ const SingleProperty = () => {
                   <Route path={`${path}/add-terms`}>
                     <AddTerms />
                   </Route>
-                  <Route path={`${path}/request-deposit`}>
+                  {/* <Route path={`${path}/request-deposit`}>
                     <RequestDeposit />
-                  </Route>
+                  </Route> */}
                   <Route path={`${path}/approve-references`}></Route>
                   <Route path={`${path}/add-certificates`}>
                     <AddCertificate singleProperty={singleProperty} />

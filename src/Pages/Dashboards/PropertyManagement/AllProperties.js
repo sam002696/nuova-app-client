@@ -46,20 +46,14 @@ const AllProperties = () => {
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-cyan-600">
-                    <a href="" className="hover:underline">
-                      {property.propertyAddress?.propertyName}
-                    </a>
+                    {property.propertyAddress?.propertyName}
                   </p>
                   {property?.propertyType !== "HMO" && (
                     <>
-                      <a href="" className="block mt-2">
-                        <p className="text-2xl font-semibold text-gray-800">
-                          <span className=" text-3xl font-semibold ">
-                            &#163;
-                          </span>
-                          {property.propertyDetails?.propertyEstimatedValue}
-                        </p>
-                      </a>
+                      <p className="text-2xl font-semibold text-gray-800">
+                        <span className=" text-3xl font-semibold ">&#163;</span>
+                        {property.propertyDetails?.propertyEstimatedValue}
+                      </p>
                     </>
                   )}
                 </div>

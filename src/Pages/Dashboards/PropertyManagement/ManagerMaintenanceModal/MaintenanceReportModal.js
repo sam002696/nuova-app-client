@@ -3,6 +3,7 @@ import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import axios from "axios";
+// import Swal from "sweetalert2";
 
 const MaintenanceReportModal = ({ open, setOpen, singleReport }) => {
   const handlePostContracPortal = async (singleReport) => {
@@ -21,7 +22,6 @@ const MaintenanceReportModal = ({ open, setOpen, singleReport }) => {
       console.log(err);
     }
   };
-
   const cancelButtonRef = useRef(null);
   return (
     <>

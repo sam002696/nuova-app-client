@@ -112,6 +112,13 @@ const LandlordSingleProperty = () => {
       current: false,
     },
     {
+      name: "Add terms",
+      href: "#",
+      to: `${url}/add-terms`,
+      icon: CogIcon,
+      current: false,
+    },
+    {
       name: "Certificates & Documents",
       href: "#",
       to: `${url}/add-certificates`,

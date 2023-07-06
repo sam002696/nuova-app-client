@@ -509,6 +509,105 @@ const LandlordProfile = () => {
               </div>
             </div>
 
+            <div className="bg-white px-4 py-5 shadow-md sm:rounded-lg sm:p-6">
+              <div className="md:grid md:grid-cols-3 md:gap-6">
+                <div className="md:col-span-1">
+                  <h3 className="text-lg font-medium leading-6 text-gray-900">
+                    Bank Details
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Your bank account info will be saved in server
+                  </p>
+                </div>
+                <div className="mt-5 md:col-span-2 md:mt-0">
+                  <div className="grid grid-cols-6 gap-6">
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="bankAccountName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Name on account
+                      </label>
+                      <input
+                        type="text"
+                        name="bankAccountName"
+                        id="bankAccountName"
+                        autoComplete="given-name"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="sortCode"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Sort code
+                      </label>
+                      <input
+                        type="number"
+                        name="sortCode"
+                        id="sortCode"
+                        autoComplete="email"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                        readOnly
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="bankAccountNumber"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Account number
+                      </label>
+                      <input
+                        type="number"
+                        name="bankAccountNumber"
+                        id="bankAccountNumber"
+                        autoComplete="telephone"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="bankName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Bank name
+                      </label>
+                      <input
+                        type="text"
+                        name="bankName"
+                        id="bankName"
+                        autoComplete="given-name"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="bankAccountType"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Account type
+                      </label>
+                      <select
+                        type="text"
+                        name="bankAccountType"
+                        id="bankAccountType"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                      >
+                        <option>Personal</option>
+                        <option>Business</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="flex justify-end py-5">
               <button
                 type="submit"

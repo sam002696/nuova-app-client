@@ -4,6 +4,9 @@ import {
   CheckCircleIcon,
   UserCircleIcon,
   ClipboardListIcon,
+  ChatIcon,
+  PhoneIcon,
+  InboxIcon,
 } from "@heroicons/react/solid";
 import TenantMaintenanceModal from "./TenantMaintenanceModal";
 import { useSelector } from "react-redux";
@@ -35,9 +38,14 @@ const TenantPortalMaintenance = () => {
       icon: CheckCircleIcon,
       iconBackground: "bg-sky-400",
     },
+    // "Job assigned to contractor by"
     singleTracking?.Timeline?.taskThree?.assignJob === true && {
       id: 3,
-      content: "Job assigned to contractor by",
+      content:
+        singleTracking?.assignedContractor?.offerAccepted === true
+          ? "Job assigned to contractor by"
+          : singleTracking?.assignedContractor?.incompletedJob === true &&
+            "Job has been incompleted and new contractor will be assigned",
       target: "Property Manager",
       task: singleTracking?.Timeline?.taskThree?.assignJob,
       date: singleTracking?.Timeline?.taskThree?.createdAt,
@@ -72,7 +80,6 @@ const TenantPortalMaintenance = () => {
   }, [currentUser.email]);
 
   const handleTracking = (report) => {
-    // setOpen(true);
     setSingleTracking(report);
   };
 
@@ -80,8 +87,6 @@ const TenantPortalMaintenance = () => {
     return classes.filter(Boolean).join(" ");
   }
   console.log(tenantReports);
-  // console.log(timeline);
-
   return (
     <>
       <div className="">
@@ -139,60 +144,68 @@ const TenantPortalMaintenance = () => {
                     Maintenance Issues{" "}
                   </h2>
                 </div>
-                {tenantReports.map((report) => (
-                  <li
-                    key={report._id}
-                    className="col-span-2 bg-white rounded-lg shadow-md shadow-cyan-200 divide-y divide-gray-200"
-                  >
-                    <div className="w-full flex items-center justify-between px-6 py-6 space-x-6">
-                      <img
-                        className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
-                        src={report.issueImage}
-                        alt=""
-                      />
-                      <div className="flex-1 truncate">
-                        <div className="flex items-center space-x-3">
-                          <h3 className="text-gray-900 text-xl font-semibold truncate">
-                            {report.issueName}
-                          </h3>
-                          <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                            Maintenance
-                          </span>
+                {tenantReports
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .map((report) => (
+                    <li
+                      key={report._id}
+                      className={`${
+                        singleTracking._id === report._id &&
+                        "shadow-md shadow-green-500/50 "
+                      }col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200`}
+                    >
+                      <div className="w-full flex items-center justify-between px-6 py-6 space-x-6">
+                        <img
+                          className="w-14 h-14 bg-gray-300 rounded-md flex-shrink-0"
+                          src={report.issueImage}
+                          alt=""
+                        />
+                        <div className="flex-1 truncate">
+                          <div className="flex items-center space-x-3">
+                            <h3 className="text-gray-900 text-xl font-semibold truncate">
+                              {report.issueName}
+                            </h3>
+                            <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
+                              Maintenance
+                            </span>
+                          </div>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.tenantAddress}
+                          </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            Issue Created : {report.createdAt}
+                          </p>
                         </div>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.tenantAddress}
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          Issue Created : {report.createdAt}
-                        </p>
-                      </div>
-                      <div className="flex-1 truncate">
-                        <div className="flex items-center space-x-3">
-                          <h3 className="text-gray-900 text-md font-semibold truncate">
-                            {report.username}
-                          </h3>
-                          <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200">
-                            Tenant
-                          </span>
+                        <div className="flex-1 truncate">
+                          <div className="flex items-center space-x-3">
+                            <h3 className="text-gray-900 text-md font-semibold truncate">
+                              {report.username}
+                            </h3>
+                            <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200 rounded-md">
+                              Tenant
+                            </span>
+                          </div>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.email}
+                          </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report.phoneNo}
+                          </p>
                         </div>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.email}
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report.phoneNo}
-                        </p>
+                        <div className="">
+                          <button
+                            onClick={() => handleTracking(report)}
+                            className={`${
+                              singleTracking._id === report._id &&
+                              "bg-green-500 "
+                            }mt-2 flex-shrink-0 inline-block px-3 py-2 bg-cyan-500 text-xs font-medium text-white border shadow-md rounded-md`}
+                          >
+                            Tracking
+                          </button>
+                        </div>
                       </div>
-                      <div className="">
-                        <button
-                          onClick={() => handleTracking(report)}
-                          className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
-                        >
-                          Tracking
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  ))}
               </ul>
             </div>
 
@@ -231,7 +244,7 @@ const TenantPortalMaintenance = () => {
                                 />
                               </span>
                             </div>
-                            <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                            <div className=" min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                               <div>
                                 <p className="text-sm text-gray-500">
                                   {event.content}{" "}
@@ -242,8 +255,125 @@ const TenantPortalMaintenance = () => {
                                     {event.target}
                                   </a>
                                 </p>
+
+                                {event.content ===
+                                  "Job assigned to contractor by" && (
+                                  <>
+                                    <div className="lg:col-start-3 lg:row-end-1 mt-5">
+                                      <h2 className="sr-only">
+                                        Contractor Assign Info
+                                      </h2>
+                                      <div className="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
+                                        <dl className="flex flex-wrap">
+                                          <div className="flex-auto pl-6 pt-6">
+                                            <dt className="text-sm font-semibold leading-6 text-gray-900">
+                                              Contractor Assign Info
+                                            </dt>
+                                            <dd className="mt-1 text-base font-semibold leading-6 text-gray-900">
+                                              Bidding Amount : £
+                                              {
+                                                singleTracking
+                                                  ?.assignedContractor
+                                                  ?.BiddingAmount
+                                              }
+                                            </dd>
+                                          </div>
+                                          <div className="flex-none self-end px-6 pt-4">
+                                            <dt className="sr-only">Status</dt>
+                                            <dd className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-green-600/20">
+                                              Not Paid
+                                            </dd>
+                                          </div>
+                                          <div className="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
+                                            <dt className="flex-none">
+                                              <span className="sr-only">
+                                                Contractor Name
+                                              </span>
+                                              <UserCircleIcon
+                                                className="h-6 w-5 text-gray-400"
+                                                aria-hidden="true"
+                                              />
+                                            </dt>
+                                            <dd className="text-sm font-medium leading-6 text-gray-900">
+                                              {
+                                                singleTracking
+                                                  ?.assignedContractor
+                                                  ?.contractorName
+                                              }
+                                            </dd>
+                                          </div>
+                                          <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+                                            <dt className="flex-none">
+                                              <span className="sr-only">
+                                                Contractor Email
+                                              </span>
+                                              <InboxIcon
+                                                className="h-6 w-5 text-gray-400"
+                                                aria-hidden="true"
+                                              />
+                                            </dt>
+                                            <dd className="text-sm font-medium leading-6 text-gray-900">
+                                              {
+                                                singleTracking
+                                                  ?.assignedContractor
+                                                  ?.contractorEmail
+                                              }
+                                            </dd>
+                                          </div>
+                                          <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+                                            <dt className="flex-none">
+                                              <span className="sr-only">
+                                                Chat
+                                              </span>
+                                              <ChatIcon
+                                                className="h-6 w-5 text-gray-400"
+                                                aria-hidden="true"
+                                              />
+                                            </dt>
+                                            <dd className="text-sm font-medium leading-6 text-gray-900">
+                                              {
+                                                singleTracking
+                                                  ?.assignedContractor
+                                                  ?.contractorChatUserId
+                                              }
+                                            </dd>
+                                          </div>
+                                          <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+                                            <dt className="flex-none">
+                                              <span className="sr-only">
+                                                Phone No
+                                              </span>
+                                              <PhoneIcon
+                                                className="h-6 w-5 text-gray-400"
+                                                aria-hidden="true"
+                                              />
+                                            </dt>
+                                            <dd className="text-sm font-medium leading-6 text-gray-900">
+                                              {
+                                                singleTracking
+                                                  ?.assignedContractor
+                                                  ?.contractorPhone
+                                              }
+                                            </dd>
+                                          </div>
+                                        </dl>
+                                        <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
+                                          <a
+                                            href="#"
+                                            className="text-sm font-semibold leading-6 text-gray-900"
+                                          >
+                                            Download receipt{" "}
+                                            <span aria-hidden="true">
+                                              &rarr;
+                                            </span>
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </>
+                                )}
                               </div>
-                              <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                              <div className="whitespace-nowrap text-right text-sm text-gray-500 mt-3">
                                 {event.date && (
                                   <time>
                                     {new Date(event.date).getFullYear()}-

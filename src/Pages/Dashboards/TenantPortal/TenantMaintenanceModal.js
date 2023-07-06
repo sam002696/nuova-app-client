@@ -5,6 +5,7 @@ import { Fragment, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
+import Swal from "sweetalert2";
 
 const TenantMaintenanceModal = ({ open, setOpen }) => {
   const { tenantPropertyDetails } = useSelector(
@@ -44,6 +45,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
       if (res.data) {
         setLoading(false);
         setOpen(false);
+        Swal.fire("Success!", "You successfully posted the job!", "success");
         window.location.reload(false);
       }
     } catch (err) {

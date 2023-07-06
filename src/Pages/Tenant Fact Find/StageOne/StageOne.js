@@ -14,10 +14,17 @@ const StageOne = () => {
           Before you proceed, please make sure you have the following :
         </h1>
         <ul className=" text-md text-white font-semibold bg-gray-500 px-4 py-4">
-          <li> Photographic ID (driving license, passport)</li>
-          <li> credit check per tenant</li>
-          <li> months most recent bank statements</li>
-          <li> most recent pay slips</li>
+          <li>
+            {" "}
+            1 Photographic ID (driving license, passport,National Insurance
+            Number)
+          </li>
+          <li>1 credit check per tenant</li>
+          <li>3 months most recent bank statements per tenant</li>
+          <li>
+            3 most recent pay slips per tenant or an altenative demonstrating
+            proof of affordability
+          </li>
         </ul>
       </div>
     </div>

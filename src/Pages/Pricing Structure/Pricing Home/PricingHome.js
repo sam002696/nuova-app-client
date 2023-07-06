@@ -2,7 +2,7 @@ import React from "react";
 
 import PricingHeader from "../PricingComponents/PricingHeader";
 import PricingPlans from "../PricingComponents/PricingPlans";
-import PricingFAQ from "../PricingComponents/PricingFAQ";
+// import PricingFAQ from "../PricingComponents/PricingFAQ";
 import PricingFooter from "../PricingComponents/PricingFooter";
 
 const PricingHome = () => {
@@ -11,7 +11,7 @@ const PricingHome = () => {
       <PricingHeader />
       <PricingPlans />
 
-      <PricingFAQ />
+      {/* <PricingFAQ /> */}
       <PricingFooter />
     </div>
   );

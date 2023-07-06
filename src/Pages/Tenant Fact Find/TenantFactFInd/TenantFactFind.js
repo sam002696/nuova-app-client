@@ -198,7 +198,7 @@ const TenantFactFind = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <StageOne />
             <StageTwo register={register} />
-            <StageThree register={register} />
+            <StageThree register={register} watch={watch} />
             <StageFour register={register} />
             <StageFive register={register} watch={watch} />
             <StageSix register={register} />

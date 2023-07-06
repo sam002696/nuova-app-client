@@ -4,7 +4,7 @@ const StageFour = ({ register }) => {
   return (
     <>
       <p className=" text-lg  font-semibold pt-5 underline underline-offset-4">
-        Work Details (change):
+        Employment Details :
       </p>
       <div className="grid grid-cols-2 gap-5 pt-8">
         <div className="col-span-1">

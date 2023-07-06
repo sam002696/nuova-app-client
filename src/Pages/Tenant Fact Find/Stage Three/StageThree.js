@@ -1,6 +1,9 @@
 import React from "react";
 
-const StageThree = ({ register }) => {
+const StageThree = ({ register, watch }) => {
+  const selectedProofOfAddress = watch("proofOfAddress");
+
+  const handleProofOfAddressChange = (event) => {};
   return (
     <>
       <p className=" text-lg  font-semibold pt-5 underline underline-offset-4">
@@ -197,6 +200,75 @@ const StageThree = ({ register }) => {
             />
           </div>
         </div>
+
+        <div className="col-span-2">
+          <label
+            htmlFor="photographicId"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Proof of address:
+          </label>
+          <div className="mt-1">
+            <select
+              type="text"
+              name="proofOfAddress"
+              id="proofOfAddress"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500 file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none file:focus:border-gray-500"
+              onChange={handleProofOfAddressChange}
+              {...register("proofOfAddress")}
+            >
+              <option value="">Select</option>
+              <option value="Bank Statement">
+                Personal Bank statement (hardcopy issued or PDF within the past
+                90 days)
+              </option>
+              <option value="Utility Bill">
+                Utility bill (Gas/Electricity/Water) hardcopy issued or PDF
+                within the past 90 days
+              </option>
+              <option value="Council Tax Statement">
+                Council tax statement (hardcopy issued or PDF within the past 90
+                days)
+              </option>
+            </select>
+          </div>
+        </div>
+
+        {/* Rendering based on proof of address */}
+
+        {selectedProofOfAddress && (
+          <>
+            <div className="col-span-1">
+              <label
+                htmlFor="photographicId"
+                className="block text-sm font-medium text-gray-700"
+              >
+                {selectedProofOfAddress && selectedProofOfAddress !== ""
+                  ? `${selectedProofOfAddress}:`
+                  : ""}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="file"
+                  name="proofOfAddress"
+                  id="proofOfAddress"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-500 file:text-white focus:outline-none focus:border-gray-500 block w-full file:p-2 file:border-none file:focus:border-gray-500"
+                  {...register("tenantInfo.proofOfAddress")}
+                />
+              </div>
+            </div>
+            <div className="col-span-1">
+              <label
+                htmlFor="photographicId"
+                className="block text-xs font-bold text-red-700 mt-6"
+              >
+                *Please do not attach any other document to this section as a
+                <span className="text-red-500"> proof of address</span> , only
+                the above can be accepted.*
+              </label>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

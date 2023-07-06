@@ -18,6 +18,7 @@ import {
   ClipboardIcon,
   PlayIcon,
   QuestionMarkCircleIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/outline";
 
 import axios from "axios";
@@ -36,6 +37,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const Notification = () => {
+  const socket = io("http://localhost:5500");
   const history = useHistory();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
@@ -46,11 +48,12 @@ const Notification = () => {
     contractorNotifications,
     allNotifications,
   } = useSelector((state) => state.notifications);
-  console.log(allNotifications);
-  console.log(landlordNotifications);
-  // fetching notifications from 6500
+  // fetching notifications from 5500
+
   useEffect(() => {
-    const socket = io("http://localhost:6500");
+    socket.on("connection", () => {
+      console.log("Connected to Socket.IO server");
+    });
     dispatch(notificationFetchingStart());
     socket.on("notifications", (data) => {
       console.log("server notifications", data);
@@ -61,14 +64,15 @@ const Notification = () => {
       }
     });
   }, [dispatch]);
+
   // fetching the notifications from 5500
   useEffect(() => {
     const handleFetchAllNotifications = async () => {
       try {
-        // dispatch(notificationFetchingStart());
+        dispatch(notificationFetchingStart());
         const res = await axios.get(`http://localhost:5500/api/notifications`);
         console.log("main notifications", res.data);
-        // dispatch(notificationFetchingSuccess(res.data));
+        dispatch(notificationFetchingSuccess(res.data));
       } catch (err) {
         console.log(err);
       }
@@ -76,6 +80,7 @@ const Notification = () => {
     handleFetchAllNotifications();
   }, []);
 
+  console.log(propertyManagerNotifications);
   // property manager dashboard
 
   const concatenatedNotificationsPm = useMemo(
@@ -103,6 +108,9 @@ const Notification = () => {
         : []),
       ...(allNotifications?.TenantAdd?.propertyManager
         ? allNotifications?.TenantAdd?.propertyManager
+        : []),
+      ...(allNotifications?.JobBidderInfo
+        ? allNotifications?.JobBidderInfo
         : []),
     ],
     [allNotifications]
@@ -149,8 +157,8 @@ const Notification = () => {
       ...(allNotifications?.Jobs?.CompleteJobs
         ? allNotifications?.Jobs?.CompleteJobs
         : []),
-      ...(allNotifications?.Jobs?.InCompleteJobs
-        ? allNotifications?.Jobs?.InCompleteJobs
+      ...(allNotifications?.Jobs?.IncompleteJobs
+        ? allNotifications?.Jobs?.IncompleteJobs
         : []),
       ...(allNotifications?.Jobs?.CurrentJobs
         ? allNotifications?.Jobs?.CurrentJobs
@@ -187,40 +195,40 @@ const Notification = () => {
     dispatch(notificationLandlord(concatenatedNotificationsLandlord));
   }, [concatenatedNotificationsLandlord, dispatch]);
 
-  console.log(concatenatedNotificationsPm);
-
   const [notificationCountPM, setNotificationCountPM] = useState(0);
 
   useEffect(() => {
     // Count the total number of notifications
-    const totalCountPM = propertyManagerNotifications.length;
+    const totalCountPM = propertyManagerNotifications?.length;
 
     // Count the number of viewed notifications
-    const viewedCountPM = propertyManagerNotifications.filter(notification => notification.isViewed).length;
+    const viewedCountPM = propertyManagerNotifications?.filter(
+      (notification) => notification.isViewed
+    )?.length;
 
     // Calculate the count of unviewed notifications
-    const unviewedCountPM = totalCountPM - viewedCountPM
+    const unviewedCountPM = totalCountPM - viewedCountPM;
 
     setNotificationCountPM(unviewedCountPM);
   }, [propertyManagerNotifications]);
 
-  console.log(propertyManagerNotifications);
-  console.log(notificationCountPM);
-
   const [notificationCountLandlord, setNotificationCountLandlord] = useState(0);
 
   useEffect(() => {
-
     // Filter notifications based on currentUser email and count the total number
-    const filteredNotificationsLandlord = landlordNotifications.filter((notification) =>
-        (notification.landlordEmail === currentUser.email || !notification.landlordEmail)
+    const filteredNotificationsLandlord = landlordNotifications?.filter(
+      (notification) =>
+        notification.landlordEmail === currentUser.email ||
+        !notification.landlordEmail
     );
 
     // Count the total number of notifications
-    const totalCountLandlord = filteredNotificationsLandlord.length;
+    const totalCountLandlord = filteredNotificationsLandlord?.length;
 
     // Count the number of viewed notifications
-    const viewedCountLandlord = filteredNotificationsLandlord.filter(notification => notification.isViewed).length;
+    const viewedCountLandlord = filteredNotificationsLandlord?.filter(
+      (notification) => notification.isViewed
+    )?.length;
 
     // Calculate the count of unviewed notifications
     const unviewedCountLandlord = totalCountLandlord - viewedCountLandlord;
@@ -228,21 +236,23 @@ const Notification = () => {
     setNotificationCountLandlord(unviewedCountLandlord);
   }, [currentUser.email, landlordNotifications]);
 
-
   const [notificationCountTenant, setNotificationCountTenant] = useState(0);
 
   useEffect(() => {
-
     // Filter notifications based on currentUser email and count the total number
-    const filteredNotificationsTenant = tenantNotifications.filter((notification) =>
-        (notification.tenantEmail === currentUser.email || !notification.tenantEmail)
+    const filteredNotificationsTenant = tenantNotifications?.filter(
+      (notification) =>
+        notification.tenantEmail === currentUser.email ||
+        !notification.tenantEmail
     );
 
     // Count the total number of notifications
-    const totalCountTenant = filteredNotificationsTenant.length;
+    const totalCountTenant = filteredNotificationsTenant?.length;
 
     // Count the number of viewed notifications
-    const viewedCountTenant = filteredNotificationsTenant.filter(notification => notification.isViewed).length;
+    const viewedCountTenant = filteredNotificationsTenant?.filter(
+      (notification) => notification.isViewed
+    )?.length;
 
     // Calculate the count of unviewed notifications
     const unviewedCountTenant = totalCountTenant - viewedCountTenant;
@@ -250,28 +260,31 @@ const Notification = () => {
     setNotificationCountTenant(unviewedCountTenant);
   }, [currentUser.email, tenantNotifications]);
 
-
-  const [notificationCountContractor, setNotificationCountContractor] = useState(0);
+  const [notificationCountContractor, setNotificationCountContractor] =
+    useState(0);
 
   useEffect(() => {
-
     // Filter notifications based on currentUser email and count the total number
-    const filteredNotificationsContractor = contractorNotifications.filter((notification) =>
-        (notification.contractorEmail === currentUser.email || !notification.contractorEmail)
+    const filteredNotificationsContractor = contractorNotifications?.filter(
+      (notification) =>
+        notification.contractorEmail === currentUser.email ||
+        !notification.contractorEmail
     );
 
     // Count the total number of notifications
-    const totalCountContractor = filteredNotificationsContractor.length;
+    const totalCountContractor = filteredNotificationsContractor?.length;
 
     // Count the number of viewed notifications
-    const viewedCountContractor = filteredNotificationsContractor.filter(notification => notification.isViewed).length;
+    const viewedCountContractor = filteredNotificationsContractor?.filter(
+      (notification) => notification.isViewed
+    )?.length;
 
     // Calculate the count of unviewed notifications
-    const unviewedCountContractor = totalCountContractor - viewedCountContractor;
+    const unviewedCountContractor =
+      totalCountContractor - viewedCountContractor;
 
     setNotificationCountContractor(unviewedCountContractor);
   }, [currentUser.email, contractorNotifications]);
-
 
   const handleSingleNotificationPM = async (e, notification) => {
     e.preventDefault();
@@ -351,7 +364,6 @@ const Notification = () => {
     if (notification.jobIncompletionMessage) {
       history.push("/tenant-portal-dashboard/tenant-portal-maintenance");
     }
-    
   };
 
   const handleSingleNotificationContractor = async (e, notification) => {
@@ -375,15 +387,20 @@ const Notification = () => {
       history.push("/contractor-portal-dashboard/contractor-portal-my-jobs");
     }
     if (notification.completeJob) {
-      history.push("/contractor-portal-dashboard/contractor-portal-my-jobs/complete");
+      history.push(
+        "/contractor-portal-dashboard/contractor-portal-my-jobs/complete"
+      );
     }
-    if (notification.declineJob) {  
-      history.push("/contractor-portal-dashboard/contractor-portal-my-jobs/declined");
+    if (notification.declineJob) {
+      history.push(
+        "/contractor-portal-dashboard/contractor-portal-my-jobs/declined"
+      );
     }
     if (notification.inCompleteJob) {
-      history.push("/contractor-portal-dashboard/contractor-portal-my-jobs/incomplete");
+      history.push(
+        "/contractor-portal-dashboard/contractor-portal-my-jobs/incomplete"
+      );
     }
-    
   };
 
   const handleSingleNotificationLandlord = async (e, notification) => {
@@ -415,9 +432,7 @@ const Notification = () => {
     if (notification.certificateAddMessageLandlord) {
       history.push("/landlord-portal-dashboard/landlord-property");
     }
-    
   };
-
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -435,7 +450,7 @@ const Notification = () => {
               {currentUser.role === "Admin" &&
                 propertyManagerNotifications?.length > 0 && (
                   <span className="absolute -top-2.5 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-xs font-semibold text-white">
-                    {notificationCountPM }
+                    {notificationCountPM}
                   </span>
                 )}
               {currentUser.role === "Property Manager" &&
@@ -497,12 +512,11 @@ const Notification = () => {
                     <Menu.Item key={notification._id}>
                       {({ active }) => (
                         <div
-                          
-                        className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
-                          notification?.isViewed === true
-                            ? "bg-white"
-                            : "bg-cyan-50"
-                        }`}
+                          className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
+                            notification?.isViewed === true
+                              ? "bg-white"
+                              : "bg-cyan-50"
+                          }`}
                         >
                           <div className="w-0 flex-1 p-4 hover:bg-cyan-100">
                             <div className="flex items-start">
@@ -650,7 +664,6 @@ const Notification = () => {
                                 {notification.calenderMessage && (
                                   <CalendarIcon className="h-8 w-8  p-1.5 " />
                                 )}
-
                                 {notification.userAddMessage && (
                                   <UserAddIcon className="h-8 w-8  p-1.5 " />
                                 )}
@@ -681,6 +694,9 @@ const Notification = () => {
                                 {notification.certificateAddMessagePM && (
                                   <DocumentAddIcon className="h-8 w-8  p-1.5 " />
                                 )}
+                                {notification.jobBidderInfo && (
+                                  <InformationCircleIcon className="h-8 w-8  p-1.5 " />
+                                )}
                               </div>
                               <div className="ml-3 w-0 flex-1">
                                 <div className="flex w-full flex-1 justify-between">
@@ -706,6 +722,8 @@ const Notification = () => {
                                       `Task Receive`}
                                     {notification.certificateAddMessagePM &&
                                       `Certificate Add`}
+                                    {notification.jobBidderInfo &&
+                                      `Bidder Info`}
                                   </p>
                                   <p className="ml-3 flex-shrink-0 rounded-md  text-xs font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 ">
                                     {formatDistanceToNow(
@@ -733,8 +751,19 @@ const Notification = () => {
 
                                   {notification.tenantFactFindForm &&
                                     `tenant fact find form has been added`}
-                                  {notification.maintenanceIssueMessage &&
-                                    `a new maintenance has been added`}
+                                  {notification.maintenanceIssueMessage && (
+                                    <>
+                                      {" "}
+                                      A new maintenance request -{" "}
+                                      <span className="font-bold">
+                                        {notification.issueName}
+                                      </span>{" "}
+                                      has been created by{" "}
+                                      <span className="font-bold">
+                                        {notification.username}
+                                      </span>
+                                    </>
+                                  )}
                                   {notification.tenantAddMessagePm &&
                                     `${notification.tenantName} has been added to ${notification.propertyName}`}
 
@@ -746,6 +775,23 @@ const Notification = () => {
 
                                   {notification.certificateAddMessagePM &&
                                     `${notification.certificateAddMessagePM} on ${notification.propertyName}`}
+                                  {notification.jobBidderInfo && (
+                                    <>
+                                      {" "}
+                                      A contractor -{" "}
+                                      <span className="font-bold">
+                                        {notification.bidderName}
+                                      </span>{" "}
+                                      has bid for{" "}
+                                      <span className="font-bold">
+                                        {notification.jobName}
+                                      </span>{" "}
+                                      for{" "}
+                                      <span className="font-bold">
+                                        £{notification.bidderAmount}
+                                      </span>
+                                    </>
+                                  )}
                                 </p>
                               </div>
                             </div>
@@ -761,8 +807,8 @@ const Notification = () => {
                 {tenantNotifications
                   ?.filter(
                     (filteruser) =>
-                      filteruser.tenantEmail === currentUser.email ||
-                      filteruser.taskAssignedTo === "All"
+                      filteruser?.tenantEmail === currentUser.email ||
+                      filteruser?.taskAssignedTo === "All"
                   )
                   ?.sort((a, b) => {
                     const dateA = new Date(a.date).getTime();
@@ -778,13 +824,16 @@ const Notification = () => {
                   .map((notification) => (
                     <Menu.Item key={notification._id}>
                       {({ active }) => (
-                        <div onClick={(e) =>
-                          handleSingleNotificationTenant(e, notification)
-                        } className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
-                          notification?.isViewed === true
-                            ? "bg-white"
-                            : "bg-cyan-50"
-                        }`}>
+                        <div
+                          onClick={(e) =>
+                            handleSingleNotificationTenant(e, notification)
+                          }
+                          className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
+                            notification?.isViewed === true
+                              ? "bg-white"
+                              : "bg-cyan-50"
+                          }`}
+                        >
                           <div className="w-0 flex-1 p-4 hover:bg-gray-100">
                             <div className="flex items-start">
                               <div className="bg-cyan-200 flex-shrink-0 p-0.5 rounded-full">
@@ -839,7 +888,7 @@ const Notification = () => {
                                     `${notification.taskTitle} has been assigned to you`}
 
                                   {notification.contractorAssignMessage &&
-                                    `${notification.contractorName} has been assigned for the ${notification.issuename} job`}
+                                    `${notification.contractorName} has been assigned for the ${notification.issueName} job`}
 
                                   {notification.jobCompletionMessage &&
                                     notification.tenantEmail ===
@@ -883,13 +932,16 @@ const Notification = () => {
                   .map((notification) => (
                     <Menu.Item key={notification._id}>
                       {({ active }) => (
-                        <div onClick={(e) =>
-                          handleSingleNotificationContractor(e, notification)
-                        } className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
-                          notification?.isViewed === true
-                            ? "bg-white"
-                            : "bg-green-50"
-                        }`}>
+                        <div
+                          onClick={(e) =>
+                            handleSingleNotificationContractor(e, notification)
+                          }
+                          className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
+                            notification?.isViewed === true
+                              ? "bg-white"
+                              : "bg-green-50"
+                          }`}
+                        >
                           <div className="w-0 flex-1 p-4 hover:bg-green-100">
                             <div className="flex items-start">
                               <div className="bg-cyan-200 flex-shrink-0 p-0.5 rounded-full">
@@ -982,13 +1034,16 @@ const Notification = () => {
                   .map((notification) => (
                     <Menu.Item key={notification._id}>
                       {({ active }) => (
-                        <div onClick={(e) =>
-                          handleSingleNotificationLandlord(e, notification)
-                        } className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
-                          notification?.isViewed === true
-                            ? "bg-white"
-                            : "bg-blue-50"
-                        }`}>
+                        <div
+                          onClick={(e) =>
+                            handleSingleNotificationLandlord(e, notification)
+                          }
+                          className={`pointer-events-auto flex w-full max-w-md ring-1 ring-black ring-opacity-5 ${
+                            notification?.isViewed === true
+                              ? "bg-white"
+                              : "bg-blue-50"
+                          }`}
+                        >
                           <div className="w-0 flex-1 p-4 hover:bg-blue-100">
                             <div className="flex items-start">
                               <div className="bg-cyan-200 flex-shrink-0 p-0.5 rounded-full">

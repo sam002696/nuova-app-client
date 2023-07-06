@@ -10,6 +10,7 @@ import {
 import { LightningBoltIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import ContractorPortalBiddingJobs from "./ContractorPortalBiddingJobs";
+import Swal from "sweetalert2";
 
 const ContractorPortalFindJobs = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -38,8 +39,20 @@ const ContractorPortalFindJobs = () => {
   };
 
   const handleBidForJob = (seeSingleJobDetails) => {
-    setBidforjob(true);
-    setSingleJob(seeSingleJobDetails);
+    if (
+      !seeSingleJobDetails.requiredExperience &&
+      !seeSingleJobDetails.timeline &&
+      !seeSingleJobDetails.perHourIncome
+    ) {
+      Swal.fire(
+        "Attention needed!",
+        "Property manager needs to update the fields before you can bid for the job!",
+        "error"
+      );
+    } else {
+      setBidforjob(true);
+      setSingleJob(seeSingleJobDetails);
+    }
   };
 
   console.log(currentUser.email);
@@ -47,28 +60,6 @@ const ContractorPortalFindJobs = () => {
     <>
       <div className="bg-white">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-12 py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-          {/* <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-                        <img
-                            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
-                            alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-                            className="rounded-lg bg-gray-100"
-                        />
-                        <img
-                            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
-                            alt="Top down view of walnut card tray with embedded magnets and card groove."
-                            className="rounded-lg bg-gray-100"
-                        />
-                        <img
-                            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-03.jpg"
-                            alt="Side of walnut card tray with card groove and recessed card area."
-                            className="rounded-lg bg-gray-100"
-                        />
-                        <img
-                            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-04.jpg"
-                            alt="Walnut card tray filled with cards and card angled in dedicated groove."
-                            className="rounded-lg bg-gray-100"
-                        />
-                    </div> */}
           <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
             <ul className="space-y-7">
               <div className="mx-auto max-w-2xl lg:max-w-none mb-4">
@@ -137,23 +128,6 @@ const ContractorPortalFindJobs = () => {
                             )}
                         </div>
                       </div>
-                      {/* <div className="flex-1 truncate">
-                                            <div className="flex items-center space-x-3">
-                                                <h3 className="text-gray-900 text-md font-semibold truncate">
-                                                    {report.tenant_name}
-                                                </h3>
-                                                <span className="flex-shrink-0 inline-block px-2 py-0.5 text-cyan-30000 text-xs font-medium bg-sky-200">
-                                                    Tenant
-                                                </span>
-                                            </div>
-                                            <p className="mt-1 text-gray-500 text-sm truncate">
-                                                {report.email}
-                                            </p>
-                                            <p className="mt-1 text-gray-500 text-sm truncate">
-                                                {report.telephone}
-                                            </p>
-
-                                        </div> */}
                       <div className="flex flex-col justify-between">
                         <button
                           onClick={() => seeJobDetails(singleJob)}

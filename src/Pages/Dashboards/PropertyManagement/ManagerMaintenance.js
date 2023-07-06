@@ -56,8 +56,16 @@ const ManagerMaintenance = () => {
   };
 
   const handleUpdateReport = (report) => {
-    setSingleUpdateReport(true);
-    setSingleUpdateModalReport(report);
+    if (report?.post === true) {
+      setSingleUpdateReport(true);
+      setSingleUpdateModalReport(report);
+    } else {
+      Swal.fire(
+        "Job Posting Required!",
+        "Please post the job before updating!",
+        "error"
+      );
+    }
   };
 
   const handleActionButton = (bidding) => {
@@ -193,6 +201,7 @@ const ManagerMaintenance = () => {
                           </p>
                           <button
                             onClick={() => handleUpdateReport(report)}
+                            // disabled={report?.post === false}
                             className="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-orange-200 rounded mt-2"
                           >
                             Update Maintenance Report

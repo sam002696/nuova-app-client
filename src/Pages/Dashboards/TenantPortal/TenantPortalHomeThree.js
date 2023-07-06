@@ -2,8 +2,6 @@ import React from "react";
 
 import {
   CurrencyPoundIcon,
-  CalendarIcon,
-  ArrowRightIcon,
   CheckCircleIcon,
   ChatAltIcon,
   ShieldCheckIcon,
@@ -16,8 +14,13 @@ import { AtSymbolIcon, PhoneIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import {
+  fetchingFailure,
+  fetchingStart,
+  fetchingSuccess,
+} from "../../../Redux/tenantPropertySlice";
 
 const propertymanager = [
   {
@@ -32,23 +35,27 @@ const propertymanager = [
 ];
 
 const TenantPortalHomeThree = () => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [tenantProperty, setTenantProperty] = useState({});
 
   useEffect(() => {
     const handleTenantProperty = async () => {
+      dispatch(fetchingStart());
       try {
         const res = await axios.get(
           `http://localhost:5500/api/properties/tenantproperty/tenant?email=${currentUser.email}`
         );
         setTenantProperty(res.data);
+        dispatch(fetchingSuccess(res.data));
         console.log(res.data);
       } catch (err) {
         console.log(err);
+        dispatch(fetchingFailure(err));
       }
     };
     handleTenantProperty();
-  }, [currentUser.email]);
+  }, [currentUser.email, dispatch]);
   console.log(tenantProperty);
 
   const getNextRentalPaymentDueDate = (leaseStartDate) => {
