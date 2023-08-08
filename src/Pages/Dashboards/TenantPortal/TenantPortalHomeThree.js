@@ -498,7 +498,7 @@ const TenantPortalHomeThree = () => {
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-sky-600 mt-4">
-                      Property Managers
+                      Property Manager
                     </p>
 
                     <div className="mt-2 block">
@@ -537,7 +537,7 @@ const TenantPortalHomeThree = () => {
                                     href={`mailto:${person.email}`}
                                     className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500"
                                   >
-                                    <ChatAltIcon
+                                    <AtSymbolIcon
                                       className="h-5 w-5 text-gray-400"
                                       aria-hidden="true"
                                     />
@@ -555,6 +555,18 @@ const TenantPortalHomeThree = () => {
                                     />
                                     <span className="ml-3">Call</span>
                                   </a>
+                                </div>
+                                <div className="-ml-px flex w-0 flex-1">
+                                  <Link
+                                    to="/tenant-portal-dashboard/tenant-portal-inbox"
+                                    className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500"
+                                  >
+                                    <ChatAltIcon
+                                      className="h-5 w-5 text-gray-400"
+                                      aria-hidden="true"
+                                    />
+                                    <span className="ml-3">Chat</span>
+                                  </Link>
                                 </div>
                               </div>
                             </div>

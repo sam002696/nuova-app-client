@@ -291,7 +291,7 @@ const ReviewProperty = ({ singleProperty }) => {
             </div>
 
             {/* Reviews */}
-            <div className="mt-3">
+            {/* <div className="mt-3">
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -310,7 +310,7 @@ const ReviewProperty = ({ singleProperty }) => {
                 </div>
                 <p className="sr-only">{product.rating} out of 5 stars</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
@@ -321,8 +321,8 @@ const ReviewProperty = ({ singleProperty }) => {
               />
             </div>
 
-            <form className="mt-6">
-              {/* Colors */}
+            {/* <form className="mt-6">
+              
 
               <div className="mt-10 flex sm:flex-col1">
                 <button
@@ -343,7 +343,7 @@ const ReviewProperty = ({ singleProperty }) => {
                   <span className="sr-only">Add to favorites</span>
                 </button>
               </div>
-            </form>
+            </form> */}
 
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">

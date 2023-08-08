@@ -25,7 +25,7 @@ const Benefits = () => {
                                 <img className='mx-auto absolute top-6 inset-x-20 w-1/5' src={timer} alt="" />
                             </div>
                             <p className=' font-medium text-xl text-center text-[#282421] mt-5'>
-                                Cut admin time <br /> in half
+                                Enjoy a fully transparent service & a single point of contact 
                             </p>
                         </div>
                         <div className=' bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative'>
@@ -34,7 +34,7 @@ const Benefits = () => {
                                 <img className='mx-auto absolute top-6 inset-x-20 w-1/5' src={cash} alt="" />
                             </div>
                             <p className=' font-medium text-xl text-center text-[#282421] mt-5'>
-                                Reduce operational costs by a third
+                                Have a full insight to your portfolio at the touch of a button
                             </p>
                         </div>
                         <div className=' bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative'>
@@ -43,7 +43,7 @@ const Benefits = () => {
                                 <img className='mx-auto absolute top-6 inset-x-20 w-1/5' src={smile} alt="" />
                             </div>
                             <p className=' font-medium text-xl text-center text-[#282421] mt-5'>
-                                Improve tenant experience
+                                Over 40 Years of residential property experience
                             </p>
                         </div>
                         <div className=' bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative'>
@@ -52,7 +52,7 @@ const Benefits = () => {
                                 <img className='mx-auto absolute top-6 inset-x-20 w-1/5' src={statistics} alt="" />
                             </div>
                             <p className=' font-medium text-xl text-center text-[#282421] mt-5'>
-                                Make informed decisions with data insights
+                                A proactive team always looking to gain more from your portfolio
                             </p>
                         </div>
                     </div>
