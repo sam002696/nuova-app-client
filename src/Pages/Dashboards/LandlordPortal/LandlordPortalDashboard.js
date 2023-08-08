@@ -22,11 +22,12 @@ import LandlordPortalFinance from "./LandlordPortalFinance";
 import LandlordPortalInbox from "./LandlordPortalInbox";
 import LandlordProfile from "./LandlordProfile";
 import LandlordPortalTasks from "./LandlordPortalTasks";
-import LandlordPortalHomeTwo from "./LandlordPortalHomeTwo";
+import LandlordPortalHomeThree from "./LandlordPortalHomeThree";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
 import Notification from "../../Notification/Notification";
+
 
 const user = {
   name: "Chelsea Hagon",
@@ -381,7 +382,7 @@ const LandlordPortalDashboard = () => {
         <main>
           <Switch>
             <Route exact path={`${path}`}>
-              <LandlordPortalHomeTwo />
+              <LandlordPortalHomeThree />
             </Route>
             <Route path={`${path}/landlord-property`}>
               <LandlordProperty />

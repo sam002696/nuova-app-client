@@ -136,28 +136,7 @@ const Banner = () => {
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
           <div className="grid grid-cols-2 gap-x-6">
-            <div className="space-y-10 col-span-1">
-              <div className="border-none border-white bg-[#DABAB0] rounded-t-md  pt-14 pb-0 pl-14 pr-14 shadow-md">
-                <div className="border-none border-white bg-[#FFFFFF] px-14 py-14 rounded-t-md relative">
-                  <img
-                    src={scribbles}
-                    alt="Rain"
-                    className="top-0 right-0 absolute w-2/6"
-                  />
-                  <h1 className=" font-normal text-5xl text-[#BD8472]">
-                    Agent
-                  </h1>
-                  <p className=" font-medium text-4xl mt-8 tracking-wider text-[#BD8472]">
-                    Grow Your Business
-                  </p>
-
-                  <button className="text-[#BD8472] text-base border-2 border-[#BD8472] px-6 py-3 text-center rounded w-full mt-10">
-                    Watch Video
-                  </button>
-                </div>
-              </div>
-            </div>
-
+            
             <div className="col-span-1 relative z-50">
               <div className="border-none border-white bg-[#091F3C] rounded-t-md  pt-14 pb-0 pl-14 pr-14 shadow-md">
                 <div className="border-none border-white bg-[#FFFFFF] px-14 py-14 rounded-t-md relative">
@@ -174,11 +153,34 @@ const Banner = () => {
                   </p>
 
                   <button className="text-[#091F3C] text-base border-2 border-[#091F3C] px-6 py-3 text-center rounded w-full mt-10">
-                    Watch Video
+                    Learn More
                   </button>
                 </div>
               </div>
             </div>
+
+            <div className="space-y-10 col-span-1">
+              <div className="border-none border-white bg-[#DABAB0] rounded-t-md  pt-14 pb-0 pl-14 pr-14 shadow-md">
+                <div className="border-none border-white bg-[#FFFFFF] px-14 py-14 rounded-t-md relative">
+                  <img
+                    src={scribbles}
+                    alt="Rain"
+                    className="top-0 right-0 absolute w-2/6"
+                  />
+                  <h1 className=" font-normal text-5xl text-[#BD8472]">
+                    Tenant
+                  </h1>
+                  <p className=" font-medium text-4xl mt-8 tracking-wider text-[#BD8472]">
+                    Making Renting Simple
+                  </p>
+
+                  <button className="text-[#BD8472] text-base border-2 border-[#BD8472] px-6 py-3 text-center rounded w-full mt-10">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
