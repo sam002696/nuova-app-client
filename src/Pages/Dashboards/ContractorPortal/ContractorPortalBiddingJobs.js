@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
   const [loading, setLoading] = useState(false);
@@ -32,10 +33,16 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
       );
       if (res.data) {
         setLoading(false);
-        setOpen(false);
+        Swal.fire("Success!", "You successfully bid for the job!", "success");
         window.location.reload(false);
       }
     } catch (err) {
+      setLoading(false);
+      Swal.fire(
+        "Error",
+        "Some fields are missing or invalid. Please check your input and try again.",
+        "error"
+      );
       console.log(err);
     }
   };
@@ -164,7 +171,8 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                               htmlFor="contractorEmail"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Contractor Occupation
+                              Contractor Occupation{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -175,6 +183,7 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                                 onChange={(e) => {
                                   handleFormChange(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>
@@ -184,7 +193,8 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                               htmlFor="desc"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Describe the process of your Job Completion
+                              Describe the process of your Job Completion{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <textarea
@@ -196,6 +206,7 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                                 onChange={(e) => {
                                   handleFormChange(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>
@@ -205,7 +216,8 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                               htmlFor="BiddingAmount"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Bidding Amount
+                              Bidding Amount{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -216,6 +228,7 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                                 onChange={(e) => {
                                   handleFormChange(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>
@@ -224,7 +237,8 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                               htmlFor="BiddingAmount"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Contractor Chat User Id
+                              Contractor Chat User Id{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -235,6 +249,7 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
                                 onChange={(e) => {
                                   handleFormChange(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>

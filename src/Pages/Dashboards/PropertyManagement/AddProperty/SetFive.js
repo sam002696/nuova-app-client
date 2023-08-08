@@ -31,9 +31,7 @@ const options = [
 ];
 const SetFive = ({ formData, setFormData }) => {
   const [features, setFeatures] = useState([]);
-  const [briefDesc, setBriefDesc] = useState({
-    briefDesc: "",
-  });
+  const [briefDesc, setBriefDesc] = useState("");
   const handleAddressChange = (e) => {
     const { name, value } = e.target;
     setBriefDesc({ ...briefDesc, [name]: value });
@@ -51,7 +49,8 @@ const SetFive = ({ formData, setFormData }) => {
       <div className="max-w-5xl mx-auto pb-10 border mt-10 px-10 rounded-md  shadow-md bg-white">
         <div className=" text-center my-14">
           <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
-            Property description
+            Property description{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </h1>
         </div>
         <div className="my-14">
@@ -73,7 +72,8 @@ const SetFive = ({ formData, setFormData }) => {
             htmlFor="comment"
             className="block text-sm font-medium text-gray-700"
           >
-            Add brief description of the property
+            Add brief description of the property{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <textarea

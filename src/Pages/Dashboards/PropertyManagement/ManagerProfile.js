@@ -131,8 +131,8 @@ const ManagerProfile = () => {
                     Profile
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    This information will be displayed publicly so be careful
-                    what you share.
+                    This information will be visible to property managers, admin
+                    and landlords
                   </p>
                 </div>
                 <div className="mt-5 space-y-6 md:col-span-2 md:mt-0">
@@ -149,7 +149,7 @@ const ManagerProfile = () => {
                         name="aboutMe"
                         rows={3}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-                        placeholder="you@example.com"
+                        placeholder="Write a brief description about yourself..."
                         onChange={(e) => {
                           handleFormChange(e);
                         }}
@@ -157,7 +157,7 @@ const ManagerProfile = () => {
                       />
                     </div>
                     <p className="mt-2 text-sm text-gray-500">
-                      Brief description for your profile. URLs are hyperlinked.
+                      Brief description for your profile.
                     </p>
                   </div>
 
@@ -215,7 +215,8 @@ const ManagerProfile = () => {
                     Personal Information
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    Use a permanent address where you can receive mail.
+                    Provide a reliable contact address where you can receive
+                    important communications.
                   </p>
                 </div>
                 <div className="mt-5 md:col-span-2 md:mt-0">

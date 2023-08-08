@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const MaintenanceReportUpdateModal = ({
   open,
   setOpen,
   singleReportUpdate,
 }) => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (singleReport) => {
+    setLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/contractorJobs/singlecontractorjob/${singleReportUpdate._id}`,
         singleReport
       );
       if (res.data) {
+        setLoading(false);
+        Swal.fire("Success!", "You updated the job successfully!", "success");
         window.location.reload(false);
         console.log(res.data);
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+      Swal.fire(
+        "Error",
+        "There's a problem updating the maintenance report",
+        "error"
+      );
     }
     console.log(singleReport);
   };
@@ -106,7 +117,7 @@ const MaintenanceReportUpdateModal = ({
                           </div>
                           <div className="col-span-1">
                             <label className="block text-sm font-medium text-gray-700">
-                              Required Experience
+                              Required Experience{" "}
                             </label>
                             <div className="mt-1">
                               <input
@@ -120,14 +131,15 @@ const MaintenanceReportUpdateModal = ({
                                     : ""
                                 }
                                 {...register("requiredExperience", {
-                                  required: true,
+                                  required: false,
                                 })}
                               />
                             </div>
                           </div>
                           <div className="col-span-1">
                             <label className="block text-sm font-medium text-gray-700">
-                              Work Completion Timeline
+                              Work Completion Timeline{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -143,12 +155,14 @@ const MaintenanceReportUpdateModal = ({
                                 {...register("timeline", {
                                   required: true,
                                 })}
+                                required
                               />
                             </div>
                           </div>
                           <div className="col-span-1">
                             <label className="block text-sm font-medium text-gray-700">
-                              Per Hour Income Rate
+                              Per Hour Income Rate{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -164,6 +178,7 @@ const MaintenanceReportUpdateModal = ({
                                 {...register("perHourIncome", {
                                   required: true,
                                 })}
+                                required
                               />
                             </div>
                           </div>
@@ -191,13 +206,13 @@ const MaintenanceReportUpdateModal = ({
                           </div>
                         </div>
 
-                        <div className="w-1/2 mx-auto mt-4">
+                        <div className="mx-auto mt-5">
                           <button
-                            onClick={() => setOpen(false)}
+                            disabled={loading}
                             type="submit"
-                            className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
+                            className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-2 text-center w-full"
                           >
-                            SUBMIT REQUEST
+                            {loading ? "Submitting Request" : "Submit Request"}
                           </button>
                         </div>
                       </div>

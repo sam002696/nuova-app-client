@@ -39,7 +39,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
             Is your combined household annual income more than 30 times the
-            monthly rental, or can you provide a UK based guarantor?
+            monthly rental, or can you provide a UK based guarantor?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="ukBasedGurantor"
@@ -56,7 +57,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            How many adults (16 or older) will be living in the property? *
+            How many adults (16 or older) will be living in the property? *{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="adults"
@@ -83,7 +85,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
 
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            How many children (15 or younger) will be living in the property?
+            How many children (15 or younger) will be living in the property?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="children"
@@ -109,7 +112,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Intended length of stay in the property?
+            Intended length of stay in the property?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="lengthOfStay"
@@ -127,7 +131,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Current Living Arrangement
+            Current Living Arrangement{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="livingArrangement"
@@ -150,7 +155,7 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             htmlFor="Max Rent"
             className="block text-sm font-medium text-gray-700"
           >
-            Reason for moving
+            Reason for moving <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -166,7 +171,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Current Occupation
+            Current Occupation{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="currentOccupation"
@@ -195,7 +201,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             htmlFor="Max Rent"
             className="block text-sm font-medium text-gray-700"
           >
-            What is your job title?
+            What is your job title?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -217,7 +224,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             htmlFor="Max Rent"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Household Income
+            Total Household Income{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -233,7 +241,7 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Pets
+            Pets <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="pets"
@@ -250,7 +258,7 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Smoker
+            Smoker <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="smoker"
@@ -267,7 +275,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Do you have any adverse credit?
+            Do you have any adverse credit?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="adverseCard"
@@ -288,7 +297,8 @@ const ExtrainfoForm = ({ formData, setFormData }) => {
             className="block text-sm font-medium text-gray-700"
           >
             Please enter any relevant information you think will support your
-            application to rent the property
+            application to rent the property{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input

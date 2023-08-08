@@ -46,7 +46,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Full Name"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Full Name
+            Full Name <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -67,7 +67,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Email
+            Email <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 relative rounded-md shadow-sm">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -91,7 +91,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Phone No"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Phone No
+            Phone No <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -113,7 +113,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor=" Total Occupants"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Total Occupants
+            Total Occupants <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -181,7 +181,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Smokes"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Smokes
+            Smokes <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -205,7 +205,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Lawsuit"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Lawsuit
+            Lawsuit <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -229,7 +229,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Felony"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Felony
+            Felony <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -253,7 +253,8 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="lawsuit desc"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Felony/Lawsuit Description
+            Felony/Lawsuit Description{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <textarea
@@ -275,7 +276,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Current Income"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Current Income
+            Current Income <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -297,7 +298,8 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Income Asssistance"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Income Asssistance
+            Income Asssistance{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -319,7 +321,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             htmlFor="Credit Score"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Credit Score
+            Credit Score <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input

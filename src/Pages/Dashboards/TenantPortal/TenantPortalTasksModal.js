@@ -150,10 +150,7 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Eius aliquam laudantium explicabo pariatur iste
-                          dolorem animi vitae error totam. At sapiente aliquam
-                          accusamus facere veritatis.
+                          upload your necessary file / image to finish the task
                         </p>
                       </div>
                     </div>
@@ -229,7 +226,8 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
                               htmlFor="requiredExperience"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Chat User Id
+                              Chat User Id{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -240,6 +238,7 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
                                 onChange={(e) => {
                                   handleFormChange(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>
@@ -257,7 +256,7 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
                                 accept="application/pdf"
                                 name="uploadDoc"
                                 id="uploadDoc"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-cyan-500   file:text-white focus:outline-none focus:border-cyan-500 block w-full file:p-2 file:border-none  file:focus:border-cyan-500"
                                 onChange={(e) => {
                                   handleDocument(e);
                                 }}
@@ -278,7 +277,7 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
                                 accept="image/*"
                                 name="uploadImage"
                                 id="uploadImage"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-cyan-500   file:text-white focus:outline-none focus:border-cyan-500 block w-full file:p-2 file:border-none  file:focus:border-cyan-500"
                                 onChange={(e) => {
                                   handleImageChange(e);
                                 }}

@@ -3,24 +3,32 @@ import { ClipboardCheckIcon } from "@heroicons/react/outline";
 
 import { useSelector } from "react-redux";
 import MakeInvoiceModal from "./MakeInvoiceModal";
+import CompleteJobModal from "../JobsModal/CompleteJobModal";
 
 const CompleteJobs = ({ getAllJobs }) => {
   const [open, setOpen] = useState(false);
+  const [openCompleteJob, setOpenCompleteJob] = useState(false);
+  const [completeJobDetails, setCompleteJobDetails] = useState({});
   const { currentUser } = useSelector((state) => state.user);
 
   const handleOpenModal = () => {
     setOpen(true);
   };
+  const handleSingleCompleteJob = (jobDetails) => {
+    setCompleteJobDetails(jobDetails);
+    setOpenCompleteJob(true);
+  };
+  console.log("completeJobDetails", completeJobDetails);
   return (
     <>
       <div className="text-center mt-8">
-        <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl ">
+        <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl mb-10">
           Complete Jobs
         </h2>
-        <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+        {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero
           labore natus atque, ducimus sed.
-        </p>
+        </p> */}
       </div>
 
       <div className="max-w-7xl mx-auto">
@@ -94,7 +102,10 @@ const CompleteJobs = ({ getAllJobs }) => {
                             </div>
 
                             <div className="justify-between">
-                              <button className="mt-4 flex-shrink-0 inline-block px-3 py-2 text-green-800 text-sm font-medium  rounded-md mr-2 bg-green-100 ">
+                              <button
+                                onClick={() => handleSingleCompleteJob(myJob)}
+                                className="mt-4 flex-shrink-0 inline-block px-3 py-2 text-green-800 text-sm font-medium  rounded-md mr-2 bg-green-100 "
+                              >
                                 Details
                               </button>
                               <button
@@ -114,6 +125,11 @@ const CompleteJobs = ({ getAllJobs }) => {
         </div>
       </div>
       <MakeInvoiceModal open={open} setOpen={setOpen} />
+      <CompleteJobModal
+        open={openCompleteJob}
+        setOpen={setOpenCompleteJob}
+        singleCompleteJobInfo={completeJobDetails}
+      />
     </>
   );
 };

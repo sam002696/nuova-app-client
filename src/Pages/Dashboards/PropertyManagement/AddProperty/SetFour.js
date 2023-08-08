@@ -105,7 +105,8 @@ const SetFour = ({ formData, setFormData }) => {
           </svg>
 
           <h3 className="mt-2 text-xl font-medium text-gray-900">
-            Choose images from your gallery
+            Choose images from your gallery{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </h3>
           <p className="mt-1 text-lg text-gray-500 pb-8">
             Get started by adding images.

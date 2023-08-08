@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import axios from "axios";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const MaintenanceReportModal = ({ open, setOpen, singleReport }) => {
+  const [loading, setLoading] = useState(false);
   const handlePostContracPortal = async (singleReport) => {
-    // const {_id ,...others } = singleReport
+    setLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/contractorJobs/${singleReport._id}`,
         singleReport
       );
       if (res.data) {
+        setLoading(false);
         console.log(res.data);
-        setOpen(false);
+        Swal.fire("Success!", "You posted the job successfully!", "success");
         window.location.reload(false);
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+      Swal.fire(
+        "Error",
+        "There's a problem posting the job in contractor's portal",
+        "error"
+      );
     }
   };
   const cancelButtonRef = useRef(null);
@@ -79,21 +87,21 @@ const MaintenanceReportModal = ({ open, setOpen, singleReport }) => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Eius aliquam laudantium explicabo pariatur iste
-                          dolorem animi vitae error totam. At sapiente aliquam
-                          accusamus facere veritatis.
+                          This portal allows you to securely upload important
+                          documents and files to share with our contractors for
+                          efficient maintenance services.
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                     <button
+                      disabled={loading}
                       type="button"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                       onClick={() => handlePostContracPortal(singleReport)}
                     >
-                      Post
+                      {loading ? "Posting..." : "Post"}
                     </button>
                     <button
                       type="button"

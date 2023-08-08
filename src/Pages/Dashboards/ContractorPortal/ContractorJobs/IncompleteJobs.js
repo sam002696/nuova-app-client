@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { ChartPieIcon } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
+import IncompleteJobModal from "../JobsModal/IncompleteJobModal";
 
 const IncompleteJobs = ({ getAllJobs }) => {
+  const [openIncompleteJob, setOpenIncompleteJob] = useState(false);
+  const [IncompleteJobDetails, setIncompleteJobDetails] = useState({});
   const { currentUser } = useSelector((state) => state.user);
+
+  const handleSingleIncompleteJob = (jobDetails) => {
+    setIncompleteJobDetails(jobDetails);
+    setOpenIncompleteJob(true);
+  };
   return (
     <>
       <div className="text-center mt-8">
-        <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl ">
+        <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl mb-10">
           Incomplete Jobs
         </h2>
-        <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+        {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero
           labore natus atque, ducimus sed.
-        </p>
+        </p> */}
       </div>
 
       <div className="max-w-7xl mx-auto">
@@ -87,7 +95,10 @@ const IncompleteJobs = ({ getAllJobs }) => {
                             </div>
 
                             <div className="flex flex-col justify-between">
-                              <button className="mt-4 flex-shrink-0 inline-block px-3 py-2 text-stone-800 text-sm font-medium  rounded-md mr-2 bg-stone-100 ">
+                              <button
+                                onClick={() => handleSingleIncompleteJob(myJob)}
+                                className="mt-4 flex-shrink-0 inline-block px-3 py-2 text-stone-800 text-sm font-medium  rounded-md mr-2 bg-stone-100 "
+                              >
                                 Details
                               </button>
                             </div>
@@ -99,33 +110,12 @@ const IncompleteJobs = ({ getAllJobs }) => {
                 ))
             )}
         </div>
-        {/* <nav
-          className="flex items-center justify-between bg-white px-4 py-4 sm:px-6"
-          aria-label="Pagination"
-        >
-          <div className="hidden sm:block">
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">4</span> to{" "}
-              <span className="font-medium">4</span> of{" "}
-              <span className="font-medium">4</span> results
-            </p>
-          </div>
-          <div className="flex flex-1 justify-between sm:justify-end">
-            <Link
-              to="#"
-              className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Previous
-            </Link>
-            <Link
-              to="#"
-              className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Next
-            </Link>
-          </div>
-        </nav> */}
       </div>
+      <IncompleteJobModal
+        open={openIncompleteJob}
+        setOpen={setOpenIncompleteJob}
+        singleIncompleteJobInfo={IncompleteJobDetails}
+      />
     </>
   );
 };

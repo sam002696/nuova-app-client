@@ -37,7 +37,7 @@ const Guarantors = ({ singleProperty, formData, setFormData }) => {
               htmlFor="current income"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Current Income
+              Current Income <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -59,7 +59,7 @@ const Guarantors = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Full Name"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Full Name
+              Full Name <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -80,7 +80,7 @@ const Guarantors = ({ singleProperty, formData, setFormData }) => {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Email
+              Email <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -107,7 +107,7 @@ const Guarantors = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Phone No"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Phone No
+              Phone No <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input

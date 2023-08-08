@@ -32,7 +32,7 @@ const DetailsForm = ({ formData, setFormData }) => {
           htmlFor="moveindate"
           className="block text-sm font-medium text-gray-700"
         >
-          Enter date
+          Enter date <span className="text-red-500 font-bold ">*</span>
         </label>
         <div className="mt-1">
           <input
@@ -61,7 +61,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             htmlFor="first-name"
             className="block text-sm font-medium text-gray-700"
           >
-            Full Name
+            Full Name <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -81,7 +81,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
           >
-            Email Address
+            Email Address <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -100,7 +100,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             htmlFor="tel"
             className="block text-sm font-medium text-gray-700"
           >
-            Mobile
+            Mobile <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -119,7 +119,7 @@ const DetailsForm = ({ formData, setFormData }) => {
             htmlFor="address"
             className="block text-sm font-medium text-gray-700"
           >
-            Address
+            Address <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input

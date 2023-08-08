@@ -5,10 +5,11 @@ import { CheckIcon } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
+  const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
-  //   console.log(currentUser);
 
   const [uploadTaskDocument, setUploadTaskDocument] = useState();
   const [uploadTaskImage, setUploadTaskImage] = useState();
@@ -47,7 +48,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
 
   const handleSendTask = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const data1 = new FormData();
     const data2 = new FormData();
 
@@ -85,16 +86,23 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
     }
 
     try {
+      setLoading(false);
       const res = await axios.put(
         `http://localhost:5500/api/taskDocuments/${singletask._id}`,
         formList
       );
       if (res.data) {
-        console.log("data has been sent");
-        setOpen(false);
+        console.log(res.data);
+        Swal.fire("Success!", "You successfully uploaded the task!", "success");
         console.log(formList);
       }
     } catch (err) {
+      setLoading(false);
+      Swal.fire(
+        "Error",
+        "There's a problem uploading the task to Nuova server",
+        "error"
+      );
       console.log(err);
     }
   };
@@ -148,10 +156,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Eius aliquam laudantium explicabo pariatur iste
-                          dolorem animi vitae error totam. At sapiente aliquam
-                          accusamus facere veritatis.
+                          upload your necessary file / image to finish the task
                         </p>
                       </div>
                     </div>
@@ -255,10 +260,11 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
                                 accept="application/pdf"
                                 name="uploadDoc"
                                 id="uploadDoc"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-cyan-500   file:text-white focus:outline-none focus:border-cyan-500 block w-full file:p-2 file:border-none  file:focus:border-cyan-500"
                                 onChange={(e) => {
                                   handleDocument(e);
                                 }}
+                                required
                               />
                             </div>
                           </div>
@@ -276,7 +282,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
                                 accept="image/*"
                                 name="uploadImage"
                                 id="uploadImage"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-cyan-500   file:text-white focus:outline-none focus:border-cyan-500 block w-full file:p-2 file:border-none  file:focus:border-cyan-500"
                                 onChange={(e) => {
                                   handleImageChange(e);
                                 }}
@@ -288,7 +294,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
                         <input
                           type="submit"
                           onClick={(e) => handleSendTask(e)}
-                          value="Send"
+                          value={loading ? "Sending" : "Send"}
                           className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-cyan-600 px-4 py-2 text-base font-medium shadow-sm hover:bg-cyan-800  sm:col-start-1 sm:mt-4 sm:text-sm text-white cursor-pointer"
                         ></input>
                       </div>

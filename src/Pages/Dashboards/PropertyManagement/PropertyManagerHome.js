@@ -118,6 +118,8 @@ const PropertyManagerHome = () => {
       iconForeground: "text-teal-700",
       iconBackground: "bg-teal-50",
       backgroundColor: "bg-green-100",
+      description:
+        "Efficiently manage tasks for both tenants and landlords, ensuring smooth property operations.",
       notification: tenantsTasks.length + landlordsTasks.length,
     },
     {
@@ -127,6 +129,8 @@ const PropertyManagerHome = () => {
       iconForeground: "text-purple-700",
       iconBackground: "bg-purple-50",
       backgroundColor: "bg-purple-100",
+      description:
+        "Handle maintenance reports promptly, tracking and resolving property-related issues.",
       notification: maintenanceReports.length,
     },
 
@@ -137,6 +141,8 @@ const PropertyManagerHome = () => {
       iconForeground: "text-rose-700",
       iconBackground: "bg-rose-50",
       backgroundColor: "bg-red-100",
+      description:
+        "Stay organized with property events, such as showings and meetings, for effective scheduling.",
       notification: addEvents.length,
     },
     {
@@ -146,6 +152,8 @@ const PropertyManagerHome = () => {
       iconForeground: "text-cyan-700",
       iconBackground: "bg-cyan-50",
       backgroundColor: "bg-blue-100",
+      description:
+        "Easily oversee and update your property portfolio, including details and rental status.",
       notification: allProperties.length,
     },
   ];
@@ -272,9 +280,7 @@ const PropertyManagerHome = () => {
                           </a>
                         </h3>
                         <p className="mt-2 text-sm text-gray-500">
-                          Doloribus dolores nostrum quia qui natus officia quod
-                          et dolorem. Sit repellendus qui ut at blanditiis et
-                          quo et molestiae.
+                          {action.description}
                         </p>
                       </div>
                       <span

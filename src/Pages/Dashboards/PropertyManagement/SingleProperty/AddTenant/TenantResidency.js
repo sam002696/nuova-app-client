@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const TenantResidency = ({ singleProperty, formData, setFormData }) => {
+const TenantResidency = ({ formData, setFormData }) => {
+  const { singlePropertyDetails } = useSelector(
+    (state) => state.singlePropertyDetails
+  );
+  const { propertyAddress } = singlePropertyDetails;
   const [tenantResidency, setTenantResidency] = useState({
-    propertyName: "",
-    address: "",
-    city: "",
-    state: "",
-    country: "",
+    propertyName: propertyAddress.propertyName,
+    address: propertyAddress.addressline1,
+    city: propertyAddress.city,
+    state: propertyAddress.state,
+    country: propertyAddress.country,
     postCode: "",
     unitNumber: "",
     monthlyRent: "",
@@ -56,6 +61,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
+                value={propertyAddress?.propertyName}
               />
             </div>
           </div>
@@ -77,6 +83,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
+                value={propertyAddress.addressline1}
               />
             </div>
           </div>
@@ -98,6 +105,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
+                value={propertyAddress.city}
               />
             </div>
           </div>
@@ -119,6 +127,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
+                value={propertyAddress.state}
               />
             </div>
           </div>
@@ -140,6 +149,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
+                value={propertyAddress.country}
               />
             </div>
           </div>
@@ -149,7 +159,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Post Code"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Post Code
+              Post Code <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -165,14 +175,14 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
             </div>
           </div>
 
-          {singleProperty?.propertyType === "HMO" && (
+          {singlePropertyDetails?.propertyType === "HMO" && (
             <>
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="Unit Number"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Unit Number
+                  Unit Number <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
@@ -196,7 +206,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="monthly rent"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Monthly Rent
+              Monthly Rent <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -217,7 +227,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Deposit Amount"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Deposit Amount
+              Deposit Amount <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -238,7 +248,8 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Lease Start Date"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Lease Start Date
+              Lease Start Date{" "}
+              <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -259,7 +270,7 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Lease End Date"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Lease End Date
+              Lease End Date <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
@@ -280,7 +291,8 @@ const TenantResidency = ({ singleProperty, formData, setFormData }) => {
               htmlFor="Tenancy Due Date"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Tenancy Due Date
+              Tenancy Due Date{" "}
+              <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input

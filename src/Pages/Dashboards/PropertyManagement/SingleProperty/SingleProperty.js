@@ -9,8 +9,11 @@ import {
   KeyIcon,
   MenuIcon,
   UserCircleIcon,
-  ViewGridAddIcon,
   XIcon,
+  DocumentAddIcon,
+  DocumentReportIcon,
+  HomeIcon,
+  TableIcon,
 } from "@heroicons/react/outline";
 import {
   NavLink,
@@ -146,28 +149,28 @@ const SingleProperty = () => {
       name: "Certificates",
       href: "#",
       to: `${url}/add-certificates`,
-      icon: ViewGridAddIcon,
+      icon: DocumentAddIcon,
       current: false,
     },
     {
       name: "Reports & Documents",
       href: "#",
       to: `${url}/add-documents`,
-      icon: ViewGridAddIcon,
+      icon: DocumentReportIcon,
       current: false,
     },
     {
       name: "Property inspection report",
       href: "#",
       to: `${url}/property-inspection-report`,
-      icon: ViewGridAddIcon,
+      icon: HomeIcon,
       current: false,
     },
     {
       name: "Inventory",
       href: "#",
       to: `${url}/inventory`,
-      icon: ViewGridAddIcon,
+      icon: TableIcon,
       current: false,
     },
   ];
@@ -266,7 +269,7 @@ const SingleProperty = () => {
                         className="flex-shrink-0 rounded-full p-1 text-sky-200 hover:bg-sky-800 hover:text-white focus:outline-none focus:bg-sky-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-900 focus:ring-white"
                       >
                         <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                        {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                       </button>
 
                       {/* Profile dropdown */}

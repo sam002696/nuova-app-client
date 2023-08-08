@@ -529,10 +529,10 @@ export default function Calender() {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Eius aliquam laudantium explicabo pariatur iste
-                          dolorem animi vitae error totam. At sapiente aliquam
-                          accusamus facere veritatis.
+                          Plan and schedule your upcoming events effortlessly.
+                          Provide event details, set reminders, and manage your
+                          calendar efficiently. Stay organized and ensure all
+                          your important activities are well-coordinated.
                         </p>
                       </div>
                     </div>

@@ -49,7 +49,13 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
         window.location.reload(false);
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+      Swal.fire(
+        "Error",
+        "There's a problem sending a maintenance request",
+        "error"
+      );
     }
   };
   return (
@@ -126,13 +132,15 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                       </div>
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Chat User Name
+                          Chat User Name{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <input
                           type="text"
                           id="Chat_User_Name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="petedavidson"
+                          required
                           {...register("chatusername", { required: true })}
                         />
                       </div>
@@ -257,14 +265,16 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                       <div className="grid gap-3 mb-6 lg:grid-cols-2">
                         <div>
                           <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            Maintenance Issue
+                            Maintenance Issue{" "}
+                            <span className="text-red-500 font-bold ">*</span>
                           </label>
                           <input
                             type="text"
-                            id="subject_name"
+                            id="issueName"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                             placeholder="Boiler Not Working"
                             {...register("issueName", { required: true })}
+                            required
                           />
                         </div>
                         <div>
@@ -272,37 +282,41 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                             htmlFor="description"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Issue Description
+                            Issue Description{" "}
+                            <span className="text-red-500 font-bold ">*</span>
                           </label>
                           <div className="mt-1">
                             <textarea
-                              id="description"
-                              name="description"
+                              id="issueDesc"
+                              name="issueDesc"
                               rows={3}
                               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
                               placeholder="Boiler is not working for two days"
                               {...register("issueDesc", { required: true })}
                               defaultValue={""}
+                              required
                             />
                           </div>
                         </div>
 
                         <div>
                           <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                            Issue Image
+                            Issue Image{" "}
+                            <span className="text-red-500 font-bold ">*</span>
                           </label>
                           <input
                             type="file"
                             id="issueImage"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md file:bg-gray-400   file:text-white focus:ring-cyan-500 focus:border-cyan-500 block w-full  file:p-1.5 file:border-none"
                             {...register("issueImage", { required: true })}
+                            required
                           />
                         </div>
                       </div>
                     </div>
                     <div className="w-1/4 mx-auto mt-4">
                       <button
-                        onClick={() => setOpen(false)}
+                        // onClick={() => setOpen(false)}
                         type="submit"
                         className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
                       >

@@ -29,6 +29,58 @@ const ManagerTasks = () => {
     taskDesc: "",
   });
 
+  // handling form errors
+  const [formErrors, setFormErrors] = useState({
+    assignedUsername: "",
+    assignedUseremail: "",
+    taskTitle: "",
+    taskDesc: "",
+    taskFor: "",
+    sendTask: "",
+  });
+  // validate form
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    // Check for errors in the form fields
+    if (!formList.taskFor) {
+      errors.taskFor = "Please select Task Send for";
+      isValid = false;
+    }
+
+    if (!formList.sendTask) {
+      errors.sendTask = "Please select Whom do you want to send.";
+      isValid = false;
+    }
+
+    if (!formList.assignedUsername.trim()) {
+      errors.assignedUsername = "Full Name is required.";
+      isValid = false;
+    }
+
+    if (!formList.assignedUseremail.trim()) {
+      errors.assignedUseremail = "Email is required.";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formList.assignedUseremail)) {
+      errors.assignedUseremail = "Invalid email format.";
+      isValid = false;
+    }
+
+    if (!formList.taskTitle.trim()) {
+      errors.taskTitle = "Task Title is required.";
+      isValid = false;
+    }
+
+    if (!formList.taskDesc.trim()) {
+      errors.taskDesc = "Task Description is required.";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
   const handleTenantTaskForm = () => {
     setShowTenantTask(true);
   };
@@ -39,42 +91,52 @@ const ManagerTasks = () => {
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormList({ ...formList, [name]: value });
+
+    setFormErrors({ ...formErrors, [name]: "" });
   };
   const handleTaskSubmit = async (e) => {
-    setLoadingIndividual(true);
     e.preventDefault();
-    try {
-      const res = await axios.post(`http://localhost:5500/api/tasks`, formList);
-      if (res.data) {
-        setLoadingIndividual(false);
-        Swal.fire("The task has been uploaded");
-        window.location.reload(false);
-        console.log(formList);
+    const isValid = validateForm();
+    if (isValid) {
+      setLoadingIndividual(true);
+      try {
+        const res = await axios.post(
+          `http://localhost:5500/api/tasks`,
+          formList
+        );
+        if (res.data) {
+          setLoadingIndividual(false);
+          Swal.fire("The task has been uploaded");
+          window.location.reload(false);
+          console.log(formList);
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
   const handleSendToEveryone = async (e) => {
-    setLoadingEveryone(true);
     e.preventDefault();
+    const isValid = validateForm();
+    if (isValid) {
+      setLoadingEveryone(true);
+      const { assignedUsername, assignedUseremail, ...others } = formList;
 
-    const { assignedUsername, assignedUseremail, ...others } = formList;
-
-    try {
-      const res = await axios.post(
-        `http://localhost:5500/api/tasks/all`,
-        others
-      );
-      if (res.data) {
-        setLoadingEveryone(false);
-        Swal.fire("The tasks have been uploaded");
-        window.location.reload(false);
-        console.log(others);
+      try {
+        const res = await axios.post(
+          `http://localhost:5500/api/tasks/all`,
+          others
+        );
+        if (res.data) {
+          setLoadingEveryone(false);
+          Swal.fire("The tasks have been uploaded");
+          window.location.reload(false);
+          console.log(others);
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -225,8 +287,10 @@ const ManagerTasks = () => {
                       Create tasks for tenants
                     </h2>
                     <p className="mt-4 text-md leading-6 text-gray-500">
-                      Nullam risus blandit ac aliquam justo ipsum. Quam mauris
-                      volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                      Easily create and manage tasks for your tenants. Keep
+                      track of important maintenance requests and reminders.
+                      Streamline your property management process with our
+                      user-friendly task management system.
                     </p>
                   </div>
                   <div className="mt-8">
@@ -236,7 +300,8 @@ const ManagerTasks = () => {
                           htmlFor="taskFor"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Send for
+                          Task Send for{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <select
                           id="taskFor"
@@ -250,6 +315,9 @@ const ManagerTasks = () => {
                           <option hidden>Select</option>
                           <option>Tenants</option>
                         </select>
+                        <p className="text-red-500 text-sm">
+                          {formErrors.taskFor}
+                        </p>
                       </div>
 
                       <div className="sm:col-span-2">
@@ -257,7 +325,8 @@ const ManagerTasks = () => {
                           htmlFor="sendTask"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                          Whom do you want to send?
+                          Whom do you want to send?{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <select
                           id="sendTask"
@@ -272,6 +341,9 @@ const ManagerTasks = () => {
                           <option>Everyone</option>
                           <option>Send to individual</option>
                         </select>
+                        <p className="text-red-500 text-sm">
+                          {formErrors.sendTask}
+                        </p>
                       </div>
 
                       {formList.sendTask === "Send to individual" && (
@@ -281,7 +353,8 @@ const ManagerTasks = () => {
                               htmlFor="assignedUsername"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Full Name
+                              Full Name{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -295,13 +368,17 @@ const ManagerTasks = () => {
                                 }}
                               />
                             </div>
+                            <p className="text-red-500 text-sm">
+                              {formErrors.assignedUsername}
+                            </p>
                           </div>
                           <div className="sm:col-span-2">
                             <label
                               htmlFor="assignedUseremail"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Email
+                              Email{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -315,6 +392,9 @@ const ManagerTasks = () => {
                                 }}
                               />
                             </div>
+                            <p className="text-red-500 text-sm">
+                              {formErrors.assignedUseremail}
+                            </p>
                           </div>
                         </>
                       )}
@@ -324,7 +404,8 @@ const ManagerTasks = () => {
                           htmlFor="taskTitle"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Title
+                          Task Title{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <div className="mt-1">
                           <input
@@ -337,6 +418,9 @@ const ManagerTasks = () => {
                               handleFormChange(e);
                             }}
                           />
+                          <p className="text-red-500 text-sm">
+                            {formErrors.taskTitle}
+                          </p>
                         </div>
                       </div>
                       <div className="sm:col-span-2">
@@ -344,7 +428,8 @@ const ManagerTasks = () => {
                           htmlFor="taskDesc"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Description
+                          Task Description{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <div className="mt-1">
                           <textarea
@@ -356,6 +441,9 @@ const ManagerTasks = () => {
                               handleFormChange(e);
                             }}
                           />
+                          <p className="text-red-500 text-sm">
+                            {formErrors.taskDesc}
+                          </p>
                         </div>
                       </div>
 
@@ -507,7 +595,8 @@ const ManagerTasks = () => {
                           htmlFor="taskFor"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Send for
+                          Task Send for{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <select
                           id="taskFor"
@@ -521,13 +610,17 @@ const ManagerTasks = () => {
                           <option hidden>Select</option>
                           <option>Landlords</option>
                         </select>
+                        <p className="text-red-500 text-sm">
+                          {formErrors.taskFor}
+                        </p>
                       </div>
                       <div className="sm:col-span-2">
                         <label
                           htmlFor="sendTask"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                          Whom do you want to send?
+                          Whom do you want to send?{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <select
                           id="sendTask"
@@ -541,6 +634,9 @@ const ManagerTasks = () => {
                           <option>Everyone</option>
                           <option>Send to individual</option>
                         </select>
+                        <p className="text-red-500 text-sm">
+                          {formErrors.sendTask}
+                        </p>
                       </div>
 
                       {formList.sendTask === "Send to individual" && (
@@ -550,7 +646,8 @@ const ManagerTasks = () => {
                               htmlFor="assignedUsername"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Full Name
+                              Full Name{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -563,6 +660,9 @@ const ManagerTasks = () => {
                                   handleFormChange(e);
                                 }}
                               />
+                              <p className="text-red-500 text-sm">
+                                {formErrors.assignedUsername}
+                              </p>
                             </div>
                           </div>
                           <div className="sm:col-span-2">
@@ -570,7 +670,8 @@ const ManagerTasks = () => {
                               htmlFor="assignedUseremail"
                               className="block text-sm font-medium text-gray-700"
                             >
-                              Email
+                              Email{" "}
+                              <span className="text-red-500 font-bold ">*</span>
                             </label>
                             <div className="mt-1">
                               <input
@@ -583,6 +684,9 @@ const ManagerTasks = () => {
                                   handleFormChange(e);
                                 }}
                               />
+                              <p className="text-red-500 text-sm">
+                                {formErrors.assignedUseremail}
+                              </p>
                             </div>
                           </div>
                         </>
@@ -593,7 +697,8 @@ const ManagerTasks = () => {
                           htmlFor="taskTitle"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Title
+                          Task Title{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <div className="mt-1">
                           <input
@@ -606,6 +711,9 @@ const ManagerTasks = () => {
                               handleFormChange(e);
                             }}
                           />
+                          <p className="text-red-500 text-sm">
+                            {formErrors.taskTitle}
+                          </p>
                         </div>
                       </div>
                       <div className="sm:col-span-2">
@@ -613,7 +721,8 @@ const ManagerTasks = () => {
                           htmlFor="taskDesc"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Task Description
+                          Task Description{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <div className="mt-1">
                           <textarea
@@ -625,6 +734,9 @@ const ManagerTasks = () => {
                               handleFormChange(e);
                             }}
                           />
+                          <p className="text-red-500 text-sm">
+                            {formErrors.taskDesc}
+                          </p>
                         </div>
                       </div>
 

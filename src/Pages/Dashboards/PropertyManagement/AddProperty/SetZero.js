@@ -67,7 +67,8 @@ const SetZero = ({ formData, setFormData }) => {
             Let's add your property
           </h1>
           <p className="  font-normal text-lg text-[#565151] mt-5">
-            Which kind of property do you manage?
+            Which kind of property do you manage?{" "}
+            <span className="text-red-500 font-bold ">*</span>
           </p>
         </div>
         <div className="relative z-10 p-4 mt-8">
@@ -157,7 +158,8 @@ const SetZero = ({ formData, setFormData }) => {
         <section className="max-w-5xl mx-auto">
           <div className="space-y-5 text-center mt-10">
             <p className="  font-normal text-lg text-[#565151] mt-5">
-              Which Type Best Describes Your Property?
+              Which Type Best Describes Your Property?{" "}
+              <span className="text-red-500 font-bold ">*</span>
             </p>
           </div>
           <div className="relative z-10 p-4 mt-8">

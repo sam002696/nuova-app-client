@@ -74,12 +74,12 @@ const ContractorPortalDashboard = () => {
       to: `${url}/contractor-my-profile`,
       current: false,
     },
-    {
-      name: "Invoice Maker",
-      href: "#",
-      to: `${url}/invoice-maker`,
-      current: false,
-    },
+    // {
+    //   name: "Invoice Maker",
+    //   href: "#",
+    //   to: `${url}/invoice-maker`,
+    //   current: false,
+    // },
     {
       name: currentUser ? "" : "Register",
       href: "#",

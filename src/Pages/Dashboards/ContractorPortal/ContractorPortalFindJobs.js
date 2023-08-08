@@ -89,7 +89,10 @@ const ContractorPortalFindJobs = () => {
                 .map((singleJob) => (
                   <li
                     key={singleJob._id}
-                    className="col-span-2 bg-white rounded-lg shadow-md divide-y divide-gray-200"
+                    className={`col-span-2 bg-white rounded-lg shadow-xl divide-y divide-gray-200 ${
+                      seeSingleJobDetails._id === singleJob._id &&
+                      "shadow-green-500/40 "
+                    }`}
                   >
                     <div className="w-full flex justify-between px-6 py-6 space-x-6">
                       <img
@@ -131,7 +134,11 @@ const ContractorPortalFindJobs = () => {
                       <div className="flex flex-col justify-between">
                         <button
                           onClick={() => seeJobDetails(singleJob)}
-                          className="mt-2 flex-shrink-0 inline-block px-3 py-2 bg-white text-xs font-medium text-gray-700 border-2 border-gray-700 rounded-lg"
+                          className={`mt-2 flex-shrink-0 inline-block px-3 py-2  text-xs font-medium   rounded-md ${
+                            seeSingleJobDetails._id === singleJob._id
+                              ? "bg-green-500 text-white"
+                              : "bg-green-300 text-gray-700"
+                          }`}
                         >
                           Details
                         </button>
@@ -229,7 +236,7 @@ const ContractorPortalFindJobs = () => {
           <div
             className={`${
               detailsButton
-                ? "p-8 pt-12 border-2 border-gray-200 rounded-md bg-white shadow-md shadow-gray-200"
+                ? "p-8 pt-12 border-2 border-gray-200 rounded-md bg-white shadow-xl shadow-gray-200"
                 : "hidden"
             } `}
           >

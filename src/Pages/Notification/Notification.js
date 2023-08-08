@@ -771,7 +771,31 @@ const Notification = () => {
                                     `${notification.applicantName} has submitted a new prospect`}
 
                                   {notification.taskReceivePm &&
-                                    `${notification.taskReceivePm} has submitted the task`}
+                                    notification.assignedUserName && (
+                                      <>
+                                        {" "}
+                                        A new task -{" "}
+                                        <span className="font-bold">
+                                          {notification.taskTitle}
+                                        </span>{" "}
+                                        has been submitted by{" "}
+                                        <span className="font-bold">
+                                          {notification.assignedUserName}
+                                        </span>
+                                      </>
+                                    )}
+
+                                  {notification.taskReceivePm &&
+                                    !notification.assignedUserName && (
+                                      <>
+                                        {" "}
+                                        Task for all -{" "}
+                                        <span className="font-bold">
+                                          {notification.taskTitle}
+                                        </span>{" "}
+                                        has been submitted
+                                      </>
+                                    )}
 
                                   {notification.certificateAddMessagePM &&
                                     `${notification.certificateAddMessagePM} on ${notification.propertyName}`}

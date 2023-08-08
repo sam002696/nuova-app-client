@@ -32,7 +32,7 @@ const PreferencesForm = ({ formData, setFormData }) => {
             htmlFor="Max Rent"
             className="block text-sm font-medium text-gray-700"
           >
-            Max Rent
+            Max Rent <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -52,7 +52,7 @@ const PreferencesForm = ({ formData, setFormData }) => {
             htmlFor="Max Beds"
             className="block text-sm font-medium text-gray-700"
           >
-            Max Beds
+            Max Beds <span className="text-red-500 font-bold ">*</span>
           </label>
           <div className="mt-1">
             <input
@@ -69,7 +69,7 @@ const PreferencesForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Furnished
+            Furnished <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="preference"
@@ -86,7 +86,7 @@ const PreferencesForm = ({ formData, setFormData }) => {
         </div>
         <div className="col-span-1">
           <label className="block text-sm font-medium text-gray-900 ">
-            Parking
+            Parking <span className="text-red-500 font-bold ">*</span>
           </label>
           <select
             id="parking"

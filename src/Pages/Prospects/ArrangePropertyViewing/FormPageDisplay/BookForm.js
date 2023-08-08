@@ -29,7 +29,7 @@ const BookForm = ({ formData, setFormData }) => {
               htmlFor="date"
               className="block text-sm font-medium text-gray-700"
             >
-              Date
+              Date <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1">
               <input
@@ -48,7 +48,7 @@ const BookForm = ({ formData, setFormData }) => {
               htmlFor="time"
               className="block text-sm font-medium text-gray-700"
             >
-              Time
+              Time <span className="text-red-500 font-bold ">*</span>
             </label>
             <div className="mt-1">
               <input

@@ -111,7 +111,13 @@ const PropertyViewingForm = ({ id }) => {
         Swal.fire("Success!", "Your response has been submitted!", "success");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+      Swal.fire(
+        "Error",
+        "There's a problem adding a property in the system",
+        "error"
+      );
     }
   };
   const steps = [
@@ -125,6 +131,80 @@ const PropertyViewingForm = ({ id }) => {
     { id: "03", name: "Extra Info", href: "#", status: statusData[extrainfo] },
     { id: "04", name: "Book", href: "#", status: statusData[book] },
   ];
+
+  // validate form
+
+  const validateForm = () => {
+    const { details, preferences, extraInfo, book } = formData;
+
+    const { moveindate, fullName, emailAddress, mobile, address } = details;
+    const { maxRent, maxBeds, preference, parking } = preferences;
+    const {
+      ukBasedGurantor,
+      adults,
+      children,
+      lengthOfStay,
+      livingArrangement,
+      reasonForMoving,
+      currentOccupation,
+      jobTitle,
+      householdIncome,
+      pets,
+      smoker,
+      adverseCard,
+      relevantInfo,
+    } = extraInfo;
+    const { preferredDay, preferredTime } = book;
+
+    // "details" page data
+    if (page === 0) {
+      if (!moveindate || !fullName || !emailAddress || !mobile || !address) {
+        Swal.fire("Error!", "Please fill in all required fields.", "error");
+        return false;
+      }
+    }
+
+    //  "Preferences" page data
+    if (page === 1) {
+      if (!maxRent || !maxBeds || !preference || !parking) {
+        Swal.fire("Error!", "Please fill in all required fields.", "error");
+        return false;
+      }
+    }
+
+    //  "Extra Info" page data
+    if (page === 2) {
+      if (
+        !ukBasedGurantor ||
+        !adults ||
+        !children ||
+        !lengthOfStay ||
+        !livingArrangement ||
+        !reasonForMoving ||
+        !currentOccupation ||
+        !jobTitle ||
+        !householdIncome ||
+        !pets ||
+        !smoker ||
+        !adverseCard ||
+        !relevantInfo
+      ) {
+        Swal.fire("Error!", "Please fill in all required fields.", "error");
+        return false;
+      }
+    }
+
+    //  "Book" page data
+    if (page === 3) {
+      if (!preferredDay || !preferredTime) {
+        Swal.fire("Error!", "Please fill in all required fields.", "error");
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   return (
     <>
       <div className=" py-10 bg-gray-50">
@@ -295,11 +375,14 @@ const PropertyViewingForm = ({ id }) => {
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
             <button
+              disabled={loading}
               onClick={() => {
-                if (page === steps.length - 1) {
+                if (page === steps.length - 1 && validateForm()) {
                   handleSubmit();
                 } else {
-                  setPage((currPage) => currPage + 1);
+                  if (validateForm()) {
+                    setPage((currPage) => currPage + 1);
+                  }
                 }
               }}
               type="button"

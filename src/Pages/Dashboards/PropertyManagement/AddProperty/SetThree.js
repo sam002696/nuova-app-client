@@ -186,7 +186,7 @@ const SetThree = ({ formData, setFormData }) => {
                       No.
                     </label>
                     <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 ">
-                      {index}
+                      {index + 1}
                     </div>
                   </div>
                   <div>
@@ -194,13 +194,14 @@ const SetThree = ({ formData, setFormData }) => {
                       for="first_name"
                       class="block mb-2 text-sm font-medium text-gray-900 "
                     >
-                      Unit Name
+                      Unit Name{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <input
                       type="text"
                       name="unitName"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 "
-                      placeholder="unit 1"
+                      placeholder={`unit ${index + 1}`}
                       required=""
                       onChange={(e) => handleServiceChange(e, index)}
                     />
@@ -210,7 +211,7 @@ const SetThree = ({ formData, setFormData }) => {
                       for="last_name"
                       class="block mb-2 text-sm font-medium text-gray-900 "
                     >
-                      Beds
+                      Beds <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <input
                       type="text"
@@ -226,7 +227,7 @@ const SetThree = ({ formData, setFormData }) => {
                       for="company"
                       class="block mb-2 text-sm font-medium text-gray-900 "
                     >
-                      Baths
+                      Baths <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <input
                       type="text"
@@ -242,7 +243,7 @@ const SetThree = ({ formData, setFormData }) => {
                       for="phone"
                       class="block mb-2 text-sm font-medium text-gray-900 "
                     >
-                      Size
+                      Size <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <input
                       type="tel"
@@ -259,7 +260,8 @@ const SetThree = ({ formData, setFormData }) => {
                       for="website"
                       class="block mb-2 text-sm font-medium text-gray-900 "
                     >
-                      Market Rent
+                      Market Rent{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <input
                       type="url"
@@ -361,7 +363,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyFloor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Property floor (e.g. ground floor)
+                      Property floor (e.g. ground floor){" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -378,7 +381,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyFloor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Property estimated value
+                      Property estimated value{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -391,13 +395,21 @@ const SetThree = ({ formData, setFormData }) => {
                     </div>
                   </div>
                   <div className="col-span-1">
+                    <label
+                      htmlFor="propertyFurnished"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Property furnish type{" "}
+                      <span className="text-red-500 font-bold ">*</span>
+                    </label>
                     <fieldset>
-                      <div className="space-x-3 mt-7">
+                      <div className="space-x-3 mt-4">
                         <input
                           type="radio"
                           id="furnishChoice1"
                           name="propertyFurnished"
                           value="furnsished"
+                          className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                           onChange={(e) => handleFurnishChange(e)}
                         />
                         <label for="contactChoice1">Furnished</label>
@@ -407,6 +419,7 @@ const SetThree = ({ formData, setFormData }) => {
                           id="furnishChoice2"
                           name="propertyFurnished"
                           value="unfurnished"
+                          className="h-4 w-4  border-gray-300 text-cyan-600 focus:ring-cyan-500"
                           onChange={(e) => handleFurnishChange(e)}
                         />
                         <label for="contactChoice2">Unfurnished</label>
@@ -423,7 +436,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="livingArea"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Living Area (m<sup>2</sup>)
+                      Living Area (m<sup>2</sup>){" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -440,7 +454,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="marketRentPCM"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Market Rent (PCM)
+                      Market Rent (PCM){" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -461,7 +476,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="bedroom"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Bedrooms
+                      Bedrooms{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -479,7 +495,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="bathroom"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Bathrooms
+                      Bathrooms{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -501,7 +518,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyAddress"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Property address (as registered with local authority)
+                      Property address (as registered with local authority){" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <textarea
@@ -516,7 +534,8 @@ const SetThree = ({ formData, setFormData }) => {
                   </div>
                   <div>
                     <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                      Council Tax band
+                      Council Tax band{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <select
                       id="councilTaxBand"
@@ -536,7 +555,8 @@ const SetThree = ({ formData, setFormData }) => {
                     </select>
                     <div className=" mt-2">
                       <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                        Availability date
+                        Availability date{" "}
+                        <span className="text-red-500 font-bold ">*</span>
                       </label>
                       <input
                         type="date"
@@ -561,7 +581,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyFloor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Landlord name
+                      Landlord name{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -578,7 +599,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyFloor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Landlord email
+                      Landlord email{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -595,7 +617,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="propertyFloor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Landlord phone
+                      Landlord phone{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -612,7 +635,7 @@ const SetThree = ({ formData, setFormData }) => {
                 {/* Pets */}
 
                 <h1 className="text-xl font-semibold leading-6 text-gray-900">
-                  Pets
+                  Pets <span className="text-red-500 font-bold ">*</span>
                 </h1>
 
                 <div className="grid grid-cols-2 gap-x-2">
@@ -662,7 +685,7 @@ const SetThree = ({ formData, setFormData }) => {
                 {/* Students */}
 
                 <h1 className="text-xl font-semibold leading-6 text-gray-900">
-                  Students
+                  Students <span className="text-red-500 font-bold ">*</span>
                 </h1>
 
                 <div className="grid grid-cols-3 gap-x-2">
@@ -715,7 +738,7 @@ const SetThree = ({ formData, setFormData }) => {
                 {/* To Let */}
 
                 <h1 className="text-xl font-semibold leading-6 text-gray-900">
-                  To Let
+                  To Let <span className="text-red-500 font-bold ">*</span>
                 </h1>
                 <div className="grid grid-cols-3 gap-x-2">
                   <div className="font-medium text-gray-700 text-sm">
@@ -776,7 +799,7 @@ const SetThree = ({ formData, setFormData }) => {
 
                 <div>
                   <h1 className="text-xl font-semibold leading-6 text-gray-900">
-                    Rooms
+                    Rooms <span className="text-red-500 font-bold ">*</span>
                   </h1>
                   <p className=" italic text-lg pt-3">Number as appropriate</p>
                 </div>
@@ -1108,7 +1131,8 @@ const SetThree = ({ formData, setFormData }) => {
 
                 <div>
                   <h1 className="text-xl font-semibold leading-6 text-gray-900">
-                    Features and Appliances
+                    Features and Appliances{" "}
+                    <span className="text-red-500 font-bold ">*</span>
                   </h1>
                 </div>
                 <div className="grid grid-cols-4 gap-x-2">
@@ -1440,7 +1464,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="permitSuppliedBy"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Permit supplied by
+                      Permit supplied by{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -1457,7 +1482,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="spaceNumber"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Space number
+                      Space number{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -1474,7 +1500,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="permitsPerProperty"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      No. of permits per property
+                      No. of permits per property{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -1491,7 +1518,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="spaceLocation"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Space location
+                      Space location{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -1508,7 +1536,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="entryCode"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Entry Code
+                      Entry Code{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -1522,7 +1551,8 @@ const SetThree = ({ formData, setFormData }) => {
                   </div>
                   <div className="col-span-1">
                     <label className="block text-sm font-medium text-gray-900 ">
-                      Remote/Fob required
+                      Remote/Fob required{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <select
                       id="remoteFob"
@@ -1540,7 +1570,8 @@ const SetThree = ({ formData, setFormData }) => {
                       htmlFor="project-name"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Supplied by
+                      Supplied by{" "}
+                      <span className="text-red-500 font-bold ">*</span>
                     </label>
                     <div className="mt-1">
                       <input

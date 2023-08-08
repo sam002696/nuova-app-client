@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../Images/Footer/logo.png";
-import axios from "axios";
-// import { useDispatch } from "react-redux";
-// import {
-//   registerFailure,
-//   registerStart,
-//   registerSuccess,
-// } from "../../../Redux/userRegisterSlice";
-// import { useHistory } from "react-router-dom";
 
 const Register = () => {
-  //   const history = useHistory();
-  //   const dispatch = useDispatch();
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

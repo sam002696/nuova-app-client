@@ -97,7 +97,6 @@ const AddProperty = () => {
     const pictureSecond = data.images.pictureSecond;
     const pictureThird = data.images.pictureThird;
     const pictureFourth = data.images.pictureFourth;
-
     data1.append("file", pictureFirst);
     data2.append("file", pictureSecond);
     data3.append("file", pictureThird);
@@ -107,7 +106,6 @@ const AddProperty = () => {
     data2.append("upload_preset", "eez1w4gg");
     data3.append("upload_preset", "eez1w4gg");
     data4.append("upload_preset", "eez1w4gg");
-
     try {
       const uploadRes1 = await axios.post(
         "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
@@ -125,17 +123,14 @@ const AddProperty = () => {
         "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
         data4
       );
-
       const { url: url1 } = uploadRes1.data;
       const { url: url2 } = uploadRes2.data;
       const { url: url3 } = uploadRes3.data;
       const { url: url4 } = uploadRes4.data;
-
       data.images.pictureFirst = url1;
       data.images.pictureSecond = url2;
       data.images.pictureThird = url3;
       data.images.pictureFourth = url4;
-
       const res = await axios.post(
         `http://localhost:5500/api/properties`,
         data
@@ -151,7 +146,13 @@ const AddProperty = () => {
         console.log(res.data);
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+      Swal.fire(
+        "Error",
+        "There's a problem adding a property in the system",
+        "error"
+      );
     }
   };
 
@@ -159,14 +160,14 @@ const AddProperty = () => {
     {
       id: "01",
       name: "Type",
-      description: "Vitae sed mi luctus laoreet.",
+      description: "Select the property type (e.g., house, apartment).",
       href: "#",
       status: StatusData[status],
     },
     {
       id: "02",
       name: "Address",
-      description: "Cursus semper viverra.",
+      description: "Provide the property's address details.",
       href: "#",
       status: StatusData[middleStatus],
     },
@@ -174,25 +175,135 @@ const AddProperty = () => {
     {
       id: "03",
       name: formData.propertyType === "HMO" ? "Units" : "Details",
-      description: "Penatibus eu quis ante.",
+      description: "Add unit info or property details based on property type.",
       href: "#",
       status: StatusData[detailStatus],
     },
     {
       id: "04",
       name: "Pictures",
-      description: "Penatibus eu quis ante.",
+      description: "Upload property pictures.",
       href: "#",
       status: StatusData[picturesStatus],
     },
     {
       id: "05",
       name: "description",
-      description: "Penatibus eu quis ante.",
+      description: "Write a brief property description.",
       href: "#",
       status: StatusData[briefStatus],
     },
   ];
+
+  const validateForm = () => {
+    const {
+      property,
+      propertyType,
+      propertyAddress,
+      propertyDetails,
+      images,
+      keyFeatures,
+      briefDesc,
+      units,
+    } = formData;
+    const { state, city, zipcode, addressline1, propertyName, country } =
+      propertyAddress;
+    const {
+      propertyFloor,
+      propertyEstimatedValue,
+      propertyFurnished,
+      livingArea,
+      marketRentPCM,
+      bedroom,
+      bathroom,
+      availabilityDate,
+      propertyAddress: propertyAddressSetThree,
+      councilTaxBand,
+      petsPermission,
+      studentsAccept,
+      toLet,
+      rooms,
+      featuresAndAppliances,
+      permitSuppliedBy,
+      spaceNumber,
+      permitsPerProperty,
+      spaceLocation,
+      entryCode,
+      remoteFob,
+      suppliedBy,
+    } = propertyDetails;
+
+    const { pictureFirst, pictureSecond, pictureThird, pictureFourth } = images;
+    const { comment } = briefDesc;
+
+    if (page === 0) {
+      if (!property.trim() || !propertyType.trim()) {
+        return false;
+      }
+    } else if (page === 1) {
+      if (
+        !state.trim() ||
+        !city.trim() ||
+        !zipcode.trim() ||
+        !addressline1.trim() ||
+        !propertyName.trim() ||
+        !country.trim()
+      ) {
+        return false;
+      }
+    } else if (page === 2) {
+      if (propertyType !== "HMO") {
+        if (
+          !propertyFloor.trim() ||
+          !propertyEstimatedValue.trim() ||
+          !propertyFurnished.trim() ||
+          !marketRentPCM.trim() ||
+          !livingArea.trim() ||
+          !bedroom.trim() ||
+          !bathroom.trim() ||
+          !availabilityDate.trim() ||
+          !propertyAddressSetThree.trim() ||
+          !councilTaxBand.trim() ||
+          !petsPermission.trim() ||
+          !studentsAccept.trim() ||
+          !toLet.trim() ||
+          rooms.length === 0 ||
+          featuresAndAppliances.length === 0 ||
+          !permitSuppliedBy.trim() ||
+          !spaceNumber.trim() ||
+          !permitsPerProperty.trim() ||
+          !spaceLocation.trim() ||
+          !entryCode.trim() ||
+          !remoteFob.trim() ||
+          !suppliedBy.trim()
+        ) {
+          return false;
+        }
+      } else {
+        const anyUnitMissingData = units.some(
+          (unit) =>
+            !unit.unitName.trim() ||
+            !unit.beds.trim() ||
+            !unit.baths.trim() ||
+            !unit.size.trim() ||
+            !unit.marketRent.trim()
+        );
+
+        if (anyUnitMissingData) {
+          return false;
+        }
+      }
+    } else if (page === 3) {
+      if (!pictureFirst || !pictureSecond || !pictureThird || !pictureFourth) {
+        return false;
+      }
+    } else if (page === 4) {
+      if (keyFeatures.length === 0 || !comment) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   return (
     <>
@@ -347,14 +458,24 @@ const AddProperty = () => {
           <button
             disabled={loading}
             onClick={() => {
-              if (page === steps.length - 1) {
+              if (page === steps.length - 1 && validateForm()) {
                 handleSubmit(formData);
               } else {
-                setPage((currPage) => currPage + 1);
+                if (validateForm()) {
+                  setPage((currPage) => currPage + 1);
+                } else {
+                  Swal.fire(
+                    "Oops!",
+                    "Please fill in all required fields.",
+                    "error"
+                  );
+                }
               }
             }}
             type="button"
-            className="-ml-px relative inline-flex items-center px-2 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 shadow-md shadow-cyan-500/50 cursor-pointer"
+            className={`-ml-px relative inline-flex items-center px-2 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 shadow-md shadow-cyan-500/50 cursor-pointer ${
+              loading && "disabled:bg-gray-200"
+            }`}
           >
             <span className="sr-only">Next</span>
             {page === steps.length - 1 ? (
