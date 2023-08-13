@@ -2,6 +2,8 @@ import React from "react";
 
 import { CheckIcon as CheckIconMini } from "@heroicons/react/solid";
 import AllInOnePlatform from "./AllInOnePlatform";
+import Banner from "./Banner";
+import PricingContact from "./PricingContact";
 
 const tiers = [
   {
@@ -105,12 +107,13 @@ const tiers = [
 const PricingPlans = () => {
   return (
     <>
+      <Banner />
       {/* Pricing with four tiers and toggle */}
       <div className="bg-gradient-to-l from-stone-100 to-white">
-        <div className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="sm:align-center sm:flex sm:flex-col">
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-center">
-              Pricing Plans
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-center">
+              Nuova Service Packages
             </h1>
           </div>
           <div className="mt-12 space-y-4 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4 ">
@@ -128,7 +131,7 @@ const PricingPlans = () => {
                   </p>
                   <a
                     href={tier.href}
-                    className="mt-8 block w-full rounded-md border border-transparent bg-cyan-600 py-2 text-center text-sm font-semibold text-white hover:bg-cyan-700"
+                    className="mt-8 block w-full rounded-md border border-transparent bg-[#162A43] py-2 text-center text-sm font-semibold text-white hover:bg-blue-900"
                   >
                     {tier.price}
                   </a>
@@ -154,8 +157,10 @@ const PricingPlans = () => {
           </div>
         </div>
 
-        <AllInOnePlatform />
+        {/* <AllInOnePlatform /> */}
       </div>
+
+      <PricingContact />
     </>
   );
 };

@@ -10,10 +10,13 @@ import p3_b2_img1 from "../../../Images/Page3/Banner2/Page3 banner2 img1.png";
 import p3_b2_img2 from "../../../Images/Page3/Banner2/Page3 banner2 img2.png";
 import p3_b2_img3 from "../../../Images/Page3/Banner2/Page3 banner2 img3.png";
 import p3_b2_img4 from "../../../Images/Page3/Banner2/Page3 banner2 img4.png";
+import p3_b2_img5 from "../../../Images/Page3/Banner2/Page3 banner2 img5.png";
 
 import p3_b3_img2 from "../../../Images/Page3/Banner3/Page3 banner3 img2.png";
 
 import p3_b4_img1 from "../../../Images/Page3/Banner4/Page3 banner4 img1.png";
+import p3_b4_img2 from "../../../Images/Page3/Banner4/Page3 banner4 img2.png";
+import p3_b4_img3 from "../../../Images/Page3/Banner4/Page3 banner4 img3.png";
 
 import p3_b5_img1 from "../../../Images/Page3/Banner5/Page3 banner5 img1.png";
 import p3_b5_img2 from "../../../Images/Page3/Banner5/Page3 banner5 img2.png";
@@ -24,12 +27,65 @@ import p3_b5_img6 from "../../../Images/Page3/Banner5/Page3 banner5 img6.png";
 import p3_b5_img7 from "../../../Images/Page3/Banner5/Page3 banner5 img7.png";
 import p3_b5_img8 from "../../../Images/Page3/Banner5/Page3 banner5 img8.png";
 import p3_b5_img9 from "../../../Images/Page3/Banner5/Page3 banner5 img9.png";
-
-
-
+import p3_b5_img10 from "../../../Images/Page3/Banner5/Page3 banner5 img10.png";
+import p3_b5_img11 from "../../../Images/Page3/Banner5/Page3 banner5 img11.png";
+import p3_b5_img12 from "../../../Images/Page3/Banner5/Page3 banner5 img12.png";
 import tickMark from "../../../Images/Pros/Vector.png";
 
 const Banner = () => {
+  const posts = [
+    {
+      title: "Nuova Fully Managed",
+      href: "#",
+      category: { name: "Article", href: "#" },
+      description:
+        "Cloud Hosting is a good fit for those of you who are building personal websites, portfolios, blogs, and other systems",
+      date: "Mar 16, 2020",
+      datetime: "2020-03-16",
+      imageUrl: p3_b5_img10,
+      readingTime: "6 min",
+      author: {
+        name: "Roel Aufderehar",
+        href: "#",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    },
+    {
+      title: "Nuova HMO Management",
+      href: "#",
+      category: { name: "Video", href: "#" },
+      description:
+        "Cloud Hosting is a good fit for those of you who are building personal websites, portfolios, blogs, and other systems",
+      date: "Mar 10, 2020",
+      datetime: "2020-03-10",
+      imageUrl: p3_b5_img11,
+      readingTime: "4 min",
+      author: {
+        name: "Brenna Goyette",
+        href: "#",
+        imageUrl:
+          "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    },
+    {
+      title: "Short Term Let Management",
+      href: "#",
+      category: { name: "Case Study", href: "#" },
+      description:
+        "Cloud Hosting is a good fit for those of you who are building personal websites, portfolios, blogs, and other systems",
+      date: "Feb 12, 2020",
+      datetime: "2020-02-12",
+      imageUrl: p3_b5_img12,
+      readingTime: "11 min",
+      author: {
+        name: "Daniela Metz",
+        href: "#",
+        imageUrl:
+          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    },
+  ];
   return (
     <>
       <div className="relative">
@@ -102,10 +158,10 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        We've used 3xl here, but feel free to try other max-widths based on your needs
         <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
+          Content goes here
           <div className="grid grid-cols-4 gap-x-5">
             <div className="space-y-10 py-10 col-span-2 mt-20">
               <div className="text-[#162A43] banner-text font-medium font-sans ">
@@ -148,25 +204,20 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="bg-[#FAFAFA] px-4 sm:px-6 lg:px-8 pb-20">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Content goes here */}
-          <div className="grid grid-cols-4">
-            <div className="col-span-1 relative -left-40">
+          <div className="grid grid-cols-2 gap-x-12">
+            <div className="col-span-1 relative">
               <div>
-                <img className="mt-40" src={p3_b2_img1} alt="" />
-              </div>
-            </div>
-            <div className="col-span-1 relative -left-40">
-              <div>
-                <img className="mt-20 -ml-8" src={p3_b2_img4} alt="" />
+                <img className="mt-20" src={p3_b2_img5} alt="" />
               </div>
             </div>
 
-            <div className="space-y-8 py-10 col-span-2 mt-20">
+            <div className="space-y-8 col-span-1 mt-20">
               <div className="text-[#162A43] banner-text font-medium font-sans ">
                 Dedicated Property Management
               </div>
@@ -225,15 +276,18 @@ const Banner = () => {
 
       <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Content goes here */}
-          <div className="grid grid-cols-2 gap-x-12">
-            <div className="space-y-8 py-10 col-span-1 mt-28">
+          <div className="grid grid-cols-3 gap-x-12">
+            <div className="space-y-8 col-span-2 mt-20 w-5/6">
               <div className="text-[#162A43] banner-text font-medium font-sans ">
                 Here at Nuova we believe it is time for a change!
               </div>
               <p className="text-[#565151] font-normal text-lg">
-                At Nuova we provide a unique service in order to achieve maximum return on your portfolio, we aim to reduce costs and maximise return. We help investors extract maximum value from their asset. We achieve this by ; 
+                At Nuova we provide a unique service in order to achieve maximum
+                return on your portfolio, we aim to reduce costs and maximise
+                return. We help investors extract maximum value from their
+                asset. We achieve this by ;
               </p>
               <ul className=" space-y-4">
                 <li className="font-normal text-sm text-[#565151] flex items-center ">
@@ -250,7 +304,9 @@ const Banner = () => {
                     src={tickMark}
                     alt=""
                   />
-                  On eligible properties we rent by the day, the week, the month and the year in order to unleash the potential of your property.
+                  On eligible properties we rent by the day, the week, the month
+                  and the year in order to unleash the potential of your
+                  property.
                 </li>
                 <li className="font-normal text-sm text-[#565151] flex items-center">
                   <img
@@ -258,7 +314,9 @@ const Banner = () => {
                     src={tickMark}
                     alt=""
                   />{" "}
-                  Our 35  years of propery experince combined with our use of technology has allowed us to be able to develope a model which maximises returns while also increasing tenant satisfaction.
+                  Our 35 years of propery experince combined with our use of
+                  technology has allowed us to be able to develope a model which
+                  maximises returns while also increasing tenant satisfaction.
                 </li>
                 <li className="font-normal text-sm text-[#565151] flex items-center">
                   <img
@@ -266,14 +324,22 @@ const Banner = () => {
                     src={tickMark}
                     alt=""
                   />{" "}
-                  Dedicated marketing team to ensure your property receives the best possible exposure.
+                  Dedicated marketing team to ensure your property receives the
+                  best possible exposure.
                 </li>
               </ul>
             </div>
 
-            <div className="col-span-1 relative -right-40">
+            <div className="col-span-1 relative">
               <div>
-                <img className="mt-48" src={p3_b3_img2} alt="" />
+                <img className="mt-20 w-5/6" src={p3_b3_img2} alt="" />
+              </div>
+              <div className="mt-8 sm:mt-8 w-11/12 mx-auto">
+                <div className="w-11/12 mx-auto">
+                  <button className="text-white text-base bg-[#BD8472] px-6 py-3 text-center rounded font-semibold">
+                    Nuova Property Brochure
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -282,24 +348,30 @@ const Banner = () => {
 
       <div className="bg-[#F6FAFD] px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Content goes here */}
-          <div className="grid grid-cols-2 gap-x-12">
-            <div className="space-y-8 py-10 col-span-1 mt-16">
+          <div className="grid grid-cols-8 gap-x-1">
+            <div className="space-y-8 col-span-5 mt-16 w-11/12">
               <div className="text-[#162A43] banner-text font-medium font-sans ">
                 Nuova Makes Owning A Property Stress-free
               </div>
               <p className="text-[#565151] font-normal text-lg">
-                Once signed up to Nuova, you will receive access to you own customised owners portal, here you will have an instant access to all of your essential documents, along with a chat function so you can speak to you dedicated property manager any time!
+                Once signed up to Nuova, you will receive access to you own
+                customised owners portal, here you will have an instant access
+                to all of your essential documents, along with a chat function
+                so you can speak to you dedicated property manager any time!
               </p>
               <p className="text-[#565151] font-normal text-lg">
-                You will also benefit from only having one point of contact who will be your dedicated property manager, a simple and effective maintenance process to make repairs getting done a lot easier with our network of trusted contractors.
+                You will also benefit from only having one point of contact who
+                will be your dedicated property manager, a simple and effective
+                maintenance process to make repairs getting done a lot easier
+                with our network of trusted contractors.
               </p>
             </div>
 
-            <div className="col-span-1 relative -right-40">
-              <div className="absolute">
-                <img className="mt-32" src={p3_b4_img1} alt="" />
+            <div className="col-span-3 relative">
+              <div className="">
+                <img className="mt-32" src={p3_b4_img3} alt="" />
               </div>
             </div>
           </div>
@@ -315,89 +387,77 @@ const Banner = () => {
               Marketing your property
             </h1>
             <p className="text-[#565151] font-normal text-lg max-w-2xl mx-auto text-center">
-              Simple and effective marketing to provide your property with maximum exposure and ensure we find the best tenant for your property. 
-          </p>
+              Simple and effective marketing to provide your property with
+              maximum exposure and ensure we find the best tenant for your
+              property.
+            </p>
           </div>
-          
 
           <div className="grid grid-cols-3 gap-x-12">
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img4} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
                 Online Advertisement
               </div>
-
             </div>
 
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img5} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
                 To Let Boards
               </div>
-
             </div>
 
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img6} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
                 Pricing
               </div>
-
             </div>
 
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img7} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
                 Photography & Videography
               </div>
-
             </div>
 
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img8} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
                 Email Marketing
               </div>
-
             </div>
 
-            <div className="space-y-3 py-10 col-span-1 mt-8">
+            <div className="space-y-3 py-2 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 mx-auto" src={p3_b5_img9} alt="" />
-                
               </div>
 
               <div className="text-[#162A43] font-semibold text-xl font-sans text-center">
-                Social Media 
+                Social Media
               </div>
-
             </div>
-            
           </div>
         </div>
       </div>
 
-      <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
+      <div className="bg-[#FAFAFA] px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
@@ -406,7 +466,7 @@ const Banner = () => {
               Nuova Offering
             </h1>
           </div>
-          <div className="grid grid-cols-3 gap-x-16">
+          {/* <div className="grid grid-cols-3 gap-x-16">
             <div className="space-y-3 py-10 col-span-1 mt-8 w-5/6 mx-auto">
               <div className="">
                 <img className="mb-6 w-5/6 mx-auto" src={p3_b5_img1} alt="" />
@@ -480,6 +540,86 @@ const Banner = () => {
               <p className="text-[#BD8472] font-normal text-lg">
                 With both of our plans
               </p>
+            </div>
+          </div> */}
+          <div className="mt-12 max-w-lg mx-auto grid gap-12 lg:grid-cols-3 lg:max-w-none">
+            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-5 bg-white">
+              <div className="flex-1 bg-white p-3 flex flex-col justify-between">
+                <div className="flex-1 text-center">
+                  <p className="text-md font-medium text-cyan-600">
+                    Nuova HMO Management
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 bg-white">
+                <img
+                  className="text-center mx-auto p-3"
+                  src={p3_b5_img11}
+                  alt=""
+                />
+              </div>
+              <div className="flex-1 bg-white p-3 flex flex-col justify-between">
+                <div className="flex-1">
+                  <p className="mt-3 text-sm text-gray-500 text-justify">
+                    If you are a HMO landlorfd we can help you to. We will help
+                    you find great renters, manage every aspect of your property
+                    and Nuova on your side make sure you are kept compliant
+                    every step of the way.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col rounded-xl shadow-xl overflow-hidden p-5 bg-[#162A43]">
+              <div className="flex-1 bg-[#162A43] p-3 flex flex-col justify-between">
+                <div className="flex-1 text-center">
+                  <p className="text-md font-medium text-cyan-600">
+                    Nuova Fully Managed
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 bg-[#162A43]">
+                <img
+                  className="text-center mx-auto p-3"
+                  src={p3_b5_img10}
+                  alt=""
+                />
+              </div>
+              <div className="flex-1 bg-[#162A43] p-3 flex flex-col justify-between">
+                <div className="flex-1">
+                  <p className="mt-3 text-sm text-gray-100 text-justify">
+                    Our most popular plan, which is easy to see why. Our Nuova
+                    team will take car of everything from a tenant checking in
+                    to checking out. You can sit back and relax, watch it all
+                    happen using your Nuova dashboard.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-5 bg-white">
+              <div className="flex-1 bg-white p-3 flex flex-col justify-between">
+                <div className="flex-1 text-center">
+                  <p className="text-md font-medium text-cyan-600">
+                    Short Term Let Management
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 bg-white">
+                <img
+                  className="text-center mx-auto p-3"
+                  src={p3_b5_img12}
+                  alt=""
+                />
+              </div>
+              <div className="flex-1 bg-white p-3 flex flex-col justify-between">
+                <div className="flex-1">
+                  <p className="mt-3 text-sm text-gray-500 text-justify">
+                    If you are a self-managing a short-term rental or are
+                    wanting to list your property as a short-term let for the
+                    firs time, we can help! having Nuova on your side will make
+                    sure you are always kept compliant.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

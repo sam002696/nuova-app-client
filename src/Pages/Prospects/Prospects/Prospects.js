@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../Shared/Footer/Footer";
 import Banner from "../Banner/Banner";
 import Navbar from "../Navbar/Navbar";
+import HeaderNavbarTwo from "../../Shared/Header/HeaderNavbar/HeaderNavbarTwo";
 
 const Prospects = () => {
   const [allProspects, setAllProspects] = useState([]);
@@ -21,7 +22,8 @@ const Prospects = () => {
   }, []);
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
+      <HeaderNavbarTwo />
       <Banner allProspects={allProspects} />
       <Footer />
     </div>
