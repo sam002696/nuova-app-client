@@ -35,7 +35,7 @@ const Keys = ({ register }) => {
             htmlFor="project-name"
             className="block text-sm font-medium text-gray-700"
           >
-            No. of key sets to be cut by Nuova System
+            No. of key sets to be cut by Nuova Property
           </label>
           <div className="mt-1">
             <input

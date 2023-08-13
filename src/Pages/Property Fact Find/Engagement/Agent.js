@@ -6,8 +6,8 @@ const Agent = ({ register }) => {
       <div className=" space-y-3">
         <p className=" text-xl text-gray-900 font-semibold pb-2">Agent</p>
         <p className=" text-base text-gray-900 pt-3">
-          <span className="font-bold">Nuova System</span> <br /> 8 Eagle Street,
-          Craighall Business Park, Glasgow, G4 9XA
+          <span className="font-bold">Nuova Property</span> <br /> 48 West
+          George Street, Glasgow, G2 1BP
         </p>
         <div className="grid grid-cols-3 gap-5 pt-5">
           <div className="col-span-1">

@@ -584,8 +584,10 @@ const ManagerTasks = () => {
                       Create tasks for landlords
                     </h2>
                     <p className="mt-4 text-md leading-6 text-gray-500">
-                      Nullam risus blandit ac aliquam justo ipsum. Quam mauris
-                      volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                      Easily create and manage tasks for your tenants. Keep
+                      track of important maintenance requests and reminders.
+                      Streamline your property management process with our
+                      user-friendly task management system.
                     </p>
                   </div>
                   <div className="mt-8">

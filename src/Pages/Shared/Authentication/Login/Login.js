@@ -131,9 +131,10 @@ const Login = () => {
 
               <div>
                 <button
+                  disabled={loading}
                   type="submit"
                   onClick={handleLogin}
-                  className="flex w-full justify-center rounded-md border border-transparent bg-[#bd8472] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-700 focus:outline-none "
+                  className="flex w-full justify-center rounded-md border border-transparent bg-[#bd8472] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-700 focus:outline-none disabled:cursor-not-allowed"
                 >
                   {loading ? "Signing in" : "Sign in"}
                 </button>
