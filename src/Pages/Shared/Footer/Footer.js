@@ -28,8 +28,12 @@ const Footer = () => {
                 </p>
                 <p>
                   <span className=" font-normal text-lg text-[#000000]">
-                    3755 Commercial St SE Salem, Corner with Sunny Boulevard,
-                    37557, Sydney, Australia
+                    Suite 2/3, 2nd Floor, 48 West George Street, Glasgow G2 1BP
+                  </span>
+                </p>
+                <p>
+                  <span className=" font-normal text-lg text-[#000000]">
+                    info@nuovapm.co.uk 0141-266-0597
                   </span>
                 </p>
               </div>

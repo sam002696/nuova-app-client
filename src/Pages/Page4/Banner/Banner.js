@@ -2,6 +2,12 @@ import React from "react";
 
 import p4_b3_img1 from "../../../Images/Page4/Banner3/Page4 banner3 img1.png";
 
+import p2_b2_img1 from "../../../Images/Page2/Banner2/Page2 banner2 img1.png";
+import p2_b2_img2 from "../../../Images/Page2/Banner2/Page2 banner2 img2.png";
+import p2_b2_img3 from "../../../Images/Page2/Banner2/Page2 banner2 img3.png";
+import p2_b2_img4 from "../../../Images/Page2/Banner2/Page2 banner2 img4.png";
+import p2_b2_img5 from "../../../Images/Page2/Banner2/Page2 banner2 img5.png";
+
 import p4_TI_img1 from "../../../Images/Page4/Table/Page4 Table img rec1.png";
 import p4_TI_img2 from "../../../Images/Page4/Table/Page4 Table img rec2.png";
 
@@ -151,31 +157,133 @@ const Banner = () => {
 
   return (
     <>
-      <div className="bg-[#F7F1E9] px-4 sm:px-6 lg:px-8 ">
+      <div className="bg-[#162A43] px-4 sm:px-6 lg:px-8 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
 
-          <div className="space-y-6 text-center p-20">
-            <div className="text-[#162A43] font-semibold text-5xl font-sans">
+          <div className="space-y-6 text-center pt-20 pb-8">
+            <div className="text-cyan-200 font-semibold text-5xl font-sans">
               <h1 className="leading-snug">
-                To put it simply we take the <br /> hassle out of hosting
+                Changing the way in which residential property is managed
               </h1>
             </div>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto">
+          {/* Content goes here */}
+          <div className="grid grid-cols-3 gap-x-20">
+            <div className="space-y-8 py-10 col-span-1 relative z-10">
+              <div className="text-white banner-text font-medium font-sans ">
+                ABOUT NUOVA PROPERTY
+              </div>
+            </div>
 
-            <p className="text-[#565151] font-normal text-lg font-sans">
-              We are dedicated to helping property owners maximise their
-              short-term property rental opportunities via Airbnb and other
-              leading booking sites. We take care of every single detail 365
-              days a year so you don’t have to, handling your property’s set up
-              and online profile, photography, bookings and price optimisation
-              to achieve maximum revenue.
-            </p>
+            <div className="space-y-8 py-10 col-span-2 relative z-10">
+              <p className="text-[#DEE1E5] font-normal text-lg text-justify">
+                Nuova Property Management & Letting has been built using over 40
+                years of residential property experience. Starting of as
+                landlords ourselves we understand the struggles and the hurdles
+                that must be overcome in order to protect such an important
+                asset. From also being a tenant and having to deal with letting
+                agents I noticed that I was always treated more like an
+                inconvenience rather than a customer and soon realised that
+                landlords were also treated in a very similar manner. As a
+                landlord, you can trust us to take care of all aspects of
+                managing your property, from finding and screening tenants to
+                handling maintenance and repairs. We will work closely with you
+                to ensure that your property is treated like our own and that
+                you are always getting the best possible return on your
+                investment. For tenants, we make sure that the properties we
+                manage are well-maintained and in good condition. We are always
+                available to answer any questions you may have and to help with
+                any issues that may arise, our proactive team are always there
+                to help. We want to make the property management and letting
+                industry{" "}
+                <span className="text-cyan-200">
+                  {" "}
+                  SEAMLESS, STRAIGHTFORWARD AND TRANSPARENT
+                </span>{" "}
+                .
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative bg-[#F7F1E9] pt-16 pb-20 px-4 sm:px-6 lg:pt-4 lg:pb-28 lg:px-8">
+      <div className="">
+        <div className="max-w-5xl mx-auto">
+          <div className="pt-24">
+            <h1 className="text-4xl font-mono font-semibold text-center">
+              OUR VALUES
+            </h1>
+          </div>
+          <div className="pt-8">
+            <img className="w-1/5 mx-auto h-1" src={p2_b2_img5} alt="" />
+          </div>
+
+          <div className="grid grid-cols-4 gap-x-16">
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img1} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img2} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img3} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img4} alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="">
+        <div className="max-w-5xl mx-auto">
+          <div className="pt-24">
+            <h1 className="text-4xl font-mono font-semibold text-center">
+              Renting made easy with Nuova
+            </h1>
+          </div>
+          <div className="pt-8">
+            <img className="w-1/5 mx-auto h-1" src={p2_b2_img5} alt="" />
+          </div>
+
+          <div className="grid grid-cols-4 gap-x-16">
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img1} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img2} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img3} alt="" />
+              </div>
+            </div>
+            <div className="space-y-3 py-10 col-span-1 mt-8">
+              <div className="relative">
+                <img className="mb-6 " src={p2_b2_img4} alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      {/* <div className="relative bg-[#F7F1E9] pt-16 pb-20 px-4 sm:px-6 lg:pt-4 lg:pb-28 lg:px-8">
         <div className="relative max-w-5xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl text-[#162A43] font-bold sm:text-3xl font-sans">
@@ -213,28 +321,28 @@ const Banner = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Content goes here */}
           <div className="grid grid-cols-2 gap-x-12">
-            <div className="space-y-8 py-10 col-span-1 mt-36 relative -left-20">
-              <div className="text-[#162A43] text-4xl font-semibold font-sans">
-                Increase profitability of your portfolio
+            <div className="space-y-8 py-10 col-span-1 mt-36 relative">
+              <div className="text-[#162A43] text-5xl font-semibold font-sans">
+                Our Vision
               </div>
               <p className="text-[#565151] font-normal text-lg text-justify">
-                Herddle’s platform tracks maintenance, compliance, financials
-                and performance to get full visibility of your portfolio. One
-                monthly fee – no excessive lump sum. costs Controlled
-                maintenance costs from quotes tendered by multiple contractors
+                Property ownership and management should be seamless, easy, safe
+                and secure and provide best experience for all parties involved.
+                We are building a better future for the most valuable and most
+                important asset in the world, our home!
               </p>
             </div>
 
             <div className="col-span-1 relative">
               <div>
-                <img className="mt-20" src={p4_b3_img1} alt="" />
+                <img className="w-5/6 mt-20" src={p4_b3_img1} alt="" />
               </div>
             </div>
           </div>
@@ -243,83 +351,33 @@ const Banner = () => {
 
       <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Content goes here */}
           <div className="grid grid-cols-2 gap-x-12">
-            <div className="col-span-1 relative -left-32">
-              <div>
-                <img className="mt-20" src={p4_b3_img1} alt="" />
-              </div>
-            </div>
-
-            <div className="space-y-8 py-10 col-span-1 mt-36 ">
-              <div className="text-[#162A43] text-4xl font-semibold font-sans">
-                Increase profitability of your portfolio
-              </div>
-              <p className="text-[#565151] font-normal text-lg text-justify">
-                Herddle’s platform tracks maintenance, compliance, financials
-                and performance to get full visibility of your portfolio. One
-                monthly fee – no excessive lump sum. costs Controlled
-                maintenance costs from quotes tendered by multiple contractors
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
-          <div className="grid grid-cols-2 gap-x-12">
-            <div className="space-y-8 py-10 col-span-1 mt-36 relative -left-20">
-              <div className="text-[#162A43] text-4xl font-semibold font-sans">
-                Increase profitability of your portfolio
-              </div>
-              <p className="text-[#565151] font-normal text-lg text-justify">
-                Herddle’s platform tracks maintenance, compliance, financials
-                and performance to get full visibility of your portfolio. One
-                monthly fee – no excessive lump sum. costs Controlled
-                maintenance costs from quotes tendered by multiple contractors
-              </p>
-            </div>
-
             <div className="col-span-1 relative">
               <div>
-                <img className="mt-20" src={p4_b3_img1} alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
-          <div className="grid grid-cols-2 gap-x-12">
-            <div className="col-span-1 relative -left-32">
-              <div>
-                <img className="mt-20" src={p4_b3_img1} alt="" />
+                <img className="w-5/6 mt-20" src={p4_b3_img1} alt="" />
               </div>
             </div>
 
             <div className="space-y-8 py-10 col-span-1 mt-36 ">
-              <div className="text-[#162A43] text-4xl font-semibold font-sans">
-                Increase profitability of your portfolio
+              <div className="text-[#162A43] text-5xl font-semibold font-sans">
+                Our Mission
               </div>
               <p className="text-[#565151] font-normal text-lg text-justify">
-                Herddle’s platform tracks maintenance, compliance, financials
-                and performance to get full visibility of your portfolio. One
-                monthly fee – no excessive lump sum. costs Controlled
-                maintenance costs from quotes tendered by multiple contractors
+                Our mission is simple we want to make the sector more
+                transparent, generate higher returns for our clients and make
+                sure both landlords and tenants are receiving the customer
+                service that they deserve, we want our property owners to know
+                exactly what is going on with their property at any given
+                moment.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="px-4 sm:px-6 lg:px-8">
+      {/* <div className="px-4 sm:px-6 lg:px-8">
         <div className="mt-8 flex flex-col ">
           <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8 ">
             <div className="inline-block min-w-full py-2 align-middle">
@@ -412,22 +470,30 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
           <div className="pt-16">
-            <h1 className="text-4xl font-mono font-semibold text-center">
-              Easy Steps
+            <h1 className="text-5xl font-mono font-semibold text-center">
+              Why let your property with Nuova?
             </h1>
           </div>
-          <div className="pt-4">
-            <img className="w-1/3 mx-auto" src={p4_b7_V0_img0} alt="" />
+          <div className="pt-16 max-w-3xl mx-auto">
+            <p className="text-[#565151] font-normal text-lg text-justify">
+              Thanks to our 35 years of local market knowledge and expertise, we
+              manage and let a vast range of properties from HMO’s, Short term
+              lets to Long terms lets. Our team of letting staff are well
+              experience in all aspects of property management and letting, our
+              agents are also Arla accredited. The experience we have has
+              allowed us help property owners and investors achieve their goals
+              and have made their property journey an easy one.
+            </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-x-12">
+          {/* <div className="grid grid-cols-3 gap-x-12">
             <div className="space-y-3 py-10 col-span-1 mt-8">
               <div className="relative">
                 <img className="mb-6 " src={p4_b7_Rec_img1} alt="" />
@@ -494,7 +560,7 @@ const Banner = () => {
                 perfect residents for your property.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -93,32 +93,21 @@ const HeaderNavbarTwo = () => {
             to="/page2"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
-            Residents
+            Tenants
           </Link>
           <Link
             to="/page3"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
             aria-current="page"
           >
-            Landlord Portfolio
+            Landlord
           </Link>
           <Link
-            to="/page4"
+            to="/pricing-structure"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
+            aria-current="page"
           >
-            About Us
-          </Link>
-          <Link
-            to="/page5"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            Guides
-          </Link>
-          <Link
-            to="/page6"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            Contact Us
+            Pricing
           </Link>
           <Link
             to="/propertyviewings"
@@ -126,6 +115,25 @@ const HeaderNavbarTwo = () => {
           >
             Prospects
           </Link>
+          <Link
+            to="/page4"
+            className="text-base font-medium text-gray-500 hover:text-gray-900"
+          >
+            About
+          </Link>
+          {/* <Link
+            to="/page5"
+            className="text-base font-medium text-gray-500 hover:text-gray-900"
+          >
+            Guides
+          </Link> */}
+          {/* <Link
+            to="/page6"
+            className="text-base font-medium text-gray-500 hover:text-gray-900"
+          >
+            Contact Us
+          </Link> */}
+
           {currentUser && (
             <Popover className="relative">
               {({ open }) => (
@@ -263,14 +271,14 @@ const HeaderNavbarTwo = () => {
                   to="/page2"
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
-                  Residents
+                  Tenants
                 </Link>
                 <Link
                   to="/page3"
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                   aria-current="page"
                 >
-                  Landlord Portfolio
+                  Landlords
                 </Link>
                 <Link
                   to="/page4"
