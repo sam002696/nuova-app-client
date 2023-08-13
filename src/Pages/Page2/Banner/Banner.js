@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import backgroundImage from "../../../Images/Page2/Banner/background.png";
 import camera from "../../../Images/Page2/Banner/camera.png";
 import rectangle from "../../../Images/Page2/Banner/Rectangle 4641.png";
@@ -53,8 +53,43 @@ import p2_b4_img2 from "../../../Images/Page2/Banner4/Page2 banner4 img2.png";
 import p2_b4_img3 from "../../../Images/Page2/Banner4/Page2 banner4 img3.png";
 
 import p2_b5_img1 from "../../../Images/Page2/Banner5/Page2 banner5 img1.png";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Banner = () => {
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    console.log(data);
+    try {
+      const res = await axios.post(
+        "http://localhost:5500/api/tenantContactForm",
+        data
+      );
+      if (res.data) {
+        setLoading(false);
+        reset();
+        Swal.fire(
+          "Success!",
+          "Your message has been sent successfully!",
+          "success"
+        );
+      }
+    } catch (err) {
+      Swal.fire("Error", "There's a problem sending the message", "error");
+      setLoading(false);
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div className="relative">
@@ -355,8 +390,7 @@ const Banner = () => {
 
           <div className="py-5 px-6 sm:px-10 lg:col-span-2 xl:p-6 max-w-4xl mx-auto">
             <form
-              action="#"
-              method="POST"
+              onSubmit={handleSubmit(onSubmit)}
               className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             >
               <div>
@@ -364,7 +398,7 @@ const Banner = () => {
                   htmlFor="first-name"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Full Name
+                  Full Name <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -373,8 +407,18 @@ const Banner = () => {
                     id="first-name"
                     autoComplete="given-name"
                     placeholder="Alex Jo"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    {...register("fullName", {
+                      required: "Full Name is required",
+                    })}
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.fullName ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
                   />
+                  {errors.fullName && (
+                    <p className="text-red-500 mt-2">
+                      {errors.fullName.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -383,7 +427,8 @@ const Banner = () => {
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Email Address
+                  Email Address{" "}
+                  <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -392,8 +437,18 @@ const Banner = () => {
                     type="email"
                     autoComplete="email"
                     placeholder="example@gmail.com"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2  rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.tenantEmail ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("tenantEmail", {
+                      required: "Email is required",
+                    })}
                   />
+                  {errors.tenantEmail && (
+                    <p className="text-red-500 mt-2">
+                      {errors.tenantEmail.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
@@ -401,7 +456,7 @@ const Banner = () => {
                   htmlFor="subject"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Subject
+                  Subject <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -410,8 +465,18 @@ const Banner = () => {
                     id="subject"
                     autoComplete="family-name"
                     placeholder="Write subject"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.subject ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("subject", {
+                      required: "Subject is required",
+                    })}
                   />
+                  {errors.subject && (
+                    <p className="text-red-500 mt-2">
+                      {errors.subject.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -421,7 +486,7 @@ const Banner = () => {
                     htmlFor="phone"
                     className="block text-sm font-medium text-gray-500"
                   >
-                    Phone
+                    Phone <span className="text-red-500 font-bold ">*</span>
                   </label>
                 </div>
                 <div className="mt-1">
@@ -431,9 +496,21 @@ const Banner = () => {
                     id="phone"
                     autoComplete="tel"
                     placeholder="+874 645 312"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2  rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.tenantPhoneNo
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("tenantPhoneNo", {
+                      required: "Phone no is required",
+                    })}
                     aria-describedby="phone-optional"
                   />
+                  {errors.tenantPhoneNo && (
+                    <p className="text-red-500 mt-2">
+                      {errors.tenantPhoneNo.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -443,7 +520,8 @@ const Banner = () => {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-500"
                   >
-                    Your Message
+                    Your Message{" "}
+                    <span className="text-red-500 font-bold ">*</span>
                   </label>
                   <span
                     id="message-max"
@@ -455,18 +533,31 @@ const Banner = () => {
                     id="message"
                     name="message"
                     rows={4}
-                    className="py-3 px-3 block w-full text-sm shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border border-gray-100 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.tenantMessage
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("tenantMessage", {
+                      required: "Message is required",
+                    })}
                     aria-describedby="message-max"
-                    defaultValue={"Write something here..."}
+                    placeholder="Write something here..."
                   />
+                  {errors.tenantMessage && (
+                    <p className="text-red-500 mt-2">
+                      {errors.tenantMessage.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-2 sm:flex sm:justify-end lg:justify-center">
                 <button
+                  disabled={loading}
                   type="submit"
-                  className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#BD8472] hover:bg-[#BD8472] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 sm:w-auto"
+                  className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#BD8472] hover:bg-[#BD8472] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD8472] sm:w-auto disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {loading ? "Sending Message" : "Send Message"}
                 </button>
               </div>
             </form>

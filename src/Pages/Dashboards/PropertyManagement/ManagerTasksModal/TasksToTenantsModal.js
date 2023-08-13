@@ -179,7 +179,12 @@ const TasksToTenantsModal = ({ open, setOpen, singletask }) => {
                                         </div>
                                         <div className="ml-4 flex-shrink-0">
                                           <a
-                                            href="#"
+                                            href={
+                                              singletask.uploadSingleTask
+                                                ?.uploadDoc
+                                            }
+                                            target="_blank"
+                                            download
                                             className="font-medium text-cyan-600 hover:text-cyan-500"
                                           >
                                             Download
@@ -201,7 +206,12 @@ const TasksToTenantsModal = ({ open, setOpen, singletask }) => {
                                         </div>
                                         <div className="ml-4 flex-shrink-0">
                                           <a
-                                            href="#"
+                                            href={
+                                              singletask.uploadSingleTask
+                                                ?.uploadImage
+                                            }
+                                            target="_blank"
+                                            download
                                             className="font-medium text-cyan-600 hover:text-cyan-500"
                                           >
                                             Download
@@ -310,7 +320,9 @@ const TasksToTenantsModal = ({ open, setOpen, singletask }) => {
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
                                               <a
-                                                href="#"
+                                                href={task.uploadDoc}
+                                                download
+                                                target="_blank"
                                                 className="font-medium text-cyan-600 hover:text-cyan-500"
                                               >
                                                 Download
@@ -329,7 +341,9 @@ const TasksToTenantsModal = ({ open, setOpen, singletask }) => {
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
                                               <a
-                                                href="#"
+                                                href={task.uploadImage}
+                                                download
+                                                target="_blank"
                                                 className="font-medium text-cyan-600 hover:text-cyan-500"
                                               >
                                                 Download
