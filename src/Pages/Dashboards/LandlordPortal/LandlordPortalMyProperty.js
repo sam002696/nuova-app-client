@@ -62,7 +62,7 @@ const LandlordPortalMyProperty = () => {
                           <span className=" text-3xl font-semibold ">
                             &#163;
                           </span>
-                          {property.propertyDetails?.propertyEstimatedValue}
+                          {property.propertyDetails?.marketRentPCM} PCM
                         </p>
                       </Link>
                     </>

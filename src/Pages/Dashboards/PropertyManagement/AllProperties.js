@@ -53,7 +53,7 @@ const AllProperties = () => {
                     <>
                       <p className="text-2xl font-semibold text-gray-800">
                         <span className=" text-3xl font-semibold ">&#163;</span>
-                        {property.propertyDetails?.propertyEstimatedValue}
+                        {property.propertyDetails?.marketRentPCM} PCM
                       </p>
                     </>
                   )}
