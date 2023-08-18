@@ -90,36 +90,37 @@ const HeaderNavbarTwo = () => {
         </div>
         <Popover.Group as="nav" className="hidden space-x-10 md:flex">
           <Link
+            to="/page3"
+            className="text-base font-medium text-gray-500 hover:text-gray-900"
+            aria-current="page"
+          >
+            Landlords
+          </Link>
+          <Link
             to="/page2"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
             Tenants
           </Link>
-          <Link
-            to="/page3"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-            aria-current="page"
-          >
-            Landlord
-          </Link>
+          
           <Link
             to="/pricing-structure"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
             aria-current="page"
           >
-            Pricing
+            Our Services
           </Link>
           <Link
             to="/propertyviewings"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
-            Prospects
+            Our Properties
           </Link>
           <Link
             to="/page4"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
-            About
+            About Us
           </Link>
           {/* <Link
             to="/page5"

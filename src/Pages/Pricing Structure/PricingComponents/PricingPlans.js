@@ -129,12 +129,12 @@ const PricingPlans = () => {
                   <p className="mt-4 text-sm text-gray-500">
                     {tier.description}
                   </p>
-                  <a
+                  {/* <a
                     href={tier.href}
                     className="mt-8 block w-full rounded-md border border-transparent bg-[#162A43] py-2 text-center text-sm font-semibold text-white hover:bg-blue-900"
                   >
                     {tier.price}
-                  </a>
+                  </a> */}
                 </div>
                 <div className="px-6 pt-6 pb-8">
                   <h3 className="text-sm font-medium text-gray-900">
