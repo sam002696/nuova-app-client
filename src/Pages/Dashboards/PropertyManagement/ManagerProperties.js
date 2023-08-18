@@ -1,14 +1,18 @@
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import {
+  ArchiveIcon,
   CreditCardIcon,
   OfficeBuildingIcon,
   UserIcon,
   UsersIcon,
+  ViewListIcon,
 } from "@heroicons/react/solid";
 import AddProperty from "./AddProperty/AddProperty";
 import AllProperties from "./AllProperties";
 import TenancyForm from "./TenancyForm/TenancyForm";
 import PropertyFactFind from "./PropertyFactFind/PropertyFactFind";
+import TenantContactForm from "./ContactForm/Tenant/TenantContactForm";
+import LandlordContactForm from "./ContactForm/Landlord/LandlordContactForm";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,6 +47,20 @@ export default function ManagerProperties() {
       href: "#",
       to: `${url}/tenancyform`,
       icon: CreditCardIcon,
+      current: true,
+    },
+    {
+      name: "Tenant Contact Form",
+      href: "#",
+      to: `${url}/tenancycontactform`,
+      icon: ArchiveIcon,
+      current: true,
+    },
+    {
+      name: "Landlord Contact Form",
+      href: "#",
+      to: `${url}/landlordcontactform`,
+      icon: ViewListIcon,
       current: true,
     },
   ];
@@ -109,6 +127,12 @@ export default function ManagerProperties() {
           </Route>
           <Route path={`${path}/tenancyform`}>
             <TenancyForm />
+          </Route>
+          <Route path={`${path}/tenancycontactform`}>
+            <TenantContactForm />
+          </Route>
+          <Route path={`${path}/landlordcontactform`}>
+            <LandlordContactForm />
           </Route>
         </Switch>
       </main>

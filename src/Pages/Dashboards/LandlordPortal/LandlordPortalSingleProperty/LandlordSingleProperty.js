@@ -4,11 +4,13 @@ import { SearchIcon } from "@heroicons/react/solid";
 import logo from "../../../../Images/Banner/Nuova Logo.png";
 import {
   BellIcon,
-  CogIcon,
   MenuIcon,
   UserCircleIcon,
-  ViewGridAddIcon,
   XIcon,
+  KeyIcon,
+  DocumentAddIcon,
+  HomeIcon,
+  TableIcon,
 } from "@heroicons/react/outline";
 import {
   NavLink,
@@ -20,7 +22,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import ReviewProperty from "./ReviewProperty";
-import AddTenant from "./AddTenant/AddTenant";
+// import AddTenant from "./AddTenant/AddTenant";
 import AddTerms from "./AddTerms/AddTerms";
 import RequestDeposit from "./RequestDeposit/RequestDeposit";
 import AddCertificate from "./AddCertificate/AddCertificate";
@@ -104,39 +106,39 @@ const LandlordSingleProperty = () => {
       icon: UserCircleIcon,
       current: true,
     },
-    {
-      name: "Add tenants",
-      href: "#",
-      to: `${url}/add-tenants`,
-      icon: CogIcon,
-      current: false,
-    },
+    // {
+    //   name: "Add tenants",
+    //   href: "#",
+    //   to: `${url}/add-tenants`,
+    //   icon: CogIcon,
+    //   current: false,
+    // },
     {
       name: "Add terms",
       href: "#",
       to: `${url}/add-terms`,
-      icon: CogIcon,
+      icon: KeyIcon,
       current: false,
     },
     {
       name: "Certificates & Documents",
       href: "#",
       to: `${url}/add-certificates`,
-      icon: ViewGridAddIcon,
+      icon: DocumentAddIcon,
       current: false,
     },
     {
       name: "Property inspection report",
       href: "#",
       to: `${url}/property-inspection-report`,
-      icon: ViewGridAddIcon,
+      icon: HomeIcon,
       current: false,
     },
     {
       name: "Inventory",
       href: "#",
       to: `${url}/inventory`,
-      icon: ViewGridAddIcon,
+      icon: TableIcon,
       current: false,
     },
   ];
@@ -466,9 +468,9 @@ const LandlordSingleProperty = () => {
                   <Route exact path={`${path}`}>
                     <ReviewProperty singleProperty={singleProperty} />
                   </Route>
-                  <Route path={`${path}/add-tenants`}>
+                  {/* <Route path={`${path}/add-tenants`}>
                     <AddTenant singleProperty={singleProperty} />
-                  </Route>
+                  </Route> */}
                   <Route path={`${path}/add-terms`}>
                     <AddTerms />
                   </Route>

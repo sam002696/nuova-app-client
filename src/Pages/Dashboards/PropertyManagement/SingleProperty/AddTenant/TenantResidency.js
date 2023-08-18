@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const TenantResidency = ({ formData, setFormData }) => {
+const TenantResidency = ({ formData, setFormData, singleProperty }) => {
   const { singlePropertyDetails } = useSelector(
     (state) => state.singlePropertyDetails
   );
@@ -31,6 +31,8 @@ const TenantResidency = ({ formData, setFormData }) => {
       tenantResidency: tenantResidency,
     });
   }, [tenantResidency]);
+
+  console.log(singlePropertyDetails);
 
   return (
     <div>
@@ -175,7 +177,7 @@ const TenantResidency = ({ formData, setFormData }) => {
             </div>
           </div>
 
-          {singlePropertyDetails?.propertyType === "HMO" && (
+          {singleProperty?.propertyType === "HMO" && (
             <>
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
@@ -190,7 +192,7 @@ const TenantResidency = ({ formData, setFormData }) => {
                     name="unitNumber"
                     id="unitNumber"
                     autoComplete="unit-number"
-                    placeholder="Apt. #2A"
+                    placeholder="e.g Apt. #2A"
                     className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                     onChange={(e) => {
                       handleTenantResidencyChange(e);

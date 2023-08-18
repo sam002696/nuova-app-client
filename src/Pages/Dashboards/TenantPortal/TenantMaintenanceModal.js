@@ -219,17 +219,23 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           id="unit_name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
                           placeholder="2345"
+                          value={
+                            tenantPropertyDetails?.propertyType === "HMO"
+                              ? tenantPropertyDetails?.tenantDetails[0]
+                                  ?.tenantResidency?.unitNumber
+                              : ""
+                          }
                           {...register("unitName", { required: false })}
                         />
                       </div>
-                      <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                      <div className=" hidden">
+                        <label className="block mb-2 text-sm font-medium text-gray-900">
                           Landlord Name
                         </label>
                         <input
                           type="text"
                           id="landlordName"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full"
                           placeholder="Alex Cyton"
                           value={
                             tenantPropertyDetails?.landlordInfo?.landlordName
@@ -237,7 +243,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                           {...register("landlordName", { required: true })}
                         />
                       </div>
-                      <div>
+                      <div className=" hidden">
                         <label className="block mb-2 text-sm font-medium text-gray-900 ">
                           Landlord Email
                         </label>
@@ -314,11 +320,11 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/4 mx-auto mt-4">
+                    <div className=" mx-auto mt-5 flex justify-end">
                       <button
                         // onClick={() => setOpen(false)}
                         type="submit"
-                        className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
+                        className="text-white bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md px-3 py-3 text-center"
                       >
                         {loading ? "SUBMITTING REQUEST" : "SUBMIT REQUEST"}
                       </button>

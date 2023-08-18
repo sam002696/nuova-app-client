@@ -1,6 +1,40 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const PricingContact = () => {
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    console.log(data);
+    try {
+      const res = await axios.post(
+        "http://localhost:5500/api/landlordContactForm",
+        data
+      );
+      if (res.data) {
+        setLoading(false);
+        reset();
+        Swal.fire(
+          "Success!",
+          "Your message has been sent successfully!",
+          "success"
+        );
+      }
+    } catch (err) {
+      Swal.fire("Error", "There's a problem sending the message", "error");
+      setLoading(false);
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
@@ -21,26 +55,35 @@ const PricingContact = () => {
 
           <div className="py-5 px-6 sm:px-10 lg:col-span-2 xl:p-4 max-w-4xl mx-auto">
             <form
-              action="#"
-              method="POST"
+              onSubmit={handleSubmit(onSubmit)}
               className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             >
               <div>
                 <label
-                  htmlFor="first-name"
+                  htmlFor="fullName"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Full Name
+                  Full Name <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
+                    name="fullName"
+                    id="fullName"
+                    autoComplete="fullName"
                     placeholder="Alex Jo"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    {...register("fullName", {
+                      required: "Full Name is required",
+                    })}
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.fullName ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
                   />
+                  {errors.fullName && (
+                    <p className="text-red-500 mt-2">
+                      {errors.fullName.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -49,7 +92,8 @@ const PricingContact = () => {
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Email Address
+                  Email Address{" "}
+                  <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -58,8 +102,20 @@ const PricingContact = () => {
                     type="email"
                     autoComplete="email"
                     placeholder="example@gmail.com"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2  rounded-md"
+                    {...register("landlordEmail", {
+                      required: "Email Address is required",
+                    })}
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.landlordEmail
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
                   />
+                  {errors.landlordEmail && (
+                    <p className="text-red-500 mt-2">
+                      {errors.landlordEmail.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -69,7 +125,7 @@ const PricingContact = () => {
                     htmlFor="phone"
                     className="block text-sm font-medium text-gray-500"
                   >
-                    Phone
+                    Phone <span className="text-red-500 font-bold ">*</span>
                   </label>
                 </div>
                 <div className="mt-1">
@@ -79,76 +135,122 @@ const PricingContact = () => {
                     id="phone"
                     autoComplete="tel"
                     placeholder="+874 645 312"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2  rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.landlordPhoneNo
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("landlordPhoneNo", {
+                      required: "Phone no is required",
+                    })}
                     aria-describedby="phone-optional"
                   />
+                  {errors.landlordPhoneNo && (
+                    <p className="text-red-500 mt-2">
+                      {errors.landlordPhoneNo.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
                 <label
-                  htmlFor="subject"
+                  htmlFor="postCode"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Post Code
+                  Post Code <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="Subject"
-                    id="subject"
+                    name="postCode"
+                    id="postCode"
                     autoComplete="family-name"
                     placeholder="Write postcode"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.postCode ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("postCode", {
+                      required: "Post Code is required",
+                    })}
                   />
+                  {errors.postCode && (
+                    <p className="text-red-500 mt-2">
+                      {errors.postCode.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
                 <label
-                  htmlFor="subject"
+                  htmlFor="portfolioSize"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Portfolio Size
+                  Portfolio Size{" "}
+                  <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="Subject"
-                    id="subject"
-                    autoComplete="family-name"
+                    name="portfolioSize"
+                    id="portfolioSize"
+                    autoComplete="portfolioSize"
                     placeholder="1-2"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.portfolioSize
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("portfolioSize", {
+                      required: "Portfolio Size is required",
+                    })}
                   />
+                  {errors.portfolioSize && (
+                    <p className="text-red-500 mt-2">
+                      {errors.portfolioSize.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
                 <label
-                  htmlFor="subject"
+                  htmlFor="package"
                   className="block text-sm font-medium text-gray-500"
                 >
-                  Package
+                  Package <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="Subject"
-                    id="subject"
-                    autoComplete="family-name"
+                    name="package"
+                    id="package"
+                    autoComplete="package"
                     placeholder="Full Management Service"
-                    className="py-2 px-4 block w-full shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border-gray-100 border-2 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.package ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("package", {
+                      required: "Package is required",
+                    })}
                   />
+                  {errors.package && (
+                    <p className="text-red-500 mt-2">
+                      {errors.package.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div className="sm:col-span-2">
                 <div className="flex justify-between">
                   <label
-                    htmlFor="message"
+                    htmlFor="landlordMessage"
                     className="block text-sm font-medium text-gray-500"
                   >
-                    Your Message
+                    Your Message{" "}
+                    <span className="text-red-500 font-bold ">*</span>
                   </label>
                   <span
                     id="message-max"
@@ -157,21 +259,34 @@ const PricingContact = () => {
                 </div>
                 <div className="mt-1">
                   <textarea
-                    id="message"
-                    name="message"
+                    id="landlordMessage"
+                    name="landlordMessage"
                     rows={4}
-                    className="py-3 px-3 block w-full text-sm shadow-sm text-gray-500 focus:ring-teal-500 focus:border-teal-500 border border-gray-100 rounded-md"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.landlordMessage
+                        ? "border-red-500"
+                        : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("landlordMessage", {
+                      required: "Message is required",
+                    })}
                     aria-describedby="message-max"
-                    defaultValue={"Write something here..."}
+                    placeholder="Write something here...."
                   />
+                  {errors.landlordMessage && (
+                    <p className="text-red-500 mt-2">
+                      {errors.landlordMessage.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-2 sm:flex sm:justify-end lg:justify-center">
                 <button
+                  disabled={loading}
                   type="submit"
-                  className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#BD8472] hover:bg-[#BD8472] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 sm:w-auto"
+                  className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#BD8472] hover:bg-[#BD8472] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD8472] sm:w-auto"
                 >
-                  Send Message
+                  {loading ? "Sending Message" : "Send Message"}
                 </button>
               </div>
             </form>

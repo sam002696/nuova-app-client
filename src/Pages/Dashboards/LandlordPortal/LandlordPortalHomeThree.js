@@ -1,6 +1,6 @@
 import React from "react";
 
-import { XIcon, MicrophoneIcon, ChatAltIcon } from "@heroicons/react/outline";
+import { ChatAltIcon } from "@heroicons/react/outline";
 
 import { Link } from "react-router-dom";
 import { AtSymbolIcon, PhoneIcon } from "@heroicons/react/solid";
@@ -282,7 +282,7 @@ const LandlordPortalHomeThree = () => {
           </div>
 
           <div className="col-span-2 relative pt-1 pb-20  lg:pt-1 lg:pb-28">
-            <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <h2 className="text-2xl font-semibold text-gray-700 leading-2">
                 Easy and Efficient System for Landlords
               </h2>
@@ -290,11 +290,11 @@ const LandlordPortalHomeThree = () => {
                 keeping tenants happy, planning for the future, and growing your
                 business.
               </p>
-            </div>
+            </div> */}
 
             <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-1 sm:gap-8 sm:divide-y-0 lg:grid-cols-1">
-                <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-2 sm:divide-y-0">
+                <div className="divide-y divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-2 sm:divide-y-0">
                   {actions.map((action, actionIdx) => (
                     <div
                       key={action.title}

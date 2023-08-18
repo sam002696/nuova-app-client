@@ -75,7 +75,8 @@ const AddTenant = ({ singleProperty }) => {
       !tenantResidency.depositAmount ||
       !tenantResidency.leaseStartDate ||
       !tenantResidency.leaseEndDate ||
-      !tenantResidency.tenancyDueDate
+      !tenantResidency.tenancyDueDate ||
+      (singleProperty.propertyType === "HMO" && !tenantResidency.unitNumber)
     ) {
       Swal.fire(
         "Error",
