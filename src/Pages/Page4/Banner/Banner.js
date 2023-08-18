@@ -1,6 +1,8 @@
 import React from "react";
 
 import p4_b3_img1 from "../../../Images/Page4/Banner3/Page4 banner3 img1.png";
+import p4_b3_img2 from "../../../Images/Page4/Banner3/Page4 banner3 img2.png";
+import p4_b3_img3 from "../../../Images/Page4/Banner3/Page4 banner3 img3.png";
 
 import p2_b2_img1 from "../../../Images/Page2/Banner2/Page2 banner2 img1.png";
 import p2_b2_img2 from "../../../Images/Page2/Banner2/Page2 banner2 img2.png";
@@ -157,11 +159,10 @@ const Banner = () => {
 
   return (
     <>
-      <div className="bg-[#162A43] px-4 sm:px-6 lg:px-8 ">
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
+      {/* <div className="bg-[#162A43] px-4 sm:px-6 lg:px-8 ">
+        
         <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
-
+          
           <div className="space-y-6 text-center pt-20 pb-8">
             <div className="text-cyan-200 font-semibold text-5xl font-sans">
               <h1 className="leading-snug">
@@ -171,7 +172,7 @@ const Banner = () => {
           </div>
         </div>
         <div className="max-w-6xl mx-auto">
-          {/* Content goes here */}
+         
           <div className="grid grid-cols-3 gap-x-20">
             <div className="space-y-8 py-10 col-span-1 relative z-10">
               <div className="text-white banner-text font-medium font-sans ">
@@ -209,11 +210,193 @@ const Banner = () => {
             </div>
           </div>
         </div>
+      </div> */}
+
+      <div className="bg-gray-900">
+        <main className="relative isolate">
+          {/* Background */}
+          <div
+            className="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+            aria-hidden="true"
+          >
+            <div
+              className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25"
+              style={{
+                clipPath:
+                  "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+              }}
+            />
+          </div>
+
+          {/* Header section */}
+          <div className="px-6 pt-8 lg:px-8">
+            <div className="mx-auto max-w-2xl pt-12 text-center sm:pt-20">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                ABOUT NUOVA PROPERTY
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-gray-300 italic">
+                SEAMLESS, STRAIGHTFORWARD AND TRANSPARENT
+              </p>
+            </div>
+          </div>
+
+          {/* Content section */}
+          <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-8 pb-16">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+              <div className="grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 lg:max-w-none lg:grid-cols-2">
+                <div>
+                  <p>
+                    Nuova Property Management & Letting has been built using
+                    over 40 years of residential property experience. Starting
+                    of as landlords ourselves we understand the struggles and
+                    the hurdles that must be overcome in order to protect such
+                    an important asset.
+                  </p>
+                  <p className="mt-8">
+                    From also being a tenant and having to deal with letting
+                    agents I noticed that I was always treated more like an
+                    inconvenience rather than a customer and soon realised that
+                    landlords were also treated in a very similar manner. As a
+                    landlord, you can trust us to take care of all aspects of
+                    managing your property, from finding and screening tenants
+                    to handling maintenance and repairs.
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    We will work closely with you to ensure that your property
+                    is treated like our own and that you are always getting the
+                    best possible return on your investment. For tenants, we
+                    make sure that the properties we manage are well-maintained
+                    and in good condition.
+                  </p>
+                  <p className="mt-8">
+                    We are always available to answer any questions you may have
+                    and to help with any issues that may arise, our proactive
+                    team are always there to help. We want to make the property
+                    management and letting industry SEAMLESS, STRAIGHTFORWARD
+                    AND TRANSPARENT .
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div className="relative isolate -z-10">
+        <svg
+          className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern
+              id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84"
+              width={200}
+              height={200}
+              x="50%"
+              y={-1}
+              patternUnits="userSpaceOnUse"
+            >
+              <path d="M.5 200V.5H200" fill="none" />
+            </pattern>
+          </defs>
+          <svg x="50%" y={-1} className="overflow-visible fill-gray-50">
+            <path
+              d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
+              strokeWidth={0}
+            />
+          </svg>
+          <rect
+            width="100%"
+            height="100%"
+            strokeWidth={0}
+            fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)"
+          />
+        </svg>
+        <div
+          className="absolute left-1/2 right-0 top-0 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48"
+          aria-hidden="true"
+        >
+          <div
+            className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
+            style={{
+              clipPath:
+                "polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)",
+            }}
+          />
+        </div>
+        <div className="overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-60 lg:px-8 lg:pt-4">
+            <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+              <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                  Changing the way in which residential property is managed
+                </h1>
+                <p className="relative mt-12 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+                  We are always available to answer any questions you may have
+                  and to help with any issues that may arise, our proactive team
+                  are always there to help. We want to make the property
+                  management and letting industry seamless, straightforward and
+                  transparent.
+                </p>
+              </div>
+              <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+                <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                      alt=""
+                      className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+                </div>
+                <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                      alt=""
+                      className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
+                      alt=""
+                      className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+                </div>
+                <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
+                      alt=""
+                      className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                      alt=""
+                      className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="">
         <div className="max-w-5xl mx-auto">
-          <div className="pt-24">
+          <div className="pt-16">
             <h1 className="text-4xl font-mono font-semibold text-center">
               OUR VALUES
             </h1>
@@ -342,7 +525,7 @@ const Banner = () => {
 
             <div className="col-span-1 relative">
               <div>
-                <img className="w-5/6 mt-20" src={p4_b3_img1} alt="" />
+                <img className="w-5/6 mt-20" src={p4_b3_img2} alt="" />
               </div>
             </div>
           </div>
@@ -472,95 +655,70 @@ const Banner = () => {
         </div>
       </div> */}
 
-      <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-        <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
-          <div className="pt-16">
-            <h1 className="text-5xl font-mono font-semibold text-center">
-              Why let your property with Nuova?
-            </h1>
+      {/* Logo cloud */}
+      <div className="mx-auto mt-5 mb-12 max-w-7xl sm:mt-5 sm:px-6 lg:px-8">
+        <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+          <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Why let your property with Nuova?
+          </h2>
+          <p className="mx-auto mt-16 max-w-3xl text-lg leading-8 text-gray-300">
+            Thanks to our 35 years of local market knowledge and expertise, we
+            manage and let a vast range of properties from HMO’s, Short term
+            lets to Long terms lets. Our team of letting staff are well
+            experience in all aspects of property management and letting, our
+            agents are also Arla accredited. The experience we have has allowed
+            us help property owners and investors achieve their goals and have
+            made their property journey an easy one.
+          </p>
+          {/* <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"
+                alt="Transistor"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
+                alt="Reform"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
+                alt="Tuple"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
+                alt="SavvyCal"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"
+                alt="Statamic"
+                width={158}
+                height={48}
+              />
+            </div> */}
+          <div
+            className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl"
+            aria-hidden="true"
+          >
+            <div
+              className="aspect-[1404/767] w-[87.75rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25"
+              style={{
+                clipPath:
+                  "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+              }}
+            />
           </div>
-          <div className="pt-16 max-w-3xl mx-auto">
-            <p className="text-[#565151] font-normal text-lg text-justify">
-              Thanks to our 35 years of local market knowledge and expertise, we
-              manage and let a vast range of properties from HMO’s, Short term
-              lets to Long terms lets. Our team of letting staff are well
-              experience in all aspects of property management and letting, our
-              agents are also Arla accredited. The experience we have has
-              allowed us help property owners and investors achieve their goals
-              and have made their property journey an easy one.
-            </p>
-          </div>
-
-          {/* <div className="grid grid-cols-3 gap-x-12">
-            <div className="space-y-3 py-10 col-span-1 mt-8">
-              <div className="relative">
-                <img className="mb-6 " src={p4_b7_Rec_img1} alt="" />
-                <div className="absolute z-20 top-10 left-20">
-                  <img
-                    className="mb-6 w-2/3 mx-auto"
-                    src={p4_b7_V1_img1}
-                    alt=""
-                  />
-                </div>
-              </div>
-
-              <div className="text-[#162A43] font-semibold text-xl font-sans ">
-                Step 1 Tell us About Your Property
-              </div>
-
-              <p className="text-[#565151] font-normal text-md">
-                We find quality renter fast. Using all major property portals
-                and innovative digital marketing methods. We find find the
-                perfect residents for your property.
-              </p>
-            </div>
-            <div className="space-y-3 py-10 col-span-1 mt-8">
-              <div className="relative">
-                <img className="mb-6 " src={p4_b7_Rec_img1} alt="" />
-                <div className="absolute z-20 top-12 left-28">
-                  <img
-                    className="mb-6 w-2/3 mx-auto"
-                    src={p4_b7_V2_img2}
-                    alt=""
-                  />
-                </div>
-              </div>
-
-              <div className="text-[#162A43] font-semibold text-xl font-sans ">
-                Step 1 Tell us About Your Property
-              </div>
-
-              <p className="text-[#565151] font-normal text-md">
-                We find quality renter fast. Using all major property portals
-                and innovative digital marketing methods. We find find the
-                perfect residents for your property.
-              </p>
-            </div>
-            <div className="space-y-3 py-10 col-span-1 mt-8">
-              <div className="relative">
-                <img className="mb-6 " src={p4_b7_Rec_img1} alt="" />
-                <div className="absolute z-20 top-12 left-24">
-                  <img
-                    className="mb-6 w-2/3 mx-auto"
-                    src={p4_b7_V3_img3}
-                    alt=""
-                  />
-                </div>
-              </div>
-
-              <div className="text-[#162A43] font-semibold text-xl font-sans ">
-                Step 1 Tell us About Your Property
-              </div>
-
-              <p className="text-[#565151] font-normal text-md">
-                We find quality renter fast. Using all major property portals
-                and innovative digital marketing methods. We find find the
-                perfect residents for your property.
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
     </>

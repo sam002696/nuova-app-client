@@ -43,14 +43,14 @@ const PricingContact = () => {
           {/* Content goes here */}
           <div className="space-y-3 text-center p-8">
             <div className="text-[#162A43] font-semibold text-4xl font-sans">
-              <h1 className="leading-snug">Have a Portfolio? Contact Us </h1>
+              <h1 className="leading-snug">Contact Us </h1>
             </div>
 
-            <p className="text-[#565151] font-normal text-lg font-sans w-4/5 mx-auto">
+            {/* <p className="text-[#565151] font-normal text-lg font-sans w-4/5 mx-auto">
               Whether it's a cozy apartment or a spacious house, our dedicated
               team is ready to assist you. Contact us today to start your
               journey toward your dream space!
-            </p>
+            </p> */}
           </div>
 
           <div className="py-5 px-6 sm:px-10 lg:col-span-2 xl:p-4 max-w-4xl mx-auto">

@@ -2,8 +2,10 @@ import React from 'react';
 import pic1 from '../../../Images/Pros/Group 1000002265.png'
 import pros1 from '../../../Images/Pros/Pros 1.png'
 import pros2 from '../../../Images/Pros/Pros 2.png'
+import pros2_3 from '../../../Images/Pros/Pros 2-3.png'
 import pros3 from '../../../Images/Pros/Pros 3.png'
 import pros4 from '../../../Images/Pros/Pros 4.png'
+import pros5 from '../../../Images/Pros/Pros 5.png'
 import invoice from '../../../Images/Pros/Group 1000002263.png'
 import pic3 from '../../../Images/Pros/Group 1000002281.png'
 import rectangle from '../../../Images/Pros/Rectangle 4584.png'
@@ -15,8 +17,8 @@ const Pros = () => {
             <section className='bg-[#F4F6FF]'>
                 <div className='container relative'>
                     <div className='max-w-5xl mx-auto grid grid-cols-2 gap-x-20'>
-                        <div className='col-span-1 mt-40'>
-                            <img className=''  src={pros2} alt="" />
+                        <div className='col-span-1 mt-32'>
+                            <img className=''  src={pros2_3} alt="" />
                         </div>
                         {/* <img className='absolute left-1/4 w-1/4' src={invoice} alt="" />
                         <img className='absolute bottom-0 left-3.5 w-1/2' src={rectangle} alt="" /> */}
@@ -68,10 +70,10 @@ const Pros = () => {
                     </div>
                 </div>
 
-                <div className='container relative'>
+                <div className='container relative pb-12'>
                     <div className='max-w-5xl mx-auto grid grid-cols-2 gap-x-20'>
-                        <div className='col-span-1 mt-20'>
-                            <img className=''  src={pros4} alt="" />
+                        <div className='col-span-1 mt-32'>
+                            <img className='w-5/6'  src={pros5} alt="" />
                         </div>
                         {/* <img className='absolute left-1/4 w-1/4' src={invoice} alt="" />
                         <img className='absolute bottom-0 left-3.5 w-1/2' src={rectangle} alt="" /> */}

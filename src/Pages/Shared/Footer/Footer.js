@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import facebook from "../../../Images/Footer/facebook.png";
 import twitter from "../../../Images/Footer/twitter.png";
 import instagram from "../../../Images/Footer/instagram.png";
+import Ad from "../../../Images/Footer/Footer Ad group.png";
 import M from "../../../Images/Footer/M.png";
 import logo from "../../../Images/Footer/logo.png";
 import elipse21 from "../../../Images/Footer/Ellipse 21.png";
@@ -141,16 +142,17 @@ const Footer = () => {
           </div>
           <div className="relative">
             <div className="space-y-10">
-              <h1 className=" font-medium text-xl font-sans text-[#162A43]">
+              {/* <h1 className=" font-medium text-xl font-sans text-[#162A43]">
                 About us
-              </h1>
+              </h1> */}
 
-              <p className=" font-normal text-lg text-[#000000]">
+              {/* <p className=" font-normal text-lg text-[#000000]">
                 We are the real estate agency in Sydney, with agents available
                 to answer any question 24/7.
-              </p>
+              </p> */}
+              <img className="w-5/6" src={Ad} alt="" />
               <img className="absolute top-0 right-0 " src={elipse24} alt="" />
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 justify-between">
                 <img src={facebook} alt="" />
                 <img src={twitter} alt="" />
                 <img src={instagram} alt="" />
@@ -161,14 +163,19 @@ const Footer = () => {
         </div>
       </section>
       <section className="container flex justify-evenly mt-16 relative">
-        <p className=" font-normal text-lg text-[#000000]">Buyer’ Choice</p>
-        <p className=" font-normal text-lg text-[#000000]">
-          All rights reserved by ©Divine Creative 2021.
+        <p className=" font-normal text-sm text-[#000000]">
+          Company Number : SC717696
+        </p>
+        <p className=" font-normal text-sm text-[#000000]">
+          Scottish Letting Agent Registration Number : LARN 2209001
         </p>
         <div className="flex space-x-5">
-          <p className=" font-normal text-lg text-[#000000]">privacy policy</p>
-          <p className=" font-normal text-lg text-[#000000]">Terms of use</p>
-          <p className=" font-normal text-lg text-[#000000]">Demo</p>
+          <p className=" font-normal text-sm text-[#000000]">
+            Terms and conditions
+          </p>
+          <p className=" font-normal text-sm text-[#000000]">
+            Client Money Protection Certificate{" "}
+          </p>
         </div>
         <img
           className="mix-blend-multiply absolute right-0 -top-28"

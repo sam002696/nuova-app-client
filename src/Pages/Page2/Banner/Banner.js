@@ -34,6 +34,7 @@ import p2_b1_img4 from "../../../Images/Page2/Banner1/Page2 banner1 img4.png";
 import p2_b1_img5 from "../../../Images/Page2/Banner1/Page2 banner1 img5.png";
 import p2_b1_img6 from "../../../Images/Page2/Banner1/Page2 banner1 img6.png";
 import p2_b1_img7 from "../../../Images/Page2/Banner1/Page2 banner1 img7.png";
+import p2_b1_img8 from "../../../Images/Page2/Banner1/Page2 banner1 img8.png";
 
 import p2_b2_img1 from "../../../Images/Page2/Banner2/Page2 banner2 img1.png";
 import p2_b2_img2 from "../../../Images/Page2/Banner2/Page2 banner2 img2.png";
@@ -52,7 +53,7 @@ import p2_b4_img1 from "../../../Images/Page2/Banner4/Page2 banner4 img1.png";
 import p2_b4_img2 from "../../../Images/Page2/Banner4/Page2 banner4 img2.png";
 import p2_b4_img3 from "../../../Images/Page2/Banner4/Page2 banner4 img3.png";
 
-import p2_b5_img1 from "../../../Images/Page2/Banner5/Page2 banner5 img1.png";
+import p2_b5_img1 from "../../../Images/Page2/Banner5/Page2 banner5 img2.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -116,7 +117,7 @@ const Banner = () => {
 
             <div className="col-span-2 relative -right-40">
               <div className="absoulute">
-                <img className="w-5/6" src={p2_b1_img0} alt="" />
+                <img className="w-5/6" src={p2_b1_img8} alt="" />
               </div>
             </div>
             {/* <div className='col-span-1 relative -right-40'>

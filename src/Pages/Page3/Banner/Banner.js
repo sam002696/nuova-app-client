@@ -12,7 +12,7 @@ import p3_b2_img3 from "../../../Images/Page3/Banner2/Page3 banner2 img3.png";
 import p3_b2_img4 from "../../../Images/Page3/Banner2/Page3 banner2 img4.png";
 import p3_b2_img5 from "../../../Images/Page3/Banner2/Page3 banner2 img5.png";
 
-import p3_b3_img2 from "../../../Images/Page3/Banner3/Page3 banner3 img2.png";
+import p3_b3_img2 from "../../../Images/Page3/Banner3/Page3 banner3 img3.jpeg";
 
 import p3_b4_img1 from "../../../Images/Page3/Banner4/Page3 banner4 img1.png";
 import p3_b4_img2 from "../../../Images/Page3/Banner4/Page3 banner4 img2.png";
@@ -332,7 +332,7 @@ const Banner = () => {
 
             <div className="col-span-1 relative">
               <div>
-                <img className="mt-20 w-5/6" src={p3_b3_img2} alt="" />
+                <img className="mt-20 w-5/6 rounded-2xl" src={p3_b3_img2} alt="" />
               </div>
               <div className="mt-8 sm:mt-8 w-11/12 mx-auto">
                 <div className="w-11/12 mx-auto">
@@ -385,7 +385,7 @@ const Banner = () => {
         <div className="max-w-4xl mx-auto">
           {/* Content goes here */}
           <div className=" space-y-8 mt-12">
-            <h1 className="text-4xl font-mono font-semibold text-center">
+            <h1 className="text-[#162A43] banner-text font-medium font-sans text-center">
               Marketing your property
             </h1>
             <p className="text-[#565151] font-normal text-lg max-w-2xl mx-auto text-center">
