@@ -364,7 +364,7 @@ const TenantPortalHomeThree = () => {
                                 </span>
                               </p>
                             </div>
-                            <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                            {/* <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
                               <p className="text-md font-medium text-green-600">
                                 Next Renewal
                               </p>
@@ -377,7 +377,7 @@ const TenantPortalHomeThree = () => {
                                   </time>
                                 </span>
                               </p>
-                            </div>
+                            </div> */}
                           </div>
                         </>
                       ))}
@@ -386,7 +386,7 @@ const TenantPortalHomeThree = () => {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+            <div className="mx-auto mt-5 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
               <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
@@ -452,6 +452,42 @@ const TenantPortalHomeThree = () => {
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mx-auto mt-5 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
+              <div className="overflow-hidden rounded-lg bg-white shadow-lg shadow-teal-500/40">
+                <div className="p-8">
+                  {/* <p className="text-sm font-medium text-green-600 mt-4 mb-2">
+                                        <a href='#' className="hover:underline">
+                                            Agency
+                                        </a>
+                                    </p> */}
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <ShieldCheckIcon
+                        className="h-8 w-8 text-white bg-sky-500 rounded-full p-1"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div className="ml-5 w-0 flex-1">
+                      <dl>
+                        <dt className="truncate text-lg font-medium text-sky-500">
+                          Quick Maintenance Request
+                        </dt>
+                        <dd>
+                          <Link
+                            to="/tenant-portal-dashboard/tenant-portal-maintenance"
+                            className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 mt-3"
+                          >
+                            <PlusIcon className="h-4 w-4" aria-hidden="true" />
+                            <span className="mx-2">Create One</span>
+                          </Link>
+                        </dd>
+                      </dl>
                     </div>
                   </div>
                 </div>
@@ -573,42 +609,6 @@ const TenantPortalHomeThree = () => {
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
-              <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
-                <div className="p-8">
-                  {/* <p className="text-sm font-medium text-green-600 mt-4 mb-2">
-                                        <a href='#' className="hover:underline">
-                                            Agency
-                                        </a>
-                                    </p> */}
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <ShieldCheckIcon
-                        className="h-8 w-8 text-white bg-sky-500 rounded-full p-1"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="truncate text-lg font-medium text-sky-500">
-                          Quick Maintenance Request
-                        </dt>
-                        <dd>
-                          <Link
-                            to="/tenant-portal-dashboard/tenant-portal-maintenance"
-                            className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 mt-3"
-                          >
-                            <PlusIcon className="h-4 w-4" aria-hidden="true" />
-                            <span className="mx-2">Create One</span>
-                          </Link>
-                        </dd>
-                      </dl>
                     </div>
                   </div>
                 </div>

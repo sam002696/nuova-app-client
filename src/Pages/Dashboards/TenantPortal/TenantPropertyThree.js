@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Disclosure, Tab } from "@headlessui/react";
-import { HeartIcon, StarIcon } from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 import { PaperClipIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
@@ -310,7 +310,7 @@ const TenantPropertyThree = () => {
                 </div>
 
                 {/* Reviews */}
-                <div className="mt-3">
+                {/* <div className="mt-3">
                   <h3 className="sr-only">Reviews</h3>
                   <div className="flex items-center">
                     <div className="flex items-center">
@@ -329,7 +329,7 @@ const TenantPropertyThree = () => {
                     </div>
                     <p className="sr-only">{product.rating} out of 5 stars</p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="mt-6">
                   <h3 className="sr-only">Description</h3>
@@ -384,20 +384,40 @@ const TenantPropertyThree = () => {
               </div> */}
 
                   <div className="mt-10 flex sm:flex-col1">
-                    <button
-                      type="submit"
-                      className="max-w-xs flex-1 bg-sky-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full"
-                    >
-                      <HeartIcon
-                        className="h-6 w-6 flex-shrink-0"
-                        aria-hidden="true"
-                      />
-                      <span className="mx-2">Flat No - 2A</span>
-                    </button>
+                    {tenantPropertyDetails?.propertyType === "HMO" && (
+                      <button
+                        type="submit"
+                        className="max-w-xs flex-1 bg-sky-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full mr-3"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+                          />
+                        </svg>
+
+                        <span className="mx-2">
+                          Flat No -{" "}
+                          {tenantPropertyDetails?.tenantDetails[0]
+                            ?.tenantResidency?.unitNumber
+                            ? tenantPropertyDetails?.tenantDetails[0]
+                                ?.tenantResidency?.unitNumber
+                            : "N/A"}
+                        </span>
+                      </button>
+                    )}
 
                     <button
                       type="button"
-                      className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-700 hover:bg-gray-100 hover:text-gray-500"
+                      className=" py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -414,7 +434,7 @@ const TenantPropertyThree = () => {
 
                     <button
                       type="button"
-                      className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-700 hover:bg-gray-100 hover:text-gray-500"
+                      className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
                     >
                       <svg
                         className="h-5 w-5 fill-sky-400 "
@@ -481,18 +501,18 @@ const TenantPropertyThree = () => {
                               >
                                 <ul>
                                   <li>
-                                    Name :{" "}
+                                    Full Name :{" "}
                                     {
                                       filteredTenant?.tenantPersonalInfo
                                         ?.fullName
                                     }
                                   </li>
                                   <li>
-                                    Email :{" "}
+                                    Email Address :{" "}
                                     {filteredTenant?.tenantPersonalInfo?.email}
                                   </li>
                                   <li>
-                                    Phone :
+                                    Phone Number :
                                     {
                                       filteredTenant?.tenantPersonalInfo
                                         ?.phoneNo
@@ -551,15 +571,15 @@ const TenantPropertyThree = () => {
                               >
                                 <ul>
                                   <li>
-                                    Name :{" "}
+                                    Full Name :{" "}
                                     {filteredTenant?.guarantorInfo?.fullName}
                                   </li>
                                   <li>
-                                    Email :{" "}
+                                    Email Address :{" "}
                                     {filteredTenant?.guarantorInfo?.email}
                                   </li>
                                   <li>
-                                    Phone :
+                                    Phone Number :
                                     {filteredTenant?.guarantorInfo?.phoneNo}
                                   </li>
                                 </ul>
@@ -643,7 +663,7 @@ const TenantPropertyThree = () => {
                       ))}
                   </div> */}
 
-                  <div className="border-t divide-y divide-gray-200">
+                  {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -701,7 +721,7 @@ const TenantPropertyThree = () => {
                           )}
                         </Disclosure>
                       ))}
-                  </div>
+                  </div> */}
 
                   <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
@@ -725,7 +745,7 @@ const TenantPropertyThree = () => {
                                       "text-sm font-medium"
                                     )}
                                   >
-                                    Tenancy Period
+                                    Key Terms
                                   </span>
                                   <span className="ml-6 flex items-center">
                                     {open ? (
@@ -756,12 +776,26 @@ const TenantPropertyThree = () => {
                                     </time>
                                   </li>
                                   <li>
-                                    Tenancy Renewal Date :{" "}
+                                    Rent Due Date :{" "}
                                     <time>
                                       {new Date(
                                         filteredTenant?.tenantResidency?.leaseEndDate
                                       ).toLocaleDateString()}
                                     </time>
+                                  </li>
+                                  <li>
+                                    Rental Amount : £
+                                    {
+                                      filteredTenant?.tenantResidency
+                                        ?.monthlyRent
+                                    }
+                                  </li>
+                                  <li>
+                                    Deposit Amount : £
+                                    {
+                                      filteredTenant?.tenantResidency
+                                        ?.depositAmount
+                                    }
                                   </li>
                                 </ul>
                               </Disclosure.Panel>

@@ -39,13 +39,6 @@ export default function LandlordPropeerty() {
       icon: UsersIcon,
       current: false,
     },
-    {
-      name: "Billing",
-      href: "#",
-      to: `${url}/billing`,
-      icon: CreditCardIcon,
-      current: true,
-    },
   ];
   return (
     <div>
@@ -53,12 +46,11 @@ export default function LandlordPropeerty() {
         <label htmlFor="tabs" className="sr-only">
           Select a tab
         </label>
-        {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
         <select
           id="tabs"
           name="tabs"
           className="block w-full focus:ring-cyan-500 focus:border-cyan-500 border-gray-300 rounded-md"
-          defaultValue={tabs.find((tab) => tab.current).name}
+          defaultValue={tabs.find((tab) => tab.current)?.name}
         >
           {tabs.map((tab) => (
             <option key={tab.name}>{tab.name}</option>
@@ -108,7 +100,7 @@ export default function LandlordPropeerty() {
           <Route path={`${path}/property-fact-find`}>
             <PropertyFactFind />
           </Route>
-          <Route path={`${path}/billing`}></Route>
+          {/* <Route path={`${path}/billing`}></Route> */}
         </Switch>
       </main>
     </div>

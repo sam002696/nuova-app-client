@@ -283,7 +283,7 @@ const Rooms = ({ register }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="items-center">
         <label
           htmlFor="project-name"
           className="block text-sm font-medium text-gray-700 pb-2 mr-5"
@@ -291,10 +291,12 @@ const Rooms = ({ register }) => {
           Other (please specify)
         </label>
         <div className="mt-1">
-          <input
+          <textarea
             type="text"
             name="project-name"
             id="project-name"
+            rows="4"
+            cols="50"
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
             {...register("propertyDetails.roomObject.roomsOther")}
           />

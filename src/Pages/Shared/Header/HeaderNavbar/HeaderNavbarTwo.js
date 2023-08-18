@@ -4,9 +4,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import logo from "../../../../Images/Footer/logo.png";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { logout } from "../../../../Redux/userSlice";
 import { useHistory } from "react-router-dom";
 
@@ -15,6 +13,14 @@ function classNames(...classes) {
 }
 
 const HeaderNavbarTwo = () => {
+  const linkResources = [
+    { name: "Tenants", href: "/page2" },
+    { name: "Landlord", href: "/page3" },
+    { name: "Pricing", href: "/pricing-structure" },
+    { name: "Prospects", href: "/propertyviewings" },
+    { name: "About", href: "/page4" },
+  ];
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
@@ -88,39 +94,21 @@ const HeaderNavbarTwo = () => {
             </svg>
           </Popover.Button>
         </div>
-        <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-          <Link
-            to="/page2"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            Tenants
-          </Link>
-          <Link
-            to="/page3"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-            aria-current="page"
-          >
-            Landlord
-          </Link>
-          <Link
-            to="/pricing-structure"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-            aria-current="page"
-          >
-            Pricing
-          </Link>
-          <Link
-            to="/propertyviewings"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            Prospects
-          </Link>
-          <Link
-            to="/page4"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            About
-          </Link>
+        <Popover.Group as="nav" className="hidden space-x-2 md:flex">
+          {linkResources.map((resource) => (
+            <Link
+              key={resource.name}
+              to={resource.href}
+              className={
+                "text-base font-medium focus:outline-none py-2 px-4 hover:text-blue-600 " +
+                (window.location.pathname === resource.href
+                  ? "whitespace-nowrap rounded-md border border-transparent bg-blue-100 py-2 px-4 text-base font-medium text-blue-600 hover:bg-blue-200"
+                  : "text-gray-500")
+              }
+            >
+              {resource.name}
+            </Link>
+          ))}
           {/* <Link
             to="/page5"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
@@ -140,15 +128,15 @@ const HeaderNavbarTwo = () => {
                 <>
                   <Popover.Button
                     className={classNames(
-                      open ? "text-gray-900" : "text-gray-500",
-                      "group inline-flex items-center rounded-md  text-base font-medium hover:text-gray-900 focus:outline-none "
+                      open ? "text-amber-800" : "text-amber-600",
+                      "group  inline-flex items-center rounded-md  text-base font-medium focus:outline-none py-2 px-4 bg-amber-100  "
                     )}
                   >
-                    <span>Portals</span>
+                    <span>Portal</span>
                     <ChevronDownIcon
                       className={classNames(
-                        open ? "text-gray-600" : "text-gray-400",
-                        "ml-2 h-5 w-5 group-hover:text-gray-500"
+                        open ? "text-amber-600" : "text-amber-800",
+                        "ml-2 h-5 w-5 "
                       )}
                       aria-hidden="true"
                     />
@@ -187,11 +175,11 @@ const HeaderNavbarTwo = () => {
           )}
         </Popover.Group>
 
-        <div className="hidden items-center justify-end space-x-8 md:flex md:flex-1 lg:w-0">
+        <div className="hidden items-center justify-end space-x-3 md:flex md:flex-1 lg:w-0">
           {currentUser ? (
             <>
               {" "}
-              <div className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+              <div className="whitespace-nowrap  bg-gray-100 py-2 px-4 text-base font-medium text-gray-600 hover:bg-gray-200 rounded-md">
                 {currentUser.username}
               </div>
               <button

@@ -30,8 +30,9 @@ const LandlordPortalMyProperty = () => {
             All Properties
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-            libero labore natus atque, ducimus sed.
+            Welcome to our comprehensive property management platform. Explore a
+            diverse portfolio of well-maintained properties tailored to your
+            unique preferences.
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-7xl">

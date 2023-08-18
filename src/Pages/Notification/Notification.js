@@ -56,7 +56,6 @@ const Notification = () => {
     });
     dispatch(notificationFetchingStart());
     socket.on("notifications", (data) => {
-      console.log("server notifications", data);
       if (data[0]) {
         dispatch(notificationFetchingSuccess(data[0]));
       } else {
@@ -71,7 +70,6 @@ const Notification = () => {
       try {
         dispatch(notificationFetchingStart());
         const res = await axios.get(`http://localhost:5500/api/notifications`);
-        console.log("main notifications", res.data);
         dispatch(notificationFetchingSuccess(res.data));
       } catch (err) {
         console.log(err);
@@ -80,7 +78,6 @@ const Notification = () => {
     handleFetchAllNotifications();
   }, []);
 
-  console.log(propertyManagerNotifications);
   // property manager dashboard
 
   const concatenatedNotificationsPm = useMemo(

@@ -286,7 +286,7 @@ const ReviewProperty = ({ singleProperty }) => {
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="tracking-tight text-3xl text-gray-900">
-                {singleProperty?.propertyDetails?.propertyEstimatedValue}
+                £{singleProperty?.propertyDetails?.propertyEstimatedValue}
               </p>
             </div>
 
