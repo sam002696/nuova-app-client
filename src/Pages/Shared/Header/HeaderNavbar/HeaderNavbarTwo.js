@@ -14,11 +14,12 @@ function classNames(...classes) {
 
 const HeaderNavbarTwo = () => {
   const linkResources = [
-    { name: "Tenants", href: "/page2" },
+    
     { name: "Landlord", href: "/page3" },
-    { name: "Pricing", href: "/pricing-structure" },
-    { name: "Prospects", href: "/propertyviewings" },
-    { name: "About", href: "/page4" },
+    { name: "Tenants", href: "/page2" },
+    { name: "Our Services", href: "/pricing-structure" },
+    { name: "Our Properties", href: "/propertyviewings" },
+    { name: "About Us", href: "/page4" },
   ];
 
   const history = useHistory();

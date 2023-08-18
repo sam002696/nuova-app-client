@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import facebook from "../../../Images/Footer/facebook.png";
 import twitter from "../../../Images/Footer/twitter.png";
 import instagram from "../../../Images/Footer/instagram.png";
-import Ad from "../../../Images/Footer/Footer Ad group.png";
+import Ad from "../../../Images/Footer/Footer Ad group 2.png";
 import M from "../../../Images/Footer/M.png";
 import logo from "../../../Images/Footer/logo.png";
 import elipse21 from "../../../Images/Footer/Ellipse 21.png";
@@ -24,9 +24,9 @@ const Footer = () => {
                 Nuova
               </h1>
               <div className="space-y-3">
-                <p className="font-medium text-lg text-[#162A43]">
+                {/* <p className="font-medium text-lg text-[#162A43]">
                   Office Headquaters{" "}
-                </p>
+                </p> */}
                 <p>
                   <span className=" font-normal text-lg text-[#000000]">
                     Suite 2/3, 2nd Floor, 48 West George Street, Glasgow G2 1BP
@@ -49,44 +49,45 @@ const Footer = () => {
               <ul className=" space-y-2">
                 <li>
                   <Link
-                    to="/home"
+                    to="/page4"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/home"
+                  <a
+                    href="https://goo.gl/maps/rSz7dTys7zE12S3V9"
                     className=" font-normal text-lg text-[#000000]"
                   >
-                    Site Map
-                  </Link>
+                    Map
+                  </a>
+                  
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/home"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     Support Center
                   </Link>
-                </li>
+                </li> */}
                 <li>
-                  <Link
-                    to="/home"
+                  <a
+                    href="./Nuova Terms and Conditions.pdf" download="Nuova Terms and Condition.pdf"
                     className=" font-normal text-lg text-[#000000]"
                   >
-                    Terms Conditions
-                  </Link>
+                    Terms & Conditions
+                  </a>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/home"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     Submit Listing
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -113,31 +114,37 @@ const Footer = () => {
                     Tenancy Form
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/home"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     Contact
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link
                     to="/home"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     Terms Conditions
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link
                     to="/home"
                     className=" font-normal text-lg text-[#000000]"
                   >
                     Our blog
                   </Link>
-                </li>
+                </li> */}
               </ul>
+              <div className="flex space-x-4">
+                <img src={facebook} alt="" />
+                <img src={twitter} alt="" />
+                <img src={instagram} alt="" />
+                <img src={M} alt="" />
+              </div>
             </div>
           </div>
           <div className="relative">
@@ -152,12 +159,12 @@ const Footer = () => {
               </p> */}
               <img className="w-5/6" src={Ad} alt="" />
               <img className="absolute top-0 right-0 " src={elipse24} alt="" />
-              <div className="flex space-x-4 justify-between">
+              {/* <div className="flex space-x-4 justify-between">
                 <img src={facebook} alt="" />
                 <img src={twitter} alt="" />
                 <img src={instagram} alt="" />
                 <img src={M} alt="" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
