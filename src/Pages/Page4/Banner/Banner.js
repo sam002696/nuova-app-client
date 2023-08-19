@@ -19,6 +19,11 @@ import p4_b7_V2_img2 from "../../../Images/Page4/Banner7/Page4 banner7 V2 img2.p
 import p4_b7_V3_img3 from "../../../Images/Page4/Banner7/Page4 banner7 V3 img3.png";
 import p4_b7_Rec_img1 from "../../../Images/Page4/Banner7/Page4 banner7 Rectangle img1.png";
 
+import p4_b2_img1 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img1.png";
+import p4_b2_img2 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img2.png";
+import p4_b2_img3 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img3.png";
+import p4_b2_img4 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img4.png";
+
 const Banner = () => {
   const posts = [
     {
@@ -394,7 +399,7 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="">
+      {/* <div className="">
         <div className="max-w-5xl mx-auto">
           <div className="pt-16">
             <h1 className="text-4xl font-mono font-semibold text-center">
@@ -426,6 +431,72 @@ const Banner = () => {
                 <img className="mb-6 " src={p2_b2_img4} alt="" />
               </div>
             </div>
+          </div>
+        </div>
+      </div> */}
+
+      <div className="px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="pt-16">
+          <h1 className="text-4xl font-mono font-semibold text-center">
+            OUR VALUES
+          </h1>
+        </div>
+        <div className="pt-8">
+          <img className="w-1/5 mx-auto h-1" src={p2_b2_img5} alt="" />
+        </div>
+        <div className="max-w-6xl mx-auto grid grid-cols-4 gap-x-12">
+          <div className=" bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative">
+            <div className="relative">
+              <img className="mx-auto relative" src={p4_b2_img1} alt="" />
+              {/* <img className='mx-auto absolute top-6 inset-x-20 w-1/5' src={timer} alt="" /> */}
+            </div>
+            <p className=" font-semibold text-xl text-center text-[#282421] mt-5">
+              Integrity
+            </p>
+            <p className=" font-normal text-md text-center text-[#282421] mt-5">
+              We build trust through responsible actions and honest
+              relationships, we provide support any time to our clients with
+              highest priority.
+            </p>
+          </div>
+          <div className=" bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative">
+            <div className="relative">
+              <img className="mx-auto relative" src={p4_b2_img2} alt="" />
+            </div>
+            <p className=" font-semibold text-xl text-center text-[#282421] mt-5">
+              Simplicity
+            </p>
+            <p className=" font-normal text-md text-center text-[#282421] mt-5">
+              We aim to remove all that gets in the way of what really matters,
+              we have designed our technology so problems get dealt with fast
+              and efficiently.
+            </p>
+          </div>
+          <div className=" bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative">
+            <div className="relative">
+              <img className="mx-auto relative" src={p4_b2_img3} alt="" />
+            </div>
+            <p className=" font-semibold text-xl text-center text-[#282421] mt-5">
+              Service
+            </p>
+            <p className=" font-normal text-md text-center text-[#282421] mt-5">
+              We make service our top priority by giving our time, knowledge,
+              and experience to serve the needs of our customers, community, and
+              team members
+            </p>
+          </div>
+          <div className=" bg-[#FFFFFF] border-none px-5 py-10 rounded-2xl mt-10 shadow-lg relative">
+            <div className="relative">
+              <img className="mx-auto relative" src={p4_b2_img4} alt="" />
+            </div>
+            <p className=" font-semibold text-xl text-center text-[#282421] mt-5">
+              Professionalism
+            </p>
+            <p className="  font-normal text-md text-center text-[#282421] mt-5">
+              We provide present a positive, dignified, and businesslike image
+              at all time trough our appearances, behavior, and interactions
+              with others.
+            </p>
           </div>
         </div>
       </div>

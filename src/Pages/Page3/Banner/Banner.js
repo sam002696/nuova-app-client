@@ -336,7 +336,7 @@ const Banner = () => {
               </div>
               <div className="mt-8 sm:mt-8 w-11/12 mx-auto">
                 <div className="w-11/12 mx-auto">
-                  <a href="./Nuova Property Brochure.pdf" download>
+                  <a href="./Nuova Property Brochure.pdf" download="Nuova Brochure.pdf">
                     <button className="text-white text-base bg-[#BD8472] px-6 py-3 text-center rounded font-semibold">
                       Nuova Property Brochure
                     </button>
