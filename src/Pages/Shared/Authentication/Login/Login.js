@@ -9,17 +9,23 @@ import {
   loginSuccess,
 } from "../../../../Redux/userSlice.js";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { loading } = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const { email, password } = data;
     dispatch(loginStart());
     try {
       const res = await axios.post("http://localhost:5500/api/auth/login", {
@@ -38,6 +44,7 @@ const Login = () => {
       } else if (res.data?.role === "Admin") {
         history.push("/admindashboard");
       }
+      reset();
     } catch (err) {
       console.log(err);
       dispatch(loginFailure());
@@ -60,15 +67,21 @@ const Login = () => {
           </h2>
         </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="bg-white py-8 px-4 shadow-lg shadow-[#bd8472]/70 sm:rounded-lg sm:px-10">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-10"
+              action="#"
+              method="POST"
+            >
               <div>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Email address
+                  Email address{" "}
+                  <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -76,10 +89,18 @@ const Login = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 sm:text-sm"
+                    {...register("email", {
+                      required: "Email is required",
+                    })}
+                    className={`px-3 py-2 block w-full shadow-sm sm:text-sm ${
+                      errors.email ? "border-red-500" : "border-gray-300"
+                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border-2 rounded-md placeholder-gray-400 appearance-none`}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 mt-2 text-sm font-medium">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -88,7 +109,7 @@ const Login = () => {
                   htmlFor="password"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Password
+                  Password <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -96,36 +117,18 @@ const Login = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 sm:text-sm"
+                    {...register("password", {
+                      required: "Password is required",
+                    })}
+                    className={`px-3 py-2 block w-full shadow-sm sm:text-sm ${
+                      errors.password ? "border-red-500" : "border-gray-300"
+                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border-2 rounded-md placeholder-gray-400 appearance-none`}
                   />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-900"
-                  >
-                    Remember me
-                  </label>
-                </div>
-
-                <div className="text-sm">
-                  <Link
-                    to="/register"
-                    className="font-medium text-yellow-600 hover:text-yellow-500"
-                  >
-                    New Here?
-                  </Link>
+                  {errors.password && (
+                    <p className="text-red-500 mt-2 text-sm font-medium">
+                      {errors.password.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -133,8 +136,7 @@ const Login = () => {
                 <button
                   disabled={loading}
                   type="submit"
-                  onClick={handleLogin}
-                  className="flex w-full justify-center rounded-md border border-transparent bg-[#bd8472] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-700 focus:outline-none disabled:cursor-not-allowed"
+                  className="flex w-full justify-center rounded-md border border-transparent bg-yellow-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-[#bd8472]"
                 >
                   {loading ? "Signing in" : "Sign in"}
                 </button>

@@ -4,8 +4,10 @@ import { auth, db, storage } from "../../../../Chat/ChatFirebase/Firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ChatRegister = () => {
+  const { currentUser } = useSelector((state) => state.user);
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -47,7 +49,7 @@ const ChatRegister = () => {
 
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
-            history.push("/property-manager-dashboard/inbox");
+            history.push("/landlord-portal-dashboard/landlord-portal-inbox");
           } catch (err) {
             // console.log(err.message);
             setLoading(false);
@@ -69,7 +71,7 @@ const ChatRegister = () => {
             <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
               <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight  text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-600">
-                  Register for nuova chat account
+                  Register for Nuova chat account
                 </h2>
               </div>
 
@@ -94,8 +96,10 @@ const ChatRegister = () => {
                           name="displayName"
                           type="text"
                           autoComplete="text"
+                          value={currentUser.username}
+                          readOnly
                           required
-                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm bg-gray-200 cursor-not-allowed text-gray-500"
                         />
                       </div>
                     </div>
@@ -113,8 +117,9 @@ const ChatRegister = () => {
                           type="text"
                           autoComplete="text"
                           placeholder="eg. emily0041"
+                          value={currentUser.chatid}
                           required
-                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm bg-gray-200 cursor-not-allowed text-gray-500"
                         />
                       </div>
                     </div>
@@ -131,8 +136,9 @@ const ChatRegister = () => {
                           name="email"
                           type="email"
                           autoComplete="email"
+                          value={currentUser.email}
                           required
-                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                          className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm bg-gray-200 cursor-not-allowed text-gray-500"
                         />
                       </div>
                     </div>
@@ -142,7 +148,8 @@ const ChatRegister = () => {
                         htmlFor="password"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Password
+                        Password{" "}
+                        <span className="text-red-500 font-bold ">*</span>
                       </label>
                       <div className="mt-1">
                         <input
@@ -158,7 +165,8 @@ const ChatRegister = () => {
                     <div>
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-700 ">
-                          Choose a picture
+                          Choose a picture{" "}
+                          <span className="text-red-500 font-bold ">*</span>
                         </label>
                         <input
                           type="file"
