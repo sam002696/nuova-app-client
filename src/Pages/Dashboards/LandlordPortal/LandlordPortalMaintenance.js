@@ -6,6 +6,7 @@ import axios from "axios";
 
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import { tr } from "date-fns/locale";
 
 const tabs = [
   {
@@ -29,6 +30,13 @@ const LandlordPortalMaintenance = () => {
   const [singleUpdateModalReport, setSingleUpdateModalReport] = useState({});
   const [maintenanceReports, setMaintenanceReports] = useState([]);
   const [viewIssue, setViewIssue] = useState(false);
+
+  // Loading states
+
+  const [assignJobLoading, setAssignJobLoading] = useState(false);
+  const [declineJobLoading, setDeclineJobLoading] = useState(false);
+  const [completeJobLoading, setCompleteJobLoading] = useState(false);
+  const [incompleteJobLoading, setIncompleteJobLoading] = useState(false);
 
   const { currentUser } = useSelector((state) => state.user);
 
@@ -69,53 +77,60 @@ const LandlordPortalMaintenance = () => {
   };
 
   const handleAssignJob = async (reportid, biddingid) => {
-    console.log(reportid, biddingid);
+    setAssignJobLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/reports/acceptoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
+        setAssignJobLoading(false);
         Swal.fire("", "The job has been assigned!", "success");
         window.location.reload(false);
       }
     } catch (err) {
+      setAssignJobLoading(false);
       console.log(err);
     }
   };
 
   const handleDeclineJob = async (reportid, biddingid) => {
-    console.log(reportid, biddingid);
+    setDeclineJobLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/reports/declineoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
+        setDeclineJobLoading(false);
         Swal.fire("", "The job has been declined!", "error");
         window.location.reload(false);
       }
     } catch (err) {
+      setDeclineJobLoading(false);
       console.log(err);
     }
   };
 
   const handleCompletedJob = async (reportid, biddingid) => {
-    console.log(reportid, biddingid);
+    setCompleteJobLoading(true);
     try {
       const res = await axios.put(
         `http://localhost:5500/api/reports/completejob/${reportid}/${biddingid}`
       );
       if (res.data) {
+        setCompleteJobLoading(false);
         Swal.fire("", "Job is completed!", "success");
         window.location.reload(false);
       }
     } catch (err) {
+      setCompleteJobLoading(false);
       console.log(err);
     }
   };
 
   const handleIncompletedJob = async (reportid, biddingid) => {
-    console.log(reportid, biddingid);
+    setIncompleteJobLoading(true);
     try {
+      setIncompleteJobLoading(false);
       const res = await axios.put(
         `http://localhost:5500/api/reports/incompletejob/${reportid}/${biddingid}`
       );
@@ -124,6 +139,7 @@ const LandlordPortalMaintenance = () => {
         window.location.reload(true);
       }
     } catch (err) {
+      setIncompleteJobLoading(false);
       console.log(err);
     }
   };
@@ -445,7 +461,7 @@ const LandlordPortalMaintenance = () => {
                             className={`${
                               actionButton?.offerDeclined === true
                                 ? "hidden"
-                                : " text-green-600 bg-green-200 text-lg font-bold px-4 py-5 rounded-md"
+                                : " text-green-600 bg-green-200 text-lg font-bold px-4 py-5 rounded-md "
                             }`}
                           >
                             <button
@@ -453,7 +469,8 @@ const LandlordPortalMaintenance = () => {
                                 currentUser?.role === "Landlord" ||
                                 actionButton?.offerAccepted === true ||
                                 viewContractorBidding?.assignedContractor
-                                  ?.contractorEmail
+                                  ?.contractorEmail ||
+                                assignJobLoading
                               }
                               onClick={() =>
                                 handleAssignJob(
@@ -461,10 +478,12 @@ const LandlordPortalMaintenance = () => {
                                   actionButton?._id
                                 )
                               }
-                              className=" disabled:cursor-not-allowed"
+                              className="disabled:cursor-not-allowed"
                             >
                               {actionButton?.offerAccepted === true
                                 ? "Job Assigned"
+                                : assignJobLoading
+                                ? "Assigning Job..."
                                 : "Assign Job"}
                             </button>
                           </div>
@@ -478,7 +497,8 @@ const LandlordPortalMaintenance = () => {
                             <button
                               disabled={
                                 currentUser?.role === "Landlord" ||
-                                actionButton?.offerDeclined === true
+                                actionButton?.offerDeclined === true ||
+                                declineJobLoading
                               }
                               onClick={() =>
                                 handleDeclineJob(
@@ -490,6 +510,8 @@ const LandlordPortalMaintenance = () => {
                             >
                               {actionButton?.offerDeclined === true
                                 ? "Job Declined!"
+                                : declineJobLoading
+                                ? "Declining Job..."
                                 : "Decline Job"}
                             </button>
                           </div>
@@ -507,7 +529,8 @@ const LandlordPortalMaintenance = () => {
                               <button
                                 disabled={
                                   currentUser?.role === "Landlord" ||
-                                  actionButton?.completedJob === true
+                                  actionButton?.completedJob === true ||
+                                  completeJobLoading
                                 }
                                 onClick={() =>
                                   handleCompletedJob(
@@ -519,6 +542,8 @@ const LandlordPortalMaintenance = () => {
                               >
                                 {actionButton?.completedJob === true
                                   ? "Job Completed!"
+                                  : completeJobLoading
+                                  ? "Completing..."
                                   : "Complete"}
                               </button>
                             </div>
@@ -532,7 +557,8 @@ const LandlordPortalMaintenance = () => {
                               <button
                                 disabled={
                                   currentUser?.role === "Landlord" ||
-                                  actionButton?.incompletedJob === true
+                                  actionButton?.incompletedJob === true ||
+                                  incompleteJobLoading
                                 }
                                 onClick={() =>
                                   handleIncompletedJob(
@@ -544,6 +570,8 @@ const LandlordPortalMaintenance = () => {
                               >
                                 {actionButton?.incompletedJob === true
                                   ? "Job Incomplete!"
+                                  : incompleteJobLoading
+                                  ? "Incompleting..."
                                   : "Incomplete"}
                               </button>
                             </div>

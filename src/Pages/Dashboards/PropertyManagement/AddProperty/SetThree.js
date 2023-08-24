@@ -170,10 +170,68 @@ const SetThree = ({ formData, setFormData }) => {
             <h1 className=" font-medium text-2xl text-[#162A43] underline underline-offset-4">
               Let's add the units for the property
             </h1>
-            <p className="  font-normal text-lg text-[#565151] mt-5 underline underline-offset-4">
-              Add all your units below
-            </p>
           </div>
+
+          <div className="grid grid-cols-3 gap-x-5 mt-10  w-3/4 mx-auto">
+            <div className="col-span-1">
+              <label
+                htmlFor="propertyFloor"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Landlord name <span className="text-red-500 font-bold ">*</span>
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="landlordName"
+                  id="landlordName"
+                  onChange={(e) => handleLandlordInfoChange(e)}
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                />
+              </div>
+            </div>
+            <div className="col-span-1">
+              <label
+                htmlFor="propertyFloor"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Landlord email{" "}
+                <span className="text-red-500 font-bold ">*</span>
+              </label>
+              <div className="mt-1">
+                <input
+                  type="email"
+                  name="landlordEmail"
+                  id="landlordEmail"
+                  onChange={(e) => handleLandlordInfoChange(e)}
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                />
+              </div>
+            </div>
+            <div className="col-span-1">
+              <label
+                htmlFor="propertyFloor"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Landlord phone{" "}
+                <span className="text-red-500 font-bold ">*</span>
+              </label>
+              <div className="mt-1">
+                <input
+                  type="tel"
+                  name="landlordPhone"
+                  id="landlordPhone"
+                  onChange={(e) => handleLandlordInfoChange(e)}
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p className="font-normal text-lg text-[#565151] mt-10 underline underline-offset-4 text-center">
+            Add all your units below
+          </p>
+
           <form className="pt-14 relative pl-20">
             {serviceList.map((singleService, index) => (
               <>

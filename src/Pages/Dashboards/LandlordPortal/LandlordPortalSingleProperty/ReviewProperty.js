@@ -1,9 +1,10 @@
 import { Disclosure, Tab } from "@headlessui/react";
-import { StarIcon, PhoneIcon, MailIcon } from "@heroicons/react/solid";
-import { HeartIcon, MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
+import { PhoneIcon, MailIcon } from "@heroicons/react/solid";
+import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import ViewTenantModal from "./ViewTenantModal";
 import { useSelector } from "react-redux";
+import ViewUnitModal from "./ViewUnitModal";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -12,11 +13,18 @@ function classNames(...classes) {
 const ReviewProperty = ({ singleProperty }) => {
   const { currentUser } = useSelector((state) => state.user);
   const [openTenantModal, setOpenTenantModal] = useState(false);
+  const [openUnitModal, setOpenUnitModal] = useState(false);
   const [singleTenant, setSingleTenant] = useState({});
+  const [singleUnit, setSingleUnit] = useState({});
 
   const handleTenantView = (tenant) => {
     setOpenTenantModal(true);
     setSingleTenant(tenant);
+  };
+
+  const handleUnitView = (unit) => {
+    setOpenUnitModal(true);
+    setSingleUnit(unit);
   };
 
   const product = {
@@ -225,42 +233,87 @@ const ReviewProperty = ({ singleProperty }) => {
                 </li>
               </ul>
             </div>
+            {/* Tenants */}
             <div>
               <div className="mt-4 flow-root bg-white rounded-md shadow-lg pt-5 pb-10 px-5">
-                <h2 className="pb-6 mb-2 text-md font-medium text-gray-900  ">
+                <h2 className="pb-6 mb-2 text-md font-medium text-gray-900 underline underline-offset-4">
                   Tenants
                 </h2>
-                <ul className="-my-5 divide-y divide-gray-200">
-                  {singleProperty.tenantDetails?.map((tenant) => (
-                    <li
-                      key={tenant._id}
-                      className="py-4 px-4 border border-gray-200 rounded-md"
-                    >
-                      <div className="flex items-center space-x-4">
+                {singleProperty.tenantDetails?.length !== 0 ? (
+                  <>
+                    <ul className="-my-5 divide-y divide-gray-200">
+                      {singleProperty.tenantDetails?.map((tenant) => (
+                        <li key={tenant._id} className="py-4 px-4 ">
+                          <div className="flex items-center space-x-4">
+                            <div className="flex-shrink-0">
+                              <svg
+                                className="hidden h-8 w-8 text-gray-500 rounded-full sm:block"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                              </svg>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-medium text-gray-900">
+                                {tenant.tenantPersonalInfo?.fullName}
+                              </p>
+                            </div>
+                            <div>
+                              <button
+                                onClick={() => handleTenantView(tenant)}
+                                className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
+                              >
+                                View
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <div className="rounded-md bg-yellow-50 p-4">
+                      <div className="flex">
                         <div className="flex-shrink-0">
-                          <img
-                            className="hidden h-12 w-12 rounded-full sm:block"
-                            src="https://t3.ftcdn.net/jpg/03/65/59/74/360_F_365597437_KhQ16aqoFoIIvz34GpbEueQUGjPWJCgU.jpg"
-                            alt=""
-                          />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-medium text-gray-900">
-                            {tenant.tenantPersonalInfo?.fullName}
-                          </p>
-                        </div>
-                        <div>
-                          <button
-                            onClick={() => handleTenantView(tenant)}
-                            className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6 text-yellow-400"
                           >
-                            View
-                          </button>
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                            />
+                          </svg>
+                        </div>
+                        <div className="ml-3">
+                          <h3 className="text-sm font-medium text-yellow-800">
+                            Attention needed
+                          </h3>
+                          <div className="mt-2 text-sm text-yellow-700">
+                            <p>
+                              No Tenants have been added for this property yet!
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  </>
+                )}
               </div>
               <ViewTenantModal
                 open={openTenantModal}
@@ -268,6 +321,49 @@ const ReviewProperty = ({ singleProperty }) => {
                 singleTenant={singleTenant}
               />
             </div>
+            {/* Units if the property is HMO */}
+            {singleProperty?.propertyType === "HMO" && (
+              <>
+                <div className="mt-6 flow-root bg-white pt-8 pb-12 px-10 shadow-md rounded-lg">
+                  <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-2">
+                    Units
+                  </h2>
+                  <ul className="-my-5 divide-y divide-gray-200">
+                    {singleProperty.units?.map((unit, index) => (
+                      <li key={unit._id} className="py-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="flex-shrink-0">
+                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
+                              <span className="font-medium leading-none text-white">
+                                {index + 1}
+                              </span>
+                            </span>
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate text-sm font-medium text-gray-900">
+                              {unit.unitName}
+                            </p>
+                          </div>
+                          <div>
+                            <button
+                              onClick={() => handleUnitView(unit)}
+                              className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
+                            >
+                              View
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ViewUnitModal
+                  open={openUnitModal}
+                  setOpen={setOpenUnitModal}
+                  singleUnit={singleUnit}
+                />
+              </>
+            )}
           </div>
 
           {/* Product info */}
@@ -283,34 +379,14 @@ const ReviewProperty = ({ singleProperty }) => {
               {singleProperty?.propertyAddress?.zipcode}
             </h1>
 
-            <div className="mt-3">
-              <h2 className="sr-only">Product information</h2>
-              <p className="tracking-tight text-3xl text-gray-900">
-                £{singleProperty?.propertyDetails?.propertyEstimatedValue}
-              </p>
-            </div>
-
-            {/* Reviews */}
-            {/* <div className="mt-3">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        product.rating > rating
-                          ? "text-cyan-500"
-                          : "text-gray-300",
-                        "h-5 w-5 flex-shrink-0"
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">{product.rating} out of 5 stars</p>
+            {singleProperty?.propertyType !== "HMO" && (
+              <div className="mt-3">
+                <h2 className="sr-only">Product information</h2>
+                <p className="tracking-tight text-3xl text-gray-900">
+                  £{singleProperty?.propertyDetails?.propertyEstimatedValue}
+                </p>
               </div>
-            </div> */}
+            )}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
@@ -320,30 +396,6 @@ const ReviewProperty = ({ singleProperty }) => {
                 dangerouslySetInnerHTML={{ __html: product.description }}
               />
             </div>
-
-            {/* <form className="mt-6">
-              
-
-              <div className="mt-10 flex sm:flex-col1">
-                <button
-                  type="submit"
-                  className="max-w-xs flex-1 bg-cyan-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full"
-                >
-                  Rent
-                </button>
-
-                <button
-                  type="button"
-                  className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                >
-                  <HeartIcon
-                    className="h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Add to favorites</span>
-                </button>
-              </div>
-            </form> */}
 
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">

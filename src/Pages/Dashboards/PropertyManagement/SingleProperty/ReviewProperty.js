@@ -1,8 +1,9 @@
 import { Disclosure, Tab } from "@headlessui/react";
-import { StarIcon, PhoneIcon, MailIcon } from "@heroicons/react/solid";
-import { HeartIcon, MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
+import { PhoneIcon, MailIcon } from "@heroicons/react/solid";
+import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import ViewTenantModal from "./ViewTenantModal";
+import ViewUnitModal from "./ViewUnitModal";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -10,11 +11,17 @@ function classNames(...classes) {
 
 const ReviewProperty = ({ singleProperty }) => {
   const [openTenantModal, setOpenTenantModal] = useState(false);
+  const [openUnitModal, setOpenUnitModal] = useState(false);
   const [singleTenant, setSingleTenant] = useState({});
+  const [singleUnit, setSingleUnit] = useState({});
 
   const handleTenantView = (tenant) => {
     setOpenTenantModal(true);
     setSingleTenant(tenant);
+  };
+  const handleUnitView = (unit) => {
+    setOpenUnitModal(true);
+    setSingleUnit(unit);
   };
 
   const product = {
@@ -157,7 +164,7 @@ const ReviewProperty = ({ singleProperty }) => {
               </Tab.Panels>
             </Tab.Group>
             <div>
-              <div className="mt-12 flow-root bg-white pt-8 pb-12 px-10">
+              <div className="mt-12 flow-root bg-white pt-8 pb-12 px-10 shadow-md rounded-lg">
                 <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-2">
                   Tenants
                 </h2>
@@ -196,6 +203,49 @@ const ReviewProperty = ({ singleProperty }) => {
                 singleTenant={singleTenant}
               />
             </div>
+
+            {singleProperty?.propertyType === "HMO" && (
+              <>
+                <div className="mt-6 flow-root bg-white pt-8 pb-12 px-10 shadow-md rounded-lg">
+                  <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-2">
+                    Units
+                  </h2>
+                  <ul className="-my-5 divide-y divide-gray-200">
+                    {singleProperty.units?.map((unit, index) => (
+                      <li key={unit._id} className="py-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="flex-shrink-0">
+                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
+                              <span className="font-medium leading-none text-white">
+                                {index + 1}
+                              </span>
+                            </span>
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate text-sm font-medium text-gray-900">
+                              {unit.unitName}
+                            </p>
+                          </div>
+                          <div>
+                            <button
+                              onClick={() => handleUnitView(unit)}
+                              className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
+                            >
+                              View
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ViewUnitModal
+                  open={openUnitModal}
+                  setOpen={setOpenUnitModal}
+                  singleUnit={singleUnit}
+                />
+              </>
+            )}
           </div>
 
           {/* Product info */}
@@ -211,34 +261,14 @@ const ReviewProperty = ({ singleProperty }) => {
               {singleProperty?.propertyAddress?.zipcode}
             </h1>
 
-            <div className="mt-3">
-              <h2 className="sr-only">Product information</h2>
-              <p className="tracking-tight text-3xl text-gray-900">
-                £{singleProperty?.propertyDetails?.propertyEstimatedValue}
-              </p>
-            </div>
-
-            {/* Reviews */}
-            <div className="mt-3">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        product.rating > rating
-                          ? "text-cyan-500"
-                          : "text-gray-300",
-                        "h-5 w-5 flex-shrink-0"
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">{product.rating} out of 5 stars</p>
+            {singleProperty?.propertyType !== "HMO" && (
+              <div className="mt-3">
+                <h2 className="sr-only">Product information</h2>
+                <p className="tracking-tight text-3xl text-gray-900">
+                  £{singleProperty?.propertyDetails?.propertyEstimatedValue}
+                </p>
               </div>
-            </div>
+            )}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
@@ -248,30 +278,6 @@ const ReviewProperty = ({ singleProperty }) => {
                 dangerouslySetInnerHTML={{ __html: product.description }}
               />
             </div>
-
-            <form className="mt-6">
-              {/* Colors */}
-
-              <div className="mt-10 flex sm:flex-col1">
-                <button
-                  type="submit"
-                  className="max-w-xs flex-1 bg-cyan-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full"
-                >
-                  Rent
-                </button>
-
-                <button
-                  type="button"
-                  className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                >
-                  <HeartIcon
-                    className="h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Add to favorites</span>
-                </button>
-              </div>
-            </form>
 
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">

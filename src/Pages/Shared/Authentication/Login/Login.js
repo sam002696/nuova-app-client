@@ -94,7 +94,7 @@ const Login = () => {
                     })}
                     className={`px-3 py-2 block w-full shadow-sm sm:text-sm ${
                       errors.email ? "border-red-500" : "border-gray-300"
-                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border-2 rounded-md placeholder-gray-400 appearance-none`}
+                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border rounded-md placeholder-gray-400 appearance-none`}
                   />
                   {errors.email && (
                     <p className="text-red-500 mt-2 text-sm font-medium">
@@ -122,7 +122,7 @@ const Login = () => {
                     })}
                     className={`px-3 py-2 block w-full shadow-sm sm:text-sm ${
                       errors.password ? "border-red-500" : "border-gray-300"
-                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border-2 rounded-md placeholder-gray-400 appearance-none`}
+                    } focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 border rounded-md placeholder-gray-400 appearance-none`}
                   />
                   {errors.password && (
                     <p className="text-red-500 mt-2 text-sm font-medium">
@@ -136,7 +136,7 @@ const Login = () => {
                 <button
                   disabled={loading}
                   type="submit"
-                  className="flex w-full justify-center rounded-md border border-transparent bg-yellow-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-[#bd8472]"
+                  className="flex w-full justify-center rounded-md border border-transparent bg-[#c48f7e] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#d59d8b] focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
                 >
                   {loading ? "Signing in" : "Sign in"}
                 </button>

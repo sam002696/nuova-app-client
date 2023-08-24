@@ -205,6 +205,7 @@ const AddProperty = () => {
       keyFeatures,
       briefDesc,
       units,
+      landlordInfo,
     } = formData;
     const { state, city, zipcode, addressline1, propertyName, country } =
       propertyAddress;
@@ -232,7 +233,7 @@ const AddProperty = () => {
       remoteFob,
       suppliedBy,
     } = propertyDetails;
-
+    const { landlordName, landlordEmail, landlordPhone } = landlordInfo;
     const { pictureFirst, pictureSecond, pictureThird, pictureFourth } = images;
     const { comment } = briefDesc;
 
@@ -275,7 +276,10 @@ const AddProperty = () => {
           !spaceLocation.trim() ||
           !entryCode.trim() ||
           !remoteFob.trim() ||
-          !suppliedBy.trim()
+          !suppliedBy.trim() ||
+          !landlordEmail.trim() ||
+          !landlordName.trim() ||
+          !landlordPhone.trim()
         ) {
           return false;
         }
@@ -289,7 +293,12 @@ const AddProperty = () => {
             !unit.marketRent.trim()
         );
 
-        if (anyUnitMissingData) {
+        if (
+          anyUnitMissingData ||
+          !landlordEmail.trim() ||
+          !landlordName.trim() ||
+          !landlordPhone.trim()
+        ) {
           return false;
         }
       }

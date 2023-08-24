@@ -740,8 +740,14 @@ const Notification = () => {
                                   {notification.propertyFactFindMessage &&
                                     `${notification.ownerName} has filled up property fact find form`}
 
-                                  {notification.propertyAddMessagePm &&
-                                    `${notification.landlordName} has added a new property`}
+                                  {notification.propertyAddMessagePm && (
+                                    <>
+                                      <span className="font-bold">
+                                        {notification.propertyName}
+                                      </span>{" "}
+                                      has been added in the system
+                                    </>
+                                  )}
 
                                   {notification.reportDocumentInspectionMessagePm &&
                                     `inspection report has been added`}
@@ -1117,8 +1123,14 @@ const Notification = () => {
                                     `${notification.taskTitle} has been assigned to you`}
                                   {notification.propertyAddMessageLandlord &&
                                     notification.landlordEmail ===
-                                      currentUser.email &&
-                                    `${notification.propertyName} has been added`}
+                                      currentUser.email && (
+                                      <>
+                                        <span className="font-bold">
+                                          {notification.propertyName}
+                                        </span>{" "}
+                                        has been added in the system
+                                      </>
+                                    )}
 
                                   {notification.reportDocumentInspectionMessageLandlord &&
                                     notification.landlordEmail ===
