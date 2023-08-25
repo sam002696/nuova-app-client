@@ -215,7 +215,7 @@ const AllProperties = () => {
                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                     </svg>
-                    <p className=" text-gray-500 group-hover:text-white text-xl font-light">
+                    <p className=" text-gray-500 group-hover:text-white text-base font-semibold truncate ">
                       {property.propertyAddress?.addressline1},
                       {property.propertyAddress?.city},
                       {property.propertyAddress?.zipcode}

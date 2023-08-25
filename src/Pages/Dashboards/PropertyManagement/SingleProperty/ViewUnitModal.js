@@ -41,7 +41,7 @@ const ViewUnitModal = ({ open, setOpen, singleUnit }) => {
                   <div className="overflow-hidden bg-white shadow sm:rounded-lg">
                     <div className="px-4 py-5 sm:px-6">
                       <h3 className="text-lg font-medium leading-6 text-gray-900">
-                        Unit Information
+                        Unit Information ({singleUnit.unitName})
                       </h3>
                     </div>
                     <div className="border-t border-gray-200 px-4 py-5 sm:p-0">

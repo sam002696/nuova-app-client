@@ -7,11 +7,11 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
   );
   const { propertyAddress } = singlePropertyDetails;
   const [tenantResidency, setTenantResidency] = useState({
-    propertyName: propertyAddress.propertyName,
-    address: propertyAddress.addressline1,
-    city: propertyAddress.city,
-    state: propertyAddress.state,
-    country: propertyAddress.country,
+    propertyName: propertyAddress?.propertyName,
+    address: propertyAddress?.addressline1,
+    city: propertyAddress?.city,
+    state: propertyAddress?.state,
+    country: propertyAddress?.country,
     postCode: "",
     unitNumber: "",
     monthlyRent: "",

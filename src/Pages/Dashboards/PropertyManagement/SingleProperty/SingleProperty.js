@@ -125,9 +125,9 @@ const SingleProperty = () => {
       current: false,
     },
     {
-      name: "Add terms",
+      name: "Terms",
       href: "#",
-      to: `${url}/add-terms`,
+      to: `${url}/terms`,
       icon: KeyIcon,
       current: false,
     },
@@ -510,8 +510,8 @@ const SingleProperty = () => {
                   <Route path={`${path}/add-tenants`}>
                     <AddTenant singleProperty={singleProperty} />
                   </Route>
-                  <Route path={`${path}/add-terms`}>
-                    <AddTerms />
+                  <Route path={`${path}/terms`}>
+                    <AddTerms singleProperty={singleProperty} />
                   </Route>
                   {/* <Route path={`${path}/request-deposit`}>
                     <RequestDeposit />

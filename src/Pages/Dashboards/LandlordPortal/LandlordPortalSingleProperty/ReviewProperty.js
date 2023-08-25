@@ -171,7 +171,7 @@ const ReviewProperty = ({ singleProperty }) => {
                 <li className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
                   <div className="flex w-full items-center justify-between space-x-6 p-6">
                     <div className="flex-1 truncate">
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center">
                         <h3 className="truncate text-sm font-medium text-gray-900">
                           {singleProperty?.landlordInfo?.landlordName}
                         </h3>
@@ -247,7 +247,7 @@ const ReviewProperty = ({ singleProperty }) => {
                           <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
                               <svg
-                                className="hidden h-8 w-8 text-gray-500 rounded-full sm:block"
+                                className=" h-8 w-8 text-gray-500  "
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -325,7 +325,7 @@ const ReviewProperty = ({ singleProperty }) => {
             {singleProperty?.propertyType === "HMO" && (
               <>
                 <div className="mt-6 flow-root bg-white pt-8 pb-12 px-10 shadow-md rounded-lg">
-                  <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-2">
+                  <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-4">
                     Units
                   </h2>
                   <ul className="-my-5 divide-y divide-gray-200">
@@ -333,7 +333,7 @@ const ReviewProperty = ({ singleProperty }) => {
                       <li key={unit._id} className="py-4">
                         <div className="flex items-center space-x-4">
                           <div className="flex-shrink-0">
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-500">
                               <span className="font-medium leading-none text-white">
                                 {index + 1}
                               </span>
