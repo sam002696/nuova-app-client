@@ -20,7 +20,6 @@ const tiers = [
       "Pre-tenancy inspection which will include photographic evidence & Inventory.",
       "Utility and services management, including gas, electric, water and council tax (tenancy commencement and end)",
       "Rent review and negotiations",
-      "Landlord Online Portal",
       "Meet and greet and handover the keys",
     ],
   },
@@ -38,7 +37,7 @@ const tiers = [
       "Pre-tenancy inspection which will include photographic evidence & Inventory.",
       "Utility and services management, including gas, electric, water and council tax (tenancy commencement and end)",
       "Rent review and negotiations",
-      "Limited access to the Landlord Online Portal",
+      "Full access to the Landlord Online Portal",
       "Meet and greet and handover the keys",
       "Dedicated Property Manager",
       "24 Hour repair support",
@@ -82,7 +81,7 @@ const tiers = [
       "Ensuring all legal certificates are renewed annually or when required.",
       "Have complete access to the landlord Nuova Portal",
       "Rent reviews, increase when appropriate",
-      "Management of the property in accordance with HMO regulations Project Manage any upgrade works required HMO license renewals",
+      "Management of the property in accordance with HMO regulations Project Manage any upgrade works required for HMO license renewals",
     ],
   },
   {
@@ -126,9 +125,9 @@ const PricingPlans = () => {
                   <h2 className="text-lg font-medium leading-6 text-gray-900">
                     {tier.name}
                   </h2>
-                  <p className="mt-4 text-sm text-gray-500">
+                  {/* <p className="mt-4 text-sm text-gray-500">
                     {tier.description}
-                  </p>
+                  </p> */}
                   {/* <a
                     href={tier.href}
                     className="mt-8 block w-full rounded-md border border-transparent bg-[#162A43] py-2 text-center text-sm font-semibold text-white hover:bg-blue-900"
