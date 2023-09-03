@@ -28,7 +28,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
 import Notification from "../../Notification/Notification";
 
-
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@example.com",
@@ -102,8 +101,8 @@ const LandlordPortalDashboard = () => {
       <div className="min-h-full ">
         <Popover
           as="header"
-          className="bg-[#0f2e5a]"
-          // className="bg-gradient-to-r from-sky-800 to-cyan-600"
+          // className="bg-[#0f2e5a]"
+          className="bg-gradient-to-r from-[#09203F] to-[#537895]"
         >
           {({ open }) => (
             <>

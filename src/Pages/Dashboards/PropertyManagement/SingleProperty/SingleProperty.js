@@ -35,6 +35,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../../Redux/userSlice";
 import AddDocument from "./AddDocument/AddDocument";
+import { propertyFetchingSuccess } from "../../../../Redux/singlePropertySlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -60,6 +61,7 @@ const SingleProperty = () => {
           `http://localhost:5500/api/properties/${id}`
         );
         console.log(res.data);
+        dispatch(propertyFetchingSuccess(res.data));
         setSingleProperty(res.data);
       } catch (err) {
         console.log(err);

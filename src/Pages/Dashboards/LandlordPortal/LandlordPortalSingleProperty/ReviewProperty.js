@@ -393,7 +393,9 @@ const ReviewProperty = ({ singleProperty }) => {
 
               <div
                 className="text-base text-gray-700 space-y-6"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{
+                  __html: singleProperty?.briefDesc?.comment,
+                }}
               />
             </div>
 

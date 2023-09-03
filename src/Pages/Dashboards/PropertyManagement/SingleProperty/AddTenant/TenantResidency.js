@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+// import { singlePropertyDetails } from "../../../../../Redux/singlePropertySlice";
 
 const TenantResidency = ({ formData, setFormData, singleProperty }) => {
   const { singlePropertyDetails } = useSelector(
     (state) => state.singlePropertyDetails
   );
-  const { propertyAddress } = singlePropertyDetails;
+  // const { propertyAddress } = singlePropertyDetails;
   const [tenantResidency, setTenantResidency] = useState({
-    propertyName: propertyAddress?.propertyName,
-    address: propertyAddress?.addressline1,
-    city: propertyAddress?.city,
-    state: propertyAddress?.state,
-    country: propertyAddress?.country,
+    propertyName: singlePropertyDetails?.propertyAddress?.propertyName,
+    address: singlePropertyDetails?.propertyAddress?.addressline1,
+    city: singlePropertyDetails?.propertyAddress?.city,
+    state: singlePropertyDetails?.propertyAddress?.state,
+    country: singlePropertyDetails?.propertyAddress?.country,
     postCode: "",
     unitNumber: "",
     monthlyRent: "",
@@ -63,7 +64,7 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
-                value={propertyAddress?.propertyName}
+                value={singlePropertyDetails?.propertyAddress?.propertyName}
               />
             </div>
           </div>
@@ -85,7 +86,7 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
-                value={propertyAddress.addressline1}
+                value={singlePropertyDetails?.propertyAddress.addressline1}
               />
             </div>
           </div>
@@ -107,7 +108,7 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
-                value={propertyAddress.city}
+                value={singlePropertyDetails?.propertyAddress.city}
               />
             </div>
           </div>
@@ -129,7 +130,7 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
-                value={propertyAddress.state}
+                value={singlePropertyDetails?.propertyAddress.state}
               />
             </div>
           </div>
@@ -151,7 +152,7 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
-                value={propertyAddress.country}
+                value={singlePropertyDetails?.propertyAddress.country}
               />
             </div>
           </div>
@@ -187,17 +188,21 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                   Unit Number <span className="text-red-500 font-bold ">*</span>
                 </label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
-                  <input
-                    type="text"
+                  <select
                     name="unitNumber"
                     id="unitNumber"
-                    autoComplete="unit-number"
-                    placeholder="e.g Apt. #2A"
                     className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                     onChange={(e) => {
                       handleTenantResidencyChange(e);
                     }}
-                  />
+                  >
+                    <option value="">Select a unit</option>
+                    {singleProperty?.units.map((unit) => (
+                      <option key={unit._id} value={unit.unitName}>
+                        {unit.unitName}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </>

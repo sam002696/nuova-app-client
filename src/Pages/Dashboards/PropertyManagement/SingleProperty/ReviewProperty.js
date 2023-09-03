@@ -164,48 +164,85 @@ const ReviewProperty = ({ singleProperty }) => {
               </Tab.Panels>
             </Tab.Group>
             <div>
-              <div className="mt-12 flow-root bg-white pt-8 pb-12 px-10 shadow-md rounded-lg">
-                <h2 className="pb-6 text-lg font-medium text-gray-900 underline underline-offset-4">
+              <div className="mt-8 flow-root bg-white rounded-md shadow-md pt-5 pb-10 px-5">
+                <h2 className="pb-6 mb-2 text-md font-medium text-gray-900 underline underline-offset-4">
                   Tenants
                 </h2>
-                <ul className="-my-5 divide-y divide-gray-200">
-                  {singleProperty.tenantDetails?.map((tenant) => (
-                    <li key={tenant._id} className="py-4">
-                      <div className="flex items-center space-x-4">
+                {singleProperty.tenantDetails?.length !== 0 ? (
+                  <>
+                    <ul className="-my-5 divide-y divide-gray-200">
+                      {singleProperty.tenantDetails?.map((tenant) => (
+                        <li key={tenant._id} className="py-4 px-4 ">
+                          <div className="flex items-center space-x-4">
+                            <div className="flex-shrink-0">
+                              <svg
+                                className=" h-8 w-8 text-gray-500  "
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                              </svg>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-medium text-gray-900">
+                                {tenant.tenantPersonalInfo?.fullName}
+                              </p>
+                            </div>
+                            <div>
+                              <button
+                                onClick={() => handleTenantView(tenant)}
+                                className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
+                              >
+                                View
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <div className="rounded-md bg-yellow-50 p-4">
+                      <div className="flex">
                         <div className="flex-shrink-0">
                           <svg
-                            className=" h-8 w-8 text-gray-500  "
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="w-6 h-6"
+                            class="w-6 h-6 text-yellow-400"
                           >
                             <path
                               stroke-linecap="round"
                               stroke-linejoin="round"
-                              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
                             />
                           </svg>
                         </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-medium text-gray-900">
-                            {tenant.tenantPersonalInfo?.fullName}
-                          </p>
-                        </div>
-                        <div>
-                          <button
-                            onClick={() => handleTenantView(tenant)}
-                            className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
-                          >
-                            View
-                          </button>
+                        <div className="ml-3">
+                          <h3 className="text-sm font-medium text-yellow-800">
+                            Attention needed
+                          </h3>
+                          <div className="mt-2 text-sm text-yellow-700">
+                            <p>
+                              No Tenants have been added for this property yet!
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  </>
+                )}
               </div>
               <ViewTenantModal
                 open={openTenantModal}
@@ -285,7 +322,9 @@ const ReviewProperty = ({ singleProperty }) => {
 
               <div
                 className="text-base text-gray-700 space-y-6"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{
+                  __html: singleProperty?.briefDesc?.comment,
+                }}
               />
             </div>
 

@@ -51,14 +51,18 @@ const ChatRegister = () => {
             await setDoc(doc(db, "userChats", res.user.uid), {});
             history.push("/property-manager-dashboard/inbox");
           } catch (err) {
-            // console.log(err.message);
             setLoading(false);
             setErr(err.message);
           }
         });
       });
-    } catch (err) {
-      setErr(true);
+    } catch (error) {
+      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        setErr("Email is already in use. Please use a different email.");
+      } else {
+        setErr("An error occurred during registration. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
