@@ -37,7 +37,7 @@ const PricingContact = () => {
   };
   return (
     <>
-      <div className=" px-4 sm:px-6 lg:px-8 pb-20 ">
+      <div id="landlordContact" className=" px-4 sm:px-6 lg:px-8 pb-20 ">
         {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
@@ -239,6 +239,34 @@ const PricingContact = () => {
                     <p className="text-red-500 mt-2">
                       {errors.package.message}
                     </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="hear"
+                  className="block text-sm font-medium text-gray-500"
+                >
+                  How did you hear about us?’{" "}
+                  <span className="text-red-500 font-bold ">*</span>
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    name="hear"
+                    id="hear"
+                    autoComplete="hear"
+                    placeholder="Facebook"
+                    className={`py-2 px-4 block w-full shadow-sm ${
+                      errors.package ? "border-red-500" : "border-gray-100"
+                    } focus:ring-teal-500 focus:border-teal-500 border-2 rounded-md`}
+                    {...register("hear", {
+                      required: "This field is required",
+                    })}
+                  />
+                  {errors.hear && (
+                    <p className="text-red-500 mt-2">{errors.hear.message}</p>
                   )}
                 </div>
               </div>

@@ -14,7 +14,6 @@ function classNames(...classes) {
 
 const HeaderNavbarTwo = () => {
   const linkResources = [
-    
     { name: "Landlord", href: "/page3" },
     { name: "Tenants", href: "/page2" },
     { name: "Our Services", href: "/pricing-structure" },

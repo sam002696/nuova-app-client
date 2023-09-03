@@ -93,11 +93,10 @@ const Banner = () => {
 
   return (
     <>
-      <div className="relative">
+      {/* <div className="relative">
         <img className="absolute h-screen w-screen" src={p2_b1_img7} alt="" />
-        {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
+
         <div className="max-w-5xl mx-auto">
-          {/* Content goes here */}
           <div className="grid grid-cols-4 gap-x-5">
             <div className="space-y-8 py-10 col-span-2 mt-12 relative z-10">
               <div className="text-white banner-text font-medium font-sans ">
@@ -120,39 +119,55 @@ const Banner = () => {
                 <img className="w-5/6" src={p2_b1_img8} alt="" />
               </div>
             </div>
-            {/* <div className='col-span-1 relative -right-40'>
-                            <div className='relative'>
-
-                                <div>
-                                    <img className='mt-20' src={p2_b1_img1} alt="" />
-                                </div>
-                                <div>
-                                    <img className='' src={p2_b1_img3} alt="" />
-                                </div>
-                                <div className='absolute -top-8 -left-12 -z-10'>
-                                    <img className='' src={p2_b1_img5} alt="" />
-                                </div>
-
-                            </div>
-                        </div> */}
-            {/* <div className='col-span-1 relative -right-32'>
-                            <div className=''>
-                                <div>
-                                    <img className='mt-8' src={p2_b1_img2} alt="" />
-                                </div>
-                                <div>
-                                    <img className='' src={p2_b1_img4} alt="" />
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div> */}
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <main>
+        {/* Hero card */}
+        <div className="relative">
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
+          <div className="">
+            <div className="relative shadow-xl sm:overflow-hidden lg:min-h-[100vh]">
+              <div className="absolute inset-0">
+                <img
+                  className="h-full w-full object-cover"
+                  src={p2_b1_img7}
+                  alt="People working on laptops"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#162A43]/100 via-[#162A43]/78 to-[#FFFFFF]/0 " />
+              </div>
+
+              <div className="max-w-5xl mx-auto">
+                {/* Content goes here */}
+                <div className="grid grid-cols-4 gap-x-5">
+                  <div className="space-y-8 py-10 col-span-2 mt-20 relative z-10">
+                    <div className="text-white banner-text font-medium font-sans ">
+                      Renting Made Easy With Nuova
+                    </div>
+                    <p className="text-[#DEE1E5] font-normal text-lg">
+                      From renting a home in just a few clicks to simple and
+                      effective property management, Nuova will always make sure
+                      you are looked after.
+                    </p>
+                    <div className="">
+                      <button className="text-white text-base bg-[#BD8472] px-6 py-3 text-center rounded font-semibold">
+                        Talk To Us
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="col-span-2 relative -right-40 mt-12">
+                    <div className="absoulute">
+                      <img className="w-5/6" src={p2_b1_img8} alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
 
       {/* <div className="">
         
@@ -357,7 +372,7 @@ const Banner = () => {
                 At your finger tips 24/7
               </div>
               <p className="text-[#565151] font-normal text-lg">
-                From the single lick of a button you will have a complete
+                From the single click of a button you will have a complete
                 oversight of your Nuova home. You can report repairs, speak to a
                 member of our team and receive real time updates!
               </p>
@@ -378,7 +393,7 @@ const Banner = () => {
           {/* Content goes here */}
           <div className="space-y-3 text-center p-8">
             <div className="text-[#162A43] font-semibold text-4xl font-sans">
-              <h1 className="leading-snug">Contact us for Tenancy</h1>
+              <h1 className="leading-snug">Contact Us</h1>
             </div>
 
             <p className="text-[#565151] font-normal text-lg font-sans w-4/5 mx-auto">

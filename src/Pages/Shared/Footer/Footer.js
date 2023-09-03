@@ -34,7 +34,12 @@ const Footer = () => {
                 </p>
                 <p>
                   <span className=" font-normal text-lg text-[#000000]">
-                    info@nuovapm.co.uk 0141-266-0597
+                    info@nuovapm.co.uk
+                  </span>
+                </p>
+                <p>
+                  <span className=" font-normal text-lg text-[#000000]">
+                    0141-266-0597
                   </span>
                 </p>
               </div>

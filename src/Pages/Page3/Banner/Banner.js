@@ -31,6 +31,7 @@ import p3_b5_img10 from "../../../Images/Page3/Banner5/Page3 banner5 img10.png";
 import p3_b5_img11 from "../../../Images/Page3/Banner5/Page3 banner5 img11.png";
 import p3_b5_img12 from "../../../Images/Page3/Banner5/Page3 banner5 img12.png";
 import tickMark from "../../../Images/Pros/Vector.png";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const posts = [
@@ -332,11 +333,18 @@ const Banner = () => {
 
             <div className="col-span-1 relative">
               <div>
-                <img className="mt-20 w-5/6 rounded-2xl" src={p3_b3_img2} alt="" />
+                <img
+                  className="mt-20 w-5/6 rounded-2xl"
+                  src={p3_b3_img2}
+                  alt=""
+                />
               </div>
               <div className="mt-8 sm:mt-8 w-11/12 mx-auto">
                 <div className="w-11/12 mx-auto">
-                  <a href="./Nuova Property Brochure.pdf" download="Nuova Brochure.pdf">
+                  <a
+                    href="./Nuova Property Brochure.pdf"
+                    download="Nuova Brochure.pdf"
+                  >
                     <button className="text-white text-base bg-[#BD8472] px-6 py-3 text-center rounded font-semibold">
                       Nuova Property Brochure
                     </button>
@@ -364,10 +372,11 @@ const Banner = () => {
                 so you can speak to you dedicated property manager any time!
               </p>
               <p className="text-[#565151] font-normal text-lg">
-                You will also benefit from only having one point of contact who
-                will be your dedicated property manager, a simple and effective
-                maintenance process to make repairs getting done a lot easier
-                with our network of trusted contractors.
+                Working with our experienced property professionals, you’ll
+                enjoy a helpful, efficient service from a friendly team that’s
+                ever responsive, and always ready to help. Our aim is to reduce
+                your risk, maximise your rental income, and give you everything
+                you need for complete peace of mind as a landlord.
               </p>
             </div>
 
@@ -464,7 +473,7 @@ const Banner = () => {
         <div className="max-w-5xl mx-auto">
           {/* Content goes here */}
           <div className="pt-16">
-            <h1 className="text-4xl font-mono font-semibold text-center">
+            <h1 className="text-5xl font-mono font-semibold text-center">
               Nuova Offering
             </h1>
           </div>
@@ -624,6 +633,13 @@ const Banner = () => {
               </div>
             </div>
           </div>
+          <div className="pt-12 text-center">
+            <Link to="/pricing-structure#pricingplans" className="text-center">
+              <button className="text-white text-base bg-[#BD8472] px-12 py-2 text-center rounded font-semibold mt-6">
+                Learn More
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -640,11 +656,11 @@ const Banner = () => {
             <p className="text-[#565151] font-normal text-lg font-sans">
               Click here to read more about our services here at Nuova
             </p>
-            <div className="">
+            <Link to="/pricing-structure" className="">
               <button className="text-white text-base bg-[#BD8472] px-12 py-2 text-center rounded font-semibold mt-6">
                 Read More
               </button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
