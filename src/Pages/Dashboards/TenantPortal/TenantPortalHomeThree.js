@@ -342,7 +342,7 @@ const TenantPortalHomeThree = () => {
                               {filteredTenant?.tenantResidency?.monthlyRent}{" "}
                             </p>
                             <p className="text-sm font-medium text-gray-400">
-                              Monthly Rent (payment is secured)
+                              Monthly Rent
                             </p>
 
                             <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">

@@ -30,6 +30,7 @@ import p3_b5_img9 from "../../../Images/Page3/Banner5/Page3 banner5 img9.png";
 import p3_b5_img10 from "../../../Images/Page3/Banner5/Page3 banner5 img10.png";
 import p3_b5_img11 from "../../../Images/Page3/Banner5/Page3 banner5 img11.png";
 import p3_b5_img12 from "../../../Images/Page3/Banner5/Page3 banner5 img12.png";
+import p3_b5_img13 from "../../../Images/Page3/Banner5/Page3 banner5 img13.png";
 import tickMark from "../../../Images/Pros/Vector.png";
 import { Link } from "react-router-dom";
 
@@ -553,8 +554,8 @@ const Banner = () => {
               </p>
             </div>
           </div> */}
-          <div className="mt-12 max-w-lg mx-auto grid gap-12 lg:grid-cols-3 lg:max-w-none">
-            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-5 bg-white">
+          <div className="mt-16 max-w-lg mx-auto grid gap-5 lg:grid-cols-4 lg:max-w-none">
+            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-3 bg-white">
               <div className="flex-1 bg-white p-3 flex flex-col justify-between">
                 <div className="flex-1 text-center">
                   <p className="text-md font-medium text-cyan-600">
@@ -580,7 +581,7 @@ const Banner = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col rounded-xl shadow-xl overflow-hidden p-5 bg-[#162A43]">
+            <div className="flex flex-col rounded-xl shadow-xl overflow-hidden p-3 bg-[#162A43]">
               <div className="flex-1 bg-[#162A43] p-3 flex flex-col justify-between">
                 <div className="flex-1 text-center">
                   <p className="text-md font-medium text-cyan-600">
@@ -606,7 +607,7 @@ const Banner = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-5 bg-white">
+            <div className="flex flex-col rounded-lg shadow-lg overflow-hidden p-3 bg-white">
               <div className="flex-1 bg-white p-3 flex flex-col justify-between">
                 <div className="flex-1 text-center">
                   <p className="text-md font-medium text-cyan-600">
@@ -628,6 +629,32 @@ const Banner = () => {
                     wanting to list your property as a short-term let for the
                     firs time, we can help! having Nuova on your side will make
                     sure you are always kept compliant.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col rounded-xl shadow-xl overflow-hidden p-3 bg-[#162A43]">
+              <div className="flex-1 bg-[#162A43] p-3 flex flex-col justify-between">
+                <div className="flex-1 text-center">
+                  <p className="text-md font-medium text-cyan-600">
+                    Nuova Tenant Find
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 bg-[#162A43]">
+                <img
+                  className="text-center mx-auto p-3"
+                  src={p3_b5_img13}
+                  alt=""
+                />
+              </div>
+              <div className="flex-1 bg-[#162A43] p-3 flex flex-col justify-between">
+                <div className="flex-1">
+                  <p className="mt-3 text-sm text-gray-100 text-justify">
+                    If you are a HMO landlord we can help you to make your life
+                    easier. We will help you find great renters, manage every
+                    aspect of your property and make sure you are kept compliant
+                    with every step of the way.
                   </p>
                 </div>
               </div>

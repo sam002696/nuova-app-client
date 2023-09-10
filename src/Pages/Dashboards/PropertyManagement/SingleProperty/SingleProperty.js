@@ -148,7 +148,7 @@ const SingleProperty = () => {
       current: false,
     },
     {
-      name: "Certificates",
+      name: "Certificates & Documents",
       href: "#",
       to: `${url}/add-certificates`,
       icon: DocumentAddIcon,
