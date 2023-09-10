@@ -368,10 +368,10 @@ const LandlordPortalMaintenance = () => {
                               </div>
                             </div>
                             <div className=" truncate">
-                              <p className="flex-shrink-0 mt-1 text-gray-500 text-lg font-bold truncate">
+                              {/* <p className="flex-shrink-0 mt-1 text-gray-500 text-lg font-bold truncate">
                                 {" "}
                                 &#163;{bidding.BiddingAmount}
-                              </p>
+                              </p> */}
                               <button
                                 onClick={() => handleActionButton(bidding)}
                                 className="bg-cyan-200 px-2 py-1 rounded-md text-sm mt-2 font-bold text-cyan-600"

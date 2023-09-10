@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../Redux/userSlice";
 import { AuthContext } from "../../Chat/ChatContext/AuthContext";
 import Notification from "../../Notification/Notification";
+import TenantPortalFinanceTwo from "./TenantPortalFinanceTwo";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -369,7 +370,7 @@ const TenantPortalDashboard = () => {
               <TenantPropertyThree />
             </Route>
             <Route path={`${path}/tenant-finance`}>
-              <TenantPortalFinance />
+              <TenantPortalFinanceTwo />
             </Route>
             <Route path={`${path}/tenant-tasks`}>
               <TenantPortalTasks />

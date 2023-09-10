@@ -30,7 +30,7 @@ const TenantPortalMaintenance = () => {
     },
     singleTracking?.Timeline?.taskTwo?.postJob === true && {
       id: 2,
-      content: "Request Accepted and proceed by",
+      content: "Request accepted and processed by",
       target: "Property Manager ",
       task: singleTracking?.Timeline?.taskTwo?.postJob,
       date: singleTracking?.Timeline?.taskTwo?.createdAt,
@@ -45,7 +45,7 @@ const TenantPortalMaintenance = () => {
         singleTracking?.assignedContractor?.offerAccepted === true
           ? "Job assigned to contractor by"
           : singleTracking?.assignedContractor?.incompletedJob === true &&
-            "Job has been incompleted and new contractor will be assigned",
+            "Job was incompleted and new contractor will be assigned",
       target: "Property Manager",
       task: singleTracking?.Timeline?.taskThree?.assignJob,
       date: singleTracking?.Timeline?.taskThree?.createdAt,
@@ -55,7 +55,7 @@ const TenantPortalMaintenance = () => {
     },
     singleTracking?.Timeline?.taskFour?.completeJob === true && {
       id: 4,
-      content: "Advanced to check completion by",
+      content: "Advance to check completion by",
       target: "Property Manager",
       task: singleTracking?.Timeline?.taskFour?.completeJob,
       date: singleTracking?.Timeline?.taskFour?.createdAt,
@@ -269,21 +269,21 @@ const TenantPortalMaintenance = () => {
                                             <dt className="text-sm font-semibold leading-6 text-gray-900">
                                               Contractor Assign Info
                                             </dt>
-                                            <dd className="mt-1 text-base font-semibold leading-6 text-gray-900">
+                                            {/* <dd className="mt-1 text-base font-semibold leading-6 text-gray-900">
                                               Bidding Amount : £
                                               {
                                                 singleTracking
                                                   ?.assignedContractor
                                                   ?.BiddingAmount
                                               }
-                                            </dd>
+                                            </dd> */}
                                           </div>
-                                          <div className="flex-none self-end px-6 pt-4">
+                                          {/* <div className="flex-none self-end px-6 pt-4">
                                             <dt className="sr-only">Status</dt>
                                             <dd className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-green-600/20">
                                               Not Paid
                                             </dd>
-                                          </div>
+                                          </div> */}
                                           <div className="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
                                             <dt className="flex-none">
                                               <span className="sr-only">
@@ -357,7 +357,7 @@ const TenantPortalMaintenance = () => {
                                             </dd>
                                           </div>
                                         </dl>
-                                        <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
+                                        {/* <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
                                           <a
                                             href="#"
                                             className="text-sm font-semibold leading-6 text-gray-900"
@@ -367,7 +367,7 @@ const TenantPortalMaintenance = () => {
                                               &rarr;
                                             </span>
                                           </a>
-                                        </div>
+                                        </div> */}
                                       </div>
                                     </div>
                                   </>

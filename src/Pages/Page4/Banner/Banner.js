@@ -1,5 +1,7 @@
 import React from "react";
 
+import { CheckIcon, ClockIcon } from "@heroicons/react/solid";
+
 import p4_b3_img1 from "../../../Images/Page4/Banner3/Page4 banner3 img1.png";
 import p4_b3_img2 from "../../../Images/Page4/Banner3/Page4 banner3 img2.png";
 import p4_b3_img3 from "../../../Images/Page4/Banner3/Page4 banner3 img3.png";
@@ -23,6 +25,11 @@ import p4_b2_img1 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img1.png";
 import p4_b2_img2 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img2.png";
 import p4_b2_img3 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img3.png";
 import p4_b2_img4 from "../../../Images/Page4/Banner2/Page 4 Banner 2 Img4.png";
+
+import ci_1 from "../../../Images/Page4/CompanyInfo/1.deposit.jpg";
+import ci_2 from "../../../Images/Page4/CompanyInfo/2.scot.jpg";
+import ci_3 from "../../../Images/Page4/CompanyInfo/3.arla.jpg";
+import ci_4 from "../../../Images/Page4/CompanyInfo/4.ico.jpg";
 
 const Banner = () => {
   const posts = [
@@ -156,6 +163,50 @@ const Banner = () => {
       individually: p4_TI_img2,
     },
     // More people...
+  ];
+
+  const products = [
+    {
+      id: 1,
+      name: "All Deposits are registered with MyDeposits Scotland, who protect deposits and ensure disputes are resolved fairly and impartially. For every account we open on your behalf, we will forward you the unique reference number.",
+      href: "#",
+      price: "$35.00",
+      color: "White",
+      inStock: true,
+      imageSrc: ci_1,
+    },
+    {
+      id: 2,
+      name: "We hold Public Indemnity Insurance & Client Money Protection with Mint Insurance Brokers. Our Policy Number is available on request.",
+      href: "#",
+      price: "$32.00",
+      color: "Sienna",
+      inStock: true,
+      size: "Large",
+      imageSrc: ci_2,
+    },
+    {
+      id: 3,
+      name: "We are a member of the ICO, so you can be rest assured that we respect your data and privacy, managing this responsibly. Our Registration Reference is ZB346160.",
+      href: "#",
+      price: "$32.00",
+      color: "Sienna",
+      inStock: true,
+      size: "Large",
+      imageSrc: ci_4,
+    },
+    {
+      id: 4,
+      name: "We are ARLA Propertymark protected which is a mark of excellence, being a member of Propertymark underpins the quality which is brought to the profession where credibility is key. Continuing professional development is integral to maintaining a membership with Propertymark which is why you can trust that we are always kept up to date with what is going on in the industry.",
+      href: "#",
+      price: "$32.00",
+      color: "Sienna",
+      inStock: true,
+      size: "Large",
+      imageSrc: ci_3,
+    },
+
+    // More products...
   ];
 
   function classNames(...classes) {
@@ -726,6 +777,108 @@ const Banner = () => {
         </div>
       </div> */}
 
+      <main>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl pb-20 ">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+              Company Information
+            </h1>
+
+            <form className="mt-12">
+              <section aria-labelledby="cart-heading">
+                <h2 id="cart-heading" className="sr-only">
+                  Company Information
+                </h2>
+
+                <ul
+                  role="list"
+                  className="divide-y divide-gray-200 border-b border-t border-gray-200"
+                >
+                  {products.map((product, productIdx) => (
+                    <li key={product.id} className="flex py-5 sm:py-5">
+                      <div className="flex-shrink-0">
+                        <img
+                          src={product.imageSrc}
+                          alt={product.imageAlt}
+                          className="h-20 w-full rounded-lg object-cover object-center sm:h-28 sm:w-full border-2 border-[#002f50] p-2"
+                        />
+                      </div>
+
+                      <div className="relative ml-12 flex flex-1 flex-col justify-between sm:ml-12">
+                        <div>
+                          <div className="flex justify-between">
+                            <div className="pr-6">
+                              <h3 className="text-md text-justify">
+                                <a
+                                  href={product.href}
+                                  className="font-medium text-gray-700 hover:text-gray-800"
+                                >
+                                  {product.name}
+                                </a>
+                              </h3>
+                            </div>
+                          </div>
+
+                          {/* <div className="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
+                            <label
+                              htmlFor={`quantity-${productIdx}`}
+                              className="sr-only"
+                            >
+                              Quantity, {product.name}
+                            </label>
+                            <select
+                              id={`quantity-${productIdx}`}
+                              name={`quantity-${productIdx}`}
+                              className="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            >
+                              <option value={1}>1</option>
+                              <option value={2}>2</option>
+                              <option value={3}>3</option>
+                              <option value={4}>4</option>
+                              <option value={5}>5</option>
+                              <option value={6}>6</option>
+                              <option value={7}>7</option>
+                              <option value={8}>8</option>
+                            </select>
+
+                            <button
+                              type="button"
+                              className="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:ml-0 sm:mt-3"
+                            >
+                              <span>Remove</span>
+                            </button>
+                          </div> */}
+                        </div>
+
+                        {/* <p className="mt-4 flex space-x-2 text-sm text-gray-700">
+                          {product.inStock ? (
+                            <CheckIcon
+                              className="h-5 w-5 flex-shrink-0 text-green-500"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <ClockIcon
+                              className="h-5 w-5 flex-shrink-0 text-gray-300"
+                              aria-hidden="true"
+                            />
+                          )}
+
+                          <span>
+                            {product.inStock
+                              ? "In stock"
+                              : `Ships in ${product.leadTime}`}
+                          </span>
+                        </p> */}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </form>
+          </div>
+        </div>
+      </main>
+
       {/* Logo cloud */}
       <div className="mx-auto mt-5 mb-12 max-w-7xl sm:mt-5 sm:px-6 lg:px-8">
         <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
@@ -741,6 +894,7 @@ const Banner = () => {
             us help property owners and investors achieve their goals and have
             made their property journey an easy one.
           </p>
+
           {/* <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
