@@ -336,7 +336,9 @@ const TenantPropertyThree = () => {
 
                   <div
                     className="text-base text-gray-700 space-y-6"
-                    dangerouslySetInnerHTML={{ __html: product.description }}
+                    dangerouslySetInnerHTML={{
+                      __html: tenantPropertyDetails?.briefDesc?.comment,
+                    }}
                   />
                 </div>
 

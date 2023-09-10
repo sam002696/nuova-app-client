@@ -113,7 +113,7 @@ const PropertyManagerHome = () => {
     {
       icon: ClockIcon,
       name: "Tasks",
-      href: "#",
+      href: "/property-manager-dashboard/tasks",
       iconForeground: "text-teal-700",
       iconBackground: "bg-teal-50",
       backgroundColor: "bg-green-100",
@@ -124,7 +124,7 @@ const PropertyManagerHome = () => {
     {
       icon: EyeIcon,
       name: "Maintenance",
-      href: "#",
+      href: "/property-manager-dashboard/maintenance",
       iconForeground: "text-purple-700",
       iconBackground: "bg-purple-50",
       backgroundColor: "bg-purple-100",
@@ -136,7 +136,7 @@ const PropertyManagerHome = () => {
     {
       icon: ReceiptRefundIcon,
       name: "Calender Events",
-      href: "#",
+      href: "/property-manager-dashboard/calender",
       iconForeground: "text-rose-700",
       iconBackground: "bg-rose-50",
       backgroundColor: "bg-red-100",
@@ -147,7 +147,7 @@ const PropertyManagerHome = () => {
     {
       icon: AcademicCapIcon,
       name: "Properties",
-      href: "#",
+      href: "/property-manager-dashboard/properties",
       iconForeground: "text-cyan-700",
       iconBackground: "bg-cyan-50",
       backgroundColor: "bg-blue-100",
@@ -259,7 +259,7 @@ const PropertyManagerHome = () => {
                       </div>
                       <div className="mt-8">
                         <h3 className="text-lg font-medium">
-                          <a href={action.href} className="focus:outline-none">
+                          <Link to={action.href} className="focus:outline-none">
                             {/* Extend touch target to entire panel */}
                             <span
                               className="absolute inset-0"
@@ -276,7 +276,7 @@ const PropertyManagerHome = () => {
                               </svg>
                               {action.notification}
                             </span>
-                          </a>
+                          </Link>
                         </h3>
                         <p className="mt-2 text-sm text-gray-500">
                           {action.description}

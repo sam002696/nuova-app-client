@@ -384,11 +384,11 @@ const LandlordSingleProperty = () => {
               <div className="absolute inset-0 flex">
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#0f2e5a" }}
+                  style={{ backgroundColor: "#0a527b" }}
                 />
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#0f2e5a" }}
+                  style={{ backgroundColor: "#065d8c" }}
                 />
               </div>
               <div className="relative flex justify-center">
@@ -405,15 +405,15 @@ const LandlordSingleProperty = () => {
                   />
                   <path
                     d="M1465.84 308L16.816 0H1750v308h-284.16z"
-                    fill="#0f2e5a"
+                    fill="#065d8c"
                   />
                   <path
                     d="M1733.19 0L284.161 308H0V0h1733.19z"
-                    fill="#0f2e5a"
+                    fill="#0a527b"
                   />
                   <path
                     d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
-                    fill="#0f2e5a"
+                    fill="#0a4f76"
                   />
                 </svg>
               </div>
