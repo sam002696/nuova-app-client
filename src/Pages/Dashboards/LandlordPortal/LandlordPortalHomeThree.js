@@ -15,7 +15,7 @@ import {
 const actions = [
   {
     title: "Maintenance",
-    href: "#",
+    href: "/landlord-portal-dashboard/landlord-portal-maintenance",
     icon: ShieldCheckIcon,
     iconForeground: "text-teal-700",
     iconBackground: "bg-teal-50",
@@ -25,7 +25,7 @@ const actions = [
   },
   {
     title: "Task",
-    href: "#",
+    href: "/landlord-portal-dashboard/landlord-portal-tasks",
     icon: DocumentAddIcon,
     iconForeground: "text-purple-700",
     iconBackground: "bg-purple-50",
@@ -35,7 +35,7 @@ const actions = [
   },
   {
     title: "Total Occupancy",
-    href: "#",
+    href: "/landlord-portal-dashboard/landlord-property",
     icon: UsersIcon,
     iconForeground: "text-sky-700",
     iconBackground: "bg-sky-50",
@@ -325,7 +325,7 @@ const LandlordPortalHomeThree = () => {
                       </div>
                       <div className="mt-8">
                         <h3 className="text-base font-semibold leading-6 text-gray-900">
-                          <a href={action.href} className="focus:outline-none">
+                          <Link to={action.href} className="focus:outline-none">
                             {/* Extend touch target to entire panel */}
                             <span
                               className="absolute inset-0"
@@ -342,7 +342,7 @@ const LandlordPortalHomeThree = () => {
                               </svg>
                               {action.notification}
                             </span>
-                          </a>
+                          </Link>
                         </h3>
                         <p className="mt-2 text-sm text-gray-500">
                           {action.information}
