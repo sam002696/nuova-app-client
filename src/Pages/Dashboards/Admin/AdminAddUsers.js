@@ -21,10 +21,10 @@ const AdminAddUsers = () => {
     Swal.fire({
       icon: "warning",
       title: "Are you sure?",
-      html: `<span class="text-sm"> ${user.username} will be removed permanently.</span>`,
+      html: `<span class="text-sm"> ${user.username} will be deleted permanently.</span>`,
       confirmButtonText: "Yes, delete",
       showCancelButton: true,
-      buttonsStyling: false,
+      buttonsStyling: true,
       customClass: {
         confirmButton: "btn-regular bg-red-500 py-2 mr-4",
         cancelButton: "btn-regular py-2",
@@ -378,7 +378,7 @@ const AdminAddUsers = () => {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      className="w-6 h-6  text-red-500"
+                      className="w-6 h-6  text-red-500 cursor-pointer"
                       onClick={() => handleRemoveUser(person)}
                     >
                       <path

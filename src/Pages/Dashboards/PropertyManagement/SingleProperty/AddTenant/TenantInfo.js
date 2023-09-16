@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { MailIcon } from "@heroicons/react/solid";
+import axios from "axios";
 
 const TenantInfo = ({ singleProperty, formData, setFormData }) => {
+  const [tenant, setTenant] = useState({});
+  const [error, setError] = useState("");
   const [tenantPersonalInfo, setTenantPersonalInfo] = useState({
     fullName: "",
     email: "",
@@ -16,6 +19,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
     currentIncome: "",
     incomeAssistance: "",
     creditScore: "",
+    tenantId: "",
   });
   const handleTenantInfoChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +32,36 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
       tenantPersonalInfo: tenantPersonalInfo,
     });
   }, [tenantPersonalInfo]);
+
+  useEffect(() => {
+    const handleFetchTenant = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/users?email=${tenantPersonalInfo.email}`
+        );
+        if (res.status === 200) {
+          setTenant(res.data);
+          setTenantPersonalInfo({
+            ...tenantPersonalInfo,
+            fullName: res.data.username,
+            phoneNo: res.data.phoneNo,
+            tenantId: res.data._id,
+          });
+          setError("");
+        }
+      } catch (err) {
+        setError(err?.response?.data);
+        if (err) {
+          tenant.username = "";
+          tenant.phoneNo = "";
+        }
+      }
+    };
+    handleFetchTenant();
+  }, [tenantPersonalInfo.email]);
+
+  console.log(error);
+
   return (
     <div>
       <div>
@@ -40,6 +74,35 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
         </p>
       </div>
 
+      <div className="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:mt-5 sm:pt-5">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+        >
+          Email <span className="text-red-500 font-bold ">*</span>
+        </label>
+        <div className="mt-1 relative rounded-md shadow-sm sm:col-span-2 ml-[71px]">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <MailIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+          </div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+            placeholder="you@example.com"
+            onChange={(e) => {
+              handleTenantInfoChange(e);
+            }}
+          />
+        </div>
+        {error && (
+          <div className="sm:col-span-1 bg-red-50 text-red-600 text-center p-2 rounded-md shadow-md text-sm">
+            {error}
+          </div>
+        )}
+      </div>
+
       <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
@@ -48,37 +111,16 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
           >
             Full Name <span className="text-red-500 font-bold ">*</span>
           </label>
+
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
               type="text"
               name="fullName"
               id="fullName"
+              disabled={tenant.username && true}
               autoComplete="given-name"
-              className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-              onChange={(e) => {
-                handleTenantInfoChange(e);
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-          >
-            Email <span className="text-red-500 font-bold ">*</span>
-          </label>
-          <div className="mt-1 relative rounded-md shadow-sm">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <MailIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-            </div>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-              placeholder="you@example.com"
+              className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
+              value={tenantPersonalInfo.email && tenant.username}
               onChange={(e) => {
                 handleTenantInfoChange(e);
               }}
@@ -98,9 +140,11 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
               type="tel"
               name="phoneNo"
               id="phoneNo"
+              disabled={tenant.phoneNo && true}
               placeholder="+1 (555) 987-6543"
               autoComplete="given-name"
-              className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
+              value={tenantPersonalInfo.email && tenant.phoneNo}
               onChange={(e) => {
                 handleTenantInfoChange(e);
               }}

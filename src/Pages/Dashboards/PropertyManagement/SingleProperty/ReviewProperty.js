@@ -1,23 +1,29 @@
 import { Disclosure, Tab } from "@headlessui/react";
 import { PhoneIcon, MailIcon } from "@heroicons/react/solid";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ViewTenantModal from "./ViewTenantModal";
 import ViewUnitModal from "./ViewUnitModal";
+import EditTenantInfo from "./EditTenantInfo";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ReviewProperty = ({ singleProperty }) => {
+  const [tenantDetails, setTenantDetails] = useState([]);
   const [openTenantModal, setOpenTenantModal] = useState(false);
   const [openUnitModal, setOpenUnitModal] = useState(false);
+  const [openEditTenantInfo, setOpenTenantInfoModal] = useState(false);
   const [singleTenant, setSingleTenant] = useState({});
   const [singleUnit, setSingleUnit] = useState({});
 
   const handleTenantView = (tenant) => {
     setOpenTenantModal(true);
     setSingleTenant(tenant);
+  };
+  const handleEditTenantInfo = (tenant) => {
+    setOpenTenantInfoModal(true);
   };
   const handleUnitView = (unit) => {
     setOpenUnitModal(true);
@@ -112,6 +118,11 @@ const ReviewProperty = ({ singleProperty }) => {
     ],
   };
 
+  useEffect(() => {
+    const tenantDetailsInfo = singleProperty?.tenantDetails;
+    setTenantDetails(tenantDetailsInfo);
+  }, [singleProperty]);
+
   return (
     <div>
       <div className="max-w-2xl mx-auto py-8 px-4  sm:px-6 lg:max-w-7xl lg:px-8">
@@ -171,7 +182,7 @@ const ReviewProperty = ({ singleProperty }) => {
                 {singleProperty.tenantDetails?.length !== 0 ? (
                   <>
                     <ul className="-my-5 divide-y divide-gray-200">
-                      {singleProperty.tenantDetails?.map((tenant) => (
+                      {tenantDetails?.map((tenant) => (
                         <li key={tenant._id} className="py-4 px-4 ">
                           <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
@@ -192,11 +203,70 @@ const ReviewProperty = ({ singleProperty }) => {
                               </svg>
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-medium text-gray-900">
-                                {tenant.tenantPersonalInfo?.fullName}
-                              </p>
+                              <div className="flex space-x-3">
+                                <p className="truncate text-sm font-medium text-gray-900">
+                                  {tenant.tenantPersonalInfo?.fullName}
+                                </p>
+                                {tenant.status !== "" && (
+                                  <div
+                                    className={`inline-flex items-center gap-x-1.5 rounded-md  ${
+                                      (tenant.status === "Current Tenant" &&
+                                        "bg-cyan-100 text-cyan-600") ||
+                                      (tenant.status === "Past Tenant" &&
+                                        "bg-red-100 text-red-600") ||
+                                      (tenant.status === "Wrong Credential" &&
+                                        "bg-yellow-100 text-yellow-600") ||
+                                      (tenant.status === "Future Tenant" &&
+                                        "bg-purple-100 text-purple-600") ||
+                                      (tenant.status === "Irregular Tenant" &&
+                                        "bg-green-100 text-green-600")
+                                    }  px-2 py-1 text-xs font-medium `}
+                                  >
+                                    <svg
+                                      className={`h-1.5 w-1.5 ${
+                                        (tenant.status === "Current Tenant" &&
+                                          "fill-cyan-600") ||
+                                        (tenant.status === "Past Tenant" &&
+                                          "fill-red-600") ||
+                                        (tenant.status === "Wrong Credential" &&
+                                          "fill-yellow-600") ||
+                                        (tenant.status === "Future Tenant" &&
+                                          "fill-purple-600") ||
+                                        (tenant.status === "Irregular Tenant" &&
+                                          "fill-green-600")
+                                      }`}
+                                      viewBox="0 0 6 6"
+                                      aria-hidden="true"
+                                    >
+                                      <circle cx={3} cy={3} r={3} />
+                                    </svg>
+                                    <span className=" text-xs ">
+                                      {tenant.status}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                            <div>
+                            <div className=" flex items-center justify-center space-x-1">
+                              <button
+                                onClick={() => handleEditTenantInfo(tenant)}
+                                className="inline-flex items-center  bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 "
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1.5"
+                                  stroke="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                  />
+                                </svg>
+                              </button>
                               <button
                                 onClick={() => handleTenantView(tenant)}
                                 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-sm font-medium leading-5 text-gray-700 shadow-sm hover:bg-gray-50"
@@ -248,6 +318,13 @@ const ReviewProperty = ({ singleProperty }) => {
                 open={openTenantModal}
                 setOpen={setOpenTenantModal}
                 singleTenant={singleTenant}
+                singlePropertyId={singleProperty._id}
+                tenantDetails={tenantDetails}
+                setTenantDetails={setTenantDetails}
+              />
+              <EditTenantInfo
+                open={openEditTenantInfo}
+                setOpen={setOpenTenantInfoModal}
               />
             </div>
 

@@ -59,8 +59,9 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 type="text"
                 name="propertyName"
                 id="propertyName"
+                disabled={true}
                 autoComplete="Property Name"
-                className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
@@ -81,8 +82,9 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 type="text"
                 name="address"
                 id="address"
+                disabled={true}
                 autoComplete="given-name"
-                className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                className="max-w-lg block w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
@@ -103,8 +105,9 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 id="city"
                 name="city"
                 type="text"
+                disabled={true}
                 autoComplete="city"
-                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md"
+                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
@@ -126,7 +129,8 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 name="state"
                 type="text"
                 autoComplete="state"
-                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md"
+                disabled={true}
+                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}
@@ -148,7 +152,8 @@ const TenantResidency = ({ formData, setFormData, singleProperty }) => {
                 name="country"
                 type="text"
                 autoComplete="country"
-                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md"
+                disabled={true}
+                className="block max-w-lg w-full shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border-gray-300 rounded-md disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed"
                 onChange={(e) => {
                   handleTenantResidencyChange(e);
                 }}

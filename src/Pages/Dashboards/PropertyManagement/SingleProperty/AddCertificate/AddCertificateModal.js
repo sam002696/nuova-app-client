@@ -7,6 +7,7 @@ import { FolderDownloadIcon } from "@heroicons/react/outline";
 import axios from "axios";
 
 const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
+  const [loading, setLoading] = useState(false);
   const [uploadedCertificate, setUploadedCertificate] = useState();
 
   const [formData, setFormData] = useState({
@@ -39,6 +40,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
   }, [uploadedCertificate]);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const data = new FormData();
@@ -59,11 +61,13 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
         formData
       );
       if (res.data) {
+        setLoading(false);
         setOpen(false);
         window.location.reload(false);
         console.log(res.data);
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -128,7 +132,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
                           id="certificateName"
                           name="certificateName"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Pete"
+                          placeholder="Fire Certificate"
                           onChange={(e) => {
                             handleCertificateUpload(e);
                           }}
@@ -206,7 +210,7 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
                           id="certificateAddedBy"
                           name="certificateAddedBy"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full  "
-                          placeholder="Glasgow 2nd Street.."
+                          placeholder="Alim Hussain"
                           onChange={(e) => {
                             handleCertificateUpload(e);
                           }}
@@ -232,11 +236,14 @@ const AddCertificateModal = ({ open, setOpen, singleProperty }) => {
 
                     <div className="w-1/3 mx-auto mt-10">
                       <button
+                        disabled={loading}
                         onClick={(e) => handleSubmit(e)}
                         type="submit"
-                        className="text-white bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full"
+                        className="text-white bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-semibold rounded-md text-md  px-2 py-3 text-center w-full disabled:bg-gray-100 disabled:text-gray-600 disabled:cursor-not-allowed"
                       >
-                        Upload Certificate
+                        {loading
+                          ? "Uploading Certificate, Please wait..."
+                          : "Upload Certificate"}
                       </button>
                     </div>
                   </form>

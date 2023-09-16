@@ -125,7 +125,17 @@ const AddTenant = ({ singleProperty }) => {
           );
           if (res.data) {
             setLoading(false);
-            Swal.fire("Saved!", "", "success");
+            Swal.fire({
+              icon: "success",
+              title: "Saved!",
+              text: "Tenant has been added successfully!",
+              confirmButtonText: "OK",
+              showCancelButton: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = `/single-property/${singleProperty._id}`;
+              }
+            });
             console.log(res.data);
           }
         } catch (err) {
@@ -170,9 +180,10 @@ const AddTenant = ({ singleProperty }) => {
           <div className="pt-5">
             <div className="flex justify-end">
               <button
+                disabled={loading}
                 onClick={(e) => handleSubmit(e)}
                 type="submit"
-                className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 ${
+                className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 disabled:cursor-not-allowed ${
                   loading && "bg-cyan-200"
                 }`}
               >

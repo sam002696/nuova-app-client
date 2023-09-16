@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
+import { TrashIcon } from "@heroicons/react/outline";
 import logo from "../../../../Images/Banner/Nuova Logo.png";
 import {
   BellIcon,
@@ -36,12 +37,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../../Redux/userSlice";
 import AddDocument from "./AddDocument/AddDocument";
 import { propertyFetchingSuccess } from "../../../../Redux/singlePropertySlice";
+import Swal from "sweetalert2";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const SingleProperty = () => {
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -176,6 +179,52 @@ const SingleProperty = () => {
       current: false,
     },
   ];
+
+  const handleDeleteProperty = async (propertyid) => {
+    console.log(propertyid);
+
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure?",
+      html: `<span class="text-sm"> This property will be deleted permanently! All tenants and documents will be lost. </span>`,
+      confirmButtonText: "Yes, delete",
+      showCancelButton: true,
+      buttonsStyling: true,
+      customClass: {
+        confirmButton: "btn btn-danger py-2 mr-4 px-4",
+        cancelButton: "btn-regular py-2",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLoading(true);
+        const url = `http://localhost:5500/api/properties/${propertyid}`;
+        axios
+          .delete(url)
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              setLoading(false);
+              Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: "You deleted the property successfully!",
+                confirmButtonText: "OK",
+                showCancelButton: false,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href =
+                    "/property-manager-dashboard/properties";
+                }
+              });
+            }
+          })
+          .catch((error) => console.log(error))
+          .finally(() => {
+            setLoading(false);
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -474,8 +523,8 @@ const SingleProperty = () => {
         <div className="max-w-9xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-              <aside className="py-6 lg:col-span-3">
-                <nav className="space-y-1">
+              <aside className="lg:col-span-3 flex flex-col justify-between">
+                <nav className="space-y-1 py-6">
                   {subNavigation.map((item) => (
                     <NavLink
                       key={item.name}
@@ -502,6 +551,19 @@ const SingleProperty = () => {
                     </NavLink>
                   ))}
                 </nav>
+                <button
+                  disabled={loading}
+                  onClick={() => handleDeleteProperty(singleProperty._id)}
+                  className="bg-red-50 hover:bg-red-100 text-red-600 font-bold py-2 px-4 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-600 flex justify-center items-center text-sm"
+                >
+                  <span className="mr-3">
+                    <TrashIcon className="h-7 w-7" />
+                  </span>
+
+                  {loading
+                    ? "Deleting This Property..."
+                    : "Delete This Property"}
+                </button>
               </aside>
 
               <div className="divide-y divide-gray-200 lg:col-span-9 bg-gray-50">
