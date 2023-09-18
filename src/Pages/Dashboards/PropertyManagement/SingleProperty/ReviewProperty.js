@@ -16,6 +16,7 @@ const ReviewProperty = ({ singleProperty }) => {
   const [openUnitModal, setOpenUnitModal] = useState(false);
   const [openEditTenantInfo, setOpenTenantInfoModal] = useState(false);
   const [singleTenant, setSingleTenant] = useState({});
+  const [editTenantInfo, setEditTenantInfo] = useState({});
   const [singleUnit, setSingleUnit] = useState({});
 
   const handleTenantView = (tenant) => {
@@ -24,6 +25,7 @@ const ReviewProperty = ({ singleProperty }) => {
   };
   const handleEditTenantInfo = (tenant) => {
     setOpenTenantInfoModal(true);
+    setEditTenantInfo(tenant);
   };
   const handleUnitView = (unit) => {
     setOpenUnitModal(true);
@@ -325,6 +327,8 @@ const ReviewProperty = ({ singleProperty }) => {
               <EditTenantInfo
                 open={openEditTenantInfo}
                 setOpen={setOpenTenantInfoModal}
+                tenantInfo={editTenantInfo}
+                singleProperty={singleProperty}
               />
             </div>
 

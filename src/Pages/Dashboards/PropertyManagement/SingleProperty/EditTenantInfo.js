@@ -1,15 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm, Controller } from "react-hook-form";
+import Swal from "sweetalert2";
+import axios from "axios";
 
-const EditTenantInfo = ({ open, setOpen }) => {
+const EditTenantInfo = ({ open, setOpen, tenantInfo, singleProperty }) => {
+  const [loading, setLoading] = useState(false);
   const cancelButtonRef = useRef(null);
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, reset } = useForm();
+
+  useEffect(() => {
+    reset(tenantInfo);
+  }, [tenantInfo, reset]);
 
   const onSubmit = (data) => {
-    // Handle form submission here
-    console.log(data);
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure?",
+      // html: `<span class="text-sm"> ${document.certificateName} will be removed from this property.</span>`,
+      confirmButtonText: "Yes, update",
+      showCancelButton: true,
+      buttonsStyling: true,
+      customClass: {
+        confirmButton: "btn btn-danger py-2 mr-4 px-4",
+        cancelButton: "btn-regular py-2",
+      },
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setLoading(true);
+        try {
+          const res = await axios.put(
+            `http://localhost:5500/api/uploadTenants/tenantDetails/${tenantInfo._id}`,
+            data
+          );
+          if (res.status === 200) {
+            setLoading(false);
+            Swal.fire({
+              icon: "success",
+              title: "Success!",
+              text: "You updated the tenant successfully!",
+              confirmButtonText: "OK",
+              showCancelButton: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = `/single-property/${singleProperty._id}`;
+              }
+            });
+          }
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
+          Swal.fire(
+            "Error",
+            "There's a problem updating the tenant in this property",
+            "error"
+          );
+        }
+      }
+    });
   };
 
   return (
@@ -45,28 +94,35 @@ const EditTenantInfo = ({ open, setOpen }) => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative bg-gray-100 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full sm:p-6">
+                  <div className="text-center mb-10 bg-yellow-50 mx-auto w-1/2 p-1 rounded-md shadow-md">
+                    <p className=" font-semibold text-gray-600">
+                      Update Form For{" "}
+                      <span className="text-cyan-500">
+                        {tenantInfo?.tenantPersonalInfo?.fullName}
+                      </span>
+                    </p>
+                  </div>
+
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="text-lg leading-6 font-medium text-gray-900 mb-5">
                       Tenant Personal Info
                     </h3>
 
                     <div className="grid grid-cols-4 gap-2">
-                      {/* Field 1 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="email"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Email
                         </label>
                         <Controller
-                          name="field1"
+                          name="tenantPersonalInfo.email"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
-                              type="text"
+                              type="email"
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
                               placeholder="Email"
                             />
@@ -74,18 +130,16 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 2 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="fullName"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Full Name
                         </label>
                         <Controller
-                          name="field2"
+                          name="tenantPersonalInfo.fullName"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -97,18 +151,16 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 3 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="phoneNo"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Phone No
                         </label>
                         <Controller
-                          name="field3"
+                          name="tenantPersonalInfo.phoneNo"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -120,18 +172,16 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 4 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="totalOccupants"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Total Occupants
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.totalOccupants"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -145,15 +195,14 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="pets"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Pets
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.pets"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -167,15 +216,14 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="Pets Desc"
+                          htmlFor="petDesc"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Pets Desc
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.petDesc"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <textarea
                               {...field}
@@ -195,17 +243,19 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Smokes
                         </label>
                         <Controller
-                          name="smokes"
+                          name="tenantPersonalInfo.smokes"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <select
                               {...field}
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                              defaultChecked={
+                                tenantInfo?.tenantPersonalInfo?.smokes
+                              }
                             >
                               <option value="">Select</option>
-                              <option value="yes">Yes</option>
-                              <option value="no">No</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
                             </select>
                           )}
                         />
@@ -219,17 +269,19 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Lawsuit
                         </label>
                         <Controller
-                          name="lawsuit"
+                          name="tenantPersonalInfo.lawsuit"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <select
                               {...field}
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                              defaultChecked={
+                                tenantInfo?.tenantPersonalInfo?.lawsuit
+                              }
                             >
                               <option value="">Select</option>
-                              <option value="yes">Yes</option>
-                              <option value="no">No</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
                             </select>
                           )}
                         />
@@ -243,17 +295,19 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Felony
                         </label>
                         <Controller
-                          name="felony"
+                          name="tenantPersonalInfo.felony"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <select
                               {...field}
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                              defaultChecked={
+                                tenantInfo?.tenantPersonalInfo?.felony
+                              }
                             >
                               <option value="">Select</option>
-                              <option value="yes">Yes</option>
-                              <option value="no">No</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
                             </select>
                           )}
                         />
@@ -261,13 +315,13 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="Felony/Lawsuit Desc"
+                          htmlFor="lawsuitDesc"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Felony/Lawsuit Desc
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.lawsuitDesc"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -283,13 +337,13 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="Felony/Lawsuit Desc"
+                          htmlFor="currentIncome"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Current Income
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.currentIncome"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -311,7 +365,7 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Income Assistance
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.incomeAssistance"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -319,20 +373,21 @@ const EditTenantInfo = ({ open, setOpen }) => {
                               {...field}
                               type="text"
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
-                              placeholder="Income Assistance"
+                              placeholder="incomeAssistance"
                             />
                           )}
                         />
                       </div>
+
                       <div className="col-span-1">
                         <label
-                          htmlFor="Credit Score"
+                          htmlFor="creditScore"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Credit Score
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantPersonalInfo.creditScore"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -352,15 +407,127 @@ const EditTenantInfo = ({ open, setOpen }) => {
                     </h3>
 
                     <div className="grid grid-cols-4 gap-2">
+                      <div className="hidden">
+                        <div className="col-span-1">
+                          <label
+                            htmlFor="propertyName"
+                            className="block text-xs font-medium text-gray-700 pb-1"
+                          >
+                            Property Name
+                          </label>
+                          <Controller
+                            name="tenantResidency.propertyName"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="text"
+                                className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
+                                placeholder="The Laurels"
+                              />
+                            )}
+                          />
+                        </div>
+
+                        <div className="col-span-1">
+                          <label
+                            htmlFor="address"
+                            className="block text-xs font-medium text-gray-700 pb-1"
+                          >
+                            Street Address
+                          </label>
+                          <Controller
+                            name="tenantResidency.address"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="text"
+                                className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
+                                placeholder="The Laurels"
+                              />
+                            )}
+                          />
+                        </div>
+
+                        <div className="col-span-1">
+                          <label
+                            htmlFor="city"
+                            className="block text-xs font-medium text-gray-700 pb-1"
+                          >
+                            City
+                          </label>
+                          <Controller
+                            name="tenantResidency.city"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="text"
+                                className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
+                                placeholder="London"
+                              />
+                            )}
+                          />
+                        </div>
+
+                        <div className="col-span-1">
+                          <label
+                            htmlFor="state"
+                            className="block text-xs font-medium text-gray-700 pb-1"
+                          >
+                            State
+                          </label>
+                          <Controller
+                            name="tenantResidency.state"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="text"
+                                className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
+                                placeholder="Glasgow"
+                              />
+                            )}
+                          />
+                        </div>
+
+                        <div className="col-span-1">
+                          <label
+                            htmlFor="country"
+                            className="block text-xs font-medium text-gray-700 pb-1"
+                          >
+                            Country
+                          </label>
+                          <Controller
+                            name="tenantResidency.country"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <input
+                                {...field}
+                                type="text"
+                                className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
+                                placeholder="UK"
+                              />
+                            )}
+                          />
+                        </div>
+                      </div>
+
                       <div className="col-span-1">
                         <label
-                          htmlFor="Post Code"
+                          htmlFor="postCode"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Post Code
                         </label>
                         <Controller
-                          name="field1"
+                          name="tenantResidency.postCode"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -376,13 +543,13 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="Monthly Rent"
+                          htmlFor="monthlyRent"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Monthly Rent
                         </label>
                         <Controller
-                          name="field2"
+                          name="tenantResidency.monthlyRent"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -396,16 +563,15 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 3 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="Deposit Amount"
+                          htmlFor="depositAmount"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Deposit Amount
                         </label>
                         <Controller
-                          name="field3"
+                          name="tenantResidency.depositAmount"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -419,18 +585,16 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 4 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="Lease Start Date"
+                          htmlFor="leaseStartDate"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Lease Start Date
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantResidency.leaseStartDate"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -443,15 +607,14 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="field4"
+                          htmlFor="leaseEndDate"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Lease End Date
                         </label>
                         <Controller
-                          name="field4"
+                          name="tenantResidency.leaseEndDate"
                           control={control}
-                          defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
@@ -461,24 +624,22 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           )}
                         />
                       </div>
-
                       <div className="col-span-1">
                         <label
-                          htmlFor="Deposit Amount"
+                          htmlFor="tenancyDueDate"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
-                          Deposit Amount
+                          Tenancy Due Date
                         </label>
                         <Controller
-                          name="Deposit Amount"
+                          name="tenantResidency.tenancyDueDate"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
                             <input
                               {...field}
-                              type="text"
+                              type="date"
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
-                              placeholder="10,000"
                             />
                           )}
                         />
@@ -498,7 +659,7 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Current Income
                         </label>
                         <Controller
-                          name="Current Income"
+                          name="guarantorInfo.currentIncome"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -514,13 +675,13 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                       <div className="col-span-1">
                         <label
-                          htmlFor="Monthly Rent"
+                          htmlFor="fullName"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Full Name
                         </label>
                         <Controller
-                          name="Full Name"
+                          name="guarantorInfo.fullName"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -534,7 +695,6 @@ const EditTenantInfo = ({ open, setOpen }) => {
                         />
                       </div>
 
-                      {/* Field 3 */}
                       <div className="col-span-1">
                         <label
                           htmlFor="Deposit Amount"
@@ -543,7 +703,7 @@ const EditTenantInfo = ({ open, setOpen }) => {
                           Email
                         </label>
                         <Controller
-                          name="field3"
+                          name="guarantorInfo.email"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -551,22 +711,21 @@ const EditTenantInfo = ({ open, setOpen }) => {
                               {...field}
                               type="email"
                               className="focus:ring-cyan-500 focus:border-cyan-500 block w-full  sm:text-sm border-gray-300 rounded-md"
-                              placeholder=" Email"
+                              placeholder="Email"
                             />
                           )}
                         />
                       </div>
 
-                      {/* Field 4 */}
                       <div className="col-span-1">
                         <label
-                          htmlFor="Phone No"
+                          htmlFor="phoneNo"
                           className="block text-xs font-medium text-gray-700 pb-1"
                         >
                           Phone No
                         </label>
                         <Controller
-                          name="Phone No"
+                          name="guarantorInfo.phoneNo"
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
@@ -582,10 +741,11 @@ const EditTenantInfo = ({ open, setOpen }) => {
 
                     <div className="mt-10 text-right">
                       <button
+                        disabled={loading}
                         type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 "
+                        className="bg-cyan-50 text-cyan-600 px-4 py-2 rounded-md hover:bg-blue-100 shadow-md font-semibold disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
                       >
-                        Save
+                        {loading ? "Updating" : "Update"}
                       </button>
                     </div>
                   </form>
