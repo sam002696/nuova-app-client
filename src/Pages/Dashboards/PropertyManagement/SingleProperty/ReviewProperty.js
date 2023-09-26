@@ -1,16 +1,23 @@
+import React, { useState } from "react";
+import { Fragment } from "react";
+import { Transition } from "@headlessui/react";
+import { Listbox } from "@headlessui/react";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { Disclosure, Tab } from "@headlessui/react";
 import { PhoneIcon, MailIcon } from "@heroicons/react/solid";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ViewTenantModal from "./ViewTenantModal";
 import ViewUnitModal from "./ViewUnitModal";
 import EditTenantInfo from "./EditTenantInfo";
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ReviewProperty = ({ singleProperty }) => {
+  const [selected, setSelected] = useState("");
   const [tenantDetails, setTenantDetails] = useState([]);
   const [openTenantModal, setOpenTenantModal] = useState(false);
   const [openUnitModal, setOpenUnitModal] = useState(false);
@@ -18,6 +25,32 @@ const ReviewProperty = ({ singleProperty }) => {
   const [singleTenant, setSingleTenant] = useState({});
   const [editTenantInfo, setEditTenantInfo] = useState({});
   const [singleUnit, setSingleUnit] = useState({});
+
+  const publishingOptions = [
+    {
+      title: "Vacant",
+      description: "This job posting can be viewed by anyone who has the link.",
+      current: true,
+    },
+    {
+      title: "Occupied",
+      description: "This job posting will no longer be publicly accessible.",
+      current: false,
+    },
+  ];
+
+  const handlePropertyStatusChange = async (status) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5500/api/properties/propertyStatus/${singleProperty._id}?status=${status}`
+      );
+      if (res.data) {
+        window.location.reload(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleTenantView = (tenant) => {
     setOpenTenantModal(true);
@@ -376,7 +409,7 @@ const ReviewProperty = ({ singleProperty }) => {
             )}
           </div>
 
-          {/* Product info */}
+          {/* Property info */}
           <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               {singleProperty?.propertyAddress?.propertyName}
@@ -408,6 +441,102 @@ const ReviewProperty = ({ singleProperty }) => {
                 }}
               />
             </div>
+
+            {/* Set Status for the property */}
+
+            <Listbox value={selected} onChange={setSelected}>
+              {({ open }) => (
+                <>
+                  <Listbox.Label className="sr-only">
+                    Change published status
+                  </Listbox.Label>
+                  <div className="relative mt-10">
+                    <div className="inline-flex divide-x divide-cyan-700 rounded-md shadow-md">
+                      <div className="inline-flex items-center gap-x-1.5 rounded-l-md bg-cyan-100 px-3 py-2 text-cyan-600 shadow-sm">
+                        <CheckIcon
+                          className="-ml-0.5 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                        <p className="text-sm font-semibold">
+                          {singleProperty.status
+                            ? singleProperty.status
+                            : "Set Status For the Propety"}
+                        </p>
+                      </div>
+                      <Listbox.Button className="inline-flex items-center rounded-l-none rounded-r-md bg-cyan-100 p-2 hover:bg-cyan-50 focus:outline-none focus:ring-offset-gray-50 ">
+                        <span className="sr-only">Change published status</span>
+                        <ChevronDownIcon
+                          className="h-5 w-5 text-cyan-600"
+                          aria-hidden="true"
+                        />
+                      </Listbox.Button>
+                    </div>
+
+                    <Transition
+                      show={open}
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className="absolute right-0 z-10 mt-2 w-72 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        {publishingOptions.map((option) => (
+                          <Listbox.Option
+                            onClick={() =>
+                              handlePropertyStatusChange(option.title)
+                            }
+                            key={option.title}
+                            className={({ active }) =>
+                              classNames(
+                                active
+                                  ? "bg-cyan-600 text-white"
+                                  : "text-gray-900",
+                                "cursor-pointer select-none p-4 text-sm"
+                              )
+                            }
+                            value={option}
+                          >
+                            {({ selected, active }) => (
+                              <div className="flex flex-col">
+                                <div className="flex justify-between">
+                                  <p
+                                    className={
+                                      selected ? "font-semibold" : "font-normal"
+                                    }
+                                  >
+                                    {option.title}
+                                  </p>
+                                  {selected ? (
+                                    <span
+                                      className={
+                                        active ? "text-white" : "text-cyan-600"
+                                      }
+                                    >
+                                      <CheckIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                      />
+                                    </span>
+                                  ) : null}
+                                </div>
+                                <p
+                                  className={classNames(
+                                    active ? "text-cyan-200" : "text-gray-500",
+                                    "mt-2"
+                                  )}
+                                >
+                                  {option.description}
+                                </p>
+                              </div>
+                            )}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </>
+              )}
+            </Listbox>
 
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">
