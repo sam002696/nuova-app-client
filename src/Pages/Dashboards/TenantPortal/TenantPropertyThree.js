@@ -150,167 +150,168 @@ const TenantPropertyThree = () => {
     <>
       {tenantPropertyDetails?.tenantDetails?.find(
         (tenant) => tenant?.tenantPersonalInfo?.email === currentUser.email
-      ) && (
-        <div>
-          <div className="max-w-2xl mx-auto py-16 px-4  sm:px-6 lg:max-w-7xl lg:px-8">
-            <div className="lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-start">
-              {/* Image gallery */}
-              <div>
-                <Tab.Group as="div" className="flex flex-col-reverse">
-                  {/* Image selector */}
-                  <div className="hidden mt-6 w-full max-w-2xl mx-auto sm:block lg:max-w-none">
-                    <Tab.List className="grid grid-cols-4 gap-6">
-                      {product.images.map((image) => (
-                        <Tab
-                          key={image.id}
-                          className="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
-                        >
-                          {({ selected }) => (
-                            <>
-                              <span className="sr-only">{image.name}</span>
-                              <span className="absolute inset-0 rounded-md overflow-hidden">
-                                <img
-                                  src={image.src}
-                                  alt=""
-                                  className="w-full h-full object-center object-cover"
+      ) ? (
+        <>
+          <div>
+            <div className="max-w-2xl mx-auto py-16 px-4  sm:px-6 lg:max-w-7xl lg:px-8">
+              <div className="lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-start">
+                {/* Image gallery */}
+                <div>
+                  <Tab.Group as="div" className="flex flex-col-reverse">
+                    {/* Image selector */}
+                    <div className="hidden mt-6 w-full max-w-2xl mx-auto sm:block lg:max-w-none">
+                      <Tab.List className="grid grid-cols-4 gap-6">
+                        {product.images.map((image) => (
+                          <Tab
+                            key={image.id}
+                            className="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50"
+                          >
+                            {({ selected }) => (
+                              <>
+                                <span className="sr-only">{image.name}</span>
+                                <span className="absolute inset-0 rounded-md overflow-hidden">
+                                  <img
+                                    src={image.src}
+                                    alt=""
+                                    className="w-full h-full object-center object-cover"
+                                  />
+                                </span>
+                                <span
+                                  className={classNames(
+                                    selected
+                                      ? "ring-cyan-500"
+                                      : "ring-transparent",
+                                    "absolute inset-0 rounded-md ring-2 ring-offset-2 pointer-events-none"
+                                  )}
+                                  aria-hidden="true"
                                 />
-                              </span>
-                              <span
-                                className={classNames(
-                                  selected
-                                    ? "ring-cyan-500"
-                                    : "ring-transparent",
-                                  "absolute inset-0 rounded-md ring-2 ring-offset-2 pointer-events-none"
-                                )}
-                                aria-hidden="true"
-                              />
-                            </>
-                          )}
-                        </Tab>
-                      ))}
-                    </Tab.List>
-                  </div>
-
-                  <Tab.Panels className="w-full aspect-w-1 aspect-h-1 shadow-md">
-                    {product.images.map((image) => (
-                      <Tab.Panel key={image.id}>
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-full object-center object-cover sm:rounded-lg"
-                        />
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </Tab.Group>
-                <div className="overflow-hidden bg-white border border-cyan-500 rounded-md mt-14">
-                  <div className="border-t border-gray-200">
-                    <dl>
-                      <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Certificates
-                        </dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                            {tenantPropertyDetails?.certificatesDocuments?.map(
-                              (certificates) => (
-                                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                                  <div className="flex w-0 flex-1 items-center">
-                                    <PaperClipIcon
-                                      className="h-5 w-5 flex-shrink-0 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="ml-2 w-0 flex-1 truncate">
-                                      {certificates?.certificateName}
-                                    </span>
-                                  </div>
-                                  <div className="ml-4 flex-shrink-0">
-                                    <a
-                                      href={certificates?.uploadedCertificate}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="font-medium text-cyan-600 hover:text-cyan-500"
-                                    >
-                                      Download
-                                    </a>
-                                  </div>
-                                </li>
-                              )
+                              </>
                             )}
-                          </ul>
-                        </dd>
-                      </div>
-                      <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Documents
-                        </dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                            <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                              <div className="flex w-0 flex-1 items-center">
-                                <PaperClipIcon
-                                  className="h-5 w-5 flex-shrink-0 text-gray-400"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2 w-0 flex-1 truncate">
-                                  resume_back_end_developer.pdf
-                                </span>
-                              </div>
-                              <div className="ml-4 flex-shrink-0">
-                                <Link
-                                  to="#"
-                                  className="font-medium text-cyan-600 hover:text-cyan-500"
-                                >
-                                  Download
-                                </Link>
-                              </div>
-                            </li>
-                            <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                              <div className="flex w-0 flex-1 items-center">
-                                <PaperClipIcon
-                                  className="h-5 w-5 flex-shrink-0 text-gray-400"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2 w-0 flex-1 truncate">
-                                  coverletter_back_end_developer.pdf
-                                </span>
-                              </div>
-                              <div className="ml-4 flex-shrink-0">
-                                <Link
-                                  to="#"
-                                  className="font-medium text-cyan-600 hover:text-cyan-500"
-                                >
-                                  Download
-                                </Link>
-                              </div>
-                            </li>
-                          </ul>
-                        </dd>
-                      </div>
-                    </dl>
+                          </Tab>
+                        ))}
+                      </Tab.List>
+                    </div>
+
+                    <Tab.Panels className="w-full aspect-w-1 aspect-h-1 shadow-md">
+                      {product.images.map((image) => (
+                        <Tab.Panel key={image.id}>
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-full object-center object-cover sm:rounded-lg"
+                          />
+                        </Tab.Panel>
+                      ))}
+                    </Tab.Panels>
+                  </Tab.Group>
+                  <div className="overflow-hidden bg-white border border-cyan-500 rounded-md mt-14">
+                    <div className="border-t border-gray-200">
+                      <dl>
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt className="text-sm font-medium text-gray-500">
+                            Certificates
+                          </dt>
+                          <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                            <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
+                              {tenantPropertyDetails?.certificatesDocuments?.map(
+                                (certificates) => (
+                                  <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
+                                    <div className="flex w-0 flex-1 items-center">
+                                      <PaperClipIcon
+                                        className="h-5 w-5 flex-shrink-0 text-gray-400"
+                                        aria-hidden="true"
+                                      />
+                                      <span className="ml-2 w-0 flex-1 truncate">
+                                        {certificates?.certificateName}
+                                      </span>
+                                    </div>
+                                    <div className="ml-4 flex-shrink-0">
+                                      <a
+                                        href={certificates?.uploadedCertificate}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="font-medium text-cyan-600 hover:text-cyan-500"
+                                      >
+                                        Download
+                                      </a>
+                                    </div>
+                                  </li>
+                                )
+                              )}
+                            </ul>
+                          </dd>
+                        </div>
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt className="text-sm font-medium text-gray-500">
+                            Documents
+                          </dt>
+                          <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                            <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
+                              <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
+                                <div className="flex w-0 flex-1 items-center">
+                                  <PaperClipIcon
+                                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                                    aria-hidden="true"
+                                  />
+                                  <span className="ml-2 w-0 flex-1 truncate">
+                                    resume_back_end_developer.pdf
+                                  </span>
+                                </div>
+                                <div className="ml-4 flex-shrink-0">
+                                  <Link
+                                    to="#"
+                                    className="font-medium text-cyan-600 hover:text-cyan-500"
+                                  >
+                                    Download
+                                  </Link>
+                                </div>
+                              </li>
+                              <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
+                                <div className="flex w-0 flex-1 items-center">
+                                  <PaperClipIcon
+                                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                                    aria-hidden="true"
+                                  />
+                                  <span className="ml-2 w-0 flex-1 truncate">
+                                    coverletter_back_end_developer.pdf
+                                  </span>
+                                </div>
+                                <div className="ml-4 flex-shrink-0">
+                                  <Link
+                                    to="#"
+                                    className="font-medium text-cyan-600 hover:text-cyan-500"
+                                  >
+                                    Download
+                                  </Link>
+                                </div>
+                              </li>
+                            </ul>
+                          </dd>
+                        </div>
+                      </dl>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Product info */}
-              <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-800">
-                  {tenantPropertyDetails?.propertyAddress?.propertyName}
-                </h1>
+                {/* Product info */}
+                <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+                  <h1 className="text-3xl font-bold tracking-tight text-gray-800">
+                    {tenantPropertyDetails?.propertyAddress?.propertyName}
+                  </h1>
 
-                <div className="mt-3">
-                  <h2 className="sr-only">Product information</h2>
-                  <p className="tracking-tight text-xl text-gray-700">
-                    {tenantPropertyDetails?.propertyAddress?.addressline1},{" "}
-                    {tenantPropertyDetails?.propertyAddress?.city},{" "}
-                    {tenantPropertyDetails?.propertyAddress?.state},{" "}
-                    {tenantPropertyDetails?.propertyAddress?.country},{" "}
-                    {tenantPropertyDetails?.propertyAddress?.zipcode}
-                  </p>
-                </div>
+                  <div className="mt-3">
+                    <h2 className="sr-only">Product information</h2>
+                    <p className="tracking-tight text-xl text-gray-700">
+                      {tenantPropertyDetails?.propertyAddress?.addressline1},{" "}
+                      {tenantPropertyDetails?.propertyAddress?.city},{" "}
+                      {tenantPropertyDetails?.propertyAddress?.state},{" "}
+                      {tenantPropertyDetails?.propertyAddress?.country},{" "}
+                      {tenantPropertyDetails?.propertyAddress?.zipcode}
+                    </p>
+                  </div>
 
-                {/* Reviews */}
-                {/* <div className="mt-3">
+                  {/* Reviews */}
+                  {/* <div className="mt-3">
                   <h3 className="sr-only">Reviews</h3>
                   <div className="flex items-center">
                     <div className="flex items-center">
@@ -331,20 +332,20 @@ const TenantPropertyThree = () => {
                   </div>
                 </div> */}
 
-                <div className="mt-6">
-                  <h3 className="sr-only">Description</h3>
+                  <div className="mt-6">
+                    <h3 className="sr-only">Description</h3>
 
-                  <div
-                    className="text-base text-gray-700 space-y-6"
-                    dangerouslySetInnerHTML={{
-                      __html: tenantPropertyDetails?.briefDesc?.comment,
-                    }}
-                  />
-                </div>
+                    <div
+                      className="text-base text-gray-700 space-y-6"
+                      dangerouslySetInnerHTML={{
+                        __html: tenantPropertyDetails?.briefDesc?.comment,
+                      }}
+                    />
+                  </div>
 
-                <form className="mt-6">
-                  {/* Colors */}
-                  {/* <div>
+                  <form className="mt-6">
+                    {/* Colors */}
+                    {/* <div>
                 <h3 className="text-sm text-gray-600">Color</h3>
 
                 <RadioGroup
@@ -385,214 +386,221 @@ const TenantPropertyThree = () => {
                 </RadioGroup>
               </div> */}
 
-                  <div className="mt-10 flex sm:flex-col1">
-                    {tenantPropertyDetails?.propertyType === "HMO" && (
+                    <div className="mt-10 flex sm:flex-col1">
+                      {tenantPropertyDetails?.propertyType === "HMO" && (
+                        <button
+                          type="submit"
+                          className="max-w-xs flex-1 bg-sky-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full mr-3"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+                            />
+                          </svg>
+
+                          <span className="mx-2">
+                            Flat No -{" "}
+                            {tenantPropertyDetails?.tenantDetails[0]
+                              ?.tenantResidency?.unitNumber
+                              ? tenantPropertyDetails?.tenantDetails[0]
+                                  ?.tenantResidency?.unitNumber
+                              : "N/A"}
+                          </span>
+                        </button>
+                      )}
+
                       <button
-                        type="submit"
-                        className="max-w-xs flex-1 bg-sky-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500 sm:w-full mr-3"
+                        type="button"
+                        className=" py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
+                          viewBox="0 0 640 512"
+                          className="h-6 w-6 fill-green-400"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
-                          />
+                          <path d="M32 32C49.67 32 64 46.33 64 64V320H288V160C288 142.3 302.3 128 320 128H544C597 128 640 170.1 640 224V448C640 465.7 625.7 480 608 480C590.3 480 576 465.7 576 448V416H64V448C64 465.7 49.67 480 32 480C14.33 480 0 465.7 0 448V64C0 46.33 14.33 32 32 32zM96 208C96 163.8 131.8 128 176 128C220.2 128 256 163.8 256 208C256 252.2 220.2 288 176 288C131.8 288 96 252.2 96 208z" />
                         </svg>
-
                         <span className="mx-2">
-                          Flat No -{" "}
-                          {tenantPropertyDetails?.tenantDetails[0]
-                            ?.tenantResidency?.unitNumber
-                            ? tenantPropertyDetails?.tenantDetails[0]
-                                ?.tenantResidency?.unitNumber
-                            : "N/A"}
+                          {tenantPropertyDetails?.propertyDetails?.bedroom}{" "}
+                          Bedrooms
                         </span>
                       </button>
-                    )}
 
-                    <button
-                      type="button"
-                      className=" py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 640 512"
-                        className="h-6 w-6 fill-green-400"
+                      <button
+                        type="button"
+                        className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
                       >
-                        <path d="M32 32C49.67 32 64 46.33 64 64V320H288V160C288 142.3 302.3 128 320 128H544C597 128 640 170.1 640 224V448C640 465.7 625.7 480 608 480C590.3 480 576 465.7 576 448V416H64V448C64 465.7 49.67 480 32 480C14.33 480 0 465.7 0 448V64C0 46.33 14.33 32 32 32zM96 208C96 163.8 131.8 128 176 128C220.2 128 256 163.8 256 208C256 252.2 220.2 288 176 288C131.8 288 96 252.2 96 208z" />
-                      </svg>
-                      <span className="mx-2">
-                        {tenantPropertyDetails?.propertyDetails?.bedroom}{" "}
-                        Bedrooms
-                      </span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-700 bg-gray-100 hover:text-gray-500"
-                    >
-                      <svg
-                        className="h-5 w-5 fill-sky-400 "
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M32 384c0 28.32 12.49 53.52 32 71.09V496C64 504.8 71.16 512 80 512h32C120.8 512 128 504.8 128 496v-15.1h256V496c0 8.836 7.164 16 16 16h32c8.836 0 16-7.164 16-16v-40.9c19.51-17.57 32-42.77 32-71.09V352H32V384zM496 256H96V77.25C95.97 66.45 111 60.23 118.6 67.88L132.4 81.66C123.6 108.6 129.4 134.5 144.2 153.2C137.9 159.5 137.8 169.8 144 176l11.31 11.31c6.248 6.248 16.38 6.248 22.63 0l105.4-105.4c6.248-6.248 6.248-16.38 0-22.63l-11.31-11.31c-6.248-6.248-16.38-6.248-22.63 0C230.7 33.26 204.7 27.55 177.7 36.41L163.9 22.64C149.5 8.25 129.6 0 109.3 0C66.66 0 32 34.66 32 77.25v178.8L16 256C7.164 256 0 263.2 0 272v32C0 312.8 7.164 320 16 320h480c8.836 0 16-7.164 16-16v-32C512 263.2 504.8 256 496 256z" />
-                      </svg>
-                      <span className="mx-2">
-                        {tenantPropertyDetails?.propertyDetails?.bathroom}{" "}
-                        Bathrooms
-                      </span>
-                    </button>
-                  </div>
-                </form>
-
-                <section aria-labelledby="details-heading" className="mt-12">
-                  <h2 id="details-heading" className="sr-only">
-                    Additional details
-                  </h2>
-
-                  <div className="border-t divide-y divide-gray-200">
-                    {tenantPropertyDetails?.tenantDetails
-                      ?.filter(
-                        (singletenant) =>
-                          singletenant.tenantPersonalInfo.email ===
-                          currentUser.email
-                      )
-                      .map((filteredTenant) => (
-                        <Disclosure
-                          as="div"
-                          key={filteredTenant?.tenantPersonalInfo?.email}
+                        <svg
+                          className="h-5 w-5 fill-sky-400 "
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
                         >
-                          {({ open }) => (
-                            <>
-                              <h3>
-                                <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
-                                  <span
-                                    className={classNames(
-                                      open ? "text-cyan-600" : "text-gray-900",
-                                      "text-sm font-medium"
-                                    )}
-                                  >
-                                    Tenant Details
-                                  </span>
-                                  <span className="ml-6 flex items-center">
-                                    {open ? (
-                                      <MinusSmIcon
-                                        className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
-                                        aria-hidden="true"
-                                      />
-                                    ) : (
-                                      <PlusSmIcon
-                                        className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                        aria-hidden="true"
-                                      />
-                                    )}
-                                  </span>
-                                </Disclosure.Button>
-                              </h3>
-                              <Disclosure.Panel
-                                as="div"
-                                className="pb-6 prose prose-sm"
-                              >
-                                <ul>
-                                  <li>
-                                    Full Name :{" "}
-                                    {
-                                      filteredTenant?.tenantPersonalInfo
-                                        ?.fullName
-                                    }
-                                  </li>
-                                  <li>
-                                    Email Address :{" "}
-                                    {filteredTenant?.tenantPersonalInfo?.email}
-                                  </li>
-                                  <li>
-                                    Phone Number :
-                                    {
-                                      filteredTenant?.tenantPersonalInfo
-                                        ?.phoneNo
-                                    }
-                                  </li>
-                                </ul>
-                              </Disclosure.Panel>
-                            </>
-                          )}
-                        </Disclosure>
-                      ))}
-                  </div>
+                          <path d="M32 384c0 28.32 12.49 53.52 32 71.09V496C64 504.8 71.16 512 80 512h32C120.8 512 128 504.8 128 496v-15.1h256V496c0 8.836 7.164 16 16 16h32c8.836 0 16-7.164 16-16v-40.9c19.51-17.57 32-42.77 32-71.09V352H32V384zM496 256H96V77.25C95.97 66.45 111 60.23 118.6 67.88L132.4 81.66C123.6 108.6 129.4 134.5 144.2 153.2C137.9 159.5 137.8 169.8 144 176l11.31 11.31c6.248 6.248 16.38 6.248 22.63 0l105.4-105.4c6.248-6.248 6.248-16.38 0-22.63l-11.31-11.31c-6.248-6.248-16.38-6.248-22.63 0C230.7 33.26 204.7 27.55 177.7 36.41L163.9 22.64C149.5 8.25 129.6 0 109.3 0C66.66 0 32 34.66 32 77.25v178.8L16 256C7.164 256 0 263.2 0 272v32C0 312.8 7.164 320 16 320h480c8.836 0 16-7.164 16-16v-32C512 263.2 504.8 256 496 256z" />
+                        </svg>
+                        <span className="mx-2">
+                          {tenantPropertyDetails?.propertyDetails?.bathroom}{" "}
+                          Bathrooms
+                        </span>
+                      </button>
+                    </div>
+                  </form>
 
-                  <div className="border-t divide-y divide-gray-200">
-                    {tenantPropertyDetails?.tenantDetails
-                      ?.filter(
-                        (singletenant) =>
-                          singletenant.tenantPersonalInfo.email ===
-                          currentUser.email
-                      )
-                      .map((filteredTenant) => (
-                        <Disclosure
-                          as="div"
-                          key={filteredTenant?.tenantPersonalInfo?.email}
-                        >
-                          {({ open }) => (
-                            <>
-                              <h3>
-                                <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
-                                  <span
-                                    className={classNames(
-                                      open ? "text-cyan-600" : "text-gray-900",
-                                      "text-sm font-medium"
-                                    )}
-                                  >
-                                    Guarantor (if any)
-                                  </span>
-                                  <span className="ml-6 flex items-center">
-                                    {open ? (
-                                      <MinusSmIcon
-                                        className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
-                                        aria-hidden="true"
-                                      />
-                                    ) : (
-                                      <PlusSmIcon
-                                        className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                        aria-hidden="true"
-                                      />
-                                    )}
-                                  </span>
-                                </Disclosure.Button>
-                              </h3>
-                              <Disclosure.Panel
-                                as="div"
-                                className="pb-6 prose prose-sm"
-                              >
-                                <ul>
-                                  <li>
-                                    Full Name :{" "}
-                                    {filteredTenant?.guarantorInfo?.fullName}
-                                  </li>
-                                  <li>
-                                    Email Address :{" "}
-                                    {filteredTenant?.guarantorInfo?.email}
-                                  </li>
-                                  <li>
-                                    Phone Number :
-                                    {filteredTenant?.guarantorInfo?.phoneNo}
-                                  </li>
-                                </ul>
-                              </Disclosure.Panel>
-                            </>
-                          )}
-                        </Disclosure>
-                      ))}
-                  </div>
+                  <section aria-labelledby="details-heading" className="mt-12">
+                    <h2 id="details-heading" className="sr-only">
+                      Additional details
+                    </h2>
 
-                  {/* <div className="border-t divide-y divide-gray-200">
+                    <div className="border-t divide-y divide-gray-200">
+                      {tenantPropertyDetails?.tenantDetails
+                        ?.filter(
+                          (singletenant) =>
+                            singletenant.tenantPersonalInfo.email ===
+                            currentUser.email
+                        )
+                        .map((filteredTenant) => (
+                          <Disclosure
+                            as="div"
+                            key={filteredTenant?.tenantPersonalInfo?.email}
+                          >
+                            {({ open }) => (
+                              <>
+                                <h3>
+                                  <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
+                                    <span
+                                      className={classNames(
+                                        open
+                                          ? "text-cyan-600"
+                                          : "text-gray-900",
+                                        "text-sm font-medium"
+                                      )}
+                                    >
+                                      Tenant Details
+                                    </span>
+                                    <span className="ml-6 flex items-center">
+                                      {open ? (
+                                        <MinusSmIcon
+                                          className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PlusSmIcon
+                                          className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </span>
+                                  </Disclosure.Button>
+                                </h3>
+                                <Disclosure.Panel
+                                  as="div"
+                                  className="pb-6 prose prose-sm"
+                                >
+                                  <ul>
+                                    <li>
+                                      Full Name :{" "}
+                                      {
+                                        filteredTenant?.tenantPersonalInfo
+                                          ?.fullName
+                                      }
+                                    </li>
+                                    <li>
+                                      Email Address :{" "}
+                                      {
+                                        filteredTenant?.tenantPersonalInfo
+                                          ?.email
+                                      }
+                                    </li>
+                                    <li>
+                                      Phone Number :
+                                      {
+                                        filteredTenant?.tenantPersonalInfo
+                                          ?.phoneNo
+                                      }
+                                    </li>
+                                  </ul>
+                                </Disclosure.Panel>
+                              </>
+                            )}
+                          </Disclosure>
+                        ))}
+                    </div>
+
+                    <div className="border-t divide-y divide-gray-200">
+                      {tenantPropertyDetails?.tenantDetails
+                        ?.filter(
+                          (singletenant) =>
+                            singletenant.tenantPersonalInfo.email ===
+                            currentUser.email
+                        )
+                        .map((filteredTenant) => (
+                          <Disclosure
+                            as="div"
+                            key={filteredTenant?.tenantPersonalInfo?.email}
+                          >
+                            {({ open }) => (
+                              <>
+                                <h3>
+                                  <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
+                                    <span
+                                      className={classNames(
+                                        open
+                                          ? "text-cyan-600"
+                                          : "text-gray-900",
+                                        "text-sm font-medium"
+                                      )}
+                                    >
+                                      Guarantor (if any)
+                                    </span>
+                                    <span className="ml-6 flex items-center">
+                                      {open ? (
+                                        <MinusSmIcon
+                                          className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PlusSmIcon
+                                          className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </span>
+                                  </Disclosure.Button>
+                                </h3>
+                                <Disclosure.Panel
+                                  as="div"
+                                  className="pb-6 prose prose-sm"
+                                >
+                                  <ul>
+                                    <li>
+                                      Full Name :{" "}
+                                      {filteredTenant?.guarantorInfo?.fullName}
+                                    </li>
+                                    <li>
+                                      Email Address :{" "}
+                                      {filteredTenant?.guarantorInfo?.email}
+                                    </li>
+                                    <li>
+                                      Phone Number :
+                                      {filteredTenant?.guarantorInfo?.phoneNo}
+                                    </li>
+                                  </ul>
+                                </Disclosure.Panel>
+                              </>
+                            )}
+                          </Disclosure>
+                        ))}
+                    </div>
+
+                    {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -665,7 +673,7 @@ const TenantPropertyThree = () => {
                       ))}
                   </div> */}
 
-                  {/* <div className="border-t divide-y divide-gray-200">
+                    {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -725,89 +733,91 @@ const TenantPropertyThree = () => {
                       ))}
                   </div> */}
 
-                  <div className="border-t divide-y divide-gray-200">
-                    {tenantPropertyDetails?.tenantDetails
-                      ?.filter(
-                        (singletenant) =>
-                          singletenant.tenantPersonalInfo.email ===
-                          currentUser.email
-                      )
-                      .map((filteredTenant) => (
-                        <Disclosure
-                          as="div"
-                          key={filteredTenant?.tenantPersonalInfo?.email}
-                        >
-                          {({ open }) => (
-                            <>
-                              <h3>
-                                <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
-                                  <span
-                                    className={classNames(
-                                      open ? "text-cyan-600" : "text-gray-900",
-                                      "text-sm font-medium"
-                                    )}
-                                  >
-                                    Key Terms
-                                  </span>
-                                  <span className="ml-6 flex items-center">
-                                    {open ? (
-                                      <MinusSmIcon
-                                        className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
-                                        aria-hidden="true"
-                                      />
-                                    ) : (
-                                      <PlusSmIcon
-                                        className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                        aria-hidden="true"
-                                      />
-                                    )}
-                                  </span>
-                                </Disclosure.Button>
-                              </h3>
-                              <Disclosure.Panel
-                                as="div"
-                                className="pb-6 prose prose-sm"
-                              >
-                                <ul>
-                                  <li>
-                                    Tenancy Start Date :{" "}
-                                    <time>
-                                      {new Date(
-                                        filteredTenant?.tenantResidency?.leaseStartDate
-                                      ).toLocaleDateString()}
-                                    </time>
-                                  </li>
-                                  <li>
-                                    Rent Due Date :{" "}
-                                    <time>
-                                      {new Date(
-                                        filteredTenant?.tenantResidency?.leaseEndDate
-                                      ).toLocaleDateString()}
-                                    </time>
-                                  </li>
-                                  <li>
-                                    Rental Amount : £
-                                    {
-                                      filteredTenant?.tenantResidency
-                                        ?.monthlyRent
-                                    }
-                                  </li>
-                                  <li>
-                                    Deposit Amount : £
-                                    {
-                                      filteredTenant?.tenantResidency
-                                        ?.depositAmount
-                                    }
-                                  </li>
-                                </ul>
-                              </Disclosure.Panel>
-                            </>
-                          )}
-                        </Disclosure>
-                      ))}
-                  </div>
+                    <div className="border-t divide-y divide-gray-200">
+                      {tenantPropertyDetails?.tenantDetails
+                        ?.filter(
+                          (singletenant) =>
+                            singletenant.tenantPersonalInfo.email ===
+                            currentUser.email
+                        )
+                        .map((filteredTenant) => (
+                          <Disclosure
+                            as="div"
+                            key={filteredTenant?.tenantPersonalInfo?.email}
+                          >
+                            {({ open }) => (
+                              <>
+                                <h3>
+                                  <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
+                                    <span
+                                      className={classNames(
+                                        open
+                                          ? "text-cyan-600"
+                                          : "text-gray-900",
+                                        "text-sm font-medium"
+                                      )}
+                                    >
+                                      Key Terms
+                                    </span>
+                                    <span className="ml-6 flex items-center">
+                                      {open ? (
+                                        <MinusSmIcon
+                                          className="block h-6 w-6 text-cyan-400 group-hover:text-cyan-500"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PlusSmIcon
+                                          className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </span>
+                                  </Disclosure.Button>
+                                </h3>
+                                <Disclosure.Panel
+                                  as="div"
+                                  className="pb-6 prose prose-sm"
+                                >
+                                  <ul>
+                                    <li>
+                                      Tenancy Start Date :{" "}
+                                      <time>
+                                        {new Date(
+                                          filteredTenant?.tenantResidency?.leaseStartDate
+                                        ).toLocaleDateString()}
+                                      </time>
+                                    </li>
+                                    <li>
+                                      Rent Due Date :{" "}
+                                      <time>
+                                        {new Date(
+                                          filteredTenant?.tenantResidency?.leaseEndDate
+                                        ).toLocaleDateString()}
+                                      </time>
+                                    </li>
+                                    <li>
+                                      Rental Amount : £
+                                      {
+                                        filteredTenant?.tenantResidency
+                                          ?.monthlyRent
+                                      }
+                                    </li>
+                                    <li>
+                                      Deposit Amount : £
+                                      {
+                                        filteredTenant?.tenantResidency
+                                          ?.depositAmount
+                                      }
+                                    </li>
+                                  </ul>
+                                </Disclosure.Panel>
+                              </>
+                            )}
+                          </Disclosure>
+                        ))}
+                    </div>
 
-                  {/* <div className="border-t divide-y divide-gray-200">
+                    {/* <div className="border-t divide-y divide-gray-200">
                     {tenantPropertyDetails?.tenantDetails
                       ?.filter(
                         (singletenant) =>
@@ -919,11 +929,41 @@ const TenantPropertyThree = () => {
                         </Disclosure>
                       ))}
                   </div> */}
-                </section>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
+      ) : (
+        <>
+          <main className="relative isolate min-h-full">
+            <img
+              src="https://images.unsplash.com/photo-1497465689543-5940d3cede89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt=""
+              className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
+            />
+            <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
+              <p className="text-base font-semibold leading-8 text-cyan-400">
+                You may not be added as a tenant to a property yet.{" "}
+              </p>
+              <h1 className="mt-4 text-3xl font-bold tracking-tight text-cyan-300 sm:text-5xl">
+                Tenant Property Not Found
+              </h1>
+              <p className="mt-4 text-base text-black sm:mt-6">
+                Sorry, we couldn’t find the assigned property of yours.
+              </p>
+              <div className="mt-10 flex justify-center">
+                <a
+                  href="#"
+                  className="text-sm font-semibold leading-7 text-indigo-700"
+                >
+                  <span aria-hidden="true">&larr;</span> Come back Later
+                </a>
+              </div>
+            </div>
+          </main>
+        </>
       )}
     </>
   );
