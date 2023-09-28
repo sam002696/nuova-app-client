@@ -69,6 +69,12 @@ const TenantPortalHomeThree = () => {
 
     return new Date(nextTimestamp).toDateString();
   };
+
+  console.log("tenantProperty", tenantProperty);
+
+  if (Object.keys(tenantProperty).length === 0) {
+    console.log("empty property");
+  }
   return (
     <>
       <div className=" bg-gradient-to-l from-stone-100 to-white">
@@ -162,371 +168,300 @@ const TenantPortalHomeThree = () => {
         </div>
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8  px-4 sm:px-6  lg:max-w-7xl lg:grid-cols-3 lg:px-8">
-          <div className="relative pt-4 pb-20 lg:pt-4 lg:pb-28">
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
-              <Link to="/tenant-portal-dashboard/tenant-property">
-                <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="h-64 w-full object-cover"
-                      src={tenantProperty?.images?.pictureFirst}
-                      alt=""
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-cyan-600">
-                        {tenantProperty?.propertyAddress?.propertyName}
-                      </p>
-                      <div className="mt-2 block">
-                        <p className="text-lg font-semibold tracking-wider text-gray-700">
-                          {tenantProperty?.propertyAddress?.addressline1},{" "}
-                          {tenantProperty?.propertyAddress?.city},{" "}
-                          {tenantProperty?.propertyAddress?.state},{" "}
-                          {tenantProperty?.propertyAddress?.country},{" "}
-                          {tenantProperty?.propertyAddress?.zipcode}
-                        </p>
-                        <div className="flex flex-row justify-between mt-4">
-                          <p className="text-md font-medium text-cyan-600">
-                            Size
-                          </p>
-                          <p className="text-md font-medium text-gray-600">
-                            {tenantProperty?.propertyDetails?.livingArea} sq.
-                            ft.
-                          </p>
-                        </div>
-
-                        <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                          <p className="text-md font-medium text-cyan-600">
-                            Bedrooms
-                          </p>
-                          <p className="text-md font-medium text-gray-600">
-                            {tenantProperty?.propertyDetails?.bedroom}
-                          </p>
-                        </div>
-
-                        <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                          <p className="text-md font-medium text-cyan-600">
-                            Status
-                          </p>
-                          <p className="text-md font-medium text-gray-600">
-                            {tenantProperty?.propertyDetails?.propertyFurnished}
-                          </p>
-                        </div>
+          {Object.keys(tenantProperty).length !== 0 ? (
+            <>
+              <div className="relative pt-4 pb-20 lg:pt-4 lg:pb-28">
+                <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+                  <Link to="/tenant-portal-dashboard/tenant-property">
+                    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                      <div className="flex-shrink-0">
+                        <img
+                          className="h-64 w-full object-cover"
+                          src={tenantProperty?.images?.pictureFirst}
+                          alt=""
+                        />
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            {/* <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
-              {tenantProperty?.tenantDetails
-                ?.filter(
-                  (singletenant) =>
-                    singletenant.tenantPersonalInfo.email === currentUser.email
-                )
-                .map((filteredTenant) => (
-                  <>
-                    <div
-                      className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40"
-                      key={filteredTenant._id}
-                    >
-                      <div className="p-8">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <CurrencyPoundIcon
-                              className="h-8 w-8 text-white bg-cyan-500 rounded-lg p-1"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div className="ml-5 w-0 flex-1">
-                            <dl>
-                              <dt className="truncate text-sm font-medium text-gray-500">
-                                Tenant Rental Amount
-                              </dt>
-                              <dd>
-                                <div className="text-lg font-medium text-gray-900">
-                                  $
-                                  {filteredTenant?.tenantResidency?.monthlyRent}{" "}
-                                </div>
-                              </dd>
-                            </dl>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-teal-50 px-5 py-3">
-                        <div className="text-sm">
-                          <Link
-                            to=""
-                            className="font-medium text-cyan-700 hover:text-cyan-900"
-                          ></Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
-                      <div className="p-8">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <CalendarIcon
-                              className="h-8 w-8 text-white bg-cyan-500 rounded-lg p-1"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div className="ml-5 w-0 flex-1">
-                            <dl>
-                              <dt className="truncate text-sm font-medium text-gray-500">
-                                Tenancy Due Date
-                              </dt>
-                              <dd>
-                                <div className="text-lg font-medium text-gray-900">
-                                  <span className="mx-2">
-                                    <time>
-                                      {new Date(
-                                        filteredTenant?.tenantResidency?.leaseStartDate
-                                      ).getFullYear()}
-                                      -
-                                      {new Date(
-                                        filteredTenant?.tenantResidency?.leaseStartDate
-                                      ).getMonth()}
-                                      -
-                                      {new Date(
-                                        filteredTenant?.tenantResidency?.leaseStartDate
-                                      ).getDate()}
-                                    </time>
-                                  </span>
-                                </div>
-                              </dd>
-                            </dl>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-teal-50 px-5 py-3">
-                        <div className="text-sm">
-                          <Link
-                            to=""
-                            className="font-medium text-cyan-700 hover:text-cyan-900"
-                          ></Link>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ))}
-            </div> */}
-          </div>
-
-          <div className="relative pt-4 pb-20  lg:pt-4 lg:pb-28">
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
-              <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-green-600 mt-4">
-                      Lease Terms
-                    </p>
-
-                    {tenantProperty?.tenantDetails
-                      ?.filter(
-                        (singletenant) =>
-                          singletenant.tenantPersonalInfo.email ===
-                          currentUser.email
-                      )
-                      .map((filteredTenant) => (
-                        <>
-                          <div className="mt-2 block" key={filteredTenant._id}>
-                            <p className="flex items-center text-2xl font-semibold font-mono text-green-600">
-                              {" "}
-                              <CurrencyPoundIcon
-                                className="h-6 w-6 text-green-600 rounded-lg"
-                                aria-hidden="true"
-                              />
-                              {filteredTenant?.tenantResidency?.monthlyRent}{" "}
+                      <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-cyan-600">
+                            {tenantProperty?.propertyAddress?.propertyName}
+                          </p>
+                          <div className="mt-2 block">
+                            <p className="text-lg font-semibold tracking-wider text-gray-700">
+                              {tenantProperty?.propertyAddress?.addressline1},{" "}
+                              {tenantProperty?.propertyAddress?.city},{" "}
+                              {tenantProperty?.propertyAddress?.state},{" "}
+                              {tenantProperty?.propertyAddress?.country},{" "}
+                              {tenantProperty?.propertyAddress?.zipcode}
                             </p>
-                            <p className="text-sm font-medium text-gray-400">
-                              Monthly Rent
-                            </p>
+                            <div className="flex flex-row justify-between mt-4">
+                              <p className="text-md font-medium text-cyan-600">
+                                Size
+                              </p>
+                              <p className="text-md font-medium text-gray-600">
+                                {tenantProperty?.propertyDetails?.livingArea}{" "}
+                                sq. ft.
+                              </p>
+                            </div>
 
                             <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                              <p className="text-md font-medium text-green-600">
-                                Next Rental Payment Due
+                              <p className="text-md font-medium text-cyan-600">
+                                Bedrooms
                               </p>
                               <p className="text-md font-medium text-gray-600">
-                                <span>
-                                  <time>
-                                    {/* {new Date(
-                                      filteredTenant?.tenantResidency?.leaseStartDate
-                                    ).toDateString()} */}
-
-                                    {getNextRentalPaymentDueDate(
-                                      filteredTenant?.tenantResidency
-                                        ?.leaseStartDate
-                                    )}
-                                  </time>
-                                </span>
+                                {tenantProperty?.propertyDetails?.bedroom}
                               </p>
                             </div>
-                            {/* <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                              <p className="text-md font-medium text-green-600">
-                                Next Renewal
+
+                            <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                              <p className="text-md font-medium text-cyan-600">
+                                Status
                               </p>
                               <p className="text-md font-medium text-gray-600">
-                                <span>
-                                  <time>
-                                    {new Date(
-                                      filteredTenant?.tenantResidency?.leaseEndDate
-                                    ).toDateString()}
-                                  </time>
-                                </span>
+                                {
+                                  tenantProperty?.propertyDetails
+                                    ?.propertyFurnished
+                                }
                               </p>
-                            </div> */}
+                            </div>
                           </div>
-                        </>
-                      ))}
-                  </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
-            </div>
 
-            <div className="mx-auto mt-5 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
-              <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-green-600 mt-4">
-                      Tenants
-                    </p>
+              <div className="relative pt-4 pb-20  lg:pt-4 lg:pb-28">
+                <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+                  <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-green-600 mt-4">
+                          Lease Terms
+                        </p>
 
-                    <div className="mt-2 block">
-                      <ul className="grid grid-col-1 gap-3">
-                        {tenantProperty?.tenantDetails?.map((tenant) => (
-                          <li
-                            key={tenant?._id}
-                            className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
-                          >
-                            <div className="flex w-full items-center justify-between space-x-6 p-4">
-                              <div className="flex-1 truncate">
-                                <div className="flex items-center space-x-3">
-                                  <h3 className="truncate text-sm font-medium text-gray-900">
-                                    {tenant?.tenantPersonalInfo?.fullName}
-                                  </h3>
-                                  <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                                    Tenant
-                                  </span>
-                                </div>
-                                <p className="mt-1 truncate text-sm text-gray-500">
-                                  {tenant?.tenantResidency?.propertyName}
+                        {tenantProperty?.tenantDetails
+                          ?.filter(
+                            (singletenant) =>
+                              singletenant.tenantPersonalInfo.email ===
+                              currentUser.email
+                          )
+                          .map((filteredTenant) => (
+                            <>
+                              <div
+                                className="mt-2 block"
+                                key={filteredTenant._id}
+                              >
+                                <p className="flex items-center text-2xl font-semibold font-mono text-green-600">
+                                  {" "}
+                                  <CurrencyPoundIcon
+                                    className="h-6 w-6 text-green-600 rounded-lg"
+                                    aria-hidden="true"
+                                  />
+                                  {filteredTenant?.tenantResidency?.monthlyRent}{" "}
                                 </p>
-                              </div>
-                              <img
-                                className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                                src={currentUser?.profilePic}
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <div className="-mt-px flex divide-x divide-gray-200">
-                                <div className="flex w-0 flex-1">
-                                  <a
-                                    href={`mailto:${tenant?.tenantResidency?.email}`}
-                                    className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
-                                  >
-                                    <AtSymbolIcon
-                                      className="h-5 w-5 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="ml-3">Email</span>
-                                  </a>
-                                </div>
-                                <div className="-ml-px flex w-0 flex-1">
-                                  <a
-                                    href={`tel:${tenant?.tenantResidency?.phoneNo}`}
-                                    className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
-                                  >
-                                    <PhoneIcon
-                                      className="h-5 w-5 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="ml-3">Call</span>
-                                  </a>
+                                <p className="text-sm font-medium text-gray-400">
+                                  Monthly Rent
+                                </p>
+
+                                <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
+                                  <p className="text-md font-medium text-green-600">
+                                    Next Rental Payment Due
+                                  </p>
+                                  <p className="text-md font-medium text-gray-600">
+                                    <span>
+                                      <time>
+                                        {getNextRentalPaymentDueDate(
+                                          filteredTenant?.tenantResidency
+                                            ?.leaseStartDate
+                                        )}
+                                      </time>
+                                    </span>
+                                  </p>
                                 </div>
                               </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
+                            </>
+                          ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div className="mx-auto mt-5 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
-              <div className="overflow-hidden rounded-lg bg-white shadow-lg shadow-teal-500/40">
-                <div className="p-8">
-                  {/* <p className="text-sm font-medium text-green-600 mt-4 mb-2">
-                                        <a href='#' className="hover:underline">
-                                            Agency
-                                        </a>
-                                    </p> */}
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <ShieldCheckIcon
-                        className="h-8 w-8 text-white bg-sky-500 rounded-full p-1"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="truncate text-lg font-medium text-sky-500">
-                          Quick Maintenance Request
-                        </dt>
-                        <dd>
-                          <Link
-                            to="/tenant-portal-dashboard/tenant-portal-maintenance"
-                            className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 mt-3"
-                          >
-                            <PlusIcon className="h-4 w-4" aria-hidden="true" />
-                            <span className="mx-2">Create One</span>
-                          </Link>
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <div className="mx-auto mt-5 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+                  <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-green-600 mt-4">
+                          Tenants
+                        </p>
 
-            {/* <div className="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
-              <div className="overflow-hidden rounded-lg bg-white shadow-md shadow-teal-500/40">
-                <div className="p-8">
-                  
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <OfficeBuildingIcon
-                        className="h-8 w-8 text-white bg-green-500 rounded-full p-1"
-                        aria-hidden="true"
-                      />
+                        <div className="mt-2 block">
+                          <ul className="grid grid-col-1 gap-3">
+                            {tenantProperty?.tenantDetails?.map((tenant) => (
+                              <li
+                                key={tenant?._id}
+                                className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+                              >
+                                <div className="flex w-full items-center justify-between space-x-6 p-4">
+                                  <div className="flex-1 truncate">
+                                    <div className="flex items-center space-x-3">
+                                      <h3 className="truncate text-sm font-medium text-gray-900">
+                                        {tenant?.tenantPersonalInfo?.fullName}
+                                      </h3>
+                                      <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                                        Tenant
+                                      </span>
+                                    </div>
+                                    <p className="mt-1 truncate text-sm text-gray-500">
+                                      {tenant?.tenantResidency?.propertyName}
+                                    </p>
+                                  </div>
+                                  <img
+                                    className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
+                                    src={currentUser?.profilePic}
+                                    alt=""
+                                  />
+                                </div>
+                                <div>
+                                  <div className="-mt-px flex divide-x divide-gray-200">
+                                    <div className="flex w-0 flex-1">
+                                      <a
+                                        href={`mailto:${tenant?.tenantResidency?.email}`}
+                                        className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
+                                      >
+                                        <AtSymbolIcon
+                                          className="h-5 w-5 text-gray-400"
+                                          aria-hidden="true"
+                                        />
+                                        <span className="ml-3">Email</span>
+                                      </a>
+                                    </div>
+                                    <div className="-ml-px flex w-0 flex-1">
+                                      <a
+                                        href={`tel:${tenant?.tenantResidency?.phoneNo}`}
+                                        className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
+                                      >
+                                        <PhoneIcon
+                                          className="h-5 w-5 text-gray-400"
+                                          aria-hidden="true"
+                                        />
+                                        <span className="ml-3">Call</span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="truncate text-lg font-medium text-green-500">
-                          Nuova Property Management
-                        </dt>
-                        <dd>
-                          <div className="text-sm font-medium text-gray-400">
-                            nuova@example.com
-                          </div>
-                        </dd>
-                        <dd>
-                          <div className="text-sm font-medium text-gray-400">
-                            +71 444 333 125
-                          </div>
-                        </dd>
-                      </dl>
+                  </div>
+                </div>
+
+                <div className="mx-auto mt-5 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-1">
+                  <div className="overflow-hidden rounded-lg bg-white shadow-lg shadow-teal-500/40">
+                    <div className="p-8">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                          <ShieldCheckIcon
+                            className="h-8 w-8 text-white bg-sky-500 rounded-full p-1"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="ml-5 w-0 flex-1">
+                          <dl>
+                            <dt className="truncate text-lg font-medium text-sky-500">
+                              Quick Maintenance Request
+                            </dt>
+                            <dd>
+                              <Link
+                                to="/tenant-portal-dashboard/tenant-portal-maintenance"
+                                className="inline-flex items-center rounded-full border border-transparent bg-sky-400 p-1 text-white text-sm shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 mt-3"
+                              >
+                                <PlusIcon
+                                  className="h-4 w-4"
+                                  aria-hidden="true"
+                                />
+                                <span className="mx-2">Create One</span>
+                              </Link>
+                            </dd>
+                          </dl>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div> */}
-          </div>
+            </>
+          ) : (
+            <>
+              <div className=" lg:col-span-2 grid min-h-full grid-cols-2 grid-rows-[1fr,auto,1fr] bg-white lg:grid-cols-[max(50%,36rem),1fr]">
+                <header className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-10 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:px-8">
+                  <a href="#">
+                    <span className="sr-only">Your Company</span>
+                    <img
+                      className="h-10 w-auto sm:h-12"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      alt=""
+                    />
+                  </a>
+                </header>
+                <main className="mx-auto w-full max-w-7xl px-6 py-24 sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-8">
+                  <div className="max-w-lg">
+                    <p className="text-base font-semibold leading-8 text-indigo-600">
+                      404
+                    </p>
+                    <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                      Page not found
+                    </h1>
+                    <p className="mt-6 text-base leading-7 text-gray-600">
+                      Sorry, we couldn’t find the page you’re looking for.
+                    </p>
+                    <div className="mt-10">
+                      <a
+                        href="#"
+                        className="text-sm font-semibold leading-7 text-indigo-600"
+                      >
+                        <span aria-hidden="true">&larr;</span> Back to home
+                      </a>
+                    </div>
+                  </div>
+                </main>
+                <footer className="self-end lg:col-span-2 lg:col-start-1 lg:row-start-3">
+                  <div className="border-t border-gray-100 bg-gray-50 py-10">
+                    <nav className="mx-auto flex w-full max-w-7xl items-center gap-x-4 px-6 text-sm leading-7 text-gray-600 lg:px-8">
+                      <a href="#">Contact support</a>
+                      <svg
+                        viewBox="0 0 2 2"
+                        aria-hidden="true"
+                        className="h-0.5 w-0.5 fill-gray-300"
+                      >
+                        <circle cx={1} cy={1} r={1} />
+                      </svg>
+                      <a href="#">Status</a>
+                      <svg
+                        viewBox="0 0 2 2"
+                        aria-hidden="true"
+                        className="h-0.5 w-0.5 fill-gray-300"
+                      >
+                        <circle cx={1} cy={1} r={1} />
+                      </svg>
+                      <a href="#">Twitter</a>
+                    </nav>
+                  </div>
+                </footer>
+                <div className="hidden lg:relative lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:block">
+                  <img
+                    src="https://images.unsplash.com/photo-1470847355775-e0e3c35a9a2c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1825&q=80"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </>
+          )}
 
           <div className="relative pt-4 pb-20  lg:pt-4 lg:pb-28">
             <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
@@ -614,72 +549,6 @@ const TenantPortalHomeThree = () => {
                 </div>
               </div>
             </div>
-
-            {/* <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
-              <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-sky-600 mt-4">
-                      Deposit Details
-                    </p>
-
-                    {tenantProperty?.tenantDetails
-                      ?.filter(
-                        (singletenant) =>
-                          singletenant.tenantPersonalInfo.email ===
-                          currentUser.email
-                      )
-                      .map((filteredTenant) => (
-                        <div className="mt-2 block" key={filteredTenant._id}>
-                          <p className="flex items-center text-2xl font-semibold font-mono text-sky-600">
-                            {" "}
-                            <CurrencyPoundIcon
-                              className="h-6 w-6 text-sky-700 rounded-lg"
-                              aria-hidden="true"
-                            />
-                            {filteredTenant?.tenantResidency?.depositAmount}{" "}
-                          </p>
-                          <p className="text-sm font-medium text-gray-400">
-                            Available Deposit (Your Split 50%)
-                          </p>
-                          <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                            <p className="text-md font-medium text-sky-600">
-                              Start Date
-                            </p>
-                            <p className="text-md font-medium text-gray-600">
-                              <time>
-                                {new Date(
-                                  filteredTenant?.tenantResidency?.leaseStartDate
-                                ).getFullYear()}
-                                -
-                                {new Date(
-                                  filteredTenant?.tenantResidency?.leaseStartDate
-                                ).getMonth()}
-                                -
-                                {new Date(
-                                  filteredTenant?.tenantResidency?.leaseStartDate
-                                ).getDate()}
-                              </time>
-                            </p>
-                          </div>
-                          <div className="flex flex-row justify-between mt-3 border-t-2 pt-3">
-                            <p className="text-md font-medium text-sky-600">
-                              Estimated Approval Date
-                            </p>
-                            <p className="text-md font-medium text-gray-600">
-                              <time>
-                                {new Date(
-                                  filteredTenant?.tenantResidency?.leaseEndDate
-                                ).toDateString()}
-                              </time>
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

@@ -21,6 +21,7 @@ export const tenantPropertySlice = createSlice({
     fetchingFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
+      state.tenantPropertyDetails = null;
     },
   },
 });
