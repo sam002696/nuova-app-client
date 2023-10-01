@@ -379,7 +379,10 @@ const TenantPortalMaintenance = () => {
                                     {new Date(event.date).getFullYear()}-
                                     {new Date(event.date).getMonth()}-
                                     {new Date(event.date).getDate()} :{" "}
-                                    {new Date(event.date).toLocaleTimeString()}
+                                    {new Date(event.date).toLocaleTimeString(
+                                      "en-GB",
+                                      { timeZone: "Europe/London" }
+                                    )}
                                   </time>
                                 )}
                               </div>

@@ -579,7 +579,9 @@ const ReviewProperty = ({ singleProperty }) => {
                         <ul>
                           {singleProperty?.propertyDetails?.rooms?.map(
                             (room) => (
-                              <li key={room}>{room}</li>
+                              <li className=" capitalize" key={room}>
+                                {room}
+                              </li>
                             )
                           )}
                         </ul>
@@ -622,7 +624,9 @@ const ReviewProperty = ({ singleProperty }) => {
                         <ul>
                           {singleProperty?.propertyDetails?.featuresAndAppliances?.map(
                             (room) => (
-                              <li key={room}>{room}</li>
+                              <li className=" capitalize" key={room}>
+                                {room}
+                              </li>
                             )
                           )}
                         </ul>
@@ -664,7 +668,9 @@ const ReviewProperty = ({ singleProperty }) => {
                       >
                         <ul>
                           {singleProperty?.keyFeatures?.map((feature) => (
-                            <li key={feature.value}>{feature.value}</li>
+                            <li className=" capitalize" key={feature.value}>
+                              {feature.value}
+                            </li>
                           ))}
                         </ul>
                       </Disclosure.Panel>

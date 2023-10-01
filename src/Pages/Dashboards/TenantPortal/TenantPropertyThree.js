@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Disclosure, Tab } from "@headlessui/react";
-import { StarIcon } from "@heroicons/react/solid";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 import { PaperClipIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
@@ -937,17 +936,17 @@ const TenantPropertyThree = () => {
         </>
       ) : (
         <>
-          <main className="relative isolate min-h-full">
+          <main className="relative isolate min-h-full max-w-7xl mx-auto mt-20 shadow-md shadow-cyan-500/40">
             <img
               src="https://images.unsplash.com/photo-1497465689543-5940d3cede89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
               alt=""
-              className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
+              className="absolute inset-0 -z-10 h-full w-full object-cover object-top rounded-md"
             />
             <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
-              <p className="text-base font-semibold leading-8 text-cyan-400">
+              <p className="text-base font-semibold leading-8 text-cyan-600">
                 You may not be added as a tenant to a property yet.{" "}
               </p>
-              <h1 className="mt-4 text-3xl font-bold tracking-tight text-cyan-300 sm:text-5xl">
+              <h1 className="mt-4 text-3xl font-bold tracking-tight text-cyan-600 sm:text-5xl">
                 Tenant Property Not Found
               </h1>
               <p className="mt-4 text-base text-black sm:mt-6">
@@ -956,7 +955,7 @@ const TenantPropertyThree = () => {
               <div className="mt-10 flex justify-center">
                 <a
                   href="#"
-                  className="text-sm font-semibold leading-7 text-indigo-700"
+                  className="text-sm font-semibold leading-7 text-cyan-700"
                 >
                   <span aria-hidden="true">&larr;</span> Come back Later
                 </a>

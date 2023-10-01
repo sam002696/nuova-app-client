@@ -152,7 +152,7 @@ const ContractorPortalHomeTwo = () => {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
+            {/* <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
               <h2 className="text-2xl font-semibold text-gray-700 leading-2 tracking-wide">
                 Getting the Most of Nuova Contractor App
               </h2>
@@ -187,7 +187,7 @@ const ContractorPortalHomeTwo = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="col-span-2 relative pt-4 pb-20  lg:pt-4 lg:pb-28">
@@ -293,7 +293,7 @@ const ContractorPortalHomeTwo = () => {
                 ))}
               </div>
 
-              <p className="text-center mt-2 text-md text-blue-700">
+              <p className="text-center mt-2 text-md text-cyan-700">
                 See All Jobs ...
               </p>
             </div>

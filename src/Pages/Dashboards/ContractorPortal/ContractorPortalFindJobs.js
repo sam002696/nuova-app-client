@@ -261,13 +261,12 @@ const ContractorPortalFindJobs = () => {
                 <p className="mt-1 text-gray-500 text-sm truncate">
                   {seeSingleJobDetails?.perHourIncome}
                 </p>
-                <span className="mt-8 text-blue-700 font-semibold">
+                <div className="mt-8 text-cyan-700 font-semibold">
                   {seeSingleJobDetails.postBidding === true &&
                     seeSingleJobDetails.contractorBiddingEmail.find(
                       (element) => element === currentUser.email
-                    ) &&
-                    "Applied for the job"}
-                </span>
+                    ) && <span className="font-bold">Applied for the job</span>}
+                </div>
               </div>
               <div>
                 <button
@@ -293,10 +292,7 @@ const ContractorPortalFindJobs = () => {
               Task Summary :{" "}
             </h2>
             <p className="mt-4 text-gray-500">
-              The walnut wood card tray is precision milled to perfectly fit a
-              stack of Focus cards. The powder coated steel divider separates
-              active cards from new ones, or can be used to archive important
-              tasks lists.
+              {seeSingleJobDetails?.issueDesc ?? "N/A"}
             </p>
 
             <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -329,16 +325,7 @@ const ContractorPortalFindJobs = () => {
                   Required Experience
                 </dt>
                 <dd className="mt-2 text-sm text-gray-500">
-                  {seeSingleJobDetails?.requiredExperience}
-                </dd>
-              </div>
-              <div className="border-t border-gray-200 pt-4">
-                <dt className="font-medium text-gray-900">About Nuova</dt>
-                <dd className="mt-2 text-sm text-gray-500">
-                  Tech enabled, which enables our operating to be much more
-                  efficient and handle tasks almost instantly. Certified
-                  contractors, all of the contractors we use will have to be
-                  vetted prior to being able to work with us.
+                  {seeSingleJobDetails?.requiredExperience ?? "N/A"}
                 </dd>
               </div>
             </dl>

@@ -77,7 +77,7 @@ const TenantPortalHomeThree = () => {
   }
   return (
     <>
-      <div className=" bg-gradient-to-l from-stone-100 to-white">
+      <div className="">
         <div className="bg-white shadow">
           <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
             <div className="py-8 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
@@ -397,15 +397,15 @@ const TenantPortalHomeThree = () => {
             </>
           ) : (
             <>
-              <main className="relative isolate min-h-full lg:col-span-2">
+              <main className="relative isolate  lg:col-span-2 my-10 shadow-lg shadow-cyan-500/40">
                 <img
                   src="https://images.unsplash.com/photo-1581332480167-d5d4b97588f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                   alt=""
-                  className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover object-top rounded-md"
                 />
                 <div className="mx-auto max-w-7xl px-6 py-32 text-left sm:py-40 lg:px-8">
                   <p className="text-base font-semibold leading-8 text-white">
-                    You may not be assign as tenant to a property yet.{" "}
+                    You may not be assigned as tenant to a property yet.{" "}
                   </p>
                   <h1 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
                     Tenancy Not Found

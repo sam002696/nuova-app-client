@@ -24,7 +24,7 @@ const actions = [
       "As a landlord, you can view all of your properties maintenances in one place",
   },
   {
-    title: "Task",
+    title: "Tasks",
     href: "/landlord-portal-dashboard/landlord-portal-tasks",
     icon: DocumentAddIcon,
     iconForeground: "text-purple-700",

@@ -31,9 +31,9 @@ const Engagement = ({ register }) => {
 
         <OwnerTwo register={register} />
 
-        <hr className=" border-1 border-gray-400" />
+        {/* <hr className=" border-1 border-gray-400" /> */}
 
-        <Agent register={register} />
+        {/* <Agent register={register} /> */}
       </div>
     </>
   );
