@@ -71,10 +71,6 @@ const TenantPortalHomeThree = () => {
   };
 
   console.log("tenantProperty", tenantProperty);
-
-  if (Object.keys(tenantProperty).length === 0) {
-    console.log("empty property");
-  }
   return (
     <>
       <div className="">

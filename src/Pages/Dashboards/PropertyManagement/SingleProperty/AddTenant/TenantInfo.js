@@ -19,7 +19,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
     currentIncome: "",
     incomeAssistance: "",
     creditScore: "",
-    tenantId: "",
+    // tenantId: "",
   });
   const handleTenantInfoChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
             ...tenantPersonalInfo,
             fullName: res.data.username,
             phoneNo: res.data.phoneNo,
-            tenantId: res.data._id,
+            // tenantId: res.data._id,
           });
           setError("");
         }
