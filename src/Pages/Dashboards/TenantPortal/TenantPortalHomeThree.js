@@ -36,17 +36,19 @@ const propertymanager = [
 
 const TenantPortalHomeThree = () => {
   const dispatch = useDispatch();
+  const { tenantPropertyDetails } = useSelector(
+    (state) => state.tenantPropertyDetails
+  );
   const { currentUser } = useSelector((state) => state.user);
-  const [tenantProperty, setTenantProperty] = useState([]);
 
   useEffect(() => {
     const handleTenantProperty = async () => {
       dispatch(fetchingStart());
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/properties/tenantproperty/tenant/${currentUser._id}`
+          `http://localhost:5500/api/properties/tenantproperty/tenant/${currentUser._id}?status=Current%20Tenant`
         );
-        setTenantProperty(res.data);
+
         dispatch(fetchingSuccess(res.data));
         console.log(res.data);
       } catch (err) {
@@ -55,12 +57,7 @@ const TenantPortalHomeThree = () => {
       }
     };
     handleTenantProperty();
-  }, [currentUser._id, dispatch]);
-  console.log(tenantProperty);
-
-  // const currentTenantProperty = tenantProperty.find(property => property.tenantDetails.some(tenant => tenant.status === "Current Tenant"));
-  // console.log('currentProperty', currentTenantProperty)
-
+  }, [currentUser, dispatch]);
 
   const getNextRentalPaymentDueDate = (leaseStartDate) => {
     const startTimestamp = new Date(leaseStartDate).getTime();
@@ -74,7 +71,6 @@ const TenantPortalHomeThree = () => {
     return new Date(nextTimestamp).toDateString();
   };
 
-  console.log("tenantProperty", tenantProperty);
   return (
     <>
       <div className="">
@@ -150,12 +146,6 @@ const TenantPortalHomeThree = () => {
                 </div>
               </div>
               <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-                {/* <button
-                                        type="button"
-                                        className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-                                    >
-                                        Add money
-                                    </button> */}
                 <Link
                   to="/tenant-portal-dashboard/tenant-my-profile"
                   className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
@@ -168,9 +158,8 @@ const TenantPortalHomeThree = () => {
         </div>
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8  px-4 sm:px-6  lg:max-w-7xl lg:grid-cols-3 lg:px-8">
-          {Object.keys(tenantProperty).length !== 0 ? (
-               
-          // {/* {currentTenantProperty.length !== 0 ? ( */}
+          {tenantPropertyDetails &&
+          Object.keys(tenantPropertyDetails)?.length !== 0 ? (
             <>
               <div className="relative pt-4 pb-20 lg:pt-4 lg:pb-28">
                 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
@@ -179,29 +168,38 @@ const TenantPortalHomeThree = () => {
                       <div className="flex-shrink-0">
                         <img
                           className="h-64 w-full object-cover"
-                          src={tenantProperty?.images?.pictureFirst}
+                          src={tenantPropertyDetails?.images?.pictureFirst}
                           alt=""
                         />
                       </div>
                       <div className="flex flex-1 flex-col justify-between bg-white p-6">
                         <div className="flex-1">
                           <p className="text-sm font-medium text-cyan-600">
-                            {tenantProperty?.propertyAddress?.propertyName}
+                            {
+                              tenantPropertyDetails?.propertyAddress
+                                ?.propertyName
+                            }
                           </p>
                           <div className="mt-2 block">
                             <p className="text-lg font-semibold tracking-wider text-gray-700">
-                              {tenantProperty?.propertyAddress?.addressline1},{" "}
-                              {tenantProperty?.propertyAddress?.city},{" "}
-                              {tenantProperty?.propertyAddress?.state},{" "}
-                              {tenantProperty?.propertyAddress?.country},{" "}
-                              {tenantProperty?.propertyAddress?.zipcode}
+                              {
+                                tenantPropertyDetails?.propertyAddress
+                                  ?.addressline1
+                              }
+                              , {tenantPropertyDetails?.propertyAddress?.city},{" "}
+                              {tenantPropertyDetails?.propertyAddress?.state},{" "}
+                              {tenantPropertyDetails?.propertyAddress?.country},{" "}
+                              {tenantPropertyDetails?.propertyAddress?.zipcode}
                             </p>
                             <div className="flex flex-row justify-between mt-4">
                               <p className="text-md font-medium text-cyan-600">
                                 Size
                               </p>
                               <p className="text-md font-medium text-gray-600">
-                                {tenantProperty?.propertyDetails?.livingArea}{" "}
+                                {
+                                  tenantPropertyDetails?.propertyDetails
+                                    ?.livingArea
+                                }{" "}
                                 sq. ft.
                               </p>
                             </div>
@@ -211,7 +209,10 @@ const TenantPortalHomeThree = () => {
                                 Bedrooms
                               </p>
                               <p className="text-md font-medium text-gray-600">
-                                {tenantProperty?.propertyDetails?.bedroom}
+                                {
+                                  tenantPropertyDetails?.propertyDetails
+                                    ?.bedroom
+                                }
                               </p>
                             </div>
 
@@ -221,7 +222,7 @@ const TenantPortalHomeThree = () => {
                               </p>
                               <p className="text-md font-medium text-gray-600">
                                 {
-                                  tenantProperty?.propertyDetails
+                                  tenantPropertyDetails?.propertyDetails
                                     ?.propertyFurnished
                                 }
                               </p>
@@ -243,7 +244,7 @@ const TenantPortalHomeThree = () => {
                           Lease Terms
                         </p>
 
-                        {tenantProperty?.tenantDetails
+                        {tenantPropertyDetails?.tenantDetails
                           ?.filter(
                             (singletenant) =>
                               singletenant.tenantPersonalInfo.email ===
@@ -300,61 +301,68 @@ const TenantPortalHomeThree = () => {
 
                         <div className="mt-2 block">
                           <ul className="grid grid-col-1 gap-3">
-                            {tenantProperty?.tenantDetails?.map((tenant) => (
-                              <li
-                                key={tenant?._id}
-                                className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
-                              >
-                                <div className="flex w-full items-center justify-between space-x-6 p-4">
-                                  <div className="flex-1 truncate">
-                                    <div className="flex items-center space-x-3">
-                                      <h3 className="truncate text-sm font-medium text-gray-900">
-                                        {tenant?.tenantPersonalInfo?.fullName}
-                                      </h3>
-                                      <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                                        Tenant
-                                      </span>
+                            {tenantPropertyDetails?.tenantDetails
+                              ?.filter(
+                                (tenant) =>
+                                  tenant.status === "Current Tenant" &&
+                                  tenant.tenantPersonalInfo.email ===
+                                    currentUser.email
+                              )
+                              .map((tenant) => (
+                                <li
+                                  key={tenant?._id}
+                                  className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+                                >
+                                  <div className="flex w-full items-center justify-between space-x-6 p-4">
+                                    <div className="flex-1 truncate">
+                                      <div className="flex items-center space-x-3">
+                                        <h3 className="truncate text-sm font-medium text-gray-900">
+                                          {tenant?.tenantPersonalInfo?.fullName}
+                                        </h3>
+                                        <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                                          Tenant
+                                        </span>
+                                      </div>
+                                      <p className="mt-1 truncate text-sm text-gray-500">
+                                        {tenant?.tenantResidency?.propertyName}
+                                      </p>
                                     </div>
-                                    <p className="mt-1 truncate text-sm text-gray-500">
-                                      {tenant?.tenantResidency?.propertyName}
-                                    </p>
+                                    <img
+                                      className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
+                                      src={currentUser?.profilePic}
+                                      alt=""
+                                    />
                                   </div>
-                                  <img
-                                    className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                                    src={currentUser?.profilePic}
-                                    alt=""
-                                  />
-                                </div>
-                                <div>
-                                  <div className="-mt-px flex divide-x divide-gray-200">
-                                    <div className="flex w-0 flex-1">
-                                      <a
-                                        href={`mailto:${tenant?.tenantResidency?.email}`}
-                                        className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
-                                      >
-                                        <AtSymbolIcon
-                                          className="h-5 w-5 text-gray-400"
-                                          aria-hidden="true"
-                                        />
-                                        <span className="ml-3">Email</span>
-                                      </a>
-                                    </div>
-                                    <div className="-ml-px flex w-0 flex-1">
-                                      <a
-                                        href={`tel:${tenant?.tenantResidency?.phoneNo}`}
-                                        className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
-                                      >
-                                        <PhoneIcon
-                                          className="h-5 w-5 text-gray-400"
-                                          aria-hidden="true"
-                                        />
-                                        <span className="ml-3">Call</span>
-                                      </a>
+                                  <div>
+                                    <div className="-mt-px flex divide-x divide-gray-200">
+                                      <div className="flex w-0 flex-1">
+                                        <a
+                                          href={`mailto:${tenant?.tenantResidency?.email}`}
+                                          className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
+                                        >
+                                          <AtSymbolIcon
+                                            className="h-5 w-5 text-gray-400"
+                                            aria-hidden="true"
+                                          />
+                                          <span className="ml-3">Email</span>
+                                        </a>
+                                      </div>
+                                      <div className="-ml-px flex w-0 flex-1">
+                                        <a
+                                          href={`tel:${tenant?.tenantResidency?.phoneNo}`}
+                                          className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-2 text-sm font-medium text-gray-700 hover:text-gray-500"
+                                        >
+                                          <PhoneIcon
+                                            className="h-5 w-5 text-gray-400"
+                                            aria-hidden="true"
+                                          />
+                                          <span className="ml-3">Call</span>
+                                        </a>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </li>
-                            ))}
+                                </li>
+                              ))}
                           </ul>
                         </div>
                       </div>

@@ -28,7 +28,7 @@ const TenantPropertyThree = () => {
       dispatch(fetchingStart());
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/properties/tenantproperty/tenant?email=${currentUser.email}`
+          `http://localhost:5500/api/properties/tenantproperty/tenant/${currentUser._id}?status=Current%20Tenant`
         );
         dispatch(fetchingSuccess(res.data));
       } catch (err) {
