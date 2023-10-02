@@ -37,14 +37,14 @@ const propertymanager = [
 const TenantPortalHomeThree = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const [tenantProperty, setTenantProperty] = useState({});
+  const [tenantProperty, setTenantProperty] = useState([]);
 
   useEffect(() => {
     const handleTenantProperty = async () => {
       dispatch(fetchingStart());
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/properties/tenantproperty/tenant?email=${currentUser.email}`
+          `http://localhost:5500/api/properties/tenantproperty/tenant/${currentUser._id}`
         );
         setTenantProperty(res.data);
         dispatch(fetchingSuccess(res.data));
@@ -55,8 +55,12 @@ const TenantPortalHomeThree = () => {
       }
     };
     handleTenantProperty();
-  }, [currentUser.email, dispatch]);
+  }, [currentUser._id, dispatch]);
   console.log(tenantProperty);
+
+  // const currentTenantProperty = tenantProperty.find(property => property.tenantDetails.some(tenant => tenant.status === "Current Tenant"));
+  // console.log('currentProperty', currentTenantProperty)
+
 
   const getNextRentalPaymentDueDate = (leaseStartDate) => {
     const startTimestamp = new Date(leaseStartDate).getTime();
@@ -165,6 +169,8 @@ const TenantPortalHomeThree = () => {
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8  px-4 sm:px-6  lg:max-w-7xl lg:grid-cols-3 lg:px-8">
           {Object.keys(tenantProperty).length !== 0 ? (
+               
+          // {/* {currentTenantProperty.length !== 0 ? ( */}
             <>
               <div className="relative pt-4 pb-20 lg:pt-4 lg:pb-28">
                 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
