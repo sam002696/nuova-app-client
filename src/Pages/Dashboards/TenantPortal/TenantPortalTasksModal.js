@@ -58,10 +58,13 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
     if (document) {
       data1.append("file", document);
       //upload presets
-      data1.append("upload_preset", "eez1w4gg");
+      data1.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data1
       );
 
@@ -73,10 +76,13 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
     if (image) {
       data2.append("file", image);
 
-      data2.append("upload_preset", "eez1w4gg");
+      data2.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes2 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data2
       );
 

@@ -57,10 +57,13 @@ const LandlordProfile = () => {
     if (image) {
       data.append("file", image);
       //upload presets
-      data.append("upload_preset", "eez1w4gg");
+      data.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data
       );
       const { url: url1 } = uploadRes1.data;

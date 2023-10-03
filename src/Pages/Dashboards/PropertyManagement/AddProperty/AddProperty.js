@@ -102,25 +102,37 @@ const AddProperty = () => {
     data3.append("file", pictureThird);
     data4.append("file", pictureFourth);
     //upload presets
-    data1.append("upload_preset", "eez1w4gg");
-    data2.append("upload_preset", "eez1w4gg");
-    data3.append("upload_preset", "eez1w4gg");
-    data4.append("upload_preset", "eez1w4gg");
+    data1.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
+    data2.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
+    data3.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
+    data4.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
     try {
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data1
       );
       const uploadRes2 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data2
       );
       const uploadRes3 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data3
       );
       const uploadRes4 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data4
       );
       const { url: url1 } = uploadRes1.data;

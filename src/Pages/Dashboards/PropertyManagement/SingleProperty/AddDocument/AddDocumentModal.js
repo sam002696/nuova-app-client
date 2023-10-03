@@ -44,10 +44,13 @@ const AddDocumentModal = ({ open, setOpen, singleProperty }) => {
     const document = formData.uploadedCertificate;
     data.append("file", document);
     //upload presets
-    data.append("upload_preset", "eez1w4gg");
+    data.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
 
     const uploadRes1 = await axios.post(
-      "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+      process.env.REACT_APP_CLOUDINARY_URL,
       data
     );
     const { url: url1 } = uploadRes1.data;

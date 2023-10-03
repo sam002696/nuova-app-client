@@ -17,7 +17,7 @@ const TenantFactFind = () => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch } = useForm({});
 
-  const url = "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload";
+  const url = process.env.REACT_APP_CLOUDINARY_URL;
 
   const breadcrumbs = [
     { name: "Stage 1", href: "#", current: false },
@@ -48,10 +48,13 @@ const TenantFactFind = () => {
       if (proofECFile) {
         data.append("file", proofECFile);
 
-        data.append("upload_preset", "eez1w4gg");
+        data.append(
+          "upload_preset",
+          process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+        );
 
         const uploadRes2 = await axios.post(
-          "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+          process.env.REACT_APP_CLOUDINARY_URL,
           data
         );
 
@@ -64,10 +67,13 @@ const TenantFactFind = () => {
     if (creditfile) {
       data.append("file", creditfile);
 
-      data.append("upload_preset", "eez1w4gg");
+      data.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data
       );
 
@@ -79,10 +85,13 @@ const TenantFactFind = () => {
     if (photoGraphicIdFile) {
       data.append("file", photoGraphicIdFile);
 
-      data.append("upload_preset", "eez1w4gg");
+      data.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes3 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data
       );
 
@@ -96,7 +105,10 @@ const TenantFactFind = () => {
         let file = reportData.guarantorDetails.payslips[i];
         const data = new FormData();
         data.append("file", file);
-        data.append("upload_preset", "eez1w4gg");
+        data.append(
+          "upload_preset",
+          process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+        );
 
         const response = await fetch(url, {
           method: "POST",
@@ -117,7 +129,10 @@ const TenantFactFind = () => {
         let file = reportData.guarantorDetails.bankStatements[i];
         const data = new FormData();
         data.append("file", file);
-        data.append("upload_preset", "eez1w4gg");
+        data.append(
+          "upload_preset",
+          process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+        );
 
         const response = await fetch(url, {
           method: "POST",

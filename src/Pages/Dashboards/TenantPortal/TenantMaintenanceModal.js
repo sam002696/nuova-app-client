@@ -11,7 +11,6 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
   const { tenantPropertyDetails } = useSelector(
     (state) => state.tenantPropertyDetails
   );
-  console.log(tenantPropertyDetails);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const cancelButtonRef = useRef(null);
@@ -25,10 +24,13 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
     if (image) {
       data.append("file", image);
 
-      data.append("upload_preset", "eez1w4gg");
+      data.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes2 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data
       );
 

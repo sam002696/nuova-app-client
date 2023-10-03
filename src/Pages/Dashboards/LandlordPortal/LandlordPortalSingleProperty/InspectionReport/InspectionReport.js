@@ -27,10 +27,13 @@ const InspectionReport = ({ singleProperty, property }) => {
         form?.acceptanceOfInspectionReportLandlord?.signOfLandlord[0]
       );
       //upload presets
-      data.append("upload_preset", "eez1w4gg");
+      data.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data
       );
       const { url: url1 } = uploadRes1.data;
@@ -42,10 +45,13 @@ const InspectionReport = ({ singleProperty, property }) => {
         form?.authorisationForDeduction?.signOfTenantOrAgent[0]
       );
       //upload presets
-      data1.append("upload_preset", "eez1w4gg");
+      data1.append(
+        "upload_preset",
+        process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      );
 
       const uploadRes1 = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvqolnmnp/image/upload",
+        process.env.REACT_APP_CLOUDINARY_URL,
         data1
       );
       const { url: url1 } = uploadRes1.data;
