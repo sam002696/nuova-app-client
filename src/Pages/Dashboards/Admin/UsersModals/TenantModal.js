@@ -16,7 +16,7 @@ const TenantModal = ({ open, setOpen }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5500/api/auth/register",
+        "https://nuova-property-server.onrender.com/api/auth/register",
         data
       );
       if (res.data) {

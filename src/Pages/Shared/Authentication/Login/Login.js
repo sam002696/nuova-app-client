@@ -28,10 +28,13 @@ const Login = () => {
     const { email, password } = data;
     dispatch(loginStart());
     try {
-      const res = await axios.post("http://localhost:5500/api/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://nuova-property-server.onrender.com/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       dispatch(loginSuccess(res.data));
       if (res.data?.role === "Contractor") {
         history.push("/contractor-portal-dashboard");

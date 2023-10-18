@@ -69,7 +69,7 @@ const TenantPortalMaintenance = () => {
     const handleReportsDetails = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/reports?email=${currentUser.email}`
+          `https://nuova-property-server.onrender.com/api/reports?email=${currentUser.email}`
         );
         setTenantReports(res.data);
       } catch (err) {

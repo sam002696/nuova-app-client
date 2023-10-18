@@ -89,7 +89,9 @@ const AdminHome = () => {
   useEffect(() => {
     const fetchAllProspects = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/prospects`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/prospects`
+        );
         setProspects(res.data);
       } catch (err) {
         console.log(err);
@@ -101,7 +103,7 @@ const AdminHome = () => {
     const handleFetchcontractors = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Contractor`
+          `https://nuova-property-server.onrender.com/api/users?role=Contractor`
         );
         setContractors(res.data);
       } catch (err) {
@@ -114,7 +116,7 @@ const AdminHome = () => {
     const handleFetchLandlords = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Landlord`
+          `https://nuova-property-server.onrender.com/api/users?role=Landlord`
         );
         setLandlords(res.data);
       } catch (err) {
@@ -127,7 +129,7 @@ const AdminHome = () => {
     const handleFetchtenants = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Tenant`
+          `https://nuova-property-server.onrender.com/api/users?role=Tenant`
         );
         setTenants(res.data);
       } catch (err) {
@@ -140,7 +142,7 @@ const AdminHome = () => {
     const handleFetchPropertyManagers = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Property Manager`
+          `https://nuova-property-server.onrender.com/api/users?role=Property Manager`
         );
         setPropertyManagers(res.data);
       } catch (err) {
@@ -153,7 +155,9 @@ const AdminHome = () => {
   useEffect(() => {
     const handleAllProperties = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/properties`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/properties`
+        );
         console.log(res.data);
         setAllProperties(res.data);
       } catch (err) {

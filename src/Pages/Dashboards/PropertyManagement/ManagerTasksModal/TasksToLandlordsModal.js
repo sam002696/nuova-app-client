@@ -11,7 +11,7 @@ const TasksToLandlordsModal = ({ open, setOpen, singletask }) => {
   const handleTaskComplete = async (taskid) => {
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/taskDocuments/taskComplete/${taskid}`
+        `https://nuova-property-server.onrender.com/api/taskDocuments/taskComplete/${taskid}`
       );
       if (res.data) {
         console.log("Task has been completed");

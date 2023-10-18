@@ -10,7 +10,7 @@ const LandlordContactForm = () => {
     const handlelandlordContactForms = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/landlordContactForm`
+          `https://nuova-property-server.onrender.com/api/landlordContactForm`
         );
         console.log(res.data);
         setlandlordContactForms(res.data);

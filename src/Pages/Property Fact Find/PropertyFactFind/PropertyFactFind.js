@@ -33,7 +33,7 @@ const PropertyFactFind = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `http://localhost:5500/api/propertyFactFindForm`,
+        `https://nuova-property-server.onrender.com/api/propertyFactFindForm`,
         data
       );
       if (res.data) {

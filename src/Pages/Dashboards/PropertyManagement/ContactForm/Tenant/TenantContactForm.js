@@ -10,7 +10,7 @@ const TenantContactForm = () => {
     const handleTenantContactForms = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tenantContactForm`
+          `https://nuova-property-server.onrender.com/api/tenantContactForm`
         );
         console.log(res.data);
         setTenantContactForms(res.data);

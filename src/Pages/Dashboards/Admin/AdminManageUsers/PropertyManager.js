@@ -9,7 +9,7 @@ const PropertyManager = () => {
     const handleFetchPropertyManagers = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Property Manager`
+          `https://nuova-property-server.onrender.com/api/users?role=Property Manager`
         );
         console.log(res.data);
         setPropertyManagers(res.data);

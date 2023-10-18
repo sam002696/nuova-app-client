@@ -42,7 +42,7 @@ const ReviewProperty = ({ singleProperty }) => {
   const handlePropertyStatusChange = async (status) => {
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/properties/propertyStatus/${singleProperty._id}?status=${status}`
+        `https://nuova-property-server.onrender.com/api/properties/propertyStatus/${singleProperty._id}?status=${status}`
       );
       if (res.data) {
         window.location.reload(true);

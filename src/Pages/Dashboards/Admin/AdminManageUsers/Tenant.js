@@ -8,7 +8,7 @@ const Tenant = () => {
     const handleFetchtenants = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/users?role=Tenant`
+          `https://nuova-property-server.onrender.com/api/users?role=Tenant`
         );
         console.log(res.data);
         setTenants(res.data);
