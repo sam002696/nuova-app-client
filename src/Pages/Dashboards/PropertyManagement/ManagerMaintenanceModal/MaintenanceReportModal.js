@@ -11,7 +11,7 @@ const MaintenanceReportModal = ({ open, setOpen, singleReport }) => {
     setLoading(true);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/contractorJobs/${singleReport._id}`,
+        `http://localhost:5500/api/contractorJobs/${singleReport._id}`,
         singleReport
       );
       if (res.data) {

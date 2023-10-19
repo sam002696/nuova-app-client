@@ -44,7 +44,7 @@ const LandlordPortalMaintenance = () => {
     const handleReportsDetails = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/reports?landlordemail=${currentUser.email}`
+          `http://localhost:5500/api/reports?landlordemail=${currentUser.email}`
         );
         console.log(res.data);
         setMaintenanceReports(res.data);
@@ -80,7 +80,7 @@ const LandlordPortalMaintenance = () => {
     setAssignJobLoading(true);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/acceptoffer/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/acceptoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         setAssignJobLoading(false);
@@ -97,7 +97,7 @@ const LandlordPortalMaintenance = () => {
     setDeclineJobLoading(true);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/declineoffer/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/declineoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         setDeclineJobLoading(false);
@@ -114,7 +114,7 @@ const LandlordPortalMaintenance = () => {
     setCompleteJobLoading(true);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/completejob/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/completejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         setCompleteJobLoading(false);
@@ -132,7 +132,7 @@ const LandlordPortalMaintenance = () => {
     try {
       setIncompleteJobLoading(false);
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/incompletejob/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/incompletejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         Swal.fire("", "Job is incomplete!", "info");

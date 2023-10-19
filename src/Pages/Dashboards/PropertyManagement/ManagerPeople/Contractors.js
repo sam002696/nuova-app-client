@@ -8,7 +8,7 @@ const Contractors = () => {
     const handleFetchcontractors = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/users?role=Contractor`
+          `http://localhost:5500/api/users?role=Contractor`
         );
         console.log(res.data);
         setContractors(res.data);

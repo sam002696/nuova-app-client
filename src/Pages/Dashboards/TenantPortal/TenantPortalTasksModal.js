@@ -93,7 +93,7 @@ const TenantPortalTasksModal = ({ open, setOpen, singletask }) => {
 
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/taskDocuments/${singletask._id}`,
+        `http://localhost:5500/api/taskDocuments/${singletask._id}`,
         formList
       );
       if (res.data) {
