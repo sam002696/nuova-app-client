@@ -248,54 +248,68 @@ const ContractorPortalHomeTwo = () => {
 
             <div className="mx-auto mt-12 grid max-w-lg gap-2 lg:max-w-none lg:grid-cols-1">
               <div className="divide-y divide-gray-200 rounded-lg  sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0">
-                {findAllJobs.slice(0, 4).map((report) => (
-                  <div
-                    key={report._id}
-                    className=" bg-white rounded-lg shadow-md divide-y divide-gray-200"
-                  >
-                    <div className="w-full flex justify-between px-6 py-6 space-x-6">
-                      <img
-                        className="w-10 h-10 bg-gray-300 rounded-md flex-shrink-0"
-                        src={report?.issueImage}
-                        alt=""
-                      />
-                      <div className="flex-1 truncate">
-                        <div className="flex items-center space-x-1">
-                          <h3 className="text-cyan-700 text-sm font-semibold truncate">
-                            Nuova System Jobs
-                          </h3>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <h3 className="text-gray-900 text-lg font-semibold truncate">
-                            {report?.issueName}
-                          </h3>
-                        </div>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report?.tenantAddress}
-                        </p>
-                        <p className="mt-1 text-gray-500 text-sm truncate">
-                          {report?.perHourIncome}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col justify-between">
-                        <button className="mt-2 flex-shrink-0 inline-block px-2 py-1.5 bg-green-500 text-xs font-medium text-white border-green-700 rounded-lg">
-                          Apply
-                        </button>
-                        <div className="">
-                          <p className="mt-1 text-gray-500 text-sm truncate text-right">
-                            1d
+                {findAllJobs
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .slice(0, 4)
+                  .map((report) => (
+                    <div
+                      key={report._id}
+                      className=" bg-white rounded-lg shadow-md divide-y divide-gray-200"
+                    >
+                      <div className="w-full flex justify-between px-6 py-6 space-x-6">
+                        <img
+                          className="w-10 h-10 bg-gray-300 rounded-md flex-shrink-0"
+                          src={report?.issueImage}
+                          alt=""
+                        />
+                        <div className="flex-1 truncate">
+                          <div className="flex items-center space-x-1">
+                            <h3 className="text-cyan-700 text-sm font-semibold truncate">
+                              Nuova System Jobs
+                            </h3>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <h3 className="text-gray-900 text-lg font-semibold truncate">
+                              {report?.issueName}
+                            </h3>
+                          </div>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report?.tenantAddress}
                           </p>
+                          <p className="mt-1 text-gray-500 text-sm truncate">
+                            {report?.perHourIncome ?? "TBD"}
+                          </p>
+                        </div>
+
+                        <div className="flex flex-col justify-between">
+                          <Link to="/contractor-portal-dashboard/contractor-portal-find-jobs">
+                            <button className="mt-2 flex-shrink-0 inline-block px-2 py-1.5 bg-green-500 text-xs font-medium text-white border-green-700 rounded-lg">
+                              Apply
+                            </button>
+                          </Link>
+                          <div className="">
+                            <p className="mt-1 text-gray-500 text-sm truncate text-right">
+                              {report.createdAt && (
+                                <time>
+                                  {new Date(
+                                    report.createdAt
+                                  ).toLocaleDateString()}
+                                </time>
+                              )}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
 
-              <p className="text-center mt-2 text-md text-cyan-700">
+              <Link
+                to="/contractor-portal-dashboard/contractor-portal-find-jobs"
+                className="text-center mt-2 text-md text-cyan-700"
+              >
                 See All Jobs ...
-              </p>
+              </Link>
             </div>
 
             <div className="mx-auto mt-8 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1 shadow-md shadow-gray-200">

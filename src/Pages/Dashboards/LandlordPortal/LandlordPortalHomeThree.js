@@ -11,6 +11,7 @@ import {
   ShieldCheckIcon,
   DocumentAddIcon,
 } from "@heroicons/react/outline";
+import { useSelector } from "react-redux";
 
 const actions = [
   {
@@ -59,35 +60,20 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const landlords = [
-  {
-    name: "Jane Cooper",
-    title: "Property Owner",
-    property_title: "Nuova Housing Society",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    Street: "54 Mill Lane",
-    City: "Cambridge",
-    Zip: "CB24 3QV",
-    Country: "United Kingdom",
-  },
-];
-
 const propertymanager = [
   {
-    name: "Jane Cooper",
-    title: "Nuova Maintenance Executive",
+    name: "Andy Smith",
+    title: "Nuova Executive",
     role: "Property Manager",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
+    email: "Info@nuovapm.co.uk ",
+    telephone: "07412988440",
     imageUrl:
-      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+      "https://c0.wallpaperflare.com/preview/276/301/198/avatar-people-person-business.jpg",
   },
 ];
 
 const LandlordPortalHomeThree = () => {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <>
       <div className="bg-gradient-to-l from-stone-100 to-white">
@@ -103,92 +89,120 @@ const LandlordPortalHomeThree = () => {
 
                     <div className="mt-2 block">
                       <ul className="grid grid-cols-1 gap-3">
-                        {landlords.map((person) => (
-                          <li
-                            key={person.email}
-                            className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white shadow"
-                          >
-                            <div className="flex flex-1 flex-col p-8">
+                        {/* {landlords.map((person) => ( */}
+                        <li
+                          // key={person.email}
+                          className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white shadow"
+                        >
+                          <div className="flex flex-1 flex-col p-8">
+                            {currentUser?.profilePic ? (
                               <img
+                                className="mx-auto h-28 w-28 flex-shrink-0 rounded-full"
+                                src={
+                                  currentUser?.profilePic &&
+                                  currentUser?.profilePic
+                                }
+                                alt=""
+                              />
+                            ) : (
+                              <span className="inline-block h-20 w-20 mx-auto overflow-hidden rounded-full bg-gray-100">
+                                <svg
+                                  className="h-full w-full text-gray-300"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                              </span>
+                            )}
+
+                            {/* <img
                                 className="mx-auto h-28 w-28 flex-shrink-0 rounded-full"
                                 src={person.imageUrl}
                                 alt=""
-                              />
-                              <h3 className="mt-6 text-sm font-medium text-gray-900 text-center">
-                                {person.name}
-                              </h3>
+                              /> */}
+                            <h3 className="mt-6 text-sm font-medium text-gray-900 text-center">
+                              {currentUser.username}
+                            </h3>
 
-                              <div className=" flex flex-row  space-x-2 items-center mt-4">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-5 h-5"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"
-                                  />
-                                </svg>
+                            <div className=" flex flex-row  space-x-2 items-center mt-4">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-5 h-5"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"
+                                />
+                              </svg>
 
-                                <p className=" text-sm text-gray-500">
-                                  {person.title}
-                                </p>
-                              </div>
-
-                              <div className=" flex flex-row  space-x-2 items-center mt-4">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-5 h-5"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"
-                                  />
-                                </svg>
-
-                                <p className=" text-sm text-gray-500">
-                                  {person.property_title}
-                                </p>
-                              </div>
-
-                              <div className=" flex flex-row  space-x-2 items-center mt-4">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-7 h-7"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                                  />
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                                  />
-                                </svg>
-
-                                <p className=" text-sm text-gray-500">
-                                  {person.Street} , {person.City} , {person.Zip}{" "}
-                                  , {person.Country}
-                                </p>
-                              </div>
+                              <p className=" text-sm text-gray-500">
+                                Property Owner
+                              </p>
                             </div>
-                          </li>
-                        ))}
+
+                            <div className=" flex flex-row  space-x-2 items-center mt-4">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-5 h-5"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"
+                                />
+                              </svg>
+
+                              <p className=" text-sm text-gray-500">
+                                Nuova Property Landlord
+                              </p>
+                            </div>
+
+                            <div className=" flex flex-row  space-x-2 items-center mt-4">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-7 h-7"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                />
+                              </svg>
+
+                              <p className=" text-sm text-gray-500">
+                                {currentUser.currentAddress ? (
+                                  currentUser.currentAddress
+                                ) : (
+                                  <>
+                                    <Link to="/landlord-my-profile">
+                                      Update profile current address
+                                    </Link>
+                                  </>
+                                )}
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                        {/* ))} */}
                       </ul>
                     </div>
                   </div>
