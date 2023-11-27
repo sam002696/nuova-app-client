@@ -75,7 +75,7 @@ const InprogressJobs = ({ getAllJobs }) => {
                             <div className="flex-1 truncate py-5">
                               <div className="flex items-center space-x-3">
                                 <h3 className="text-white text-sm font-semibold truncate">
-                                  Nuova System Jobs
+                                  Nuova Property Management & Letting Jobs
                                 </h3>
                                 <span className="flex-shrink-0 inline-block px-2 py-0.5 text-yellow-800 text-xs font-medium bg-yellow-100 rounded-full">
                                   Maintenance Issue

@@ -9,7 +9,7 @@ const Engagement = ({ register }) => {
       <div className="space-y-6">
         <div className="pt-5 ">
           <p className=" text-lg text-white font-semibold bg-gray-500 pl-1 mb-3">
-            Section 6: Engagement of Nuova System
+            Section 6: Engagement of Nuova Property Management & Letting
           </p>
           <p className=" text-base text-gray-900 pt-3">
             You have instructed us to act as agent on your behalf to provide

@@ -109,10 +109,10 @@ const SinglePropertyDetails = () => {
                 {singleProperty?.propertyAddress?.zipcode}
               </div>
               <p className="text-gray-200 font-normal text-lg">
-                Nuova System are proud to bring to the market this stunning
-                three bed upper duplex property, situated within a fully
-                refurbished townhouse and located in the exclusive Park Circus
-                area, AVAILABLE 4TH NOVEMBER, FURNISHED.
+                Nuova Property Management & Letting are proud to bring to the
+                market this stunning three bed upper duplex property, situated
+                within a fully refurbished townhouse and located in the
+                exclusive Park Circus area, AVAILABLE 4TH NOVEMBER, FURNISHED.
               </p>
               <div className="mt-4 grid grid-cols-2 mb-2 ">
                 <div className=" col-span-1">
@@ -214,12 +214,12 @@ const SinglePropertyDetails = () => {
               </div>
               <p className="text-gray-700 font-normal text-lg">Description</p>
               <p className="text-gray-600 font-normal text-md text-justify">
-                Tay Letting are proud to bring to the market this stunning three
-                bed upper duplex property, situated within a fully refurbished
-                townhouse and located in the exclusive Park Circus area,
-                AVAILABLE 4TH NOVEMBER, FURNISHED. Internally the lower level
-                accommodation comprises of a superb lounge that overlooks the
-                residents gardens and is open plan to an exceptional fully
+                Nuova Property are proud to bring to the market this stunning
+                three bed upper duplex property, situated within a fully
+                refurbished townhouse and located in the exclusive Park Circus
+                area, AVAILABLE 4TH NOVEMBER, FURNISHED. Internally the lower
+                level accommodation comprises of a superb lounge that overlooks
+                the residents gardens and is open plan to an exceptional fully
                 integrated and contemporary kitchen with centre island and also
                 offers a dining area with views over the private residents
                 gardens. There are two good sized double bedrooms located on

@@ -46,10 +46,10 @@ const Engagement = ({ marketResearch, engagementOfNuova }) => {
           </dl>
         </div>
 
-        {/*Section 6: Engagement of Nuova System */}
+        {/*Section 6: Engagement of Nuova Property Management & Letting */}
         <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
-            Section 6: Engagement of Nuova System
+            Section 6: Engagement of Nuova Property Management & Letting
           </h3>
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:px-6">

@@ -300,7 +300,7 @@ const OwnerTwo = ({ register }) => {
 
           <div className=" col-span-1">
             <p className=" text-gray-900 text-base pt-2">
-              Please contact me with Tay Letting news, updates and special
+              Please contact me with Nuova Property news, updates and special
               events
             </p>
           </div>

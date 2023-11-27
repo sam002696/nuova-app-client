@@ -42,7 +42,7 @@ const TaxDeclaration = ({ register }) => {
           htmlFor="project-name"
           className="block text-base leading-6 font-medium text-gray-900"
         >
-          Nuova System HMRC number is{" "}
+          Nuova Property Management & Letting HMRC number is{" "}
           <span className="font-bold">NA046645</span> and this must be quoted
           when applying via HMRC.
         </label>

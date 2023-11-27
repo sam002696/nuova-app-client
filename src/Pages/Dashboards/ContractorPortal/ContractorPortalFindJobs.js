@@ -103,7 +103,7 @@ const ContractorPortalFindJobs = () => {
                       <div className="flex-1 truncate">
                         <div className="flex items-center space-x-3">
                           <h3 className="text-cyan-700 text-sm font-semibold truncate">
-                            Nuova System Jobs
+                            Nuova Property Management & Letting Jobs
                           </h3>
                           <span className="flex-shrink-0 inline-block px-2 py-0.5 text-white text-xs font-medium bg-cyan-400 rounded-full">
                             Maintenance Issue
@@ -244,7 +244,7 @@ const ContractorPortalFindJobs = () => {
               <div className="flex-1 truncate">
                 <div className="flex items-center space-x-3">
                   <h3 className="text-cyan-700 text-sm font-semibold truncate">
-                    Nuova System Jobs
+                    Nuova Property Management & Letting Jobs
                   </h3>
                   <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
                     Maintenance Issue

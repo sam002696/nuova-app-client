@@ -22,7 +22,11 @@ const breadcrumbs = [
   { name: "Ownership details", href: "#", current: true },
   { name: "Property maintenance", href: "#", current: true },
   { name: "Market research", href: "#", current: true },
-  { name: "Engagement of Nuova System", href: "#", current: true },
+  {
+    name: "Engagement of Nuova Property Management & Letting",
+    href: "#",
+    current: true,
+  },
 ];
 
 const PropertyFactFind = () => {

@@ -74,7 +74,7 @@ const TenantPropertyThree = () => {
     ],
 
     description: `
-      <p>Nuova System is proud to bring to the market this stunning three bed upper duplex property, situated within a fully refurbished townhouse and located in the exclusive Park Circus area, AVAILABLE 4TH NOVEMBER, FURNISHED.</p>
+      <p>Nuova Property Management & Letting is proud to bring to the market this stunning three bed upper duplex property, situated within a fully refurbished townhouse and located in the exclusive Park Circus area, AVAILABLE 4TH NOVEMBER, FURNISHED.</p>
     `,
     details: [
       {

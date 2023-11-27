@@ -268,7 +268,7 @@ const OwnershipDetails = ({ ownershipDetails }) => {
             </div>
             <div className="sm:col-span-4">
               <dt className="text-sm font-medium text-gray-500">
-                Please contact me with Tay Letting news, updates and special
+                Please contact me with Nuova Property news, updates and special
                 events
               </dt>
               <dd className="mt-1 text-sm text-gray-900">
@@ -415,8 +415,8 @@ const OwnershipDetails = ({ ownershipDetails }) => {
           <dl className="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <dt className="text-sm font-medium text-gray-500">
-                Nuova System HMRC number is NA046645 and this must be quoted
-                when applying via HMRC.
+                Nuova Property Management & Letting HMRC number is NA046645 and
+                this must be quoted when applying via HMRC.
               </dt>
               <dd className="mt-1 text-sm text-gray-900">
                 {" "}
