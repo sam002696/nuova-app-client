@@ -44,7 +44,7 @@ export default function Calender() {
     reset();
     try {
       const res = await axios.post(
-        `http://localhost:5500/api/calenderEvents`,
+        `https://nuova-property-server.onrender.com/api/calenderEvents`,
         data
       );
       if (res.data) {
@@ -63,7 +63,9 @@ export default function Calender() {
   useEffect(() => {
     const handleFetchAllEvents = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/calenderEvents`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/calenderEvents`
+        );
         console.log(res.data);
         setAddEvents(res.data);
       } catch (err) {

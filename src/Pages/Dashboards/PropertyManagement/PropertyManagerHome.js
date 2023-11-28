@@ -47,7 +47,9 @@ const PropertyManagerHome = () => {
   useEffect(() => {
     const handleAllProperties = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/properties`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/properties`
+        );
         setAllProperties(res.data);
       } catch (err) {
         console.log(err);
@@ -60,7 +62,7 @@ const PropertyManagerHome = () => {
     const handleFetchTenantTasks = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tasks?taskFor=Tenants`
+          `https://nuova-property-server.onrender.com/api/tasks?taskFor=Tenants`
         );
 
         setTenantsTasks(res.data);
@@ -75,7 +77,7 @@ const PropertyManagerHome = () => {
     const handleFetchLandlordTasks = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tasks?taskFor=Landlords`
+          `https://nuova-property-server.onrender.com/api/tasks?taskFor=Landlords`
         );
         setLandlordsTasks(res.data);
       } catch (err) {
@@ -88,7 +90,9 @@ const PropertyManagerHome = () => {
   useEffect(() => {
     const handleReportsDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/reports`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/reports`
+        );
         setMaintenanceReports(res.data);
       } catch (err) {
         console.log(err);
@@ -100,7 +104,9 @@ const PropertyManagerHome = () => {
   useEffect(() => {
     const handleFetchAllEvents = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/calenderEvents`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/calenderEvents`
+        );
         setAddEvents(res.data);
       } catch (err) {
         console.log(err);

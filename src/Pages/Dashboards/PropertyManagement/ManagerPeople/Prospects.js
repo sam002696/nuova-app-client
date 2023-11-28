@@ -10,7 +10,9 @@ const Prospects = () => {
   useEffect(() => {
     const fetchAllProspects = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/prospects`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/prospects`
+        );
         setProspects(res.data);
       } catch (err) {
         console.log(err);

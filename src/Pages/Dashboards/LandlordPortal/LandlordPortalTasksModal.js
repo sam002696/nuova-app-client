@@ -94,7 +94,7 @@ const LandlordPortalTasksModal = ({ open, setOpen, singletask }) => {
     try {
       setLoading(false);
       const res = await axios.put(
-        `http://localhost:5500/api/taskDocuments/${singletask._id}`,
+        `https://nuova-property-server.onrender.com/api/taskDocuments/${singletask._id}`,
         formList
       );
       if (res.data) {

@@ -61,7 +61,7 @@ const SingleProperty = () => {
     const handleSingleProperty = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/properties/${id}`
+          `https://nuova-property-server.onrender.com/api/properties/${id}`
         );
         console.log(res.data);
         dispatch(propertyFetchingSuccess(res.data));
@@ -197,7 +197,7 @@ const SingleProperty = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        const url = `http://localhost:5500/api/properties/${propertyid}`;
+        const url = `https://nuova-property-server.onrender.com/api/properties/${propertyid}`;
         axios
           .delete(url)
           .then((res) => {

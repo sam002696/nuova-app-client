@@ -39,7 +39,7 @@ const PropertyViewingForm = ({ id }) => {
     const handleSingleProperty = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/properties/${id}`
+          `https://nuova-property-server.onrender.com/api/properties/${id}`
         );
         console.log(res.data);
         setSingleProperty(res.data);
@@ -103,7 +103,7 @@ const PropertyViewingForm = ({ id }) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `http://localhost:5500/api/prospects`,
+        `https://nuova-property-server.onrender.com/api/prospects`,
         formData
       );
       if (res.data) {

@@ -53,7 +53,7 @@ const ViewTenantModal = ({
   const handleStatusChange = async (status) => {
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/uploadTenants/update/${singleTenant._id}?tenantStatus=${status}`
+        `https://nuova-property-server.onrender.com/api/uploadTenants/update/${singleTenant._id}?tenantStatus=${status}`
       );
       if (res.data) {
         window.location.reload(true);
@@ -77,7 +77,7 @@ const ViewTenantModal = ({
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5500/api/uploadTenants/${singleTenant._id}/${singlePropertyId}`;
+        const url = `https://nuova-property-server.onrender.com/api/uploadTenants/${singleTenant._id}/${singlePropertyId}`;
         axios
           .delete(url)
           .then((res) => {

@@ -41,7 +41,7 @@ const TenantMaintenanceModal = ({ open, setOpen }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5500/api/reports`,
+        `https://nuova-property-server.onrender.com/api/reports`,
         reportData
       );
       if (res.data) {
