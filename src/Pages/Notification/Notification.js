@@ -37,7 +37,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const Notification = () => {
-  const socket = io("https://nuova-property-server.onrender.com");
+  const socket = io("http://localhost:5500");
   const history = useHistory();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
@@ -69,9 +69,7 @@ const Notification = () => {
     const handleFetchAllNotifications = async () => {
       try {
         dispatch(notificationFetchingStart());
-        const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/notifications`
-        );
+        const res = await axios.get(`http://localhost:5500/api/notifications`);
         dispatch(notificationFetchingSuccess(res.data));
       } catch (err) {
         console.log(err);
@@ -289,7 +287,7 @@ const Notification = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/notifications/pm/${allNotifications._id}/${notification._id}?field=${notification.label}`,
+        `http://localhost:5500/api/notifications/pm/${allNotifications._id}/${notification._id}?field=${notification.label}`,
         notification
       );
       if (res.data) {
@@ -338,7 +336,7 @@ const Notification = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/notifications/tenant/${allNotifications._id}/${notification._id}?field=${notification.label}`,
+        `http://localhost:5500/api/notifications/tenant/${allNotifications._id}/${notification._id}?field=${notification.label}`,
         notification
       );
       if (res.data) {
@@ -369,7 +367,7 @@ const Notification = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/notifications/contractor/${allNotifications._id}/${notification._id}?field=${notification.label}`,
+        `http://localhost:5500/api/notifications/contractor/${allNotifications._id}/${notification._id}?field=${notification.label}`,
         notification
       );
       if (res.data) {
@@ -406,7 +404,7 @@ const Notification = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/notifications/landlord/${allNotifications._id}/${notification._id}?field=${notification.label}`,
+        `http://localhost:5500/api/notifications/landlord/${allNotifications._id}/${notification._id}?field=${notification.label}`,
         notification
       );
       if (res.data) {

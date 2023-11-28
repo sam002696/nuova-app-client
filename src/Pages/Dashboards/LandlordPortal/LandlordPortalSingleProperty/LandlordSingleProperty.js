@@ -86,7 +86,7 @@ const LandlordSingleProperty = () => {
     const handleSingleProperty = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/properties/${id}`
+          `http://localhost:5500/api/properties/${id}`
         );
         console.log(res.data);
         setSingleProperty(res.data);

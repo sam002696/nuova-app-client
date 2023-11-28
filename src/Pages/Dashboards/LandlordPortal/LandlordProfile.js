@@ -72,7 +72,7 @@ const LandlordProfile = () => {
 
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/users/${currentUser._id}`,
+        `http://localhost:5500/api/users/${currentUser._id}`,
         formList
       );
       if (res.data) {
