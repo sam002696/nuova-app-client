@@ -31,7 +31,7 @@ const EditTenantInfo = ({ open, setOpen, tenantInfo, singleProperty }) => {
         setLoading(true);
         try {
           const res = await axios.put(
-            `http://localhost:5500/api/uploadTenants/tenantDetails/${tenantInfo._id}`,
+            `https://nuova-property-server.onrender.com/api/uploadTenants/tenantDetails/${tenantInfo._id}`,
             data
           );
           if (res.status === 200) {

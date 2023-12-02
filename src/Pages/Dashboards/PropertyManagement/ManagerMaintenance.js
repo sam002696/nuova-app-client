@@ -33,7 +33,9 @@ const ManagerMaintenance = () => {
   useEffect(() => {
     const handleReportsDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/reports`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/reports`
+        );
         console.log(res.data);
         setMaintenanceReports(res.data);
       } catch (err) {
@@ -76,7 +78,7 @@ const ManagerMaintenance = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/reports/acceptoffer/${reportid}/${biddingid}`
+        `https://nuova-property-server.onrender.com/api/reports/acceptoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         Swal.fire("", "The job has been assigned!", "success");
@@ -91,7 +93,7 @@ const ManagerMaintenance = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/reports/declineoffer/${reportid}/${biddingid}`
+        `https://nuova-property-server.onrender.com/api/reports/declineoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         Swal.fire("", "The job has been declined!", "error");
@@ -106,7 +108,7 @@ const ManagerMaintenance = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/reports/completejob/${reportid}/${biddingid}`
+        `https://nuova-property-server.onrender.com/api/reports/completejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         Swal.fire("", "Job is completed!", "success");
@@ -121,7 +123,7 @@ const ManagerMaintenance = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/reports/incompletejob/${reportid}/${biddingid}`
+        `https://nuova-property-server.onrender.com/api/reports/incompletejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         Swal.fire("", "Job is incomplete!", "info");

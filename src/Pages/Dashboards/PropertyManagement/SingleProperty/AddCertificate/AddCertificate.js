@@ -29,7 +29,7 @@ const AddCertificate = ({ singleProperty }) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5500/api/certificatesDocuments/${document._id}/${singleProperty._id}`;
+        const url = `https://nuova-property-server.onrender.com/api/certificatesDocuments/${document._id}/${singleProperty._id}`;
         axios
           .delete(url)
           .then((res) => {
