@@ -156,7 +156,7 @@ const PricingPlans = () => {
           </div>
         </div>
 
-        {/* <AllInOnePlatform /> */}
+        <AllInOnePlatform />
       </div>
 
       <PricingContact />
