@@ -72,7 +72,7 @@ const Banner = () => {
     console.log(data);
     try {
       const res = await axios.post(
-        "https://nuova-property-server.onrender.com/api/tenantContactForm",
+        "http://localhost:5500/api/tenantContactForm",
         data
       );
       if (res.data) {

@@ -17,7 +17,7 @@ const PricingContact = () => {
     console.log(data);
     try {
       const res = await axios.post(
-        "https://nuova-property-server.onrender.com/api/landlordContactForm",
+        "http://localhost:5500/api/landlordContactForm",
         data
       );
       if (res.data) {

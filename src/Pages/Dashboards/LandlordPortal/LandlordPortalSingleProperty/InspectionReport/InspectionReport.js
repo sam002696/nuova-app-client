@@ -60,7 +60,7 @@ const InspectionReport = ({ singleProperty, property }) => {
     console.log(form.authorisationForDeduction.signOfTenantOrAgent);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/inspectionReport/${singleProperty?._id}/${property?._id}`,
+        `http://localhost:5500/api/inspectionReport/${singleProperty?._id}/${property?._id}`,
         form
       );
       if (res.data) {

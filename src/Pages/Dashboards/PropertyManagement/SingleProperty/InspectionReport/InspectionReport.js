@@ -40,7 +40,7 @@ const InspectionReport = ({ singleProperty }) => {
     }
     try {
       const res = await axios.post(
-        `https://nuova-property-server.onrender.com/api/inspectionReport/upload/${singleProperty._id}`,
+        `http://localhost:5500/api/inspectionReport/upload/${singleProperty._id}`,
         form
       );
       if (res.data) {

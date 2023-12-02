@@ -24,9 +24,7 @@ const ManagerMaintenanceTwo = () => {
     const handleReportsDetails = async () => {
       //   dispatch(fetchingStart());
       try {
-        const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/reports`
-        );
+        const res = await axios.get(`http://localhost:5500/api/reports`);
         // dispatch(fetchingSuccess(res.data));
         console.log(res.data);
         setMaintenanceReports(res.data);
@@ -60,7 +58,7 @@ const ManagerMaintenanceTwo = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/acceptoffer/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/acceptoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         console.log("job has been assigned!");
@@ -75,7 +73,7 @@ const ManagerMaintenanceTwo = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/declineoffer/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/declineoffer/${reportid}/${biddingid}`
       );
       if (res.data) {
         console.log("job has been declined!");
@@ -90,7 +88,7 @@ const ManagerMaintenanceTwo = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/completejob/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/completejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         console.log("Job has been completed!");
@@ -105,7 +103,7 @@ const ManagerMaintenanceTwo = () => {
     console.log(reportid, biddingid);
     try {
       const res = await axios.put(
-        `https://nuova-property-server.onrender.com/api/reports/incompletejob/${reportid}/${biddingid}`
+        `http://localhost:5500/api/reports/incompletejob/${reportid}/${biddingid}`
       );
       if (res.data) {
         console.log("Job has been incompleted!");
