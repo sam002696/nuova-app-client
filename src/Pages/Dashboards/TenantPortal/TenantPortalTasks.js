@@ -20,7 +20,7 @@ const TenantPortalTasks = () => {
     const handleTasksDetails = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tasks?&taskFor=Tenants&useremail=${currentUser?.email}&sendTask=${sendTask}`
+          `https://nuova-property-server.onrender.com/api/tasks?&taskFor=Tenants&useremail=${currentUser?.email}&sendTask=${sendTask}`
         );
         setTasks(res.data);
         console.log(res.data);

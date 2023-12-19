@@ -9,7 +9,9 @@ const TenancyForm = () => {
   useEffect(() => {
     const handleTenancyForms = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/tenancyform`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/tenancyform`
+        );
         console.log(res.data);
         setTenantForms(res.data);
       } catch (err) {

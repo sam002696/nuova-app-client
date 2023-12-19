@@ -28,7 +28,9 @@ const ContractorPortalMyJobs = () => {
   useEffect(() => {
     const handleAllJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/contractorJobs`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/contractorJobs`
+        );
         setGetAllJobs(res.data);
       } catch (err) {
         console.log(err);

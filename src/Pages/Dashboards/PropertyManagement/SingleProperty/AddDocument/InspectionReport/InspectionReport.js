@@ -22,7 +22,7 @@ const InspectionReport = ({ singleProperty }) => {
     // setLoading(true);
     // try {
     //   const res = await axios.post(
-    //     `http://localhost:5500/api/inspectionReport/upload/${singleProperty._id}`,
+    //     `https://nuova-property-server.onrender.com/api/inspectionReport/upload/${singleProperty._id}`,
     //     data
     //   );
     //   if (res.data) {
