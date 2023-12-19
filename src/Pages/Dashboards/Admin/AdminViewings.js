@@ -8,9 +8,7 @@ const AdminViewings = () => {
   useEffect(() => {
     const handleAllProperties = async () => {
       try {
-        const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/properties`
-        );
+        const res = await axios.get(`http://localhost:5500/api/properties`);
         console.log(res.data);
         setAllProperties(res.data);
       } catch (err) {

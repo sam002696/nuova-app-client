@@ -41,7 +41,7 @@ const LandlordPortalHomeThree = () => {
     const handleFetchLandlordTasks = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/tasks?taskFor=Landlords`
+          `http://localhost:5500/api/tasks?taskFor=Landlords`
         );
         setLandlordsTasks(res.data);
       } catch (err) {
@@ -55,7 +55,7 @@ const LandlordPortalHomeThree = () => {
     const handleReportsDetails = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/reports?landlordemail=${currentUser.email}`
+          `http://localhost:5500/api/reports?landlordemail=${currentUser.email}`
         );
         setMaintenanceReports(res.data);
       } catch (err) {
@@ -69,7 +69,7 @@ const LandlordPortalHomeThree = () => {
     const handleAllProperties = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/properties/landlordproperty/landlord?email=${currentUser.email}`
+          `http://localhost:5500/api/properties/landlordproperty/landlord?email=${currentUser.email}`
         );
         setAllProperties(res.data);
       } catch (err) {

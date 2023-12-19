@@ -148,7 +148,7 @@ const TenantFactFind = () => {
 
     try {
       const res = await axios.post(
-        `https://nuova-property-server.onrender.com/api/tenancyform`,
+        `http://localhost:5500/api/tenancyform`,
         reportData
       );
       if (res.data) {
