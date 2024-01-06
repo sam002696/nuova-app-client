@@ -144,7 +144,7 @@ const AddProperty = () => {
       data.images.pictureThird = url3;
       data.images.pictureFourth = url4;
       const res = await axios.post(
-        `http://localhost:5500/api/properties`,
+        `https://nuova-property-server.onrender.com/api/properties`,
         data
       );
       if (res.data) {

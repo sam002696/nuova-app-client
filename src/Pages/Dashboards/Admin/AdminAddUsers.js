@@ -31,7 +31,7 @@ const AdminAddUsers = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5500/api/users/${user._id}`;
+        const url = `https://nuova-property-server.onrender.com/api/users/${user._id}`;
         axios
           .delete(url)
           .then((res) => {
@@ -52,7 +52,9 @@ const AdminAddUsers = () => {
   useEffect(() => {
     const handleFetchAllUsers = async () => {
       try {
-        const res = await axios.get(`http://localhost:5500/api/users`);
+        const res = await axios.get(
+          `https://nuova-property-server.onrender.com/api/users`
+        );
         setAllUsers(res.data);
         console.log(res.data);
       } catch (err) {

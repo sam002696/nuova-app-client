@@ -28,7 +28,7 @@ const ContractorPortalBiddingJobs = ({ open, setOpen, singleJob }) => {
     setLoading(true);
     try {
       const res = await axios.put(
-        `http://localhost:5500/api/biddings/${singleJob?.jobid}`,
+        `https://nuova-property-server.onrender.com/api/biddings/${singleJob?.jobid}`,
         formList
       );
       if (res.data) {

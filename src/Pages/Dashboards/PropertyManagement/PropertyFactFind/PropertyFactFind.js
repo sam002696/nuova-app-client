@@ -15,7 +15,7 @@ const PropertyFactFind = () => {
     const handlePropertyFactFind = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/propertyFactFindForm`
+          `https://nuova-property-server.onrender.com/api/propertyFactFindForm`
         );
         console.log(res.data);
         setPropertyFactFindForm(res.data);

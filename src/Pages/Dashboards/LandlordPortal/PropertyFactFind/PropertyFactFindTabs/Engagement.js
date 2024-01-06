@@ -3,7 +3,7 @@ import React from "react";
 const Engagement = ({ marketResearch, engagementOfNuova }) => {
   console.log(engagementOfNuova);
   const { marketResearchOption } = marketResearch;
-  const { ownerOne, ownerTwo, agent } = engagementOfNuova;
+  const { ownerOne, ownerTwo } = engagementOfNuova;
 
   //ownerOne
   const { firstName, surname, dob, address, signature, todaysDate } = ownerOne;
@@ -16,12 +16,12 @@ const Engagement = ({ marketResearch, engagementOfNuova }) => {
     signature: signature2,
     todaysDate: todaysDate2,
   } = ownerTwo;
-  const { nuovaAgent } = agent;
-  const {
-    fullName,
-    signature: signatureA,
-    todaysDate: todaysDateA,
-  } = nuovaAgent;
+  // const { nuovaAgent } = agent;
+  // const {
+  //   fullName,
+  //   signature: signatureA,
+  //   todaysDate: todaysDateA,
+  // } = nuovaAgent;
   return (
     <div>
       <div className="overflow-hidden bg-white shadow-md sm:rounded-lg p-5">
@@ -156,11 +156,11 @@ const Engagement = ({ marketResearch, engagementOfNuova }) => {
         </div>
 
         {/* Agent */}
-        <div className="px-4 py-5 sm:px-6">
+        {/* <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg font-medium leading-6 text-gray-900">Agent</h3>
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-          {/*  Agent  */}
+         
           <dl className="grid grid-cols-3 gap-x-4 gap-y-5 sm:grid-cols-3">
             <div className="sm:col-span-3">
               <dt className="text-sm font-medium text-gray-700">
@@ -189,7 +189,7 @@ const Engagement = ({ marketResearch, engagementOfNuova }) => {
               </dd>
             </div>
           </dl>
-        </div>
+        </div> */}
       </div>
     </div>
   );

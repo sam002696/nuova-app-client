@@ -101,7 +101,7 @@ const ManagerTasks = () => {
       setLoadingIndividual(true);
       try {
         const res = await axios.post(
-          `http://localhost:5500/api/tasks`,
+          `https://nuova-property-server.onrender.com/api/tasks`,
           formList
         );
         if (res.data) {
@@ -125,7 +125,7 @@ const ManagerTasks = () => {
 
       try {
         const res = await axios.post(
-          `http://localhost:5500/api/tasks/all`,
+          `https://nuova-property-server.onrender.com/api/tasks/all`,
           others
         );
         if (res.data) {
@@ -144,7 +144,7 @@ const ManagerTasks = () => {
     const handleFetchTenantTasks = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tasks?taskFor=Tenants`
+          `https://nuova-property-server.onrender.com/api/tasks?taskFor=Tenants`
         );
         console.log(res.data);
         setTenantsTasks(res.data);
@@ -159,7 +159,7 @@ const ManagerTasks = () => {
     const handleFetchLandlordTasks = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5500/api/tasks?taskFor=Landlords`
+          `https://nuova-property-server.onrender.com/api/tasks?taskFor=Landlords`
         );
         console.log(res.data);
         setLandlordsTasks(res.data);
