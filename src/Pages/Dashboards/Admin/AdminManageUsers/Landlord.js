@@ -8,7 +8,7 @@ const Landlord = () => {
     const handleFetchLandlords = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/users?role=Landlord`
+          `http://localhost:5500/api/users?role=Landlord`
         );
         console.log(res.data);
         setLandlords(res.data);

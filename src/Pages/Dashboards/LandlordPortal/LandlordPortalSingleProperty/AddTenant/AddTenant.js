@@ -25,7 +25,7 @@ const AddTenant = ({ singleProperty }) => {
       if (result.isConfirmed) {
         try {
           const res = await axios.post(
-            `https://nuova-property-server.onrender.com/api/uploadTenants/upload/${singleProperty._id}`,
+            `http://localhost:5500/api/uploadTenants/upload/${singleProperty._id}`,
             formData
           );
           if (res.data) {

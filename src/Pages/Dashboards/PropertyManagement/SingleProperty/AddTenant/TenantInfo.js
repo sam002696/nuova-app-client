@@ -37,7 +37,7 @@ const TenantInfo = ({ singleProperty, formData, setFormData }) => {
     const handleFetchTenant = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/users?email=${tenantPersonalInfo.email}`
+          `http://localhost:5500/api/users?email=${tenantPersonalInfo.email}`
         );
         if (res.status === 200) {
           setTenant(res.data);

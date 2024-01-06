@@ -16,7 +16,7 @@ const AdminModal = ({ open, setOpen }) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://nuova-property-server.onrender.com/api/auth/register",
+        "http://localhost:5500/api/auth/register",
         data
       );
       if (res.data) {

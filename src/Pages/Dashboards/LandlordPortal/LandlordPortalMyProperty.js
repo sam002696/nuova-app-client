@@ -11,7 +11,7 @@ const LandlordPortalMyProperty = () => {
     const handleTenantProperty = async () => {
       try {
         const res = await axios.get(
-          `https://nuova-property-server.onrender.com/api/properties/landlordproperty/landlord?email=${currentUser.email}`
+          `http://localhost:5500/api/properties/landlordproperty/landlord?email=${currentUser.email}`
         );
         setLandlordProperty(res.data);
         console.log(res.data);

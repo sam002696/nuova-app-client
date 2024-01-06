@@ -57,7 +57,7 @@ const AddDocumentModal = ({ open, setOpen, singleProperty }) => {
     formData.uploadedCertificate = url1;
     try {
       const res = await axios.post(
-        `https://nuova-property-server.onrender.com/api/certificatesDocuments/upload/${singleProperty?._id}`,
+        `http://localhost:5500/api/certificatesDocuments/upload/${singleProperty?._id}`,
         formData
       );
       if (res.data) {

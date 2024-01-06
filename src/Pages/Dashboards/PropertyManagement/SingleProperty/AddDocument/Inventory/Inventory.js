@@ -15,7 +15,7 @@ const Inventory = ({ singleProperty }) => {
     // setLoading(true);
     // try {
     //   const res = await axios.post(
-    //     `https://nuova-property-server.onrender.com/api/inventory/upload/${singleProperty._id}`,
+    //     `http://localhost:5500/api/inventory/upload/${singleProperty._id}`,
     //     data
     //   );
     //   if (res.data) {
