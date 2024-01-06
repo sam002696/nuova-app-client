@@ -16,12 +16,7 @@ const Engagement = ({ marketResearch, engagementOfNuova }) => {
     signature: signature2,
     todaysDate: todaysDate2,
   } = ownerTwo;
-  // const { nuovaAgent } = agent;
-  // const {
-  //   fullName,
-  //   signature: signatureA,
-  //   todaysDate: todaysDateA,
-  // } = nuovaAgent;
+
   return (
     <div>
       <div className="overflow-hidden bg-white shadow-md sm:rounded-lg p-5">
