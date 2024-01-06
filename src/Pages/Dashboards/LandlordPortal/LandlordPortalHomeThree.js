@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { ChatAltIcon } from "@heroicons/react/outline";
 
@@ -12,49 +12,7 @@ import {
   DocumentAddIcon,
 } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
-
-const actions = [
-  {
-    title: "Maintenance",
-    href: "/landlord-portal-dashboard/landlord-portal-maintenance",
-    icon: ShieldCheckIcon,
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
-    notification: "15",
-    information:
-      "As a landlord, you can view all of your properties maintenances in one place",
-  },
-  {
-    title: "Tasks",
-    href: "/landlord-portal-dashboard/landlord-portal-tasks",
-    icon: DocumentAddIcon,
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-    notification: "10",
-    information:
-      "Our property managers are always active to solve any issues by assigning the task",
-  },
-  {
-    title: "Total Occupancy",
-    href: "/landlord-portal-dashboard/landlord-property",
-    icon: UsersIcon,
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-    notification: "4",
-    information:
-      "Track all the tenant occupants in your properties from our portal in ease",
-  },
-  {
-    title: "Property Rating",
-    href: "#",
-    icon: BadgeCheckIcon,
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-    notification: "5",
-    information:
-      "Rating of your property helps you earn more and increase the value of your property",
-  },
-];
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -74,6 +32,97 @@ const propertymanager = [
 
 const LandlordPortalHomeThree = () => {
   const { currentUser } = useSelector((state) => state.user);
+
+  const [landlordsTasks, setLandlordsTasks] = useState([]);
+  const [maintenanceReports, setMaintenanceReports] = useState([]);
+  const [allProperties, setAllProperties] = useState([]);
+
+  useEffect(() => {
+    const handleFetchLandlordTasks = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/tasks?taskFor=Landlords`
+        );
+        setLandlordsTasks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleFetchLandlordTasks();
+  }, []);
+
+  useEffect(() => {
+    const handleReportsDetails = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/reports?landlordemail=${currentUser.email}`
+        );
+        setMaintenanceReports(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleReportsDetails();
+  }, []);
+
+  useEffect(() => {
+    const handleAllProperties = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5500/api/properties/landlordproperty/landlord?email=${currentUser.email}`
+        );
+        setAllProperties(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleAllProperties();
+  }, []);
+
+  const actions = [
+    {
+      title: "Maintenance",
+      href: "/landlord-portal-dashboard/landlord-portal-maintenance",
+      icon: ShieldCheckIcon,
+      iconForeground: "text-teal-700",
+      iconBackground: "bg-teal-50",
+      notification: maintenanceReports.length,
+      information:
+        "As a landlord, you can view all of your properties maintenances in one place",
+    },
+    {
+      title: "Tasks",
+      href: "/landlord-portal-dashboard/landlord-portal-tasks",
+      icon: DocumentAddIcon,
+      iconForeground: "text-purple-700",
+      iconBackground: "bg-purple-50",
+      notification: landlordsTasks.length,
+      information:
+        "Our property managers are always active to solve any issues by assigning the task",
+    },
+    {
+      // title: "Total Occupancy",
+      title: "Properties",
+      href: "/landlord-portal-dashboard/landlord-property",
+      icon: UsersIcon,
+      iconForeground: "text-sky-700",
+      iconBackground: "bg-sky-50",
+      notification: allProperties.length,
+      information:
+        "Track all the tenant occupants in your properties from our portal in ease",
+    },
+    {
+      title: "Property Rating",
+      href: "#",
+      icon: BadgeCheckIcon,
+      iconForeground: "text-yellow-700",
+      iconBackground: "bg-yellow-50",
+      notification: "5",
+      information:
+        "Rating of your property helps you earn more and increase the value of your property",
+    },
+  ];
+
   return (
     <>
       <div className="bg-gradient-to-l from-stone-100 to-white">
